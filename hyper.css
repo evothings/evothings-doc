@@ -77,8 +77,19 @@ a {
 	border-radius: 0.4em;
 }
 
-ul {
+/*ul {
     display: table;
+}*/
+
+.img-screenshot-right {
+	width: 250px;
+	height: auto;
+	margin-left: 20px;
+	float: right;
+}
+.img-arduino-circuit {
+	width: 400px;
+	height: auto;
 }
 
 /*

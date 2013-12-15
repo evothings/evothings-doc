@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-led-blink-wifi.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013 EvoThings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Arduino Scripting Example</title>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Arduino Scripting Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+
+<div class="box">
+	<img class="img-screenshot-right" src="images/arduino-led-blink-wifi-screenshot.png"/>
+
+	<h2>Arduino LED Blink Script Example</h2>
+
+	<p>This example shows how to make a scriptable app that blinks a LED. It is very similar to the <a href="arduino-led-onoff-wifi">Arduino LED On/Off Example</a>, but this app has a user interface for scripting the Arduino.</p>
+
+	<p>The Arduino circuit used in this example is the same as in the Arduino LED On/Off Example, and files arduino.js and arduinowifi.ino are also the same. For clarity, the instructions from the Arduino LED On/Off Example are repeated below.</p>
+
+	<p>In the user interface is a text box that contains JavaScript code. When you touch the Run button, the script will execute on the device, sending commands to the Arduino board.</p>
+
+	<p>Communication with the Arduino is made over wifi. Your Arduino board therefore needs a wifi shield for this example to work. You can adapt the example to use an Ethernet shield, and in this case you need to modify the file arduinowifi.ino to use the Ethernet library rather than the WiFi library.</p>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/arduino-led-blink-wifi">EvoThings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-blink-wifi/app/index.html">app/index.html</a> is the entry point of the app. File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-blink-wifi/app/arduino.js">arduino.js</a> contains functions for scripting the Arduino from JavaScript. You can set pin mode and set HIGH/LOW for pins.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-blink-wifi/arduinowifi/arduinowifi.ino">arduinowifi/arduinowifi.ino</a> contains the Arduino WiFi server that listens for commands from the app.</p>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs on Android devices.</p>
+
+	<p>You need to run the example in the EvoThings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin org.chromium.socket. See page <a href="mobile-app.html">EvoThings App</a> for further details.</p>
+
+	<p>For the Arduino circuit, you need:</p>
+	<ul>
+		<li>WiFi shield</li>
+		<li>LED</li>
+		<li>Resistor</li>
+	</ul>
+
+	<p>Here is a photo of a board configured to work with this example. Note that the output pin used is pin 2 (it may look like pin 3 in the photo).</p>
+
+	<img class="img-arduino-circuit" src="images/arduino-led-wifi-circuit.jpg"/>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Wire up the Arduino board.</li>
+		<li>Open arduinowifi.ino in the Arduino development tool.</li>
+		<li>Enter the name and password for your wifi network in arduinowifi.ino.</li>
+		<li>Upload the program to the Arduino.</li>
+		<li>Open the Serial Monitor Window and look for the IP address of the Arduino. (If the IP is not displayed, check your wifi network name and password.)</li>
+		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
+		<li>Run the EvoThings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "Arduino LED On/Off Wifi" from the Workbench window.</li>
+		<li>Enter the IP-address of the Arduino in the app.</li>
+		<li>If everything works, you should now be able to turn the LED on and off using the buttons in the app. If it does not work, check your wiring and that the right pins are used (remember pin 2 is used for output).</li>
+		<li>Experiment with modifying the JavaScript code in the text box of the app. For example, you can change the blink interval (intervals under 500 ms may not work reliably).</li>
+		<li>If you make an app for the Arduino, or make a video of your experiments, we would love to know about it!</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013 EvoThings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>
