@@ -81,17 +81,25 @@ ul {
     display: table;
 }
 
-.img-screenshot-right {
+.img-example-screenshot {
 	width: 250px;
 	height: auto;
-	margin-left: 20px;
-	margin-bottom: 20px;
-	float: right;
+	border: 1px solid #000000;
 }
 
-.img-arduino-sketch {
+.img-example-arduino-sketch {
 	width: 400px;
 	height: auto;
+}
+
+.img-example-platform-support {
+	width: auto;
+	height: 74px;
+	margin-top: 4px;
+	margin-right: 5px;
+	margin-left: 20px;
+	position: relative;
+	float: right;
 }
 
 /*

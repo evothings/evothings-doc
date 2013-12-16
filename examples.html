@@ -11,33 +11,13 @@ Copyright (c) 2013 EvoThings AB
 <title>EvoThings Examples</title>
 <script src="js/include-css-scripts.js"></script>
 <style>
-.img-platform-support {
-	width: auto;
-	height: 74px;
-	margin-top: 0px;
-	margin-right: 225px;
-	margin-left: 20px;
-	position: relative;
-	float: right;
-}
-
-.img-example-screenshot {
+.img-example-gallery-screenshot {
 	width: 200px;
 	height: auto;
 	margin-left: 0px;
 	margin-bottom: 20px;
+	border: 1px solid #000000;
 }
-/*
-.listing{
-	width: 520px;
-	background: #fafafa;
-}
-
-.listing2{
-	width: 520px;
-	background: #ffffff;
-}
-*/
 </style>
 </head>
 
@@ -48,20 +28,7 @@ Copyright (c) 2013 EvoThings AB
 
 <script src="js/include-main-menu.js"></script>
 
-<div class="box content-index">
-	<!--<img src="images/evothings-logo.png" hspace="15"/><br clear="all" />
-	<br />-->
-	<a href="#Introduction">Explore The Example Apps</a><br/>
-	<a href="#HelloWorld">Hello World</a><br/>
-	<a href="#CanvasBasic">Canvas Basic</a><br/>
-	<a href="#HueLights">Hue Lights</a><br/>
-	<a href="#CordovaBasic">Cordova Basic</a><br/>
-	<a href="#ArduinoLEDOnOffWiFi">Arduino LED On/Off WiFi</a><br/>
-	<a href="#ArduinoLEDBlinkWifi">Arduino LED Blink Script</a><br/>
-	<a href="#ArduinoBLE">Arduino BLE</a><br/>
-	<a href="#BLEDiscovery">BLE Discovery</a><br/>
-	<a href="#BLETISensorTag">BLE TI SensorTag</a><br/>
-</div>
+<script src="js/include-example-menu.js"></script>
 
 <div id="Introduction" class="box">
 	<h2>Explore The Example Apps!</h2>
@@ -75,86 +42,25 @@ Copyright (c) 2013 EvoThings AB
 	<br clear="all" />
 </div>
 
-<div id="HelloWorld" class="box listing2">
-	<h2><a href="hello-world.html">Hello World</a></h2>
-	<img class="img-platform-support" src="images/both-targets.png"
-		alt="Works with any browser and with EvoThings App" />
-	<p>Very simple app to get you started with EvoThings Studio.</p>
-	<p><img class="img-example-screenshot"
-		src="images/hello-world-screenshot.png" alt="Hello World"/></p>
-	<!--p><img src="images/go.png" width="50" alt="Go!" /></p -->
-</div>
-
-<div id="CanvasBasic" class="box listing">
-	<h2><a href="canvas-basic.html">Canvas Basic</a></h2>
-	<img class="img-platform-support" src="images/both-targets.png"
-		alt="Works with any browser and with EvoThings App" />
-	<p>Simple example to play around with colours and shapes on an HTML5 canvas element.</p>
-	<p><img class="img-example-screenshot"
-		src="images/canvas-basic-screenshot.png" alt="Canvas Basic"/></p>
-</div>
-
-<div id="HueLights" class="box listing2">
-	<h2><a href="hue-lights.html">Hue Lights</a></h2>
-	<img class="img-platform-support" src="images/both-targets.png"
-		alt="Works with any browser and with EvoThings App" />
-	<p>Experience the magic of controlling Philips Hue® lightbulbs from your own app.</p>
-	<p><img class="img-example-screenshot"
-		src="images/hue-lights-screenshot.png" alt="Hue Lights"/></p>
-</div>
-
-<div id="CordovaBasic" class="box listing">
-	<h2><a href="cordova-basic.html">Cordova Basic</a></h2>
-	<img class="img-platform-support" src="images/evothings-app.png"
-		alt="Works with EvoThings App" />
-	<p>Demonstrates basic functionality in Apache Cordova for accessing native device functionality.</p>
-	<p><img class="img-example-screenshot"
-		src="images/cordova-basic-screenshot.png" alt="Cordova Basic"/></p>
-</div>
-
-<div id="ArduinoLEDOnOffWiFi" class="box listing2">
-	<h2><a href="arduino-led-onoff-wifi.html">Arduino LED On/Off Wifi</a></h2>
-	<img class="img-platform-support" src="images/evothings-app.png"
-		alt="Works with EvoThings App" />
-	<p>Turn on and off a LED light on an Arduino board equipped with a WiFi shield.</p>
-	<p><img class="img-example-screenshot"
-		src="images/arduino-led-onoff-wifi-screenshot.png" alt="Arduino LED On/Off Wifi"/></p>
-</div>
-
-<div id="ArduinoLEDBlinkWifi" class="box listing">
-	<h2><a href="arduino-led-blink-wifi.html">Arduino LED Blink Script</a></h2>
-	<img class="img-platform-support" src="images/evothings-app.png"
-		alt="Works with EvoThings App" />
-	<p>Script your Arduino from JavaScript with this app. The example shows how to blink a LED light on an Arduino board equipped with a WiFi shield.</p>
-	<p><img class="img-example-screenshot"
-		src="images/arduino-led-blink-wifi-screenshot.png" alt="Arduino LED Blink Script"/></p>
-</div>
-
-<div id="ArduinoBLE" class="box listing2">
-	<h2><a href="arduino-ble.html">Arduino BLE</a></h2>
-	<img class="img-platform-support" src="images/evothings-app.png"
-		alt="Works with EvoThings App" />
-	<p>Example that demonstrates how to connect to an Arduino equipped with a Bluetooth Low Energy (BLE) shield.</p>
-	<p><img class="img-example-screenshot"
-		src="images/arduino-ble-screenshot.png" alt="Arduino BLE"/></p>
-</div>
-
-<div id="BLEDiscovery" class="box listing">
-	<h2><a href="ble-discovery.html">BLE Discovery</a></h2>
-	<img class="img-platform-support" src="images/evothings-app.png"
-		alt="Works with EvoThings App" />
-	<p>App that lists Bluetooth Low Energy (BLE) devices and services.</p>
-	<p><img class="img-example-screenshot"
-		src="images/ble-discovery-screenshot.png" alt="BLE Discovery"/></p>
-</div>
-
-<div id="BLETISensorTag" class="box listing2">
-	<h2><a href="ble-ti-sensortag.html">BLE TI SensorTag</a></h2>
-	<img class="img-platform-support" src="images/evothings-app.png"
-		alt="Works with EvoThings App" />
-	<p>This example demonstrates reading sensors on the Texas Instruments Sensor Tag.</p>
-	<p><img class="img-example-screenshot"
-		src="images/ble-ti-sensortag-screenshot.png" alt="BLE TI SensorTag"/></p>
+<div>
+	<a href="hello-world.html"><img class="img-example-gallery-screenshot"
+		src="images/hello-world-screenshot.png" alt="Hello World"/></a>
+	<a href="canvas-basic.html"><img class="img-example-gallery-screenshot"
+		src="images/canvas-basic-screenshot.png" alt="Canvas Basic"/></a>
+	<a href="hue-lights.html"><img class="img-example-gallery-screenshot"
+		src="images/hue-lights-screenshot.png" alt="Hue Lights"/></a>
+	<a href="cordova-basic.html"><img class="img-example-gallery-screenshot"
+		src="images/cordova-basic-screenshot.png" alt="Cordova Basic"/></a>
+	<a href="arduino-led-onoff-wifi.html"><img class="img-example-gallery-screenshot"
+		src="images/arduino-led-onoff-wifi-screenshot.png" alt="Arduino LED On/Off Wifi"/></a>
+	<a href="arduino-led-blink-wifi.html"><img class="img-example-gallery-screenshot"
+		src="images/arduino-led-blink-wifi-screenshot.png" alt="Arduino LED Blink Script"/></a>
+	<a href="arduino-ble.html"><img class="img-example-gallery-screenshot"
+		src="images/arduino-ble-screenshot.png" alt="Arduino BLE"/></a>
+	<a href="ble-discovery.html"><img class="img-example-gallery-screenshot"
+		src="images/ble-discovery-screenshot.png" alt="BLE Discovery"/></a>
+	<a href="ble-ti-sensortag.html"><img class="img-example-gallery-screenshot"
+		src="images/ble-ti-sensortag-screenshot.png" alt="BLE TI SensorTag"/></a>
 </div>
 
 <div class="box">
