@@ -1,74 +1,63 @@
 <!DOCTYPE html>
 <html>
 <!--
-File: examples.html
-Description: EvoThings Examples documentation.
+File: cordova-basic.html
+Description: Example documentation.
 Author: Mikael Kindborg
 Copyright (c) 2013 EvoThings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>EvoThings Examples</title>
+<title>Cordova Basic Example</title>
 <script src="js/include-css-scripts.js"></script>
-<style>
-.floater {
-	width: 50px;
-	height: 74px;
-	top: 6px;
-	left: -2px;
-	position: relative;
-	z-index: 2;
-	float: right;
-	display:inline-block;
-	//background:#ccffcc;
-	
-}
-.listing{
-	width: 520px;
-	background: #fafafa;
-}
-
-.listing2{
-	width: 520px;
-	background: #ffffff;
-}
-
-
-
-</style>
 </head>
 
 <body>
-<div id="heading">EvoThings Examples</div>
+<div id="heading">Cordova Basic Example</div>
 
 <div id="page"><div id="content">
 
 <script src="js/include-main-menu.js"></script>
 
-<div class="box content-index">
-	<img src="images/evothings-logo.png" hspace="15"/><br clear="all" />
-	<br />
-	<a href="#Introduction">Kick-Start Example Apps</a><br/>
-	<a href="#HelloWorld">Hello World</a><br/>
-	<a href="#CanvasDemo">Canvas Demo</a><br/>
-	<a href="#HueLightsDemo">Hue Lights Demo</a><br/>
-	<a href="#CordovaBasic">Cordova Basic</a><br/>
-	<a href="#ArduinoLEDWiFi">Arduino LED WiFi</a><br/>
-	<a href="#ArduinoLEDBlinkWifi">Arduino LED Blink Wifi</a><br/>
-	<a href="#ArduinoLEDBLE">Arduino LED BLE</a><br/>
-	<a href="#BLEDemo">BLE Demo</a><br/>
-	<a href="#BLETISensorTagDemo">BLE TI SensorTag Demo</a><br/>
-	
+<div class="box">
+	<img class="img-screenshot-right" src="images/cordova-basic-screenshot.png"/>
+
+	<h2>Make Apps That Access Native Device Functionality</h2>
+
+	<p>With the <a href="http://cordova.apache.org/">Apache Cordova</a> platform you can create mobile apps that access native device functionality such as accelerometer, compass, and other sensors, file system, networking, and so on. This app demonstrates the structure of a basic Cordova app.</p>
 </div>
 
-<div id="Introduction" class="box">
-	<h2>Hello World example</h2>
+<div class="box">
+	<h2>Source Code</h2>
 
-	<p>The EvoThings Example Apps are designed to get you started quickly with development of mobile apps for Internet of Things.</p>
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/cordova-basic">EvoThings GitHub repository</a></p>
 
-	<p>Included are both very basic apps that will work in any web browser, such as Hello World and Canvas Demo, and IoT-specific apps such as the Arduino examples and the Philips Hue Demo. The IoT apps require the <a href="mobile-app.html">EvoThings App</a> to run.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/cordova-basic/index.html">index.html</a> is the main file of the app.</p>
 
-	</div>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs on Android devices.</p>
+
+	<p>You need to run this example in the EvoThings client app. Alternatively, you can build a Cordova application if you wish to distribute the app. See page <a href="mobile-app.html">EvoThings App</a> for further details.</p>
+
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
+		<li>Run the EvoThings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "Cordova Basic" from the Workbench window.</li>
+		<li>Try out the buttons in the app and the compass heading sensor.</li>
+		<li>For instructions on how to build a stand-alone native Cordova app, start out by visiting the <a href="http://cordova.apache.org/docs/en/3.1.0/">Cordova documentation site</a>. (Yes, we will provide support for building stand-alone Cordova apps in future versions of EvoThings Studio!)</li>
+	</ul>
+</div>
 
 <div class="box">
 	<p>Copyright &copy; 2013 EvoThings AB</p>

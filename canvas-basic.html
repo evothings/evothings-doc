@@ -1,74 +1,59 @@
 <!DOCTYPE html>
 <html>
 <!--
-File: examples.html
-Description: EvoThings Examples documentation.
+File: canvas-basic.html
+Description: Example documentation.
 Author: Mikael Kindborg
 Copyright (c) 2013 EvoThings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>EvoThings Examples</title>
+<title>Canvas Basic Example</title>
 <script src="js/include-css-scripts.js"></script>
-<style>
-.floater {
-	width: 50px;
-	height: 74px;
-	top: 6px;
-	left: -2px;
-	position: relative;
-	z-index: 2;
-	float: right;
-	display:inline-block;
-	//background:#ccffcc;
-	
-}
-.listing{
-	width: 520px;
-	background: #fafafa;
-}
-
-.listing2{
-	width: 520px;
-	background: #ffffff;
-}
-
-
-
-</style>
 </head>
 
 <body>
-<div id="heading">EvoThings Examples</div>
+<div id="heading">Canvas Basic Example</div>
 
 <div id="page"><div id="content">
 
 <script src="js/include-main-menu.js"></script>
 
-<div class="box content-index">
-	<img src="images/evothings-logo.png" hspace="15"/><br clear="all" />
-	<br />
-	<a href="#Introduction">Kick-Start Example Apps</a><br/>
-	<a href="#HelloWorld">Hello World</a><br/>
-	<a href="#CanvasDemo">Canvas Demo</a><br/>
-	<a href="#HueLightsDemo">Hue Lights Demo</a><br/>
-	<a href="#CordovaBasic">Cordova Basic</a><br/>
-	<a href="#ArduinoLEDWiFi">Arduino LED WiFi</a><br/>
-	<a href="#ArduinoLEDBlinkWifi">Arduino LED Blink Wifi</a><br/>
-	<a href="#ArduinoLEDBLE">Arduino LED BLE</a><br/>
-	<a href="#BLEDemo">BLE Demo</a><br/>
-	<a href="#BLETISensorTagDemo">BLE TI SensorTag Demo</a><br/>
-	
+<div class="box">
+	<img class="img-screenshot-right" src="images/canvas-basic-screenshot.png"/>
+
+	<h2>Hello HTML5 Canvas</h2>
+
+	<p>This app demonstrates how to basic draw shapes on an HTML5 canvas. The canvas is a very useful component in HTML5 for doing graphics output, plotting values from sensors for example. For more advanced graph drawing, you can use a JavaScript library such as <a href="http://www.humblesoftware.com/flotr2/">Flotr2</a>.</p>
 </div>
 
-<div id="Introduction" class="box">
-	<h2>Hello World example</h2>
+<div class="box">
+	<h2>Source Code</h2>
 
-	<p>The EvoThings Example Apps are designed to get you started quickly with development of mobile apps for Internet of Things.</p>
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/canvas-basic">EvoThings GitHub repository</a></p>
 
-	<p>Included are both very basic apps that will work in any web browser, such as Hello World and Canvas Demo, and IoT-specific apps such as the Arduino examples and the Philips Hue Demo. The IoT apps require the <a href="mobile-app.html">EvoThings App</a> to run.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/canvas-basic/index.html">index.html</a> contains the HTML markup and JavaScript drawing code of the app.</p>
 
-	</div>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs in any web browser (mobile or desktop).</p>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
+		<li>Connect to the Workbench from either the EvoThings client app or a web browser (mobile or desktop).</li>
+		<li>Run the "Canvas Basic" example from the Workbench window.</li>
+		<li>Open the source code file "index.html" and play around with the drawing code.</li>
+	</ul>
+</div>
 
 <div class="box">
 	<p>Copyright &copy; 2013 EvoThings AB</p>

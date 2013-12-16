@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html>
 <!--
-File: examples.html
-Description: EvoThings Examples documentation.
+File: hue-lights.html
+Description: Example documentation.
 Author: Mikael Kindborg
 Copyright (c) 2013 EvoThings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>EvoThings Examples</title>
+<title>Hue Lights Example</title>
 <script src="js/include-css-scripts.js"></script>
-<style>
-.floater {
-	width: 50px;
-	height: 74px;
-	top: 6px;
-	left: -2px;
-	position: relative;
-	z-index: 2;
-	float: right;
-	display:inline-block;
-	//background:#ccffcc;
-	
-}
-.listing{
-	width: 520px;
-	background: #fafafa;
-}
-
-.listing2{
-	width: 520px;
-	background: #ffffff;
-}
-
-
-
-</style>
 </head>
 
 <body>
-<div id="heading">EvoThings Examples</div>
+<div id="heading">Hue Lights Example</div>
 
 <div id="page"><div id="content">
 
 <script src="js/include-main-menu.js"></script>
 
-<div class="box content-index">
-	<img src="images/evothings-logo.png" hspace="15"/><br clear="all" />
-	<br />
-	<a href="#Introduction">Kick-Start Example Apps</a><br/>
-	<a href="#HelloWorld">Hello World</a><br/>
-	<a href="#CanvasDemo">Canvas Demo</a><br/>
-	<a href="#HueLightsDemo">Hue Lights Demo</a><br/>
-	<a href="#CordovaBasic">Cordova Basic</a><br/>
-	<a href="#ArduinoLEDWiFi">Arduino LED WiFi</a><br/>
-	<a href="#ArduinoLEDBlinkWifi">Arduino LED Blink Wifi</a><br/>
-	<a href="#ArduinoLEDBLE">Arduino LED BLE</a><br/>
-	<a href="#BLEDemo">BLE Demo</a><br/>
-	<a href="#BLETISensorTagDemo">BLE TI SensorTag Demo</a><br/>
-	
+<div class="box">
+	<img class="img-screenshot-right" src="images/hue-lights-screenshot.png"/>
+
+	<h2>Light Up Your Room</h2>
+
+	<p>This example shows how to make an app to control the <a href="https://www.meethue.com/">Philips Hue</a> lights.</p>
+
+	<p>Read a review of Philips Hue at <a href="http://arstechnica.com/gadgets/2012/11/in-living-color-ars-reviews-the-hacker-approved-philips-hue-leds/">Ars Technica</a>.</p>
+
+	<img style="width:250px;height:auto;" src="images/hue-lightbulbs.jpg"/>
+
 </div>
 
-<div id="Introduction" class="box">
-	<h2>Hello World example</h2>
+<div class="box">
+	<h2>Source Code</h2>
 
-	<p>The EvoThings Example Apps are designed to get you started quickly with development of mobile apps for Internet of Things.</p>
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/hue-lights">EvoThings GitHub repository</a></p>
 
-	<p>Included are both very basic apps that will work in any web browser, such as Hello World and Canvas Demo, and IoT-specific apps such as the Arduino examples and the Philips Hue Demo. The IoT apps require the <a href="mobile-app.html">EvoThings App</a> to run.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/hue-lights/index.html">index.html</a> contains the HTML markup and JavaScript code of the app.</p>
 
-	</div>
+	<p>Communication with the Hue Bridge is made over HTTP, using Ajax.</p>
+
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs in any web browser (mobile or desktop).</p>
+
+	<p>You need a set of <a href="https://www.meethue.com/">Philips Hue</a> lights.</p>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Turn on the Hue lightbulbs (preferably having them nicely arranged for best effect ;)</li>
+		<li>Plug in the power to the Hue Bridge, and insert an Ethernet cable connected to the Internet (the Hue Bridge must have a connection to the Internet, otherwise it won't work).</li>
+		<li>Enter the name and password for your wifi network in arduinowifi.ino.</li>
+		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
+		<li>Connect to the Workbench from either the EvoThings client app or a web browser (mobile or desktop).</li>
+		<li>Run the "Hue Lights" example from the Workbench window.</li>
+		<li>Press the button on the Hue Bridge to make it discoverable.</li>
+		<li>Tap the Connect button in the app. If everything works, the app will find the IP address of the Hue Bridge (if you have multiple Hues connected, the first one detected will be used).</li>
+		<li>Use the buttons in the app to interact with the lights. You interact with one light bulb at a time, select which one from the top row of buttons.</li>
+		<li>Now you can go into the code and modify the colours, add buttons to the app and so on. We would be delighted to hear about your experiments. If you have a blogpost or video you wish to share, we are most happy to feature it on the EvoThings web site!</li>
+	</ul>
+</div>
 
 <div class="box">
 	<p>Copyright &copy; 2013 EvoThings AB</p>
