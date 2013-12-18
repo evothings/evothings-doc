@@ -29,7 +29,6 @@ Copyright (c) 2013 EvoThings AB
 	<a href="#UsingCordovaPhoneGap">Using Cordova/PhoneGap</a><br/>
 	<a href="#JavaScriptTools">JavaScript Tools</a><br/>
 	<a href="#SourceCode">Source Code</a><br/>
-	<img src="images/evothings-logo.png"/>
 </div>
 
 <div id="Introduction" class="box">
@@ -49,6 +48,10 @@ Copyright (c) 2013 EvoThings AB
 </div>
 
 <div id="MainWindow" class="box">
+
+	<img style="width:400px;height:auto;float:right;margin-left:20px;margin-bottom:20px;"
+		src="images/evothings-workbench-screenshot.png"/>
+
 	<h2>Main Window</h2>
 
 	<p>The main window displays a list of projects. Drag and drop HTML files here to create new project entries. You can rearrange items by dragging them around, and delete then by clicking the [x] symbol. Note that this will not delete any files in the project, it only removed the project entry from the list.</p>
@@ -110,6 +113,50 @@ setWebViewClient(new WebViewClient());
 mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 <p>Make sure the WebView has JavaScript enabled, and that it has a WebViewClient (otherwise, URLs opened from within the WebView will be opened in an external browser, rather than in the WebView itself).</p>
+</div>
+
+<div id="UsingCordovaPhoneGap" class="box">
+<h2>Using Cordova/PhoneGap</h2>
+
+	<p>EvoThings Studio works great when developing apps with Apache Cordova (or Adobe PhoneGap). You can skip the entire build step and get a fast workflow with quick turn-around times.</p>
+
+	<p>Here is a step-by-step guide.</p>
+
+	<h3>Create your Cordova project</h3>
+
+	<p>If you don't have a Cordova project already, you first need to create it. Install Cordova and create a new project by following the instructions at the <a href="http://cordova.apache.org/docs/en/3.1.0/guide_cli_index.md.html#The%20Command-line%20Interface">Apache Cordova web site</a>. It is a good idea to build and test run the generated project, so you now everything works.</p>
+
+	<h3>Launch EvoThings Workbench</h3>
+
+	<p>Launch the Workbench application, if it is not already running, so you can find out the connect address for the URL to use with Cordova. The address is displayed in the bottom panel of the main window.</p>
+
+	<h3>Insert the HyperReload URL</h3>
+
+	<p>When the Cordova app launches, it loads the main HTML page of the app. When using EvoThings Studio, you instead need the app to connect to the Workbench server when it loads. Specify the connect URL in file <b>www/config.xml</b>.</p>
+
+	<p>Open the file www/config.xml in a text editor. Change this line:</p>
+
+	<pre>&lt;content src="index.html" /&gt;</pre>
+
+	<p>to this (assuming the connect address is 192.168.0.102:4042):</p>
+
+	<pre>&lt;content src="http://192.168.0.102:4042" /&gt;</pre>
+
+	<h3>Build and launch the app</h3>
+
+	<p>Now, build your app using Cordova and launch it on a device or emulator. When the app starts, it should display the Connected page.</p>
+
+	<p>Your app is now ready to run projects from the Workbench.</p>
+
+	<h3>Drag the main HTML file into the Workbench</h3>
+
+	<p>If you have not done this step, drag the main HTML file of your app into the Workbench main window. This is the file www/index.html in your Cordova project.</p>
+
+	<h3>Click Run</h3>
+
+	<p>Click the Run button to launch your app on the connected device. Clicking Run activates your project, and tells the Workbench that this is the project to reload when changes are made.</p>
+
+	<p>You only need to click Run once. Any document you edit end save in the current project will automatically reload the app on your device.</p>
 </div>
 
 <div id="JavaScriptTools" class="box">

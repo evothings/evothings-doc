@@ -81,6 +81,27 @@ ul {
     display: table;
 }
 
+.img-example-screenshot {
+	width: 250px;
+	height: auto;
+	border: 1px solid #000000;
+}
+
+.img-example-arduino-sketch {
+	width: 400px;
+	height: auto;
+}
+
+.img-example-platform-support {
+	width: auto;
+	height: 74px;
+	margin-top: 4px;
+	margin-right: 5px;
+	margin-left: 20px;
+	position: relative;
+	float: right;
+}
+
 /*
 #left {
 	float: left;

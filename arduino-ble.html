@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-ble.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013 EvoThings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Arduino BLE Example</title>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Arduino BLE Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+
+<script src="js/include-example-menu.js"></script>
+
+<div class="box">
+	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
+
+	<h2>Communicate With Arduino Over BLE</h2>
+
+	<p>This is an experimental example that shows how to communicate with an Arduino board equipped with the Bluetooth Low Energy (BLE) shield.</p>
+
+	<img class="img-example-screenshot" src="images/arduino-ble-screenshot.png"/>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/arduino-ble">EvoThings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-ble/app/index.html">app/index.html</a> is the entry point of the app.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-blink-wifi/arduinoble/arduinoble.ino">arduinoble/arduinoble.ino</a> contains the Arduino BLE server that communicates with the app.</p>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example requires an Android device with support for Bluetooth 4.0 (which includes BLE). In addition Android 4.3 or later is required.</p>
+
+	<p>You need to run the example in the EvoThings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble. See page <a href="mobile-app.html">EvoThings App</a> for further details.</p>
+
+	<p>Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. Known problems related to EvoThings Studio include interactively reloading the app from the Workbench. If the app stops working, restart the EvoThings client app.</p>
+
+	<p>You need and Arduino board with a BLE shield.</p>
+</div>
+
+<div class="box">
+	<h2>Sketch</h2>
+
+	<p>This is a sketch of a board configured to work with this example. Please observe that the <b><a href="http://redbearlab.com/bleshield/" target="_blank">RedBearLab BLE Shield</a> is required</b> but is currently missing from this sketch.</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-ble-board-sketch.png"/>
+
+	<p>The ON &amp; OFF buttons controls digital pin 2 on the Arduino which is here connected to an LED. The plot shows the input from analog pin A0 which is here connected to a variable resistor (potentiometer). Please experiment with your own circuits and let us know how cool they are!</p>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013 EvoThings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>
