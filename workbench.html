@@ -34,17 +34,18 @@ Copyright (c) 2013 EvoThings AB
 <div id="Introduction" class="box">
 	<h2>Using the Workbench</h2>
 
-	<p>The EvoThings Workbench is a desktop application you use to run apps on mobile devices. For an overview of how to get started, see the <a href="index.html#QuickStart">Quick Start</a> section on the main documentation page.</p>
+	<p>The EvoThings Workbench is a desktop application for running apps on mobile devices. For an overview of how to get started, see the <a href="index.html#QuickStart">Quick Start</a> section of the main documentation page.</p>
 
-	<p>The Workbench has two windows:</p>
+	<p>The Workbench has three windows:</p>
 	<ul>
 		<li>The main window that displays a list of projects (apps) you can run on mobile devices.</li>
 		<li>The JavaScript Tools window, where you can interactively run code on connected devices and view log output.</li>
+		<li>The Feedback section, where your input is superimportant for the evolution of EvoThings Studio.</li>
 	</ul>
 
-	<p>To run an app on a connected device, press the "Run" button. This will make the local web server used by the Workbench set its base directory to the folder where the main HTML-file of the project is located.</p>
+	<p>To run an app on a connected device, press the "Run" button. This will make the local web server used by the Workbench set its base directory to the folder where the main HTML file of the project is located.</p>
 
-	<p>Edit the source code of your apps using your favourite text editor and web development tools. When you save a file in the currently running project, it will automatically reload it on connected devices.</p>
+	<p>Edit the source code of your apps using your favourite text editor and web development tools. Each time you save a file in the currently running project, it will automatically reload it on connected devices. This also works like a charm when you save images and other resources.</p>
 </div>
 
 <div id="MainWindow" class="box">
@@ -54,23 +55,23 @@ Copyright (c) 2013 EvoThings AB
 
 	<h2>Main Window</h2>
 
-	<p>The main window displays a list of projects. Drag and drop HTML files here to create new project entries. You can rearrange items by dragging them around, and delete then by clicking the [x] symbol. Note that this will not delete any files in the project, it only removed the project entry from the list.</p>
+	<p>The main window displays a list of projects. Drag and drop HTML files here to create new project entries. You can rearrange items by dragging them around, or move them off the list by clicking the [x] symbol. Note that this will not delete any files in the project, it just  removes the project entry from the list.</p>
 
-	<p>When you click the "Run" button, that project will launch on connected devices. If no device is connected, a local browser window will open on the selected project.</p>
+	<p>When you click the "Run" button, that project will launch on connected devices. If no device is connected, a local browser window will open on the selected project as a back-up.</p>
 
-	<p>Click the "Open" button to display the files in the project. From the file list you can open files in the editors you have installed on your machine.</p>
+	<p>Click the "Open" button to display the files in the project. From the file list, you can open files in any editors you have installed on your machine.</p>
 </div>
 
 <div id="Connecting" class="box">
-	<h2>Connecting From a Mobile Device</h2>
+	<h2>Connecting from a Mobile Device</h2>
 
-	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server that will tell devices to run and reload apps, and if you are not connected nothing will display on the device. You can connect from one or many devices.</p>
+	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server, that will tell devices to run and reload apps. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
 
-	<p>You have two options, use the web browser on the device, or use a hybrid app, such as the EvoThings App [TODO: <a href="#">Enter download address</a>].</p>
+	<p>You have two options, to use either the web browser on the device, or use a hybrid app, such as the EvoThings App [TODO: <a href="#">Enter download address</a>].</p>
 
 	<p>Note that when using a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or BlueTooth Low Energy. For most IoT apps, you will need to use the EvoThings App or build your own hybrid app with the functionality you require.</p>
 
-	<p>To connect from a web browser, simply enter the URL displayed in the bottom panel of the man workbench window.</p>
+	<p>To connect from a web browser, simply enter the URL displayed in the bottom panel of the main workbench window.</p>
 
 	<p>To connect from the EvoThings App, use the "Scan" button to automatically detect the running Workbench application, or enter the URL in the address field and press "Connect".</p>
 </div>
@@ -93,8 +94,8 @@ Copyright (c) 2013 EvoThings AB
 	<li>Open the folder with the HTML file that is the main file of your application (typically "index.html", but any name is fine). The file must be a valid HTML file and it must have extension ".html" or ".htm".</li>
 	<li>Drag the file into the Workbench window and drop it there.</li>
 	<li>The file is now added as a project that you can run on connected devices.</li>
-	<li>You can move project entries using drag and drop, and delete them by clicking the delete icon (this will not delete any files in your project folder).</li>
-	<li>When clicking "Run" the files in that project folder is monitored, and the app is reloaded when any file is updated. Currently up to three levels of subdirectories are monitored. This can be configured in the file settings.js.</li>
+	<li>You can move project entries using drag-and-drop, and delete them by clicking the delete icon (this will not delete any files in your project folder).</li>
+	<li>When clicking "Run" the files in that project the folder is monitored, and the app is reloaded when any file is updated. Currently up to three levels of subdirectories are monitored. This can be configured in the file settings.js.</li>
 	</ul>
 </div>
 
@@ -128,7 +129,7 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<h3>Launch EvoThings Workbench</h3>
 
-	<p>Launch the Workbench application, if it is not already running, so you can find out the connect address for the URL to use with Cordova. The address is displayed in the bottom panel of the main window.</p>
+	<p>Launch the Workbench application, if it is not already running, so you can find out the connect address for the URL to use with Cordova. The address is displayed at the bottom panel of the main window.</p>
 
 	<h3>Insert the HyperReload URL</h3>
 
@@ -156,13 +157,13 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<p>Click the Run button to launch your app on the connected device. Clicking Run activates your project, and tells the Workbench that this is the project to reload when changes are made.</p>
 
-	<p>You only need to click Run once. Any document you edit end save in the current project will automatically reload the app on your device.</p>
+	<p>You only need to click Run once. Any document you edit and save in the current project will automatically reload the app on your device.</p>
 </div>
 
 <div id="JavaScriptTools" class="box">
 <h2>JavaScript Tools</h2>
 
-<p>Clicking the "Tools" button opens the JavaScript Tools window. This window has two parts, a JavaScript coding space and a log view.</p>
+<p>Clicking the "Tools" button opens the JavaScript Tools window. This window has two parts; a JavaScript coding space and a log view.</p>
 
 <p>In the coding space, you can evaluate JavaScript code snippets interactively on connected devices. Just select the code you wish to run, and press the "Eval" button. The selected code is sent to connected devices and evaluated. The return value is displayed in the log view in the bottom panel.</p>
 
