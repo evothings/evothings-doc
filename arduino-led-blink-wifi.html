@@ -32,7 +32,7 @@ Copyright (c) 2013 EvoThings AB
 
 	<p>In the user interface there is a text box that contains JavaScript code. When you touch the Run button, the script will execute on the device, sending commands to the Arduino board.</p>
 
-	<p>Communication with the Arduino is made over wifi. Your Arduino board therefore needs a wifi shield for this example to work. You can adapt the example to use an Ethernet shield, and in this case you need to modify the file arduinowifi.ino to use the Ethernet library rather than the WiFi library.</p>
+	<p>Communication with the Arduino is made over WiFi. Your Arduino board therefore needs a WiFi shield for this example to work. You can adapt the example to use an Ethernet shield, and in this case you need to modify the file arduinowifi.ino to use the Ethernet library rather than the WiFi library.</p>
 
 	<img class="img-example-screenshot" src="images/arduino-led-blink-wifi-screenshot.png"/>
 </div>
@@ -65,7 +65,7 @@ Copyright (c) 2013 EvoThings AB
 	<p>Here is the sketch:</p>
 	<img class="img-example-arduino-sketch" src="images/arduino-led-wifi-sketch.png"/>
 
-	<p>Here is a photo of a board configured to work with this example. Note that the output pin used is pin 2 (it may look like it's pin 3 in the photo for the untrained eye).</p>
+	<p>Here is a photo of a board configured to work with this example. Note that output pin 2 is used (it may look like it's pin 3 in the photo for the untrained eye).</p>
 	<img class="img-example-arduino-sketch" src="images/arduino-led-wifi-board-photo.jpg"/>
 </div>
 
@@ -74,11 +74,11 @@ Copyright (c) 2013 EvoThings AB
 
 	<p>Follow these steps to get started with this example:</p>
 	<ul>
-		<li>Wire up the Arduino board, test by hot-wiring 5v to the LED anod (longer leg).</li>
+		<li>Wire up the Arduino board, test by hot-wiring 5v to the LED anode (longer leg).</li>
 		<li>Open arduinowifi.ino in the Arduino development tool.</li>
-		<li>Enter the name and password for your wifi network in arduinowifi.ino.</li>
+		<li>Enter the name and password for your WiFi network in arduinowifi.ino.</li>
 		<li>Upload the program to the Arduino.</li>
-		<li>Open the Arduino PC software's Serial Monitor Window and look for the IP address of the Arduino, it should pop up after a short negociation. (If the IP is not displayed, check your wifi network name and password.)</li>
+		<li>Open the Arduino PC software's Serial Monitor Window and look for the IP address of the Arduino, it should pop up after a short negotiation. (If the IP address is not displayed, check your WiFi network name and password.)</li>
 		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
 		<li>Run the EvoThings client app on an Android mobile device (with WiFi enabled) and connect to the Workbench.</li>
 		<li>Launch the example "Arduino Scriptable" from the Workbench window.</li>
