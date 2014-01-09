@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: ble-scan.html
+Description: EvoThings Examples documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013 EvoThings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>BLE Scan Example</title>
+
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">BLE Scan Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+<script src="js/include-example-menu.js"></script>
+
+<div class="box">
+	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
+
+	<h2>Scan BLE Devices</h2>
+
+	<p>This app demonstrates how to scan Bluetooth Low Energy (BLE) devices and display the signal strength (rssi) of found devices. By tracking the signal strength you can scan for a BLE device and locate it.<p>
+
+	</p>You must run this app in the EvoThings client app, or build a Cordova app with the plugin com.evothings.ble. Device with support for Bluetooth 4.0 and Android 4.3 or higher required.</p>
+
+	</p>This app has been tested on Nexus 5 and Nexus 7 2013.</p>
+
+	<img class="img-example-screenshot" src="images/ble-scan-screenshot.png"/>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/ble-scan">EvoThings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ble-scan/index.html">index.html</a> is the main HTML file of the app.
+
+	<p>In file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ble-scan/js/app.js">js/app.js</a> you will find the JavaScript code for the app. This code contains a fix for Nexus 7 that periodically restarts the scanning process. There is also an 'beforeunload' event implemented that stops BLE scanning before the page closes/reloads. This is needed to make reload in EvoThings Workbench to work.
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<img style="width:100px;height:auto;float:right;" src="images/sticker-pink.png"/>
+
+	<p>This example requires an Android device with support for Bluetooth 4.0 (which includes BLE). In addition Android 4.3 or later is required, in addition to the hardware.</p>
+
+	<p>You need to run the example in the EvoThings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. Then you need to include the Cordova plugin com.evothings.ble. See page <a href="mobile-app.html">EvoThings App</a> for further details.</p>
+
+	<p>Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example.</p>
+
+	<p>The BLE Scan app has been tested with Nexus 5 and Nexus 7 2013. It works to interactively reload the app from EvoThings Workbench.</p>
+
+	<p>You also need at least one BLE device you can work with, for example the <a href="http://www.ti.com/ww/en/wireless_connectivity/sensortag/">Texas Instruments SensorTag</a>, or a <a href="https://www.sticknfind.com/">Stick-N-Find Sticker</a>, or the <a href="http://www.alibaba.com/product-detail/Anti-Loss-Pebble_128303605.html">Pebble Tag</a> (we have tested this app with all these three devices).</p>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
+		<li>Run the EvoThings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "BLE Scan" from the Workbench window.</li>
+		<li>If you use the TI SensorTag, press the "activate" button on the tag.</li>
+		<li>If everything works, the app should automatically detect BLE devices within range and display the signal strength for each device.</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013 EvoThings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>

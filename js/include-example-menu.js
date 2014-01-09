@@ -7,7 +7,8 @@ document.write(
 	+	'<a href="cordova-basic.html">Cordova Basic</a><br/>'
 	+	'<a href="arduino-led-onoff-wifi.html">Arduino LED On/Off WiFi</a><br/>'
 	+	'<a href="arduino-led-blink-wifi.html">Arduino LED Blink Script</a><br/>'
-	+	'<a href="arduino-ble.html">Arduino BLE</a><br/>'
+	+	'<a href="ble-scan.html">BLE Scan</a><br/>'
 	+	'<a href="ble-discovery.html">BLE Discovery</a><br/>'
 	+	'<a href="ble-ti-sensortag.html">BLE TI SensorTag</a><br/>'
+	+	'<a href="arduino-ble.html">Arduino BLE</a><br/>'
 	+ '</div>')
