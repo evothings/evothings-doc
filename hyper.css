@@ -70,6 +70,7 @@ a {
 
 .content-index {
 	float: right;
+	width: 25%;
 	margin: 1em 0em 1.5em 1.5em;
 	padding: 1em 1em 1em 1em;
 	border: 1px solid #000000;
