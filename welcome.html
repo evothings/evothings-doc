@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: welcome.html
+Description: EvoThings Studio welcome page.
+Author: Eric Svensson
+Copyright (c) 2013 EvoThings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>EvoThings Studio</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+<style>
+#welcomeContents {
+	text-align: center;
+}
+#welcomeContents > h2 {
+	font-weight: normal;
+	padding: 0.2em 0 0.2em 0;
+}
+#welcomeContents > h3 {
+	font-size: 1em;
+	font-weight: normal;
+	padding: 2em 0 0.1em 0;
+}
+</style>
+</head>
+
+<body>
+<div id="heading">Welcome to EvoThings Studio!</div>
+
+<div id="page"><div id="content">
+
+<div id="welcomeContents">
+	<h2>Helping you connect your apps to anything.</h2>
+	<img src="images/ets-illustration.jpg" width="50%" />
+	<h3>Start by getting the EvoThings Client development app:</h3>
+	<a id="button-googleplay" href="https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en" target="_blank">
+		<img src="images/google_play.png" width="120" />
+	</a>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="box">
+	<p>Copyright &copy; 2013 EvoThings AB</p>
+</div>
+
+<script>
+(function()
+	{
+		var GUI = require('nw.gui')
+
+		var button = $('#button-googleplay')
+		button && button.click(function(event)
+		{
+			event.preventDefault();
+			var url = $(this).attr('href');
+			GUI.Shell.openExternal(url)
+		})
+
+})()
+</script>
+
+</div></div>
+</body>
+</html>
