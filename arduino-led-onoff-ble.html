@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-led-onoff-wifi.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Arduino LED On/Off BLE Example</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Arduino LED On/Off BLE Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+<script src="js/include-example-menu.js"></script>
+
+<div class="box">
+	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
+
+	<p><b>Note: This is a new example that has not been fully tested yet!</b></p>
+
+	<h2>Control the Arduino From Your App using BLE</h2>
+
+	<p>This example shows how to make an app that controls an Arduino board.</p>
+	<p>Communication with the Arduino is made using Bluetooth Low Energy (BLE). Your Arduino board therefore needs a BLE shield for this example to work.</p>
+
+	<img class="img-example-screenshot" src="images/arduino-led-onoff-ble-screenshot.png"/>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/arduino-led-onoff-ble">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-ble/app/index.html">app/index.html</a> is the entry point of the app. File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-ble/app/index.js">index.js</a> contains functions for reading and writing to the Arduino.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-ble/arduinoledonoffble/arduinoledonoffble.ino">arduinoledonoffble/arduinoledonoffble.ino</a> contains the Arduino BLE server code that listens for commands from the app.</p>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs on iOS and Android devices.</p>
+
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. In addition Android 4.3 or later is needed.</p>
+
+	<p>You need to run the example in the Evothings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble. See page <a href="mobile-app.html">Evothings App</a> for further details.</p>
+
+	<p>Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. Known problems related to Evothings Studio include interactively reloading the app from the Workbench. If the app stops working, restart the Evothings client app.</p>
+
+	<p>For the Arduino setup, you need:</p>
+	<ul>
+		<li>BLE shield</li>
+		<li>LED</li>
+		<li>Resistor 2200 Ohm</li>
+	</ul>
+
+	<p>Here is the sketch:</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-led-ble-sketch.png"/>
+
+	<p>Here is a photo of a board configured to work with this example. Note that output pin 2 is used (it may look like pin 3 in the photo).</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-led-ble-board-photo.jpg"/>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Wire up the Arduino board.</li>
+		<li>Open arduinoledonoffble.ino in the Arduino development tool.</li>
+		<li>Upload the program to the Arduino.</li>
+		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run the Evothings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "Arduino LED On/Off BLE" from the Workbench window.</li>
+		<li>Follow on-screen instructions in the app.</li>
+		<li>If everything works, you should now be able to turn the LED on and off using the buttons in the app. If it does not work, check your wiring and that the right pins are used (remember pin 2 is used for output).</li>
+		<li>Now you can proceed with making your own sketch designs and add more buttons to the app.</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>

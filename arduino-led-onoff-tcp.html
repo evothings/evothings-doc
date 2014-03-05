@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-led-onoff-tcp.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Arduino LED On/Off TCP Example</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Arduino LED On/Off TCP Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+<script src="js/include-example-menu.js"></script>
+
+<div class="box">
+	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
+
+	<h2>Control the Arduino From Your App</h2>
+
+	<p>This example shows how to make an app that controls an Arduino board, by communicating over the TCP networking protocol.</p>
+	<p>Communication with the Arduino is made using a WiFi shield or an Ethernet shield.</p>
+	<p>When using a WiFi shield, you communicate directly from your mobile device to the Arduino. Make sure you are on the same LAN for this to work.</p>
+	<p>When using am Ethernet shield, you communicate from your mobile device to a WiFi router, that in turn need to be able to connect to the IP-address of the Ethernet shield.</p>
+
+	<img class="img-example-screenshot" src="images/arduino-led-onoff-tcp-screenshot.png"/>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/arduino-led-onoff-tcp">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-tcp/app/index.html">app/index.html</a> is the entry point of the app. File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-tcp/app/arduino.js">arduino.js</a> contains functions for scripting the Arduino from JavaScript. You can set pin mode and set HIGH/LOW for pins.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-tcp/arduinowifi/arduinowifi.ino">arduinowifi/arduinowifi.ino</a> contains the Arduino WiFi server that listens for commands from the app.</p><p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-tcp/arduinoethernet/arduinoethernet.ino">arduinoethernet/arduinoethernet.ino</a> contains the Arduino Ethernet server that listens for commands from the app.</p>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs on iOS and Android devices.</p>
+
+	<p>You need to run the example in the Evothings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin org.chromium.socket. See page <a href="mobile-app.html">Evothings App</a> for further details.</p>
+
+	<p>For the Arduino setup, you need:</p>
+	<ul>
+		<li>WiFi shield or Ethernet shield</li>
+		<li>LED</li>
+		<li>Resistor 2200 Ohm</li>
+	</ul>
+
+	<p>Here is the sketch:</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-led-tcp-sketch.png"/>
+
+	<p>Here is a photo of a board configured to work with this example. Note that output pin 2 is used (it may look like pin 3 in the photo).</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-led-tcp-board-photo.jpg"/>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Wire up the Arduino board.</li>
+		<li>Open arduinowifi.ino or arduinoethernet.ino in the Arduino development tool.</li>
+		<li>Enter the name and password for your WiFi network in arduinowifi.ino or configure your IP-address in arduinoethernet.ino.</li>
+		<li>Upload the program to the Arduino.</li>
+		<li>If using a WiFi shield, open the Serial Monitor Window and look for the IP address of the Arduino. (If the IP address is not displayed, check your WiFi network name and password.)</li>
+		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run the Evothings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "Arduino LED On/Off TCP" from the Workbench window.</li>
+		<li>Enter the IP address of the Arduino in the app.</li>
+		<li>If everything works, you should now be able to turn the LED on and off using the buttons in the app. If it does not work, check your wiring and that the right pins are used (remember pin 2 is used for output).</li>
+		<li>Now you can proceed with making your own sketch designs and add more buttons to the app.</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>

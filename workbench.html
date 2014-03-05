@@ -2,19 +2,19 @@
 <html>
 <!--
 File: workbench.html
-Description: EvoThings Workbench documentation.
+Description: Evothings Workbench documentation.
 Author: Mikael Kindborg
-Copyright (c) 2013 EvoThings AB
+Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>EvoThings Workbench</title>
+<title>Evothings Workbench</title>
 <script src="js/include-viewport.js"></script>
 <script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div id="heading">EvoThings Workbench</div>
+<div id="heading">Evothings Workbench</div>
 
 <div id="page"><div id="content">
 
@@ -35,13 +35,13 @@ Copyright (c) 2013 EvoThings AB
 <div id="Introduction" class="box">
 	<h2>Using the Workbench</h2>
 
-	<p>The EvoThings Workbench is a desktop application for running apps on mobile devices. For an overview of how to get started, see the <a href="index.html#QuickStart">Quick Start</a> section of the main documentation page.</p>
+	<p>The Evothings Workbench is a desktop application for running apps on mobile devices. For an overview of how to get started, see the <a href="index.html#QuickStart">Quick Start</a> section of the main documentation page.</p>
 
 	<p>The Workbench has three windows:</p>
 	<ul>
 		<li>The main window that displays a list of projects (apps) you can run on mobile devices.</li>
 		<li>The JavaScript Tools window, where you can interactively run code on connected devices and view log output.</li>
-		<li>The Feedback section, where your input is superimportant for the evolution of EvoThings Studio.</li>
+		<li>The Feedback section, where your input is superimportant for the evolution of Evothings Studio.</li>
 	</ul>
 
 	<p>To run an app on a connected device, press the "Run" button. This will make the local web server used by the Workbench set its base directory to the folder where the main HTML file of the project is located.</p>
@@ -68,13 +68,13 @@ Copyright (c) 2013 EvoThings AB
 
 	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server, that will tell devices to run and reload apps. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
 
-	<p>You have two options, to use either the web browser on the device, or use a hybrid app, either the EvoThings Client app (available on Google Play), or a custom hybrid app like a Cordova application.</p>
+	<p>You have two options, to use either the web browser on the device, or use a hybrid app, either the Evothings Client app (available on Google Play), or a custom hybrid app like a Cordova application.</p>
 
-	<p>Note that when using a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or BlueTooth Low Energy. For most IoT apps, you will need to use the EvoThings App or build your own hybrid app with the functionality you require.</p>
+	<p>Note that when using a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or BlueTooth Low Energy. For most IoT apps, you will need to use the Evothings App or build your own hybrid app with the functionality you require.</p>
 
 	<p>To connect from a web browser, simply enter the URL displayed in the bottom panel of the main workbench window.</p>
 
-	<p>To connect from the EvoThings App, use the "Scan" button to automatically detect the running Workbench application, or enter the URL in the address field and press "Connect".</p>
+	<p>To connect from the Evothings App, use the "Scan" button to automatically detect the running Workbench application, or enter the URL in the address field and press "Connect".</p>
 </div>
 
 <div id="LiveEditing" class="box">
@@ -103,7 +103,7 @@ Copyright (c) 2013 EvoThings AB
 <div id="ConnectingFromHybridApps" class="box">
 <h2>Connecting From Hybrid Apps</h2>
 
-<p>You can use EvoThings Workbench with hybrid applications, like Cordova apps. Just use the URL displayed in the bottom panel of the Workbench to connect. For example:</p>
+<p>You can use Evothings Workbench with hybrid applications, like Cordova apps. Just use the URL displayed in the bottom panel of the Workbench to connect. For example:</p>
 
 <pre>http://192.168.43.226:4042</pre>
 
@@ -120,7 +120,7 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 <div id="UsingCordovaPhoneGap" class="box">
 <h2>Using Cordova/PhoneGap</h2>
 
-	<p>EvoThings Studio works great when developing apps with Apache Cordova (or Adobe PhoneGap). You can skip the entire build step and get a fast workflow with quick turn-around times.</p>
+	<p>Evothings Studio works great when developing apps with Apache Cordova (or Adobe PhoneGap). You can skip the entire build step and get a fast workflow with quick turn-around times.</p>
 
 	<p>Here is a step-by-step guide.</p>
 
@@ -128,13 +128,13 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<p>If you don't have a Cordova project already, you first need to create it. Install Cordova and create a new project by following the instructions at the <a href="http://cordova.apache.org/docs/en/3.1.0/guide_cli_index.md.html#The%20Command-line%20Interface">Apache Cordova web site</a>. It is a good idea to build and test run the generated project, so you now everything works.</p>
 
-	<h3>Launch EvoThings Workbench</h3>
+	<h3>Launch Evothings Workbench</h3>
 
 	<p>Launch the Workbench application, if it is not already running, so you can find out the connect address for the URL to use with Cordova. The address is displayed at the bottom panel of the main window.</p>
 
 	<h3>Insert the HyperReload URL</h3>
 
-	<p>When the Cordova app launches, it loads the main HTML page of the app. When using EvoThings Studio, you instead need the app to connect to the Workbench server when it loads. Specify the connect URL in file <b>www/config.xml</b>.</p>
+	<p>When the Cordova app launches, it loads the main HTML page of the app. When using Evothings Studio, you instead need the app to connect to the Workbench server when it loads. Specify the connect URL in file <b>www/config.xml</b>.</p>
 
 	<p>Open the file www/config.xml in a text editor. Change this line:</p>
 
@@ -162,30 +162,35 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 </div>
 
 <div id="JavaScriptTools" class="box">
-<h2>JavaScript Tools</h2>
 
-<p>Clicking the "Tools" button opens the JavaScript Tools window. This window has two parts; a JavaScript coding space and a log view.</p>
+	<img style="width:400px;height:auto;float:right;margin-left:20px;margin-bottom:20px;"
+		src="images/evothings-tools-screenshot.png"/>
 
-<p>In the coding space, you can evaluate JavaScript code snippets interactively on connected devices. Just select the code you wish to run, and press the "Eval" button. The selected code is sent to connected devices and evaluated. The return value is displayed in the log view in the bottom panel.</p>
+	<h2>JavaScript Tools</h2>
 
-<p>To display log messages, use the hyper.log() function. The log message is displayed in the lov view. Exemple:</p>
+	<p>Clicking the "Tools" button opens the JavaScript Tools window. This window has two parts; a JavaScript coding space and a log view.</p>
 
-<pre>hyper.log('Hello World')</pre>
+	<p>In the coding space, you can evaluate JavaScript code snippets interactively on connected devices. Just select the code you wish to run, and press the "Eval" button. The selected code is sent to connected devices and evaluated. The return value is displayed in the log view in the bottom panel.</p>
 
-<p>By using hyper.log() in your code, you can output debug information from connected devices. If you are using console.log() in your existing code base, you can easily create an alias to send the output to the log view. Just include this line first thing in your page:</p>
+	<p>To display log messages, use the hyper.log() function. The log message is displayed in the lov view. Exemple:</p>
 
-<pre>&lt;script&gt;console.log = hyper.log&lt;/script&gt;</pre>
+	<pre>hyper.log('Hello World')</pre>
 
-<p>The Tools window very is useful for experimenting with code snippets, inspect and modify the state of the running program, and for debugging and debug logging.</p>
-</div>
+	<p>By using hyper.log() in your code, you can output debug information from connected devices. If you are using console.log() in your existing code base, you can easily create an alias to send the output to the log view. Just include this line first thing in your page:</p>
 
-<div id="SourceCode" class="box">
-	<h2>Source Code</h2>
-	<p>See the <a href="index.html#SourceCode">Source Code</a> section of the main documentation page.</p>
+	<pre>&lt;script&gt;console.log = hyper.log&lt;/script&gt;</pre>
+
+	<p>The Tools window very is useful for experimenting with code snippets, inspect and modify the state of the running program, and for debugging and debug logging.</p>
+	</div>
+
+	<div id="SourceCode" class="box">
+		<h2>Source Code</h2>
+		<p>See the <a href="index.html#SourceCode">Source Code</a> section of the main documentation page.</p>
+
 </div>
 
 <div class="box">
-	<p>Copyright &copy; 2013 EvoThings AB</p>
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
 </div>
 
 </div></div>

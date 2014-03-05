@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-scriptable-tcp.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Arduino Scripting Example</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Arduino Scripting Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+
+<script src="js/include-example-menu.js"></script>
+
+<div class="box">
+	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
+
+	<h2>Arduino Scripting Example</h2>
+
+	<p>This example shows how to make a scriptable app that blinks a LED on the Arduino. It is similar to the <a href="arduino-led-onoff-tcp.html">Arduino LED On/Off TCP Example</a>, but this app has a user interface for scripting the Arduino.</p>
+
+	<p>The Arduino sketch used in this example is the same as in the Arduino LED On/Off TCP Example, and files arduino.js, arduinowifi.ino and arduinoethernet.ino are also the same. For clarity, the instructions from the Arduino LED On/Off Example are repeated below.</p>
+
+	<p>In the user interface there is a text box that contains JavaScript code. When you touch the Run button, the script will execute on the device, sending commands to the Arduino board.</p>
+
+	<img class="img-example-screenshot" src="images/arduino-scriptable-tcp-screenshot.png"/>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/arduino-scriptable-tcp">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-scriptable-tcp/app/index.html">app/index.html</a> is the entry point of the app. File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-scriptable-tcp/app/arduino.js">arduino.js</a> contains functions for scripting the Arduino from JavaScript. You can set pin mode INPUT/OUTPUT as well as setting each pins' value to HIGH/LOW.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-scriptable-tcp/arduinowifi/arduinowifi.ino">arduinowifi/arduinowifi.ino</a> contains the Arduino WiFi server that listens for commands from the app.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-scriptable-tcp/arduinoethernet/arduinoethernet.ino">arduinoethernet/arduinoethernet.ino</a> contains the Arduino Ethernet server that listens for commands from the app.</p>
+	<p>Default pin values run from 0 through 9, as pin 10-13 is reserved for the WiFi shield and not available. If you want to control other pins, feel free to modify the code to suit your needs.</p>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example runs on iOS and Android devices.</p>
+
+	<p>You need to run the example in the Evothings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin org.chromium.socket. See page <a href="mobile-app.html">Evothings App</a> for further details.</p>
+
+	<p>For the Arduino setup, you need:</p>
+	<ul>
+		<li>WiFi shield or Ethernet shield</li>
+		<li>LED</li>
+		<li>Resistor 2200 Ohm</li>
+	</ul>
+
+	<p>Here is the sketch:</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-led-tcp-sketch.png"/>
+
+	<p>Here is a photo of a board configured to work with this example. Note that output pin 2 is used (it may look like pin 3 in the photo).</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-led-tcp-board-photo.jpg"/>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Wire up the Arduino board, test by hot-wiring 5v to the LED anode (longer leg).</li>
+		<li>Open arduinowifi.ino or arduinoethernet.ino in the Arduino development tool.</li>
+		<li>Enter the name and password for your WiFi network in arduinowifi.ino or configure your IP-address in arduinoethernet.ino.</li>
+		<li>Upload the program to the Arduino.</li>
+		<li>Open the Arduino PC software's Serial Monitor Window and look for the IP address of the Arduino, it should pop up after a short negotiation. (If the IP address is not displayed, check your WiFi network's name and password.)</li>
+		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run the Evothings client app on an Android mobile device (with WiFi enabled) and connect to the Workbench.</li>
+		<li>Launch the example "Arduino Scriptable" from the Workbench window.</li>
+		<li>Enter the IP-address of the Arduino in the app.</li>
+		<li>If everything works, you should now be able to turn the LED on/off using the buttons in the app. If it does not work, check your wiring and that the right pins are used (remember pin 2 is used for output).</li>
+		<li>Experiment with modifying the JavaScript code in the text box of the app. For example, you can change the blink interval (intervals under 500 ms may not work reliably).</li>
+		<li>If you make an app for the Arduino, or make a video of your experiments, we would love to know about it!</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>

@@ -6,7 +6,7 @@ document.write(
 	+	'<a href="workbench.html" type="button" '
 	+		'class="btn btn-lg btn-primary">Workbench</a>'
 	+	'<a href="mobile-app.html" type="button" class="btn btn-lg '
-	+		'btn-primary">EvoThings App</a>'
+	+		'btn-primary">Evothings App</a>'
 	+	'<a href="examples.html" type="button" class="btn btn-lg '
 	+		'btn-primary">Examples</a>'
 	+ '</div>')
