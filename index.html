@@ -2,19 +2,19 @@
 <html>
 <!--
 File: index.html
-Description: EvoThings Studio documentation.
+Description: Evothings Studio documentation.
 Author: Mikael Kindborg
-Copyright (c) 2013 EvoThings AB
+Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>EvoThings Studio</title>
+<title>Evothings Studio</title>
 <script src="js/include-viewport.js"></script>
 <script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div id="heading">EvoThings Studio</div>
+<div id="heading">Evothings Studio</div>
 
 <div id="page"><div id="content">
 
@@ -33,12 +33,12 @@ Copyright (c) 2013 EvoThings AB
 <div id="Introduction" class="box">
 	<h2>Tools for Development of Apps for Internet of Things</h2>
 
-	<p>EvoThings Studio is a set of development tools, designed for development of mobile apps using web technologies. EvoThings Studio is specifically designed to be used for development of apps for Internet of Things.</p>
+	<p>Evothings Studio is a set of development tools, designed for development of mobile apps using web technologies. Evothings Studio is specifically designed for development of apps for Internet of Things.</p>
 
-	<p><b>EvoThings Studio consists of:</b></p>
+	<p><b>Evothings Studio consists of:</b></p>
 	<ul>
-		<li><a href="workbench.html">EvoThings Workbench</a> - a desktop application used to run apps on mobile devices.</li>
-		<li><a href="mobile-app.html">EvoThings Mobile App</a> - a mobile application that makes it easy to connect to the Workbench and run your apps on connected devices.</li>
+		<li><a href="workbench.html">Evothings Workbench</a> - a desktop application used to run apps on mobile devices.</li>
+		<li><a href="mobile-app.html">Evothings Client</a> - a mobile application that makes it easy to connect to the Workbench and run your apps on connected devices.</li>
 		<li><a href="examples.html">Example Apps</a> - a collection of example programs that you can use to get started quickly and get inspiration for making your own IoT apps.</li>
 		<li><a href="mobile-app.html#SupportedPlugins">Native Plugins</a> - a set of plugins that are implemented in the Cordova framework, and provide native functionality from JavaScript.</li>
 	</ul>
@@ -55,9 +55,9 @@ Copyright (c) 2013 EvoThings AB
 		</a>
 	</p>
 
-	<p>With EvoThings Workbench you can take advantage of HTML5 technologies and JavaScript to develop mobile web apps and hybrid apps - with very fast turn-around time. Use any text editor or graphical editor to author HTML, CSS and JavaScript. Every time you save, the app is instantly reloaded, and you can directly see the result. This also works with image editors.</p>
+	<p>With Evothings Workbench you can take advantage of HTML5 technologies and JavaScript to develop mobile web apps and hybrid apps - with very fast turn-around time. Use any text editor or graphical editor to author HTML, CSS and JavaScript. Every time you save, the app is instantly reloaded, and you can directly see the result. This also works with image editors.</p>
 
-	<p>The EvoThings mobile app is a native application that you run on your mobile devices. It connects to EvoThings Studio to enable live editing of your HTML/CSS/JavaScript code. The app contains native functionality that is accessible from JavaScript, such as Bluetooth Low Energy.</p>
+	<p>The Evothings mobile app is a native application that you run on your mobile devices. It connects to Evothings Studio to enable live editing of your HTML/CSS/JavaScript code. The app contains native functionality that is accessible from JavaScript, such as Bluetooth Low Energy.</p>
 </div>
 
 <div id="QuickStart" class="box">
@@ -65,19 +65,19 @@ Copyright (c) 2013 EvoThings AB
 
 	<p><b>Very quick version:</b></p>
 	<ul>
-		<li>Download and run the EvoThings Workbench application on your computer.</li>
+		<li>Download and run the Evothings Workbench application on your computer.</li>
 		<li>Click the "Run" button of the "Hello World" example. If there is no browser or device connected, a web browser on the PC will be opened with the project. Note that mobile device native functionality is only available when you run your programs using the EvoStudio App.</li>
 	</ul>
 
 	<p><b>Slightly longer version:</b></p>
 	<ul>
-		<li>Download and run the EvoThings Workbench application on your computer.</li>
-		<li>Download and install the EvoThings App on your mobile device.</li>
-		<li>Launch the app and select "Scan". Select your computer running EvoThings Workbench from the list.</li>
+		<li>Download and run the Evothings Workbench application on your computer.</li>
+		<li>Download and install the Evothings App on your mobile device.</li>
+		<li>Launch the app and select "Scan". Select your computer running Evothings Workbench from the list.</li>
 		<li>Alternatively, enter the URL shown in the bottom panel of the Workbench and click "Connect".</li>
-		<li><b>Note: Mobile devices must be on the same local WiFi network as the computer running EvoThings Workbench to be able connect using the "Scan" method.</b></li>
-		<li>The app should now connect to EvoThings Studio and display the message "Connected".</li>
-		<li>Click the "Run" button of one of the apps in EvoThings Workbench. Does the mobile display the app you selected? If so, you are up and running!</li>
+		<li><b>Note: Mobile devices must be on the same local WiFi network as the computer running Evothings Workbench to be able connect using the "Scan" method.</b></li>
+		<li>The app should now connect to Evothings Studio and display the message "Connected".</li>
+		<li>Click the "Run" button of one of the apps in Evothings Workbench. Does the mobile display the app you selected? If so, you are up and running!</li>
 		<li>You can connect any number of mobile devices, and instantly see the result on each of them!</li>
 		<li>Note: If your computer has a public IP address, you can connect devices from anywhere on the Internet!</li>
 	</ul>
@@ -85,35 +85,46 @@ Copyright (c) 2013 EvoThings AB
 
 <div id="DeployingApps" class="box">
 	<h2>Deploying Your Apps</h2>
-	<p>To deploy your final app developed with EvoThings Studio on an official app store, you build your app with <a href="http://cordova.apache.org/">Apache Cordova</a>. Cordova is an open-source tool for development of hybrid apps. You can use the source code of the EvoThings App as a starting point.</p>
-	<p>The section <a href="workbench.html#UsingCordovaPhoneGap">Using Cordova/PhoneGap</a> shows how to use EvoThings Workbench to develop apps using Cordova.</p>
+	<p>To deploy your final app developed with Evothings Studio on an official app store, you build your app with <a href="http://cordova.apache.org/">Apache Cordova</a>. Cordova is an open-source tool for development of hybrid apps. You can use the source code of the Evothings App as a starting point.</p>
+	<p>The section <a href="workbench.html#UsingCordovaPhoneGap">Using Cordova/PhoneGap</a> shows how to use Evothings Workbench to develop apps using Cordova.</p>
 </div>
-
 
 <div id="ReleaseNotes" class="box">
 	<h2>Release Notes</h2>
-	<h3>EvoThings Studio 0.6.0 Beta</h3>
-	<p>Supported platforms for EvoThings Workbench are OS X, Windows and Linux.</p>
-	<p>Supported platform for the EvoThings client app is Android (iOS will follow in a forthcoming release).</p>
-	<p>Bluetooth Low Energy (BLE) is implemented in the EvoThings client app, but please note that BLE on Android is not always stable. Unfortunately this affects EvoThings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the EvoThings client app if BLE should stop working.</p>
-	<p>For apps that do not require native device functionality, any modern browser (desktop or mobile) can be used as a client with EvoThings Workbench. When connecting using a browser, use the URL displayed in the bottom panel of the Workbench window (don't omit the port number).</p>
+
+	<h3>Evothings Studio 0.7.0 Beta</h3>
+	<p>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</p>
+	<p>Supported platform for the Evothings client app is Android and iOS, and preliminary support for Windows Phone.</p>
+	<p>This version introduces support for Bluetooth Low Energy (BLE) on iOS. Please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings client app if BLE should stop working. On iOS reloading BLE app usually works fine. It is however important to close connected devices before the page reloads. Please see the example programs for ways to accomplish this.</p>
+	<p>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></p>
+
+	<h3>Evothings Studio 0.6.0 Beta</h3>
+	<p>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</p>
+	<p>Supported platform for the Evothings client app is Android (iOS will follow in a forthcoming release).</p>
+	<p>Bluetooth Low Energy (BLE) is implemented in the Evothings client app, but please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings client app if BLE should stop working.</p>
+
+	<h3>Good To Know</h3>
+	<p>For apps that do not require native device functionality, any modern browser (desktop or mobile) can be used as a client with Evothings Workbench. When connecting using a browser, use the URL displayed in the bottom panel of the Workbench window (don't omit the port number).</p>
 	<p>You are encouraged to explore the "Tools" window tab in the Workbench. This window displays output from the hyper.log() function, and lets you evaluate JavaScript code interactively on connected devices. This is very useful for debugging purposes, for trying out code snippets and inspecting the value of variables.</p>
-	<p>EvoThings Workbench also contains a Feedback button, please let us know what you think.</p>
+	<p>Evothings Workbench also contains a Feedback button, please let us know what you think.</p>
 	<p>Bugs and feature requests can be reported using the GitHub issue tracker, see links to repositories below under the "Source Code" section.</p>
+
 </div>
 
 <div id="SourceCode" class="box">
 	<h2>Source Code</h2>
 	<p>The source code for EvoStudio is available on GitHub under the Apache License:</p>
 	<ul>
-	<li>EvoThings Workbench: <a href="https://github.com/evothings/EvoThingsStudio">
+	<li>Evothings Workbench: <a href="https://github.com/evothings/EvoThingsStudio">
 		github.com/evothings/EvoThingsStudio</a></li>
-	<li>EvoThings client app: <a href="https://github.com/evothings/EvoThingsClient">
+	<li>Evothings client app: <a href="https://github.com/evothings/EvoThingsClient">
 		github.com/evothings/EvoThingsClient</a></li>
 	<li>Examples: <a href="https://github.com/evothings/EvoThingsExamples">
 		github.com/evothings/EvoThingsExamples</a></li>
+	<li>Apache Cordova BLE Plugin: <a href="https://github.com/evothings/cordova-ble">
+		github.com/evothings/cordova-ble</a></li>
 	</ul>
-	<p>EvoThings Studio is based on HyperReload:<br/>
+	<p>Evothings Studio is based on HyperReload:<br/>
 	<a href="https://github.com/divineprog/HyperReload">
 		github.com/divineprog/HyperReload</a></p>
 </div>
@@ -121,11 +132,11 @@ Copyright (c) 2013 EvoThings AB
 <div id="AboutUs" class="box">
 	<h2>About Us</h2>
 
-	<p>The EvoThings team is a seasoned bunch of developers who enjoy connecting phones to other things. We love to improve, refurbish, evolve and augment our surrounding anywhere buildings, vehicles and gadgets, and make them smarter. Visit us at: <a href="http://evothings.com">evothings.com</a></p>
+	<p>The Evothings team is a seasoned bunch of developers who enjoy connecting phones to other things. We love to improve, refurbish, evolve and augment our surrounding anywhere buildings, vehicles and gadgets, and make them smarter. Visit us at: <a href="http://evothings.com">evothings.com</a></p>
 </div>
 
 <div class="box">
-	<p>Copyright &copy; 2013 EvoThings AB</p>
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
 </div>
 
 </div></div>

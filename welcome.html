@@ -24,33 +24,51 @@ Copyright (c) 2013 EvoThings AB
 	font-weight: normal;
 	padding: 2em 0 0.1em 0;
 }
+ol li {
+	text-align: left;
+	font-size: 14px;
+}
 </style>
 </head>
 
 <body>
+
+<script>
+var GUI = require('nw.gui')
+
+function openInBrowser(url)
+{
+	GUI.Shell.openExternal(url)
+}
+</script>
+
 <div id="heading">Welcome to EvoThings Studio!</div>
 
 <div id="page"><div id="content">
 
 <div id="welcomeContents">
-	<h2>Helping you connect your apps to anything.</h2>
-	<img src="images/ets-illustration.jpg" width="50%" />
-	<h3>Start by getting the EvoThings Client development app:</h3>
-	<a id="button-googleplay" href="https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en" target="_blank">
-		<img src="images/google_play.png" width="120" />
-	</a>
-</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<div class="box">
-	<p>Copyright &copy; 2013 EvoThings AB</p>
+
+	<h2>Connect your apps to anything, here's how:</h2>
+
+	<ol style="font-size: 120%;">
+	<li>Download the mobile Evothings Client from our <a href="#" onclick="openInBrowser('http://www.evothings.com/download')">download page</a>, for Android also from <a id="button-googleplay" target="_blank" href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en')">Google Play</a> </li>
+
+	<li>Connect your computer and phone by pressing "<b>scan to connect</b>", which works if you're on the same network. Or by entering the Connect URL of your computer (seen in lower right of projects' window).</li>
+
+	<li>Client says "Connected"? Good, click <b>Run</b> in the projects' list to run on all connected clients. Updating and saving a file in the project will automatically reload it every time!</li>
+
+	<li>Each example has its own tutorial page, under <a href="#" onclick="openInBrowser('http://evomedia.evothings.com/doc/examples.html')">Examples</a> in the documentation.
+	</li>
+
+	<li>Drag and drop your own HTML files to the projects' list to add them! If your project has many pages, just add the home page and press <b>Run</b>.</li>
+	</ol>
+
+	<img src="images/ets-illustration_v2.png" width="75%"/>
+
 </div>
 
 <script>
-(function()
+;(function()
 	{
 		var GUI = require('nw.gui')
 
@@ -58,10 +76,9 @@ Copyright (c) 2013 EvoThings AB
 		button && button.click(function(event)
 		{
 			event.preventDefault();
-			var url = $(this).attr('href');
+			var url = $(this).attr('href')
 			GUI.Shell.openExternal(url)
 		})
-
 })()
 </script>
 

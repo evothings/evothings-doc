@@ -4,7 +4,7 @@
 File: ble-ti-sensortag.html
 Description: Example documentation.
 Author: Mikael Kindborg
-Copyright (c) 2013 EvoThings AB
+Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
@@ -26,11 +26,9 @@ Copyright (c) 2013 EvoThings AB
 
 	<h2>TI SensorTag Example</h2>
 
-	<p>This app charts magnetometer data from the <a href="http://www.ti.com/ww/en/wireless_connectivity/sensortag/">Texas Instruments SensorTag</a>. Note that you must run this app in the EvoThings client app, or build a Cordova app with the plugin com.evothings.ble. Device with support for Bluetooth 4.0 and Android 4.3 or higher required.</p>
+	<p>This app charts magnetometer data from the <a href="http://www.ti.com/ww/en/wireless_connectivity/sensortag/">Texas Instruments SensorTag</a>. Note that you must run this app in the Evothings client app, or build a Cordova app with the plugin com.evothings.ble. Device with support for Bluetooth 4.0 is required.</p>
 
 	<img class="img-example-screenshot" src="images/ble-ti-sensortag-screenshot.png"/>
-
-	<p>Communication with the Arduino is made over WiFi. Your Arduino board therefore needs a WiFi shield for this example to work. You can adapt the example to use an Ethernet shield instead, in which case you need to modify the file arduinowifi.ino to use the Ethernet library rather than the WiFi library.</p>
 
 </div>
 
@@ -38,10 +36,10 @@ Copyright (c) 2013 EvoThings AB
 	<h2>Source Code</h2>
 
 	<p>You can browse the source code for this example at the
-	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/arduino-led-onoff-wifi">EvoThings GitHub repository</a></p>
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/ble-ti-sensortag">Evothings GitHub repository</a></p>
 
-	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-wifi/app/index.html">app/index.html</a> is the entry point of the app. File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-wifi/app/arduino.js">arduino.js</a> contains functions for scripting the Arduino from JavaScript. You can set pin INPUT/OUTPUT mode and set HIGH/LOW for pins d0 through d9 (pins 10-13 are typically reserved by the WiFi shield anyway).</p>
-	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/arduino-led-onoff-wifi/arduinowifi/arduinowifi.ino">arduinowifi/arduinowifi.ino</a> contains the Arduino WiFi server that listens for commands from the app.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ble-ti-sensortag/index.html">index.html</a> is the entry point of the app.</p>
+	<p>The file File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ble-ti-sensortag/app.js">app.js</a> contains JavaScript code for the app that communicates with the SensorTag using BLE.</p>
 </div>
 
 <div class="box">
@@ -49,11 +47,11 @@ Copyright (c) 2013 EvoThings AB
 
 	<img style="width:100px;height:auto;float:left;margin-right:8px;margin-bottom:8px;" src="images/sensortag.png"/>
 
-	<p>This example requires an Android device with support for Bluetooth 4.0 (which includes BLE). In addition Android 4.3 or later is required.</p>
+	<p>This example requires an iOS device (iOS 7) or an Android device with support for Bluetooth 4.0 (which includes BLE). Android 4.3 or later is required.</p>
 
-	<p>You need to run this example in the EvoThings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. Then you need to include the Cordova plugin com.evothings.ble, see page <a href="mobile-app.html">EvoThings App</a> for further details.</p>
+	<p>You need to run this example in the Evothings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. Then you need to include the Cordova plugin com.evothings.ble, see page <a href="mobile-app.html">Evothings App</a> for further details.</p>
 
-	<p>Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. Known problems related to EvoThings Studio include interactively reloading the app from the Workbench. If the app stops working, restart the EvoThings client app.</p>
+	<p>Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. Known problems related to Evothings Studio include interactively reloading the app from the Workbench. If the app stops working, restart the Evothings client app.</p>
 
 	<p>You also need the <a href="http://www.ti.com/ww/en/wireless_connectivity/sensortag/">Texas Instruments SensorTag</a> to run this example app, it sells from Texas Instruments website for 25$ and has in-all six different MEMS sensors on-board; accelerometer, gyroscope, magnetometer, IR temperature, humidity and barometric pressure (and a BLE radio of course).</p>
 </div>
@@ -63,16 +61,17 @@ Copyright (c) 2013 EvoThings AB
 
 	<p>Follow these steps to get started with this example:</p>
 	<ul>
-		<li>Run the EvoThings Workbench on your desktop/laptop computer.</li>
-		<li>Run the EvoThings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run the Evothings client app on an Android mobile device and connect to the Workbench.</li>
 		<li>Launch the example "BLE TI SensorTag" from the Workbench window.</li>
 		<li>Press the "activate" button on the SensorTag.</li>
+		<li>Touch the "start" button in the app.</li>
 		<li>If everything works, the app should detect the SensorTag and start plotting magnetometer data on the canvas.</li>
 	</ul>
 </div>
 
 <div class="box">
-	<p>Copyright &copy; 2013 EvoThings AB</p>
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
 </div>
 
 </div></div>
