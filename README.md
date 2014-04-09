@@ -1,3 +1,3 @@
 # EvoThingsDoc
 
-Documentation for EvoThings Studio.
+Documentation for Evothings Studio.
