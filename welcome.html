@@ -8,25 +8,21 @@ Copyright (c) 2013 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>Evothings Studio</title>
+<title>Welcome to Evothings Studio</title>
 <script src="js/include-viewport.js"></script>
 <script src="js/include-css-scripts.js"></script>
 <style>
 #welcomeContents {
-	text-align: center;
-}
-#welcomeContents > h2 {
-	font-weight: normal;
-	padding: 0.2em 0 0.2em 0;
-}
-#welcomeContents > h3 {
-	font-size: 1em;
-	font-weight: normal;
-	padding: 2em 0 0.1em 0;
-}
-ol li {
 	text-align: left;
-	font-size: 14px;
+}
+#welcomeContents > p {
+	font-size: 1.3em;
+}
+#welcomeContentsFirstParagraph {
+	margin-top: 1.8em;
+}
+.make-bold {
+	font-weight: bold;
 }
 </style>
 </head>
@@ -48,22 +44,18 @@ function openInBrowser(url)
 
 <div id="welcomeContents">
 
-	<h2>Connect your apps to anything, here's how:</h2>
-
-	<ol style="font-size: 120%;">
-	<li>Download the mobile Evothings Client from our <a href="#" onclick="openInBrowser('http://www.evothings.com/download')">download page</a>, for Android also from <a id="button-googleplay" target="_blank" href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en')">Google Play</a> </li>
-
-	<li>Connect your computer and phone by pressing "<b>scan to connect</b>", which works if you're on the same network. Or by entering the Connect URL of your computer (seen in lower right of projects' window).</li>
-
-	<li>Client says "Connected"? Good, click <b>Run</b> in the projects' list to run on all connected clients. Updating and saving a file in the project will automatically reload it every time!</li>
-
-	<li>Each example has its own tutorial page, under <a href="#" onclick="openInBrowser('http://evomedia.evothings.com/doc/examples.html')">Examples</a> in the documentation.
-	</li>
-
-	<li>Drag and drop your own HTML files to the projects' list to add them! If your project has many pages, just add the home page and press <b>Run</b>.</li>
-	</ol>
+	<p id="welcomeContentsFirstParagraph" class="make-bold">Evothings Studio consists of two parts, the Workbench and the Client app.</p>
+	<p>Next step is to install the <span class="make-bold">Evothings Client</span> app on your mobile devices.</p>
+	<p><a href="#" onclick="openInBrowser('http://www.evothings.com/download')">Download it now!</a></p>
 
 	<img src="images/ets-illustration_v2.png" width="75%"/>
+
+	<p>To connect the Client app to the Workbench, they should be on the same local network.</p>
+	<p class="make-bold">Happy tinkering!</p>
+
+<!--
+	<li>Download the mobile Evothings Client from our <a href="#" onclick="openInBrowser('http://www.evothings.com/download')">download page</a>, for Android also from <a id="button-googleplay" target="_blank" href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en')">Google Play</a> </li>
+-->
 
 </div>
 
