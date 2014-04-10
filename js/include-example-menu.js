@@ -3,7 +3,7 @@ document.write(
 	'<div class="box content-index">'
 	+	'<a href="hello-world.html">Hello World</a><br/>'
 	+	'<a href="canvas-basic.html">Canvas Basic</a><br/>'
-	+	'<a href="hue-lights.html">Hue Lights</a><br/>'
+	+	'<a href="hue-lights.html">Philips Hue Demo</a><br/>'
 	+	'<a href="cordova-basic.html">Cordova Basic</a><br/>'
 	+	'<a href="arduino-led-onoff-tcp.html">Arduino LED On/Off TCP</a><br/>'
 	+	'<a href="arduino-led-onoff-ble.html">Arduino LED On/Off BLE</a><br/>'
