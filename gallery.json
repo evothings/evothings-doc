@@ -1,0 +1,34 @@
+{
+	"items":[
+		{
+			"description":"BLE Discovery",
+			"image":"images/ble-discovery-screenshot.png",
+			"url":"ble-ti-sensortag.html"
+		},
+		{
+			"description":"BLE TI SensorTag",
+			"image":"images/ble-ti-sensortag-screenshot.png",
+			"url":"ble-ti-sensortag.html"
+		},
+		{
+			"description":"Arduino BLE",
+			"image":"images/arduino-ble-screenshot.png",
+			"url":"arduino-ble.html"
+		},
+		{
+			"description":"BLE Discovery",
+			"image":"images/ble-discovery-screenshot.png",
+			"url":"ble-ti-sensortag.html"
+		},
+		{
+			"description":"BLE TI SensorTag",
+			"image":"images/ble-ti-sensortag-screenshot.png",
+			"url":"ble-ti-sensortag.html"
+		},
+		{
+			"description":"Arduino BLE",
+			"image":"images/arduino-ble-screenshot.png",
+			"url":"arduino-ble.html"
+		}
+	]
+}

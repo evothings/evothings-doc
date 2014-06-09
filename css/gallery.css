@@ -1,0 +1,37 @@
+/*
+File: gallery.css
+Description: Evothings Gallery.
+Author: Eric Svensson
+Copyright (c) 2013-2014 Evothings AB
+*/
+
+a#list-item-template {
+	display: none;
+}
+
+a.screenshot {
+	float: left;
+	position: relative;
+	display: block;
+	width: 30%;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+a.screenshot:after {
+	display: block;
+	padding-top: 100%;
+	content: '';
+}
+
+a.screenshot img {
+	position: absolute;
+	top: 1%;
+	bottom: 1%;
+	left: 1%;
+	right: 1%;
+	margin: 0 auto;
+	max-width: 98%;
+	max-height: 98%;
+}
