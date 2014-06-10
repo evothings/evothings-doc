@@ -7,19 +7,39 @@ Copyright (c) 2013-2014 Evothings AB
 
 $(function() {
 
-	$.getJSON( "gallery.json", function( data ) {
+	$.getJSON("gallery.json", function(data) {
 
-		var $list = $('#list');
-		var $listItemTemplate = $('#list-item-template');
+		var $list = $("#list");
+		var $listItemTemplate = $("#list-item-template");
 
-		$.each( data.items, function(key, val) {
-			$listItemTemplate
+		$.each(data.items, function(key, val) {
+			var $newItem = $listItemTemplate
 				.clone()
 				.appendTo($list)
-				.show()
-				.children("img")
-				.attr('src', val.image)
-				.attr('alt', val.description);
+				.show();
+
+			$newItem
+				.children("a.screenshot")
+					.attr("href", val.url)
+					.children("img")
+						.attr("src", val.image)
+						.attr("alt", val.description)
+						.end()
+					.end()
+				.children("a.description")
+					.attr("href", val.url)
+					.text(val.description)
+					.end();
+
+			if (val.youtube)
+				$newItem.children("a.resource-youtube")
+					.attr("href", val.youtube)
+					.css("visibility", "visible");
+
+			if (val.guide)
+				$newItem.children("a.resource-docs")
+					.attr("href", val.guide)
+					.css("visibility", "visible");
 		});
 
 	}).fail(function() {
