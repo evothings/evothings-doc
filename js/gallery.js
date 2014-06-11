@@ -25,11 +25,9 @@ $(function() {
 						.attr("src", val.image)
 						.attr("alt", val.description)
 						.end()
-					.end()
-				.children("a.description")
-					.attr("href", val.url)
-					.text(val.description)
-					.end();
+					.children("div.description")
+						.text(val.description)
+						.end();
 
 			if (val.youtube)
 				$newItem.children("a.resource-youtube")
