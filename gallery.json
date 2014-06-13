@@ -4,21 +4,27 @@
 			"description":"BLE Discovery",
 			"image":"images/ble-discovery-screenshot.png",
 			"url":"ble-ti-sensortag.html",
-			"youtube":"http://www.youtube.com/",
-			"guide":"http://evomedia.evothings.com/doc/ble-discovery.html"
+			"links":{
+				"YouTube":"http://www.youtube.com/",
+				"Docs":"http://evomedia.evothings.com/doc/ble-discovery.html"
+			}
 		},
 		{
 			"description":"BLE TI SensorTag",
 			"image":"images/ble-ti-sensortag-screenshot.png",
 			"url":"ble-ti-sensortag.html",
-			"youtube":"http://www.youtube.com/",
-			"guide":"http://evomedia.evothings.com/doc/ble-ti-sensortag.html"
+			"links":{
+				"YouTube":"http://www.youtube.com/",
+				"Docs":"http://evomedia.evothings.com/doc/ble-ti-sensortag.html"
+			}
 		},
 		{
 			"description":"Arduino BLE",
 			"image":"images/arduino-ble-screenshot.png",
 			"url":"arduino-ble.html",
-			"youtube":"http://www.youtube.com/"
+			"links":{
+				"YouTube":"http://www.youtube.com/"
+			}
 		},
 		{
 			"description":"BLE Discovery",
@@ -29,13 +35,18 @@
 			"description":"BLE TI SensorTag",
 			"image":"images/ble-ti-sensortag-screenshot.png",
 			"url":"ble-ti-sensortag.html",
-			"youtube":"http://www.youtube.com/",
-			"guide":"http://evomedia.evothings.com/docs/"
+			"links":{
+				"YouTube":"http://www.youtube.com/",
+				"Docs":"http://evomedia.evothings.com/docs/"
+			}
 		},
 		{
 			"description":"Arduino BLE",
 			"image":"images/arduino-ble-screenshot.png",
-			"url":"arduino-ble.html"
+			"url":"arduino-ble.html",
+			"links":{
+				"Twitter":"http://www.twitter.com/"
+			}
 		}
 	]
 }

@@ -11,6 +11,7 @@ $(function() {
 
 		var $list = $("#list");
 		var $listItemTemplate = $("#list-item-template");
+		var $resourceTemplate = $("#list-item-template .resource");
 
 		$.each(data.items, function(key, val) {
 			var $newItem = $listItemTemplate
@@ -29,15 +30,17 @@ $(function() {
 						.text(val.description)
 						.end();
 
-			if (val.youtube)
-				$newItem.children("a.resource-youtube")
-					.attr("href", val.youtube)
-					.css("visibility", "visible");
-
-			if (val.guide)
-				$newItem.children("a.resource-docs")
-					.attr("href", val.guide)
-					.css("visibility", "visible");
+			if (val.links)
+				$.each(val.links, function(resourceKey, resourceVal) {
+					$newItem.append(
+						$resourceTemplate
+							.clone()
+							.addClass("resource-"+resourceKey)
+							.attr("href", resourceVal)
+							.text(resourceKey)
+							.show()
+					);
+				});
 		});
 
 	}).fail(function() {
