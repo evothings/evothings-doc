@@ -25,7 +25,7 @@ div#intro {
 
 #list_item_template { display: none; }
 
-#list > div {
+.list_item {
 	display: none;
 	width: 30%;
 	margin-right: 3%;
@@ -34,7 +34,7 @@ div#intro {
 	overflow: hidden;
 	vertical-align: top;
 }
-#list > div.visible { display: inline-block; }
+.list_item.visible { display: inline-block; }
 
 #list
 a.screenshot {
@@ -132,3 +132,13 @@ a.screenshot:hover .description {
 
 #list a.resource-YouTube { background: #0f0; }
 #list a.resource-Docs { background: #f00; }
+
+@media screen and (orientation: landscape) {
+	/* Show three columns */
+	.list_item { width: 30%; }
+}
+
+@media screen and (orientation: portrait) {
+	/* Show two columns */
+	.list_item { width: 47%; }
+}
