@@ -10,14 +10,15 @@ $(function() {
 	$.getJSON("gallery.json", function(data) {
 
 		var $list = $("#list");
-		var $listItemTemplate = $("#list-item-template");
-		var $resourceTemplate = $("#list-item-template .resource");
+		var $listItemTemplate = $("#list_item_template");
+		var $resourceTemplate = $("#list_item_template .resource");
 
 		$.each(data.items, function(key, val) {
 			var $newItem = $listItemTemplate
 				.clone()
 				.appendTo($list)
-				.show();
+				.attr("id", "")
+				.addClass("visible");
 
 			$newItem
 				.children("a.screenshot")
@@ -29,6 +30,10 @@ $(function() {
 					.children("div.description")
 						.text(val.description)
 						.end();
+
+			$newItem
+				.find(".author")
+				.text(val.author);
 
 			if (val.links)
 				$.each(val.links, function(resourceKey, resourceVal) {
