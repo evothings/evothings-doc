@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: share-your-app.html
+Description: App sharing and build documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Share Your App</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Share Your App</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+
+<div class="box content-index">
+	<a href="#Introduction">Two Ways to Share Apps</a><br/>
+	<a href="#GettingStarted">Run Your App From Evothings Client</a><br/>
+	<a href="#BuildNativeAppWithCordova">Build a Native App With Cordova</a><br/>
+	<a href="#SummaryAndAdvice">Summary and Advice</a><br/>
+</div>
+
+<div id="Introduction" class="box">
+	<h2>Two Ways to Share Apps</h2>
+
+	<p>It is fun to share apps you create with others. To make your work available to others, you have the following options:</p>
+	<ul>
+		<li>Put your HTML and JavaScript files on a web server and run the app
+from the Evothings Client app (estimated time 15 minutes).</li>
+		<li>Build a native app with Apache Cordova (estimated time 4 - 16 hours), and publish on the app stores (estimated time 4 - 16 hours depending on which app stores you target).</li>
+	</ul>
+</div>
+
+<div id="RunYourAppFromEvothingsClient" class="box">
+	<h2>Run Your App From Evothings Client</h2>
+
+	<p>To run your app from Evothings Client, do as follows:</p>
+
+	<ul>
+		<li>Upload your HTML, CSS, JavaScript and media files (images) to a web server. Note that you should not include any Cordova JavaScript files. cordova.js and plugin files are bundled with the Evothings Client app.</li>
+		<li>Install and run the Evothings Client app on your mobile device.</li>
+		<li>Enter the url to the main HTML file on the web server in the address
+field, and press the Connect button. For example if you have
+index.html in the folder "demo", you can enter a url like this (just as with a web page!): http://evothings.com/demo</li>
+		<li>You can also make a menu page with links to all of your apps, and
+open that page in Evothings client.</li>
+		<li>The drawback is you must be online to run your apps.</li>
+		<li>The positive thing is that it is very quick and easy to share apps with others. Just ask them to install the Evothings Client app and supply a url to your app or start page.</li>
+	</ul>
+</div>
+
+<div id="BuildNativeAppWithCordova" class="box">
+	<h2>Build a Native App With Cordova</h2>
+
+	<p>Apache Cordova is a build system for creating native apps with bundled HTML and JavaScript content. Apps built with Cordova are native apps that can be published on the app stores.</p>
+
+	<p>Please goto the page <a href="build-your-app.html">Build Your App</a> to learn how to build native apps with Cordova.</p>
+</div>
+
+<div id="SummaryAndAdvice" class="box">
+	<h2>Summary and Advice</h2>
+
+	<ul>
+		<li>Start out easy and deploy your app on a web server, then run it
+from the Evothings Client app.</li>
+		<li>If you have several apps you wish to share, make an index page that acts like a menu or gallery you can use as a launchpad (just put links to your apps
+on the menu page, as you would for any web page).</li>
+		<li>When you are ready for app store publication, learn how to build native apps with Cordova.</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>
+
+
+
+
+
+Building a native app with Apache Cordova:
+
+* Install the mobile development kit(s) you want to build for (e.g.
+Android, iOS, Windows Phone)
+* For iOS you need a Mac with Xcode and an Apple developer
+ membership to install apps on devices.
+* For Android you need the Android SDK.
+* Install Apache Cordova and create a template app by following the
+instructions in this tutorial:
+http://cordova.apache.org/docs/en/3.4.0/guide_cli_index.md.html#The%20Command-Line%20Interface
+* The above step can take some time and effort to complete!
+* Copy your HTML, CSS, JavaScript and media files to the www folder in
+the Cordova project.
+* Now build and test your app. The output depends on the platform. For
+iOS you get an Xcode project you can open and run, for Android you get
+and apk-file you can install on your device.
+* Note that it works perfectly fine to develop the Cordova app in
+Evothings Studio. Just drag and drop index.html in project list in the
+Workbench window. Then run the app using Evothings client, or ...
+* Enter the connect url in place of index.html in config.xml. When you
+start the app it will connect to the Workbench, just click run to
+launch your app.
+* You can now build your app and deploy it to the app stores.
+* Drawback: The build process can be complex and you must have the
+SDKs installed and the right app store memberships. But this is on the
+other hand true of any app you wish to publish.
+
