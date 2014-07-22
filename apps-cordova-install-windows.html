@@ -21,16 +21,21 @@ Copyright (c) 2013-2014 Evothings AB
 <script src="js/include-main-menu.js"></script>
 
 <div class="box content-index">
-	<a href="build-apps-overview.html">Back To Build Overview</a><br/>
+	<a href="apps-build-overview.html">Back To Build Overview</a><br/>
 	<a href="#Introduction">Introduction</a><br/>
 	<a href="#InstallCordova">Install Cordova</a><br/>
-	<a href="#InstallAndroidSDK">Install Android SDK</a><br/>
-	<a href="#NextStep">Next Step</a><br/>
+	<a href="#InstallJava">Install Java</a><br/>
+	<a href="#InstallAnt">Install Ant</a><br/>
+	<a href="#InstallAndroidSDKTools">Install Android SDK Tools</a><br/>
+	<a href="#IfYouGetStuck">If You Get Stuck</a><br/>
+	<a href="#NextStep">The Fun Begins</a><br/>
 </div>
 
 <div id="Introduction" class="box">
 	<h2>Installing Cordova on Windows</h2>
-	<p>This document describes how to install Apache Cordova and the Android SDK on a Windows machine.</p>
+	<p>This document describes how to install Apache Cordova and the Android SDK on a Windows machine. This is a quite complex process, which may take some time depending on your previous experience with installing SKDs and build tools. Care has been taken when writing this document to include all the essential steps needed to get you up and running with a successful install. Kindly let us know if there is something you are missing.</p>
+	<p>To develop Android apps, you need to install the Android SDK, and also Java if not already installed on your machine. Furthermore the build tool Ant is required.</p>
+	<p>For the Android SDK, you have the choice between installing the ADT bundle that incudes Eclipse (ADT = Android Developer Tools), or the Android SDK Tools, that does not include Eclipse. In the steps below we will use the Android SDK Tools download.</p>
 </div>
 
 <div id="InstallCordova" class="box">
@@ -38,49 +43,106 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>Follow these steps to install Cordova:</p>
 	<ol>
 		<li>Install Node.js from: <a href="http://nodejs.org/">http://nodejs.org</a></li>
-		<li>Open a terminal window.</li>
-		<li>Test the installation by typing:<br/>
+		<li>Go ahead an run the downloaded installation file. It is recommended to use the default settings. Node.js needs to be added to the PATH environment variable, which is done by default.</li>
+		<li>Open a command window (make sure you open a new command window to get the updated path settings made by the Node.js installation).</li>
+		<li>Test the installation by typing the command:<br/>
 		<pre>node --version</pre>
 		If you get the version number is response, Node.js is installed and working!</li>
-		<li>You also need the git version control system, which is used by Cordova behind-the-scenes. If you don't have git installed, download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>
-		<li>Test git by typing:<br/>
-		<pre>git --version</pre>
-		If you see the version number, git is installed!</li>
-		<li>Install Cordova by typing:<br/>
-		<pre>sudo npm install -g cordova</pre></li>
+		<li>You also need the Git version control system, which is used by Cordova behind-the-scenes. If you don't have Git installed, download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>
+		<li>Install Cordova by typing the following in the command window:<br/>
+		<pre>npm install -g cordova</pre></li>
 		<li>Test the Cordova install by typing:<br/>
 		<pre>cordova --version</pre>
-		If you see the version number, you have succeeded!</li>
+		If you see the version number, you have successfully installed Apache Cordova!</li>
 	</ol>
 </div>
 
-<div id="InstallAndroidSDK" class="box">
-	<h2>Install Android SDK</h2>
-	<p>To develop Android apps, install the Android SDK as follows:</p>
+<div id="InstallJava" class="box">
+	<h2>Install Java</h2>
+	<p>The Android SDK needs the Java Development Kit (JDK) to be installed (minimum version 1.6). Note that the Java Runtime Environment (JRE) is not sufficient, you will need the JDK. To check if you have the JDK installed already, type this on the command line:</p>
+	<pre>javac -version</pre>
+	<p>If you do not have the JDK installed, proceed as follows:</p>
 	<ol>
-		<li>The Android SDK needs the Java SDK to be installed (min version 1.6). To check if you have Java already, type this on the command line:<br/>
+		<li>Download the Java SE JDK (SE = Standard Edition) from Oracle:<a href="http://www.oracle.com/technetwork/java/javase/downloads/">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, try the 64-bit version, at least if you have a fairly recent Windows version.</li>
+		<li>Go along and run the downloaded installer file. Using the default selections should be fine, but take a note of the directory in which you install the JDK. You will need to add this to the PATH in a later step below.</li>
+		<li>Next, update your path to include the JDK. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, which will open the System Properties window.</li>
+		<li>In the System Properties window, click <b>Advanced</b> tab, then click the  <b>Environment Variables</b> button.</li>
+		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button. (If there is no PATH entry in the list, click the New button and create one.)</li>
+		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the JDK install. Here is an example of what to add (note that this must be the actual path used for the install on your machine):
+		<pre>;C:\Program Files\Java\jdk1.8.0_11\bin</pre>
+		An easy way to add this is to prepare the path to add in a text editor, then paste it at the end of the input field. When done click the <b>OK</b> button.</li>
+		<li>Next add the <b>JAVA_HOME</b> variable if it is not present already (if it is in the list, you may need to update its value using the Edit button). Click the <b>New</b> button. In the field <b>Variable name</b> type:
+		<pre>JAVA_HOME</pre>
+		In the field <b>Variable value</b> enter the path to the directory where the JDK is installed, without the semicolon and the /bin subdirectory, for example:
+		<pre>C:\Program Files\Java\jdk1.8.0_11</pre>
+		Click the <b>OK</b> button.</li>
+		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
+		<li>Now you are ready to test the install. Close any open command windows, and open a new command window and type:
 		<pre>javac -version</pre>
-		If you see a version number at or above 1.6 you should be good to continue. Otherwise, get <a href="http://support.apple.com/downloads/#java">Java for OS X</a>.
-		</li>
-		<li>Download and install the <a href="http://developer.android.com/sdk">Android Developer Tools (ADT)</a>.</li>
-		<li>Make sure you have the path to the Android SDK tools added to the file <b>.bash_profile</b>, which is in your home directory. The path is needed for Cordova to find the Android build tools. Check if the build tools can be found by typing:<br/>
-		<pre>adb version
-android</pre>
-		The first command should print a version number, the second command should start the android tools application (quit this if it launches). If these commands do not work, you need to add the path to the Android SDK by editing the .bash_profile file.</li>
-		<li>If you need to edit .bash_profile, type the following in the terminal window (the <b>cd</b> command takes you to your home directory, in case you are unsure about where you are located in the file tree).</li><br/>
-		<pre>cd
-nano .bash_profile</pre>
-		Now the nano editor opens (but you can use any editor you prefer). Enter the following, where you substitute "/Users/username/android" with the actual location where the Android SDK is installed (you can open the Finder or a second terminal window to search for the SDK directory):<br/>
-		<pre>export PATH=/Users/username/android/sdk/platform-tools:/Users/username/android/sdk/tools:$PATH</pre>
-		Save and exit by typing CTRL+O (the letter Oh) and CTRL+X.
-		<li>Now try the commands <b>adb version</b> and <b>android</b> again.</li>
-		<li>If you get stuck, consult the <a href="http://cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html">Cordova documentation for Android</a>.</li>
+		If you see a version number you are done with the JDK install!</li>
 	</ol>
-	<p>Android SDK should now be ready to be used by the Cordova build tools. Follow the instructions below to see this in action!</p>
+</div>
+
+<div id="InstallAnt" class="box">
+	<h2>Install Ant</h2>
+	<p><a href="http://ant.apache.org/">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. To install Ant, follow these steps:</p>
+	<ol>
+		<li>Download Ant from here:<a href="http://ant.apache.org/bindownload.cgi">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b> apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</li>
+		<li>Unpack the zip file to the directory on your machine where you want Ant to be installed. You can pick any directory for the install. In this guide we use this as an example:
+		<pre>C:\Users\miki\ant</pre>
+		Note that the files in the ant package should go directly into this directory. Make a note of the directory as you will need to add it to the PATH.</li>
+		<li>To add Ant to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
+		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</li>
+		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the Ant install. Here is an example:
+		<pre>;C:\Users\miki\ant\bin</pre>
+		Click the <b>OK</b> button.</li>
+		<li>Next add the <b>ANT_HOME</b> variable. Click the <b>New</b> button. In the field <b>Variable name</b> type:
+		<pre>ANT_HOME</pre>
+		In the field <b>Variable value</b> enter the path to the directory where Ant is installed, without the semicolon and the /bin subdirectory, for example:
+		<pre>C:\Users\miki\ant</pre>
+		Click the <b>OK</b> button.</li>
+		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
+		<li>Now test the install. Close any open command windows, and open a new command window and type:
+		<pre>ant -version</pre>
+		If you see a version number you have installed Ant successfully!</li>
+	</ol>
+</div>
+
+<div id="InstallAndroidSDKTools" class="box">
+	<h2>Install the Android SDK Tools</h2>
+	<p>The SDK Tools for Android are used by Cordova to build Android apps. Follow these steps to install the SDK Tools:</p>
+	<ol>
+		<li>Go to the page <a href="http://developer.android.com/sdk">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</li>
+		<li>When downloaded, run the installer. You should do fine to use the default settings used by the installer, but make a note of the directory in which the SDK is installed, as you will have to add this to the PATH in the next step.</li>
+		<li>To add the SDK Tools to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
+		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</li>
+		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the <b>tools</b> and <b>platform-tools</b> directores of the Android SDK install. Here is an example of what to add:
+		<pre>;C:\Users\miki\AppData\Local\Android\android-sdk\tools;C:\Users\miki\AppData\Local\Android\android-sdk\platform-tools</pre>
+		You can prepare the path in a text editor, copy it and paste at the end of the input field. Click the <b>OK</b> button when done.</li>
+		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
+		<li>Now test the install. Close any open command windows, open a new command window and type:
+		<pre>adb version</pre>
+		This should display the version of the Android Debug Bridge.</li>
+		<li>As the final step, you need to get the specific Android SDK version used by Cordova. This is done by running the <b>Android SDK Manager</b> by typing the command:
+		<pre>android</pre>
+		This launches a window where you can select to install specific Android SDKs.</li>
+		<li>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also add "Android 4.4.2 (API 19)" as this us the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</li>
+	</ol>
+</div>
+
+<div id="IfYouGetStuck" class="box">
+	<h2>If You Get Stuck</h2>
+	<p>If you get stuck, consult the documentation at the respective web sites for Cordova, Java, Ant, and Android. The Cordova documentation specific for Android is found here: <a href="http://cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html">cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html</a>.</p>
+
+	<p>One thing to do is to inspect all the environment variables. You can do this from the command window. This displays the system PATH:</p>
+		<pre>echo %PATH%</pre>
+	<p>Here is how to inspect the values of JAVA_HOME and ANT_HOME:</p>
+		<pre>echo %JAVA_HOME%
+echo %ANT_HOME%</pre>
 </div>
 
 <div id="NextStep" class="box">
-	<h2>Next Step</h2>
+	<h2>The Fun Begins</h2>
 	<p>Next step is to create and build a Cordova project. Go to the <a href="apps-cordova-guide.html">Cordova build guide</a> to learn more.</p>
 </div>
 
