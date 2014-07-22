@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: build-cordova-install-windows.html
+Description: How to install Cordova on Windows
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Install Cordova on Windows</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">Install Cordova on Windows</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+
+<div class="box content-index">
+	<a href="build-apps-overview.html">Back To Build Overview</a><br/>
+	<a href="#Introduction">Introduction</a><br/>
+	<a href="#InstallCordova">Install Cordova</a><br/>
+	<a href="#InstallAndroidSDK">Install Android SDK</a><br/>
+	<a href="#NextStep">Next Step</a><br/>
+</div>
+
+<div id="Introduction" class="box">
+	<h2>Installing Cordova on Windows</h2>
+	<p>This document describes how to install Apache Cordova and the Android SDK on a Windows machine.</p>
+</div>
+
+<div id="InstallCordova" class="box">
+	<h2>Install Cordova</h2>
+	<p>Follow these steps to install Cordova:</p>
+	<ol>
+		<li>Install Node.js from: <a href="http://nodejs.org/">http://nodejs.org</a></li>
+		<li>Open a terminal window.</li>
+		<li>Test the installation by typing:<br/>
+		<pre>node --version</pre>
+		If you get the version number is response, Node.js is installed and working!</li>
+		<li>You also need the git version control system, which is used by Cordova behind-the-scenes. If you don't have git installed, download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>
+		<li>Test git by typing:<br/>
+		<pre>git --version</pre>
+		If you see the version number, git is installed!</li>
+		<li>Install Cordova by typing:<br/>
+		<pre>sudo npm install -g cordova</pre></li>
+		<li>Test the Cordova install by typing:<br/>
+		<pre>cordova --version</pre>
+		If you see the version number, you have succeeded!</li>
+	</ol>
+</div>
+
+<div id="InstallAndroidSDK" class="box">
+	<h2>Install Android SDK</h2>
+	<p>To develop Android apps, install the Android SDK as follows:</p>
+	<ol>
+		<li>The Android SDK needs the Java SDK to be installed (min version 1.6). To check if you have Java already, type this on the command line:<br/>
+		<pre>javac -version</pre>
+		If you see a version number at or above 1.6 you should be good to continue. Otherwise, get <a href="http://support.apple.com/downloads/#java">Java for OS X</a>.
+		</li>
+		<li>Download and install the <a href="http://developer.android.com/sdk">Android Developer Tools (ADT)</a>.</li>
+		<li>Make sure you have the path to the Android SDK tools added to the file <b>.bash_profile</b>, which is in your home directory. The path is needed for Cordova to find the Android build tools. Check if the build tools can be found by typing:<br/>
+		<pre>adb version
+android</pre>
+		The first command should print a version number, the second command should start the android tools application (quit this if it launches). If these commands do not work, you need to add the path to the Android SDK by editing the .bash_profile file.</li>
+		<li>If you need to edit .bash_profile, type the following in the terminal window (the <b>cd</b> command takes you to your home directory, in case you are unsure about where you are located in the file tree).</li><br/>
+		<pre>cd
+nano .bash_profile</pre>
+		Now the nano editor opens (but you can use any editor you prefer). Enter the following, where you substitute "/Users/username/android" with the actual location where the Android SDK is installed (you can open the Finder or a second terminal window to search for the SDK directory):<br/>
+		<pre>export PATH=/Users/username/android/sdk/platform-tools:/Users/username/android/sdk/tools:$PATH</pre>
+		Save and exit by typing CTRL+O (the letter Oh) and CTRL+X.
+		<li>Now try the commands <b>adb version</b> and <b>android</b> again.</li>
+		<li>If you get stuck, consult the <a href="http://cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html">Cordova documentation for Android</a>.</li>
+	</ol>
+	<p>Android SDK should now be ready to be used by the Cordova build tools. Follow the instructions below to see this in action!</p>
+</div>
+
+<div id="NextStep" class="box">
+	<h2>Next Step</h2>
+	<p>Next step is to create and build a Cordova project. Go to the <a href="apps-cordova-guide.html">Cordova build guide</a> to learn more.</p>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>
