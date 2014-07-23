@@ -21,60 +21,95 @@ Copyright (c) 2013-2014 Evothings AB
 <script src="js/include-main-menu.js"></script>
 
 <div class="box content-index">
-	<a href="apps-build-overview.html">Back To Build Overview</a><br/>
-	<a href="#Introduction">How To Use Cordova</a><br/>
-	<a href="#SupportedPlatforms">Supported Platforms</a><br/>
-	<a href="#Install">Install Cordova</a><br/>
-	<a href="#Build">Create and Build Your App</a><br/>
-	<a href="#Publish">Publish Your App</a><br/>
-	<a href="#Share">Share Your Work</a><br/>
-	<a href="#InstallCordovaOSX">Install Cordova on OS X</a><br/>
-	<a href="#InstallCordovaWindows">Install Cordova on Windows</a><br/>
-	<a href="#CreateCordovaProject">Create a Cordova Project</a><br/>
+	<div class="box">
+		<a href="apps-share.html">Share Your App</a><br/>
+		<a href="apps-build-overview.html">Build Overview</a><br/>
+	</div>
+	<div class="box">
+		<a href="#Introduction">Introduction</a><br/>
+		<a href="#Install">Install Cordova</a><br/>
+		<a href="#Build">Create and Build Your App</a><br/>
+		<a href="#Publish">Publish Your App</a><br/>
+		<a href="#Share">Share Your Work</a><br/>
+		<a href="#InstallCordovaOSX">Install Cordova on OS X</a><br/>
+		<a href="#InstallCordovaWindows">Install Cordova on Windows</a><br/>
+		<a href="#CreateCordovaProject">Create a Cordova Project</a><br/>
+		<a href="#SupportedPlatforms">Supported Platforms</a><br/>
+	</div>
 </div>
 
 <div id="Introduction" class="box">
-	<h2>How To Use Cordova</h2>
+	<h2>Introduction</h2>
 
 	<p><a href="http://cordova.apache.org/">Apache Cordova</a> is a build system for creating native apps with bundled HTML and JavaScript content. Apps built with Cordova are native apps that can be published on the app stores. Furthermore, you can add custom native plugins to extend the functionality of your app.</p>
 
-	<p>The Evothings Client app is itself built with Cordova. It is a plain Cordova app with some custom plugins added, e.g. for socket communication and Bluetooth Low Energy (BLE).</p>
-</div>
+	<p>To learn how to install Cordova and mobile SDKs on your system, please go to the <a href="http://cordova.apache.org/">Build Overview</a>.</p>
 
-<div id="SupportedPlatforms" class="box">
-	<h2>Supported Platforms</h2>
-
-	<p>Supported mobile platforms for Evothings are iOS and Android.</p>
-
-	<p>Cordova comes with a set of plugins that are supported for a wide range of platforms. Evothings apps can use custom plugins available for iOS and Android. As long as you do not require socket communication or BLE, you should be able to use Evothings Studio to build apps for any platform supported by Cordova.</p>
-
-	<p>The same goes for the Evothings Client app. It is available on iOS and Android, but should be possible to build from source for any platform supported by Cordova. (But you would miss the plugins not available for the target platform.) </p>
+	<p>Below we will cover how to set up and build a Cordova project.</p>
 </div>
 
 <div id="CreatingCordovaProject" class="box">
 	<h2>Creating a Cordova Project</h2>
-	<p>To be written!</p>
+	<p>To create a Cordova project, do as follows:</p>
+	<ol>
+		<li>Open a command-line window</li>
+		<li>Go to a folder where you want the project subfolder to be created.</p>
+		<li>Use the <b>cordova create</b> command to create a project. This command has the following form:
+		<pre>cordova create project-folder app-identifier app-name</pre>
+		Here is an example that will create a folder called "DemoProject" with project template files:
+		<pre>cordova create DemoProject com.evothings.demoapp DemoApp</pre>
+		Note that creating the project may take a while.</li>
+		<li>To issue further Cordova commands, move into the project folder, e.g. by typing:<pre>cd DemoProject</pre></li>
+	</ol>
+</p>
 </div>
 
 <div id="BuildingForIOS" class="box">
 	<h2>Building for iOS</h2>
-	<p>To be written!</p>
+	<p>Here is how you build your new Cordova project for iOS:</p>
+	<ol>
+		<li>Make sure you are in the project folder in a terminal window</li>
+		<li>Add the iOS platform to the project with the command:
+		<pre>cordova platform add ios</pre></li>
+		<li>Build the project for iOS using:
+		<pre>cordova platform add ios</pre></li>
+		<li>The output is an Xcode project, located in the subfolder <b>platforms/ios</b>. Open a Finder window and navigate to the folder, there you will find the file <b>DemoApp.xcodeproj</b>. Open this file to launch the project in Xcode. From Xcode you can run the app in the iOS simulator, or deploy the app to a devices (deploying to device requires membership in Apple's iOS Developer Program).</li>
+	</ol>
 </div>
-
 
 <div id="BuildingForAndroid" class="box">
 	<h2>Building for Android</h2>
 	<p>To be written!</p>
 </div>
 
-<div id="BuildingCustomEvothingsClient" class="box">
-	<h2>Building a Custom Evothings Client App</h2>
-
-	<p>TODO: Write!</p>
+<div id="CordovaDirectoryStructure" class="box">
+	<h2>Cordova Directory Structure</h2>
+	<p>To be written!</p>
 </div>
 
+<div id="Workflow" class="box">
+	<h2>Workflow</h2>
+	<p>Workflow with and without Evothings Workbench</p>
+</div>
 
+<!--
+<div id="BuildingCustomEvothingsClient" class="box">
+	<h2>Building a Custom Evothings Client App</h2>
+	<p>TODO: Write!</p>
+</div>
+-->
 
+<div id="SupportedPlatforms" class="box">
+	<h2>Supported Platforms</h2>
+
+	<p>Supported mobile platforms for Evothings are iOS and Android.</p>
+
+	<p>Note that the Evothings Client app itself is built with Cordova. It is a plain Cordova app with some custom plugins added, e.g. for socket communication and Bluetooth Low Energy (BLE).</p>
+
+	<p>Cordova comes with a set of plugins that are supported for a wide range of platforms. Evothings apps can use custom plugins available for iOS and Android. As long as you do not require socket communication or BLE, you should be able to use Evothings Studio to build apps for any platform supported by Cordova.</p>
+
+	<p>The same goes for the Evothings Client app. It is available on iOS and Android, but should be possible to build from source for any platform supported by Cordova. (But you would miss the plugins not available for the target platform.) </p>
+</div>
 
 <div class="box">
 	<p>Copyright &copy; 2013-2014 Evothings AB</p>

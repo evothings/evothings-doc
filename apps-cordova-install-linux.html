@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <!--
-File: build-cordova-install-windows.html
-Description: How to install Cordova on Windows
+File: build-cordova-install-linux.html
+Description: How to install Cordova on Linux
 Author: Mikael Kindborg
 Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>Install Cordova on Windows</title>
+<title>Install Cordova on Linux</title>
 <script src="js/include-viewport.js"></script>
 <script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div id="heading">Install Cordova on Windows</div>
+<div id="heading">Install Cordova on Linux</div>
 
 <div id="page"><div id="content">
 
@@ -37,30 +37,38 @@ Copyright (c) 2013-2014 Evothings AB
 </div>
 
 <div id="Introduction" class="box">
-	<h2>Installing Cordova on Windows</h2>
-	<p>This document describes how to install Apache Cordova and the Android SDK on a Windows machine. This is a quite complex process, which may take some time depending on your previous experience with installing SKDs and build tools. Care has been taken when writing this document to include all the essential steps needed to get you up and running with a successful install. Kindly let us know if there is something you are missing.</p>
-	<p>To develop Android apps, you need to install the Android SDK, and also Java if not already installed on your machine. Furthermore the build tool Ant is required.</p>
-	<p>For the Android SDK, you have the choice between installing the ADT bundle that incudes Eclipse (ADT = Android Developer Tools), or the Android SDK Tools, that does not include Eclipse. In the steps below we will use the Android SDK Tools download.</p>
+	<h2>Installing Cordova on Linux</h2>
+	<p>This document describes how to install Apache Cordova and the Android SDK on a Linux machine. Instructions below are tested on Ubuntu 14.04. For other versions and Linux distributions, the procedure may differ.</p>
+
 </div>
 
 <div id="InstallCordova" class="box">
 	<h2>Install Cordova</h2>
+
 	<p>Follow these steps to install Cordova:</p>
 	<ol>
-		<li><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/">http://nodejs.org</a></li>
-		<li>Go ahead an run the downloaded installation file. It is recommended to use the default settings. Node.js needs to be added to the PATH environment variable, which is done by default.</li>
-		<li>To test the installation, open a command window (make sure you open a new command window to get the updated path settings made by the Node.js installation), and type:
-		<pre>node --version</pre>
-		If the version number is displayed, Node.js is installed and working!</li>
-		<li><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>. Default settings are recommended.
-		<li><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following in the command window to install:
-		<pre>npm install -g cordova</pre></li>
+		<li><b>Install Node.js.</b> Node.js may already be installed. To test the installation, open a terminal window and type:
+		<pre>nodejs --version</pre>
+		If the version number is displayed, Node.js is installed.</li>
+		<li>If Node.js is not installed, install with:
+		<pre>sudo apt-get install nodejs</pre></li>
+		<li><b>Install Node Package Manager (npm).</b> Test if npm is installed by typing:
+		<pre>npm --version</pre></li>
+		<li>If npm is not installed, install with:
+		<pre>sudo apt-get install npm</pre></li>
+		<li><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Test if Git is installed by typing:
+		<pre>git --version</pre></li>
+		<li>If Git is not installed, install with:
+		<pre>sudo apt-get install git</pre></li>
+		<li><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following to install:
+		<pre>sudo npm install -g cordova</pre></li>
 		<li>Test the Cordova install by typing:
 		<pre>cordova --version</pre>
 		If you see the version number, you have successfully installed Apache Cordova!</li>
 	</ol>
 </div>
 
+<!--
 <div id="InstallJava" class="box">
 	<h2>Install Java</h2>
 	<p>The Android SDK needs the Java Development Kit (JDK) to be installed (minimum version 1.6). Note that the Java Runtime Environment (JRE) is not sufficient, you will need the JDK. To check if you have the JDK installed already, type this on the command line:</p>
@@ -142,6 +150,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<pre>echo %JAVA_HOME%
 echo %ANT_HOME%</pre>
 </div>
+-->
 
 <div id="NextStep" class="box">
 	<h2>The Fun Begins</h2>
