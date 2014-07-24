@@ -47,17 +47,17 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install Cordova</h2>
 	<p>Follow these steps to install Cordova:</p>
 	<ol>
-		<li><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/">http://nodejs.org</a></li>
-		<li>Go ahead an run the downloaded installation file. It is recommended to use the default settings. Node.js needs to be added to the PATH environment variable, which is done by default.</li>
-		<li>To test the installation, open a command window (make sure you open a new command window to get the updated path settings made by the Node.js installation), and type:
+		<li><p><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/">http://nodejs.org</a></p></li>
+		<li><p>Go ahead an run the downloaded installation file. It is recommended to use the default settings. Node.js needs to be added to the PATH environment variable, which is done by default.</p></li>
+		<li><p>To test the installation, open a command window (make sure you open a new command window to get the updated path settings made by the Node.js installation), and type:
 		<pre>node --version</pre>
-		If the version number is displayed, Node.js is installed and working!</li>
-		<li><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>. Default settings are recommended.
-		<li><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following in the command window to install:
-		<pre>npm install -g cordova</pre></li>
-		<li>Test the Cordova install by typing:
+		If the version number is displayed, Node.js is installed and working!</p></li>
+		<li><p><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>. Default settings are recommended.
+		<li><p><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following in the command window to install:
+		<pre>npm install -g cordova</pre></p></li>
+		<li><p>Test the Cordova install by typing:
 		<pre>cordova --version</pre>
-		If you see the version number, you have successfully installed Apache Cordova!</li>
+		If you see the version number, you have successfully installed Apache Cordova!</p></li>
 	</ol>
 </div>
 
@@ -67,22 +67,22 @@ Copyright (c) 2013-2014 Evothings AB
 	<pre>javac -version</pre>
 	<p>If you do not have the JDK installed, proceed as follows:</p>
 	<ol>
-		<li>Download the Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, try the 64-bit version, at least if you have a fairly recent Windows machine.</li>
-		<li>Go along and run the downloaded installer file. Using the default selections should be fine, but take a note of the directory in which you install the JDK. You will need to add this to the PATH in a later step below.</li>
-		<li>Next, update your path to include the JDK. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, which will open the System Properties window. Select the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
-		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button. (If there is no PATH entry in the list, click the New button to create one.)</li>
-		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the JDK install. Here is an example (note that this must be the actual path used for the install on your machine):
+		<li><p>Download the Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, try the 64-bit version, at least if you have a fairly recent Windows machine.</p></li>
+		<li><p>Go along and run the downloaded installer file. Using the default selections should be fine, but take a note of the directory in which you install the JDK. You will need to add this to the PATH in a later step below.</p></li>
+		<li><p>Next, update your path to include the JDK. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, which will open the System Properties window. Select the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
+		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button. (If there is no PATH entry in the list, click the New button to create one.)</p></li>
+		<li><p>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the JDK install. Here is an example (note that this must be the actual path used for the install on your machine):
 		<pre>;C:\Program Files\Java\jdk1.8.0_11\bin</pre>
-		An easy way to do this is to prepare the path to add in a text editor, then paste it at the end of the input field. When done click the <b>OK</b> button.</li>
-		<li>Next add the <b>JAVA_HOME</b> variable if it is not present (and if it is in the list, you may need to update its value using the Edit button). Click the <b>New</b> button. In the field <b>Variable name</b> type:
+		An easy way to do this is to prepare the path to add in a text editor, then paste it at the end of the input field. When done click the <b>OK</b> button.</p></li>
+		<li><p>Next add the <b>JAVA_HOME</b> variable if it is not present (and if it is in the list, you may need to update its value using the Edit button). Click the <b>New</b> button. In the field <b>Variable name</b> type:
 		<pre>JAVA_HOME</pre>
 		In the field <b>Variable value</b> enter the path to the directory where the JDK is installed, without the semicolon and the /bin subdirectory, for example:
 		<pre>C:\Program Files\Java\jdk1.8.0_11</pre>
-		Click the <b>OK</b> button.</li>
-		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
-		<li>Now you are ready to test the install. Close any open command windows, and open a new command window and type:
+		Click the <b>OK</b> button.</p></li>
+		<li><p>Click the <b>OK</b> button again to close the Environment Variables window.</p></li>
+		<li><p>Now you are ready to test the install. Close any open command windows, and open a new command window and type:
 		<pre>javac -version</pre>
-		If you see a version number you are done with the JDK install!</li>
+		If you see a version number you are done with the JDK install!</p></li>
 	</ol>
 </div>
 
@@ -90,24 +90,24 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install Ant</h2>
 	<p><a href="http://ant.apache.org/">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. To install Ant, follow these steps:</p>
 	<ol>
-		<li>Download Ant from here: <a href="http://ant.apache.org/bindownload.cgi">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b> apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</li>
-		<li>Unpack the zip file to the directory on your machine where you want Ant to be installed. You can pick any directory for the install. In this guide we use this as an example:
+		<li><p>Download Ant from here: <a href="http://ant.apache.org/bindownload.cgi">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b>apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</p></li>
+		<li><p>Unpack the zip file to the directory on your machine where you want Ant to be installed. You can pick any directory for the install. In this guide we use this as an example:
 		<pre>C:\Users\miki\ant</pre>
-		Note that the files in the ant package should go directly into this directory. Make a note of the directory as you will need to add it to the PATH.</li>
-		<li>To add Ant to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
-		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</li>
-		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the Ant install. Here is an example:
+		Note that the files in the ant package should go directly into this directory. Make a note of the directory as you will need to add it to the PATH.</p></li>
+		<li><p>To add Ant to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
+		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</p></li>
+		<li><p>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the Ant install. Here is an example:
 		<pre>;C:\Users\miki\ant\bin</pre>
-		Click the <b>OK</b> button.</li>
-		<li>Next add the <b>ANT_HOME</b> variable. Click the <b>New</b> button. In the field <b>Variable name</b> type:
+		Click the <b>OK</b> button.</p></li>
+		<li><p>Next add the <b>ANT_HOME</b> variable. Click the <b>New</b> button. In the field <b>Variable name</b> type:
 		<pre>ANT_HOME</pre>
 		In the field <b>Variable value</b> enter the path to the directory where Ant is installed, without the semicolon and the /bin subdirectory, for example:
 		<pre>C:\Users\miki\ant</pre>
-		Click the <b>OK</b> button.</li>
-		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
-		<li>Now test the install. Close any open command windows, and open a new command window and type:
+		Click the <b>OK</b> button.</p></li>
+		<li><p>Click the <b>OK</b> button again to close the Environment Variables window.</p></li>
+		<li><p>Now test the install. Close any open command windows, and open a new command window and type:
 		<pre>ant -version</pre>
-		If you see a version number you have installed Ant successfully!</li>
+		If you see a version number you have installed Ant successfully!</p></li>
 	</ol>
 </div>
 
@@ -115,21 +115,21 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install the Android SDK Tools</h2>
 	<p>The SDK Tools for Android are used by Cordova to build Android apps. Follow these steps to install the SDK Tools:</p>
 	<ol>
-		<li>Go to the page <a href="http://developer.android.com/sdk">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</li>
-		<li>When downloaded, run the installer. You should do fine to use the default settings used by the installer, but make a note of the directory in which the SDK is installed, as you will have to add this to the PATH in the next step.</li>
-		<li>To add the SDK Tools to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
-		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</li>
-		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the <b>tools</b> and <b>platform-tools</b> directores of the Android SDK install. Here is an example of what to add:
+		<li><p>Go to the page <a href="http://developer.android.com/sdk">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</p></li>
+		<li><p>When downloaded, run the installer. You should do fine to use the default settings used by the installer, but make a note of the directory in which the SDK is installed, as you will have to add this to the PATH in the next step.</p></li>
+		<li><p>To add the SDK Tools to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
+		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</p></li>
+		<li><p>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the <b>tools</b> and <b>platform-tools</b> directores of the Android SDK install. Here is an example of what to add:
 		<pre>;C:\Users\miki\AppData\Local\Android\android-sdk\tools;C:\Users\miki\AppData\Local\Android\android-sdk\platform-tools</pre>
-		You can prepare the path in a text editor, copy it and paste at the end of the input field. Click the <b>OK</b> button when done.</li>
-		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
-		<li>Now test the install. Close any open command windows, open a new command window and type:
+		You can prepare the path in a text editor, copy it and paste at the end of the input field. Click the <b>OK</b> button when done.</p></li>
+		<li><p>Click the <b>OK</b> button again to close the Environment Variables window.</p></li>
+		<li><p>Now test the install. Close any open command windows, open a new command window and type:
 		<pre>adb version</pre>
-		This should display the version of the Android Debug Bridge.</li>
-		<li>As the final step, you need to get the specific Android SDK version used by Cordova. This is done by running the <b>Android SDK Manager</b> by typing the command:
+		This should display the version of the Android Debug Bridge.</p></li>
+		<li><p>As the final step, you need to get the specific Android SDK version used by Cordova. This is done by running the <b>Android SDK Manager</b> by typing the command:
 		<pre>android</pre>
-		This launches a window where you can select to install specific Android SDKs.</li>
-		<li>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also select the entry "Android 4.4.2 (API 19)". This is the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</li>
+		This launches a window where you can select to install specific Android SDKs.</p></li>
+		<li><p>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also select the entry "Android 4.4.2 (API 19)". This is the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</p></li>
 	</ol>
 </div>
 

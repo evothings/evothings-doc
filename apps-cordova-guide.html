@@ -8,13 +8,13 @@ Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>Create and Build Your Cordova App</title>
+<title>Create and Build Your App</title>
 <script src="js/include-viewport.js"></script>
 <script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div id="heading">Create and Build Your Cordova App</div>
+<div id="heading">Create and Build Your App</div>
 
 <div id="page"><div id="content">
 
@@ -27,13 +27,13 @@ Copyright (c) 2013-2014 Evothings AB
 	</div>
 	<div class="box">
 		<a href="#Introduction">Introduction</a><br/>
-		<a href="#Install">Install Cordova</a><br/>
-		<a href="#Build">Create and Build Your App</a><br/>
-		<a href="#Publish">Publish Your App</a><br/>
-		<a href="#Share">Share Your Work</a><br/>
-		<a href="#InstallCordovaOSX">Install Cordova on OS X</a><br/>
-		<a href="#InstallCordovaWindows">Install Cordova on Windows</a><br/>
-		<a href="#CreateCordovaProject">Create a Cordova Project</a><br/>
+		<a href="#CreatingCordovaProject">Creating a Cordova Project</a><br/>
+		<a href="#BuildingForIOS">Building for iOS</a><br/>
+		<a href="#BuildingForAndroid">Building for Android</a><br/>
+		<a href="#AddingPlugins">Adding Plugins</a><br/>
+		<a href="#CordovaDirectoryStructure">Cordova Directory Structure</a><br/>
+		<a href="#Workflow">Workflow Speedup</a><br/>
+		<a href="#SetupCordovaForEvothings">Setup Cordova for Evothings</a><br/>
 		<a href="#SupportedPlatforms">Supported Platforms</a><br/>
 	</div>
 </div>
@@ -45,21 +45,23 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>To learn how to install Cordova and mobile SDKs on your system, please go to the <a href="http://cordova.apache.org/">Build Overview</a>.</p>
 
-	<p>Below we will cover how to set up and build a Cordova project.</p>
+	<p>Below we will show how to set up and build a Cordova project. Cordova is based on working with the command line in a terminal window (Cordova CLI = Command Line Interface). Do not fear! The commands for building apps are quite simple.</p>
+
+	<p>You can also consult the Cordova documentation to learn more about how to set up and build projects: <a href="http://cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html">cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html</a></p>
 </div>
 
 <div id="CreatingCordovaProject" class="box">
-	<h2>Creating a Cordova Project</h2>
-	<p>To create a Cordova project, do as follows:</p>
+	<h2>Creating a Cordova Project (iOS and Android)</h2>
+	<p>Here is how to create a new Cordova project (procedure is the same for all platforms):</p>
 	<ol>
-		<li>Open a command-line window</li>
-		<li>Go to a folder where you want the project subfolder to be created.</p>
-		<li>Use the <b>cordova create</b> command to create a project. This command has the following form:
+		<li><p>Open a command-line window</p></li>
+		<li><p>Go to a folder where you want the project subfolder to be created.</p>
+		<li><p>Use the <b>cordova create</b> command to create a project. This command has the following form:
 		<pre>cordova create project-folder app-identifier app-name</pre>
 		Here is an example that will create a folder called "DemoProject" with project template files:
 		<pre>cordova create DemoProject com.evothings.demoapp DemoApp</pre>
-		Note that creating the project may take a while.</li>
-		<li>To issue further Cordova commands, move into the project folder, e.g. by typing:<pre>cd DemoProject</pre></li>
+		Note that creating the project may take a while.</p></li>
+		<li><p>To issue further Cordova commands, move into the project folder, e.g. by typing:<pre>cd DemoProject</pre></p></li>
 	</ol>
 </p>
 </div>
@@ -68,28 +70,123 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Building for iOS</h2>
 	<p>Here is how you build your new Cordova project for iOS:</p>
 	<ol>
-		<li>Make sure you are in the project folder in a terminal window</li>
-		<li>Add the iOS platform to the project with the command:
-		<pre>cordova platform add ios</pre></li>
-		<li>Build the project for iOS using:
-		<pre>cordova platform add ios</pre></li>
-		<li>The output is an Xcode project, located in the subfolder <b>platforms/ios</b>. Open a Finder window and navigate to the folder, there you will find the file <b>DemoApp.xcodeproj</b>. Open this file to launch the project in Xcode. From Xcode you can run the app in the iOS simulator, or deploy the app to a devices (deploying to device requires membership in Apple's iOS Developer Program).</li>
+		<li><p>Make sure you are in the project folder in a terminal window</p></li>
+		<li><p>Add the iOS platform to the project. Note that this only needs to be done once for each project:
+		<pre>cordova platform add ios</pre></p></li>
+		<li><p>Build the project:
+		<pre>cordova build ios</pre></p></li>
+		<li><p>The output is an Xcode project, located in subfolder <b>platforms/ios</b>. Open a Finder window and navigate to the folder, there you will find the file <b>DemoApp.xcodeproj</b> (assuming you named your app "DemoApp"). Open this file to launch the project in Xcode. From Xcode you can run the app in the iOS simulator, or deploy the app to a devices (deploying to device requires membership in Apple's iOS Developer Program).</p></li>
 	</ol>
 </div>
 
 <div id="BuildingForAndroid" class="box">
 	<h2>Building for Android</h2>
-	<p>To be written!</p>
+	<p>Here is how you build your new Cordova project for Android:</p>
+	<ol>
+		<li><p>Make sure you are in the project folder in a terminal window</p></li>
+		<li><p>Add the Android platform to the project. Note that this only needs to be done once for each project:
+		<pre>cordova platform add android</pre></p></li>
+		<li><p>Build the project:
+		<pre>cordova build android</pre></p></li>
+		<li><p>The output is a debug-signed apk-file, located in subfolder <b>platforms/android/ant-build</b></p></li>
+		<li><p>Deploy the apk-file to a device using the <b>adb install</b> command (adb = Android Debug Bridge, a command-line tool for Android).</p><p>Deploying the app to a device is a bit different depending on which operating system you are using, because of the different path separators used.</p>
+		<p><b>Windows:</b></p>
+		<pre>adb install -r platforms\android\ant-build\DemoApp-debug.apk</pre>
+		<p><b>OS X:</b></p>
+		<pre>adb install -r platforms/android/ant-build/DemoApp-debug.apk</pre>
+		<p><b>Linux:</b></p>
+		<pre>adb install -r platforms/android/ant-build/DemoApp-debug.apk</pre>
+		<p>Above examples assume you named your app "DemoApp".</p>
+		<p>The switch "-r" means "reinstall" and will overwrite the app if it is already installed (this is convenient, because then you don't have to uninstall the app before installing it again).</p></li>
+	</ol>
+</div>
+
+<div id="AddingPlugins" class="box">
+	<h2>Adding Plugins</h2>
+	<p>Cordova plugins add native functionality to JavaScript. Here is how to add plugins to your project:</p>
+	<ol>
+		<li><p>Open a terminal window and go to the Cordova project folder.</p></li>
+		<li><p>Use the <b>cordova plugin add</b> command to add plugins. Here are examples of plugins to add:
+		<pre>cordova plugin add org.apache.cordova.device</pre>
+		<pre>cordova plugin add org.apache.cordova.console</pre>
+		<pre>cordova plugin add org.apache.cordova.vibration</pre>
+		</p></li>
+	</ol>
+	<p>Read more about plugins in the Cordova documentation: <a href="http://cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html">cordova.apache.org/docs/en/3.5.0/guide_cli_index.md.html</a></p>
+	<p>Documentation for standard Cordova plugins: <a href="http://cordova.apache.org/docs/en/3.5.0/cordova_plugins_pluginapis.md.html">cordova.apache.org/docs/en/3.5.0/cordova_plugins_pluginapis.md.html</a></p>
 </div>
 
 <div id="CordovaDirectoryStructure" class="box">
 	<h2>Cordova Directory Structure</h2>
-	<p>To be written!</p>
+	<p>This is the directory layout of a generated Cordova project. Put your HTML/CSS/JS in folder <b>www</b>. Edit <b>config.xml</b> to include the relevant settings for your project. Build output is found in the <b>platforms</b> folder.</p>
+	<pre>config.xml (specify main HTML-file or URL here)
+hooks
+  (build hooks - for advanced use)
+merges
+  (platform overrides - for advanced use)
+platforms
+  ios
+    (Xcode project is found here)
+  android
+    ant-build
+      (generated apk-file is found here)
+plugins
+  (plugins are added here)
+www
+  index.html (main HTML-file specified in config.xml)
+</pre>
+<p>The main HTML-file display when your app launches is specified in <b>config.xml</b>. Usually this file is named <b>index.html</b>, but you can name it anything as long as the name matches the setting in config.xml. You can also specify a connect URL to Evothings Workbench, read on below for further details.</p>
 </div>
 
 <div id="Workflow" class="box">
-	<h2>Workflow</h2>
-	<p>Workflow with and without Evothings Workbench</p>
+	<h2>Workflow Speedup</h2>
+	<p>You can use Cordova as is, without using Evothings Studio. But the workflow will be much faster if you use Evothings. Below we compare the two workflows.</p>
+
+	<h3>Cordova Workflow</h3>
+	<p>Typical workflow when using Cordova WITHOUT Evothings Studio is as follows:</p>
+	<ol>
+		<li><p>Edit your code (HTML/JS) and save</p></li>
+		<li><p>Build the app (cordova build ios/android)</p></li>
+		<li><p>Deploy the app to a device (adb install -r path-to-apk-file)</p></li>
+		<li><p>Launch the app on the device</p></li>
+		<li><p>Repeat above steps for each code change</p></li>
+	</ol>
+
+	<h3>Evothings/Cordova Workflow</h3>
+	<p>Workflow when using Cordova WITH Evothings Studio:</p>
+	<ol>
+		<li><p>Edit your code (HTML/JS) and save</p></li>
+		<li><p>The app is instantly reloaded on the device(s)</p></li>
+	</ol>
+
+	<p>In the next section, we describe how to setup a Cordova project for use with Evothings Studio.</p>
+</div>
+
+<div id="SetupCordovaForEvothings" class="box">
+	<h2>Setup Your Cordova Project for Evothings</h2>
+	<p>Evothings Workbench monitors the files in the current project and reloads the project on connected clients when a file is updated. This works with any web browser or web view widget. Automatic reload-on-save works with any Cordova project.</p>
+
+	<p>Note that the Evothings Client app itself is built with Cordova. It is a plain Cordova app with some custom plugins added, e.g. for socket communication and Bluetooth Low Energy (BLE).</p>
+
+	<p>To Evothings-enable your Cordova project, do as follows:</p>
+	<ol>
+		<li><p>Launch Evothings Workbench.</p></li>
+		<li><p>Copy the connect address displayed in the bottom panel of the Workbench window.</p></li>
+		<li><p>Open the file <b>config.xml</b> (located in your Cordova project folder) in a text editor.</p></li>
+		<li><p>On this line, replace the start page of the Cordova project ("index.html") with the connect address of the Workbench:
+		<pre>&lt;content src="index.html" /&gt;</pre>
+		For example, if the address is "192.168.43.131:4042", you would enter this URL:
+		<pre>&lt;content src="http://192.168.43.131:4042" /&gt;</pre>
+		Save the file.</p></li>
+		<li><p>Build the project and launch the app on a device. Note that the device must be on the same network as your desktop machine running Evothings Workbench. When you launch the app, it should connect to the Workbench and display the Connect screen.</p></li>
+		<li><p>Find the <b>index.html</b> file of you project in the <b>www</b> folder using a file explorer (Finder on iOS X, Explorer on Windows).</p></li>
+		<li><p>Drag the file <b>index.html</b> into the Evothings Workbench window. This adds your project to the project list.</p></li>
+		<li><p>Click the <b>Run</b> button of your project.</p></li>
+	</ol>
+
+	<p>Now you can just edit your HTML/CSS/JS files in any text editor. When you save a file, the app will be reloaded on the device!</p>
+
+	<p>Note that you can run your app on multiple devices/platforms, for instance an Android tablet and an iPad. When you update your code, the app will be reloaded on all connected devices!</p>
 </div>
 
 <!--
@@ -103,8 +200,6 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Supported Platforms</h2>
 
 	<p>Supported mobile platforms for Evothings are iOS and Android.</p>
-
-	<p>Note that the Evothings Client app itself is built with Cordova. It is a plain Cordova app with some custom plugins added, e.g. for socket communication and Bluetooth Low Energy (BLE).</p>
 
 	<p>Cordova comes with a set of plugins that are supported for a wide range of platforms. Evothings apps can use custom plugins available for iOS and Android. As long as you do not require socket communication or BLE, you should be able to use Evothings Studio to build apps for any platform supported by Cordova.</p>
 
@@ -123,29 +218,29 @@ Copyright (c) 2013-2014 Evothings AB
 <!--
 Building a native app with Apache Cordova:
 
-		<li>Install the mobile development kit(s) you want to build for (e.g.
-Android, iOS, Windows Phone).</li>
-		<li>For iOS you need a Mac with Xcode and an Apple developer
- membership to install apps on devices.</li>
-		<li>For Android you need the Android SDK.</li>
-		<li>Install Apache Cordova and create a template app by following the
+		<li><p>Install the mobile development kit(s) you want to build for (e.g.
+Android, iOS, Windows Phone).</p></li>
+		<li><p>For iOS you need a Mac with Xcode and an Apple developer
+ membership to install apps on devices.</p></li>
+		<li><p>For Android you need the Android SDK.</p></li>
+		<li><p>Install Apache Cordova and create a template app by following the
 instructions in this tutorial:
-http://cordova.apache.org/docs/en/3.4.0/guide_cli_index.md.html#The%20Command-Line%20Interface</li>
-		<li>The above step can take some time and effort to complete!</li>
-		<li>Copy your HTML, CSS, JavaScript and media files to the www folder in
-the Cordova project.</li>
-		<li>Now build and test your app. The output depends on the platform. For
+http://cordova.apache.org/docs/en/3.4.0/guide_cli_index.md.html#The%20Command-Line%20Interface</p></li>
+		<li><p>The above step can take some time and effort to complete!</p></li>
+		<li><p>Copy your HTML, CSS, JavaScript and media files to the www folder in
+the Cordova project.</p></li>
+		<li><p>Now build and test your app. The output depends on the platform. For
 iOS you get an Xcode project you can open and run, for Android you get
-and apk-file you can install on your device.</li>
-		<li>Note that it works perfectly fine to develop the Cordova app in
+and apk-file you can install on your device.</p></li>
+		<li><p>Note that it works perfectly fine to develop the Cordova app in
 Evothings Studio. Just drag and drop index.html in project list in the
-Workbench window. Then run the app using Evothings client, or ...</li>
-		<li>Enter the connect url in place of index.html in config.xml. When you
+Workbench window. Then run the app using Evothings client, or ...</p></li>
+		<li><p>Enter the connect url in place of index.html in config.xml. When you
 start the app it will connect to the Workbench, just click run to
-launch your app.</li>
-		<li>You can now build your app and deploy it to the app stores.</li>
-		<li>Drawback: The build process can be complex and you must have the
+launch your app.</p></li>
+		<li><p>You can now build your app and deploy it to the app stores.</p></li>
+		<li><p>Drawback: The build process can be complex and you must have the
 SDKs installed and the right app store memberships. But this is on the
-other hand true of any app you wish to publish.</li>
+other hand true of any app you wish to publish.</p></li>
 
 -->

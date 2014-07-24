@@ -38,7 +38,8 @@ Copyright (c) 2013-2014 Evothings AB
 
 <div id="Introduction" class="box">
 	<h2>Installing Cordova on Linux</h2>
-	<p>This document describes how to install Apache Cordova and the Android SDK on a Linux machine. Instructions below are tested on Ubuntu 14.04. For other versions and Linux distributions, the procedure may differ.</p>
+	<p>This document describes how to install Apache Cordova and the Android SDK on a Linux machine. Instructions below are tested on Ubuntu 14.04, on a 32-bit installation. For other versions and Linux distributions, the procedure may differ. </p>
+	<p>Please provide your feedback so that we can keep this documentation up to date. You are welcome to ask for help at the <a href="http://forum.evothings.com/">Evothings Forum</a>.</p>
 
 </div>
 
@@ -47,50 +48,72 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>Follow these steps to install Cordova:</p>
 	<ol>
-		<li><b>Install Node.js.</b> Node.js may already be installed. To test the installation, open a terminal window and type:
-		<pre>nodejs --version</pre>
-		If the version number is displayed, Node.js is installed.</li>
-		<li>If Node.js is not installed, install with:
-		<pre>sudo apt-get install nodejs</pre></li>
-		<li><b>Install Node Package Manager (npm).</b> Test if npm is installed by typing:
-		<pre>npm --version</pre></li>
-		<li>If npm is not installed, install with:
-		<pre>sudo apt-get install npm</pre></li>
-		<li><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Test if Git is installed by typing:
-		<pre>git --version</pre></li>
-		<li>If Git is not installed, install with:
-		<pre>sudo apt-get install git</pre></li>
-		<li><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following to install:
-		<pre>sudo npm install -g cordova</pre></li>
-		<li>Test the Cordova install by typing:
-		<pre>cordova --version</pre>
-		If you see the version number, you have successfully installed Apache Cordova!</li>
+		<li><p><b>Install Node.js.</b> Node.js may already be installed. To test the installation, open a terminal window and type:</p>
+		<p><pre>nodejs --version</pre></p>
+		<p>If the version number is displayed, Node.js is installed.</p></li>
+		<li><p>If Node.js is not installed, install with:</p>
+		<p><pre>sudo apt-get install nodejs</pre></p></li>
+		<li><p>Also add the alias "node" for nodejs, as this is needed by Cordova:</p>
+		<p><pre>sudo ln -s /usr/bin/nodejs /usr/bin/node</pre></p></li>
+		<li><p><b>Install Node Package Manager (npm).</b> Test if npm is installed by typing:</p>
+		<p><pre>npm --version</pre></p></li>
+		<li><p>If npm is not installed, install with:</p>
+		<p><pre>sudo apt-get install npm</pre></p></li>
+		<li><p><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Test if Git is installed by typing:</p>
+		<p><pre>git --version</pre></p></li>
+		<li><p>If Git is not installed, install with:</p>
+		<p><pre>sudo apt-get install git</pre></p></li>
+		<li><p><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following to install:</p>
+		<p><pre>sudo npm install -g cordova</pre></p></li>
+		<li><p>Test the Cordova install by typing:</p>
+		<p><pre>cordova --version</pre></p>
+		<p>If you see the version number, you have successfully installed Apache Cordova!</p></li>
 	</ol>
 </div>
 
-<!--
 <div id="InstallJava" class="box">
 	<h2>Install Java</h2>
-	<p>The Android SDK needs the Java Development Kit (JDK) to be installed (minimum version 1.6). Note that the Java Runtime Environment (JRE) is not sufficient, you will need the JDK. To check if you have the JDK installed already, type this on the command line:</p>
-	<pre>javac -version</pre>
-	<p>If you do not have the JDK installed, proceed as follows:</p>
+	<p>The Android SDK needs the Java Development Kit (JDK) to be installed (minimum version 1.6). Note that the Java Runtime Environment (JRE) is not sufficient, you will need the JDK. To check if you have the JDK installed already, type this in a terminal window:</p>
+	<p><pre>java -version
+javac -version</pre></p>
+	<p>If version info is displayed, you have Java installed, but you may want to use the Oracle JDK, rather than the OpenJDK that comes with many Linux distributions. The Oracle JDK is needed for signing Android apps.</p>
+	<p>If you wish to install the Oracle JDK, proceed as follows (the steps below are based on a <a href="http://www.wikihow.com/Install-Oracle-Java-JDK-on-Ubuntu-Linux">guide from wikiHow</a>):</p>
 	<ol>
-		<li>Download the Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, try the 64-bit version, at least if you have a fairly recent Windows machine.</li>
-		<li>Go along and run the downloaded installer file. Using the default selections should be fine, but take a note of the directory in which you install the JDK. You will need to add this to the PATH in a later step below.</li>
-		<li>Next, update your path to include the JDK. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, which will open the System Properties window. Select the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
-		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button. (If there is no PATH entry in the list, click the New button to create one.)</li>
-		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the JDK install. Here is an example (note that this must be the actual path used for the install on your machine):
-		<pre>;C:\Program Files\Java\jdk1.8.0_11\bin</pre>
-		An easy way to do this is to prepare the path to add in a text editor, then paste it at the end of the input field. When done click the <b>OK</b> button.</li>
-		<li>Next add the <b>JAVA_HOME</b> variable if it is not present (and if it is in the list, you may need to update its value using the Edit button). Click the <b>New</b> button. In the field <b>Variable name</b> type:
-		<pre>JAVA_HOME</pre>
-		In the field <b>Variable value</b> enter the path to the directory where the JDK is installed, without the semicolon and the /bin subdirectory, for example:
-		<pre>C:\Program Files\Java\jdk1.8.0_11</pre>
-		Click the <b>OK</b> button.</li>
-		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
-		<li>Now you are ready to test the install. Close any open command windows, and open a new command window and type:
-		<pre>javac -version</pre>
-		If you see a version number you are done with the JDK install!</li>
+		<li><p>Start by removing the OpenJDK:</p>
+		<p><pre>sudo apt-get purge openjdk-\*
+sudo apt-get autoremove</pre></p></li>
+		<li><p>Find out if you have a 32-bit och 64-bit Linux version:</p>
+		<p><pre>file /sbin/init</pre></p></li>
+		<p>If you run 64-bit Linux, you should install 32-bit libraries (Android SDK will need this):</p>
+		<p><pre>sudo apt-get install ia32-libs</pre></p></li>
+		<li><p>Download the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK (Java SE Development Kit)</a>. The download file ends with <b>.tar.gz</b>. For 32-bit systems get the "Linux x86" download, for 64-bit systems get the "Linux x64" download.</p></li>
+		<li><p>The downloaded file is typically saved to the folder "Download" in your home directory. The following steps create an installation directory and unpack the JDK files there. You can pick any directory for the install, we will use the directory "java" in the home folder. Replace "jdk-8u11-linux-i586.tar.gz" with the name of the file you just downloaded.</p>
+		<p><pre>mkdir -p ~/java
+cd  ~/Downloads
+mv jdk-8u11-linux-i586.tar.gz ~/java
+cd ~/java
+tar xvzf jdk-8u11-linux-i586.tar.gz
+rm jdk-8u11-linux-i586.tar.gz</pre></p></li>
+		<li><p>Check the name of the JDK install directory with:</p>
+		<p><pre>ls</pre></p>
+		<p>The path to the JDK becomes "~/java/jdk1.8.0_11" where "jdk1.8.0_11" is the name displayed by the ls command.</p></li>
+		<li><p>Add the path to the JDK by editing <b>.bashrc</b> in your home directory. You can use for example nano or gedit for this:</p>
+		<p><pre>nano ~/.bashrc</pre></p>
+		<p>or:</p>
+		<p><pre>gedit ~/.bashrc</pre></p></li>
+		<li><p>Add the following to the end of the file (replace "jdk1.8.0_11" with the actual folder name!):</p>
+		<p><pre>JAVA_HOME=~/java/jdk1.8.0_11
+PATH=$PATH:~/java/jdk1.8.0_11/bin
+export JAVA_HOME
+export PATH</pre></p></li>
+	<li><p>Edit the <b>.bash_profile</b> file to load .bashrc. Opening a terminal windows runs .bash_profile, and we want our path settings to be available in the terminal. If not already present, add the following lines to .bash_profile (se nano or gedit as above):</p>
+		<p><pre>if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi</pre></p></li>
+		<li><p>Now you are ready to test the install. Close any open terminal windows, open a new terminal and type:</p>
+		<p><pre>javac -version
+java -version</pre></p>
+		<p>If version info is displayed you are done with the JDK install!</p></li>
 	</ol>
 </div>
 
@@ -98,24 +121,26 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install Ant</h2>
 	<p><a href="http://ant.apache.org/">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. To install Ant, follow these steps:</p>
 	<ol>
-		<li>Download Ant from here: <a href="http://ant.apache.org/bindownload.cgi">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b> apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</li>
-		<li>Unpack the zip file to the directory on your machine where you want Ant to be installed. You can pick any directory for the install. In this guide we use this as an example:
-		<pre>C:\Users\miki\ant</pre>
-		Note that the files in the ant package should go directly into this directory. Make a note of the directory as you will need to add it to the PATH.</li>
-		<li>To add Ant to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
-		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</li>
-		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the Ant install. Here is an example:
-		<pre>;C:\Users\miki\ant\bin</pre>
-		Click the <b>OK</b> button.</li>
-		<li>Next add the <b>ANT_HOME</b> variable. Click the <b>New</b> button. In the field <b>Variable name</b> type:
-		<pre>ANT_HOME</pre>
-		In the field <b>Variable value</b> enter the path to the directory where Ant is installed, without the semicolon and the /bin subdirectory, for example:
-		<pre>C:\Users\miki\ant</pre>
-		Click the <b>OK</b> button.</li>
-		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
-		<li>Now test the install. Close any open command windows, and open a new command window and type:
-		<pre>ant -version</pre>
-		If you see a version number you have installed Ant successfully!</li>
+		<li><p>Download Ant from here: <a href="http://ant.apache.org/bindownload.cgi">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b>apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</p></li>
+		<li><p>Unpack the zip file to the directory on your machine where you want Ant to be installed. You can pick any directory for the install, we will use the directory "ant" in the home folder. Here are the commands (make sure you use the actual name of the downloaded zip file):</p>
+		<p><pre>mkdir -p ~/ant
+cd ~/ant
+unzip apache-ant-1.9.4-bin.zip
+rm apache-ant-1.9.4-bin.zip
+</pre></p></li>
+		<li><p>To add Ant to the system path, edit <b>.bashrc</b> to contain the following lines at the end. Again, be careful to use the actual names of the files and folders on your system:</p>
+		<p><pre>JAVA_HOME=~/java/jdk1.8.0_11
+PATH=$PATH:~/java/jdk1.8.0_11/bin
+export JAVA_HOME
+
+ANT_HOME=~/ant/apache-ant-1.9.4
+PATH=$PATH:~/java/apache-ant-1.9.4/bin
+export ANT_HOME
+
+export PATH</pre></p></li>
+		<li><p>Now test the install. Close the terminal window, open a new terminal (to make settings take effect) and type:</p>
+		<p><pre>ant -version</pre></p>
+		If you see a version number you have installed Ant successfully!</p></li>
 	</ol>
 </div>
 
@@ -123,21 +148,34 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install the Android SDK Tools</h2>
 	<p>The SDK Tools for Android are used by Cordova to build Android apps. Follow these steps to install the SDK Tools:</p>
 	<ol>
-		<li>Go to the page <a href="http://developer.android.com/sdk">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</li>
-		<li>When downloaded, run the installer. You should do fine to use the default settings used by the installer, but make a note of the directory in which the SDK is installed, as you will have to add this to the PATH in the next step.</li>
-		<li>To add the SDK Tools to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</li>
-		<li>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</li>
-		<li>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the <b>tools</b> and <b>platform-tools</b> directores of the Android SDK install. Here is an example of what to add:
-		<pre>;C:\Users\miki\AppData\Local\Android\android-sdk\tools;C:\Users\miki\AppData\Local\Android\android-sdk\platform-tools</pre>
-		You can prepare the path in a text editor, copy it and paste at the end of the input field. Click the <b>OK</b> button when done.</li>
-		<li>Click the <b>OK</b> button again to close the Environment Variables window.</li>
-		<li>Now test the install. Close any open command windows, open a new command window and type:
+		<li><p>Go to the page <a href="http://developer.android.com/sdk">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer file for Linux and download it (this file is named e.g. <b>android-sdk_r23.0.2-linux.tgz</b>).</p></li>
+		<li><p>When downloaded, unpack the files. Here are commands for unpacking the Android SDK folder into your home directory:</p>
+		<p><pre>cd
+mv ~/Downloads/android-sdk_r23.0.2-linux.tgz .
+tar zxvf android-sdk_r23.0.2-linux.tgz
+rm android-sdk_r23.0.2-linux.tgz</pre></p>
+		<p>The unpacked folder is named "android-sdk-linux" as of the release used in this example.</p>
+		</li>
+		<li><p>The Android SDK Tools need to be added to the system path. Edit <b>.bashrc</b> to contain the following lines at the end. Make sure you use the actual names of the files and folders on your system:</p>
+		<p><pre>JAVA_HOME=~/java/jdk1.8.0_11
+PATH=$PATH:~/java/jdk1.8.0_11/bin
+export JAVA_HOME
+
+ANT_HOME=~/ant/apache-ant-1.9.4
+PATH=$PATH:~/java/apache-ant-1.9.4/bin
+export ANT_HOME
+
+PATH=$PATH:~/android-sdk-linux/platform-tools
+PATH=$PATH:~/android-sdk-linux/tools
+
+export PATH</pre></p></li>
+		<li><p>You need to have the specific Android SDK version used by Cordova. This is done by running the <b>Android SDK Manager</b> by typing the command:</p>
+		<p><pre>android</pre></p>
+		<p>This launches a window where you can select to install specific Android SDKs.</p>
+		<p>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also select the entry "Android 4.4.2 (API 19)" is not installed already. This is the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</p></li>
+		<li><p>To test the install, close the terminal window, open a new terminal and type:
 		<pre>adb version</pre>
-		This should display the version of the Android Debug Bridge.</li>
-		<li>As the final step, you need to get the specific Android SDK version used by Cordova. This is done by running the <b>Android SDK Manager</b> by typing the command:
-		<pre>android</pre>
-		This launches a window where you can select to install specific Android SDKs.</li>
-		<li>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also select the entry "Android 4.4.2 (API 19)". This is the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</li>
+		This should display version info for the Android Debug Bridge.</p></li>
 	</ol>
 </div>
 
@@ -145,12 +183,11 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>If You Get Stuck</h2>
 	<p>If you get stuck, consult the documentation at the respective web sites for Cordova, Java, Ant, and Android. The Cordova documentation specific for Android is found here: <a href="http://cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html">cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/">Evothings Forum</a>.</p>
 	<p>One thing to do is to inspect all the environment variables. You can do this from a command window (note that you have to open a new command window after updating environment variables for updated values to be available). This displays the system PATH:</p>
-	<pre>echo %PATH%</pre>
+	<p><pre>echo %PATH</pre></p>
 	<p>Here is how to inspect the values of JAVA_HOME and ANT_HOME:</p>
-	<pre>echo %JAVA_HOME%
-echo %ANT_HOME%</pre>
+	<p><pre>echo %JAVA_HOME
+echo %ANT_HOME</pre></p>
 </div>
--->
 
 <div id="NextStep" class="box">
 	<h2>The Fun Begins</h2>
