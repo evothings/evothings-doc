@@ -7,73 +7,81 @@ Author: Eric Svensson
 Copyright (c) 2013 Evothings AB
 -->
 <head>
-<meta charset="utf-8">
-<title>Welcome to Evothings Studio</title>
-<script src="js/include-viewport.js"></script>
-<script src="js/include-css-scripts.js"></script>
-<style>
-#welcomeContents {
-	text-align: left;
-}
-#welcomeContents > p {
-	font-size: 1.3em;
-}
-#welcomeContentsFirstParagraph {
-	margin-top: 1.8em;
-}
-.make-bold {
-	font-weight: bold;
-}
-</style>
+
+	<meta charset="utf-8">
+
+	<title>Welcome to Evothings Studio</title>
+
+	<script src="js/include-viewport.js"></script>
+	<script src="js/include-css-scripts.js"></script>
+	<style>
+		@import 'evothings-app.css';
+		@import 'evothings-web.css';
+
+		.logotype {
+			position: absolute;
+			width: 10%;
+			top: 2%;
+			right: 2%;
+		}
+	</style>
+
 </head>
 
-<body>
+<body ontouchstart=""><!-- ontouchstart="" enables low-delay CSS transitions. -->
 
-<script>
-var GUI = require('nw.gui')
+	<script>
+	var GUI = require('nw.gui')
 
-function openInBrowser(url)
-{
-	GUI.Shell.openExternal(url)
-}
-</script>
+	function openInBrowser(url)
+	{
+		GUI.Shell.openExternal(url)
+	}
+	</script>
 
-<div id="heading">Welcome to Evothings Studio!</div>
+	<img class="logotype" src="images/logo.svg" alt="Evothings" />
+		
+	<h1>Welcome to Evothings Studio!</h1>
 
-<div id="page"><div id="content">
+	<p>
+		Evothings Studio consists of two parts, the Workbench and the Client app.
+	</p>
+	
+	<p>
+		Next step is to install the <strong>Evothings Client</strong> app on your mobile devices.
+	</p>
+	
+	<button class="yellow" onclick="openInBrowser('http://www.evothings.com/download')">
+		<strong>Download it now!</strong>
+	</button>
 
-<div id="welcomeContents">
+	<img src="images/ets-illustration_v2.png" width="75%" />
 
-	<p id="welcomeContentsFirstParagraph" class="make-bold">Evothings Studio consists of two parts, the Workbench and the Client app.</p>
-	<p>Next step is to install the <span class="make-bold">Evothings Client</span> app on your mobile devices.</p>
-	<p><a href="#" onclick="openInBrowser('http://www.evothings.com/download')">Download it now!</a></p>
-
-	<img src="images/ets-illustration_v2.png" width="75%"/>
-
-	<p>To connect the Client app to the Workbench, they should be on the same local network.</p>
+	<p>
+		To connect the Client app to the Workbench, they should be on the same local network.
+	</p>
+	
 	<p class="make-bold">Happy tinkering!</p>
 
-<!--
-	<li>Download the mobile Evothings Client from our <a href="#" onclick="openInBrowser('http://www.evothings.com/download')">download page</a>, for Android also from <a id="button-googleplay" target="_blank" href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en')">Google Play</a> </li>
--->
+	<!--
+		<li>Download the mobile Evothings Client from our <a href="#" onclick="openInBrowser('http://www.evothings.com/download')">download page</a>, for Android also from <a id="button-googleplay" target="_blank" href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient&hl=en')">Google Play</a> </li>
+	-->
 
-</div>
-
-<script>
-;(function()
-	{
-		var GUI = require('nw.gui')
-
-		var button = $('#button-googleplay')
-		button && button.click(function(event)
+	<script>
+	;(function()
 		{
-			event.preventDefault();
-			var url = $(this).attr('href')
-			GUI.Shell.openExternal(url)
-		})
-})()
-</script>
+			var GUI = require('nw.gui')
 
-</div></div>
+			var button = $('#button-googleplay')
+			button && button.click(function(event)
+			{
+				event.preventDefault();
+				var url = $(this).attr('href')
+				GUI.Shell.openExternal(url)
+			})
+	})()
+	</script>
+
 </body>
+
 </html>
