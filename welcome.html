@@ -14,6 +14,15 @@ Copyright (c) 2013 Evothings AB
 
 	<script src="js/include-viewport.js"></script>
 	<script src="js/include-css-scripts.js"></script>
+	<script>
+	var GUI = require('nw.gui')
+
+	function openInBrowser(url)
+	{
+		GUI.Shell.openExternal(url)
+	}
+	</script>
+
 	<style>
 		@import 'evothings-app.css';
 		@import 'evothings-web.css';
@@ -30,18 +39,9 @@ Copyright (c) 2013 Evothings AB
 
 <body ontouchstart=""><!-- ontouchstart="" enables low-delay CSS transitions. -->
 
-	<script>
-	var GUI = require('nw.gui')
-
-	function openInBrowser(url)
-	{
-		GUI.Shell.openExternal(url)
-	}
-	</script>
+	<h1>Welcome to Evothings Studio!</h1>
 
 	<img class="logotype" src="images/logo.svg" alt="Evothings" />
-		
-	<h1>Welcome to Evothings Studio!</h1>
 
 	<p>
 		Evothings Studio consists of two parts, the Workbench and the Client app.
@@ -50,10 +50,15 @@ Copyright (c) 2013 Evothings AB
 	<p>
 		Next step is to install the <strong>Evothings Client</strong> app on your mobile devices.
 	</p>
-	
-	<button class="yellow" onclick="openInBrowser('http://www.evothings.com/download')">
-		<strong>Download it now!</strong>
-	</button>
+
+	<p style="margin-top: 1em;">
+		<a href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient')">
+			<img src="images/google-play.svg" style="height: 2em;" alt="Google Play" />
+		</a>
+		<a href="#" onclick="openInBrowser('https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8')">
+			<img src="images/app-store.png" style="height: 2em;" alt="App Store" />
+		</a>
+	</p>
 
 	<img src="images/ets-illustration_v2.png" width="75%" />
 
