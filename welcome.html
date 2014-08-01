@@ -33,6 +33,11 @@ Copyright (c) 2013 Evothings AB
 			top: 2%;
 			right: 2%;
 		}
+
+		.download-links img, .download-links button {
+			height: 2em;
+			text-transform: none;
+		}
 	</style>
 
 </head>
@@ -51,13 +56,19 @@ Copyright (c) 2013 Evothings AB
 		Next step is to install the <strong>Evothings Client</strong> app on your mobile devices.
 	</p>
 
-	<p style="margin-top: 1em;">
+	<p class="download-links">
 		<a href="#" onclick="openInBrowser('https://play.google.com/store/apps/details?id=com.evothings.evothingsclient')">
-			<img src="images/google-play.svg" style="height: 2em;" alt="Google Play" />
+			<img src="images/google-play.svg" alt="Google Play" />
 		</a>
+
 		<a href="#" onclick="openInBrowser('https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8')">
-			<img src="images/app-store.png" style="height: 2em;" alt="App Store" />
+			<img src="images/app-store.png" alt="App Store" />
 		</a>
+
+		<button class="black" alt="Manual download"
+			onclick="openInBrowser('http://evothings.com/download/#otherdownloads')" />
+			Manual download
+		</button>
 	</p>
 
 	<img src="images/ets-illustration_v2.png" width="75%" />
