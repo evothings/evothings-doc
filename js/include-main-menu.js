@@ -9,4 +9,6 @@ document.write(
 	+		'btn-primary">Client</a>'
 	+	'<a href="examples.html" type="button" class="btn btn-lg '
 	+		'btn-primary">Examples</a>'
+	+	'<a href="apps-build-overview.html" type="button" class="btn btn-lg '
+	+		'btn-primary">Build</a>'
 	+ '</div>')
