@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: ibeacon-scan.html
+Description: Evothings Examples documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>iBeacon Scan Example</title>
+<script src="js/include-viewport.js"></script>
+<script src="js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div id="heading">iBeacon Scan Example</div>
+
+<div id="page"><div id="content">
+
+<script src="js/include-main-menu.js"></script>
+<script src="js/include-example-menu.js"></script>
+
+<div class="box">
+	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
+
+	<h2>Scan for iBeacons</h2>
+
+	<p>This app demonstrates how to scan for iBeacons.<p>
+
+	</p>You must run this app in the Evothings client app, or build a Cordova app with the plugin <a href="https://github.com/petermetz/cordova-plugin-ibeacon">cordova-plugin-ibeacon</a>. iOS 7 or Android device with support for Bluetooth 4.0 and Android 4.3 or higher required.</p>
+
+	<img class="img-example-screenshot" src="images/ibeacon-scan-screenshot.png"/>
+</div>
+
+<div class="box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/ibeacon-scan">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ibeacon-scan/index.html">index.html</a> is the main HTML file of the app.</p>
+
+	<p>In file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ibeacon-scan/index.js">index.js</a> you will find the JavaScript code for the app. Note that you need to add your own manufacturer UUIDs to the list in this file (see code around line 50) for the app to detect your iBeacon(s).</p>
+</div>
+
+<div class="box">
+	<h2>What You Need</h2>
+
+	<p>This example requires an iOS device or Android device with support for Bluetooth 4.0 (which includes BLE). In addition Android 4.3 or later is required, in addition to the hardware.</p>
+
+	<p>You need to run the example in the Evothings Client app. Alternatively, you can make a Cordova application if you wish to distribute the app. Then you need to include the Cordova plugin <a href="https://github.com/petermetz/cordova-plugin-ibeacon">cordova-plugin-ibeacon</a>.
+
+	<p>Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example.</p>
+
+	<p>You also need at least one iBeacon device you can work with. Note that you need to add your manufacturer UUID(s) to file <b>index.js</b> for the app to detect your iBeacon(s).</p>
+</div>
+
+<div class="box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run the Evothings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Press the "Code" button, edit file index.js and add your UUID(s) and save the file.</li>
+		<li>Launch the example "iBeacon Scan" from the Workbench window by pressing "Run".</li>
+		<li>If everything works, the app should automatically detect your iBeacons.</li>
+	</ul>
+</div>
+
+<div class="box">
+	<p>Copyright &copy; 2013-2014 Evothings AB</p>
+</div>
+
+</div></div>
+</body>
+</html>
