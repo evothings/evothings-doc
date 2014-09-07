@@ -1,7 +1,11 @@
 // Include scripts and CSS-files.
 ;(function()
 {
-	var path = (window.location.href.indexOf('index.html') > -1) ? '' : '../'
+	var path =
+		((window.location.href.indexOf('index.html') > -1) ||
+		 (window.location.href.indexOf('.html') == -1))
+			 ? ''
+			 : '../'
 
 	document.write(
 		'<link href="' + path + 'libs/bootstrap-3.0.2/css/bootstrap.min.css" '
