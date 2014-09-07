@@ -9,8 +9,8 @@ Copyright (c) 2013-2014 Evothings AB
 <head>
 <meta charset="utf-8">
 <title>Evothings Workbench</title>
-<script src="js/include-viewport.js"></script>
-<script src="js/include-css-scripts.js"></script>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@ Copyright (c) 2013-2014 Evothings AB
 
 <div id="page"><div id="content">
 
-<script src="js/include-main-menu.js"></script>
+<script src="../js/include-main-menu.js"></script>
 
 <div class="box content-index">
 	<a href="#Introduction">Using the Workbench</a><br/>
@@ -35,7 +35,7 @@ Copyright (c) 2013-2014 Evothings AB
 <div id="Introduction" class="box">
 	<h2>Using the Workbench</h2>
 
-	<p>The Evothings Workbench is a desktop application for running apps on mobile devices. For an overview of how to get started, see the <a href="index.html#QuickStart">Quick Start</a> section of the main documentation page.</p>
+	<p>The Evothings Workbench is a desktop application for running apps on mobile devices. For an overview of how to get started, see the <a href="../index.html#QuickStart">Quick Start</a> section of the main documentation page.</p>
 
 	<p>The Workbench has three windows:</p>
 	<ul>
@@ -52,7 +52,7 @@ Copyright (c) 2013-2014 Evothings AB
 <div id="MainWindow" class="box">
 
 	<img style="width:400px;height:auto;float:right;margin-left:20px;margin-bottom:20px;"
-		src="images/evothings-workbench-screenshot.png"/>
+		src="../images/evothings-workbench-screenshot.png"/>
 
 	<h2>Main Window</h2>
 
@@ -82,7 +82,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>To test the live editing feature of HyperReload, try out the following:</p>
 	<ul>
 	<li>Click the "Open" button of one of the demo apps in the Workbench window, for instance the "Hello World" example.</li>
-	<li>Open the file "index.html" in a text editor.</li>
+	<li>Open the file "../index.html" in a text editor.</li>
 	<li>Change something in the HTML code, for example, change the &lt;h1&gt; heading to: <pre>&lt;h1&gt;I am alive!&lt;/h1&gt;</pre></li>
 	<li>Save the file. The changes you made should be instantly displayed on connected devices.</li>
 	</ul>
@@ -92,7 +92,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Creating Your Own Project</h2>
 	<p>To add your own project to the Workbench, do this:</p>
 	<ul>
-	<li>Open the folder with the HTML file that is the main file of your application (typically "index.html", but any name is fine). The file must be a valid HTML file and it must have extension ".html" or ".htm".</li>
+	<li>Open the folder with the HTML file that is the main file of your application (typically "../index.html", but any name is fine). The file must be a valid HTML file and it must have extension ".html" or ".htm".</li>
 	<li>Drag the file into the Workbench window and drop it there.</li>
 	<li>The file is now added as a project that you can run on connected devices.</li>
 	<li>You can move project entries using drag-and-drop, and delete them by clicking the delete icon (this will not delete any files in your project folder).</li>
@@ -126,7 +126,7 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<h3>Create your Cordova project</h3>
 
-	<p>If you don't have a Cordova project already, you first need to create it. Install Cordova and create a new project by following the instructions in the guide <a href="apps-build-overview.html">How To Build Native Apps</a>. It is a good idea to build and test run the generated project, so you now everything works.</p>
+	<p>If you don't have a Cordova project already, you first need to create it. Install Cordova and create a new project by following the instructions in the guide <a href="build-overview.html">How To Build Native Apps</a>. It is a good idea to build and test run the generated project, so you now everything works.</p>
 
 	<h3>Launch Evothings Workbench</h3>
 
@@ -138,7 +138,7 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<p>Open the file config.xml in a text editor. Change this line:</p>
 
-	<pre>&lt;content src="index.html" /&gt;</pre>
+	<pre>&lt;content src="../index.html" /&gt;</pre>
 
 	<p>to this (assuming the connect address is 192.168.0.102:4042):</p>
 
@@ -164,7 +164,7 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 <div id="JavaScriptTools" class="box">
 
 	<img style="width:400px;height:auto;float:right;margin-left:20px;margin-bottom:20px;"
-		src="images/evothings-tools-screenshot.png"/>
+		src="../images/evothings-tools-screenshot.png"/>
 
 	<h2>JavaScript Tools</h2>
 
@@ -185,13 +185,11 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<div id="SourceCode" class="box">
 		<h2>Source Code</h2>
-		<p>See the <a href="index.html#SourceCode">Source Code</a> section of the main documentation page.</p>
+		<p>See the <a href="../index.html#SourceCode">Source Code</a> section of the main documentation page.</p>
 
 </div>
 
-<div class="box">
-	<p>Copyright &copy; 2013-2014 Evothings AB</p>
-</div>
+<script src="../js/include-footer.js"></script>
 
 </div></div>
 </body>

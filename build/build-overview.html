@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!--
-File: build-apps-overview.html
+File: build-overview.html
 Description: Native build documentation.
 Author: Mikael Kindborg
 Copyright (c) 2013-2014 Evothings AB
@@ -9,8 +9,8 @@ Copyright (c) 2013-2014 Evothings AB
 <head>
 <meta charset="utf-8">
 <title>Native App Build Overview</title>
-<script src="js/include-viewport.js"></script>
-<script src="js/include-css-scripts.js"></script>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
 </head>
 
 <body>
@@ -18,12 +18,12 @@ Copyright (c) 2013-2014 Evothings AB
 
 <div id="page"><div id="content">
 
-<script src="js/include-main-menu.js"></script>
+<script src="../js/include-main-menu.js"></script>
 
 <div class="box content-index">
 	<div class="box">
-		<a href="apps-share.html">Share Your App</a><br/>
-		<a href="apps-build-overview.html">Build Overview</a><br/>
+		<a href="share-apps.html">Share Your App</a><br/>
+		<a href="build-overview.html">Build Overview</a><br/>
 	</div>
 	<div class="box">
 		<a href="#Introduction">How To Build Native Apps</a><br/>
@@ -38,7 +38,7 @@ Copyright (c) 2013-2014 Evothings AB
 <div id="Introduction" class="box">
 	<h2>How To Build Native Apps</h2>
 
-	<p>Building and publishing a native app takes some effort. If you wish to share an app in the quickest way possible you can use the Evothings Client app. Read more about <a href="apps-share.html">Sharing Your App</a>.</p>
+	<p>Building and publishing a native app takes some effort. If you wish to share an app in the quickest way possible you can use the Evothings Client app. Read more about <a href="share-apps.html">Sharing Your App</a>.</p>
 
 	<p>This documents describes how to build and publish apps created with Evothings Studio. <a href="http://cordova.apache.org/">Apache Cordova</a> is the build system used with Evothings. With Cordova you create native apps with bundled HTML and JavaScript content. Apps built with Cordova are native apps that can be published on the app stores. Furthermore, you can add custom native plugins to extend the functionality of your app.</p>
 
@@ -55,9 +55,9 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>Select the platform you are working on to learn about how to install Cordova on your machine:</p>
 	<ul>
-		<li><p><a href="apps-cordova-install-osx.html">Install Cordova on OS X</a></p></li>
-		<li><p><a href="apps-cordova-install-windows.html">Install Cordova on Windows</a></p></li>
-		<li><p><a href="apps-cordova-install-linux.html">Install Cordova on Linux</a></p></li>
+		<li><p><a href="cordova-install-osx.html">Install Cordova on OS X</a></p></li>
+		<li><p><a href="cordova-install-windows.html">Install Cordova on Windows</a></p></li>
+		<li><p><a href="cordova-install-linux.html">Install Cordova on Linux</a></p></li>
 	</ul>
 
 	<p>The Cordova install procedure and command line tools are also described in the <a href="http://cordova.apache.org/docs/en/3.5.0//guide_cli_index.md.html#The%20Command-Line%20Interface">Cordova documentation</a>.</p>
@@ -67,7 +67,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Build a Native App</h2>
 	<p>To build a native app from your HTML/CSS/JavaScript code, you create a Cordova project and build for your target platform(s):</p>
 	<ul>
-		<li><p><a href="apps-cordova-guide.html">Create and Build Your App</a></p></li>
+		<li><p><a href="cordova-guide.html">Create and Build Your App</a></p></li>
 	</ul>
 </div>
 
@@ -75,8 +75,8 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Publish Your App</h2>
 	<p>When you have built your app with Cordova, it can be published on the app stores:</p>
 	<ul>
-		<li><p><a href="apps-publish-ios.html">Publish an iOS app on Apple AppStore</a></p></li>
-		<li><p><a href="apps-publish-android.html">Publish an Android app on Google Play</a></p></li>
+		<li><p><a href="publish-ios.html">Publish an iOS app on Apple AppStore</a></p></li>
+		<li><p><a href="publish-android.html">Publish an Android app on Google Play</a></p></li>
 	</ul>
 </div>
 
@@ -92,9 +92,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>The Evothings Client app is itself built with Cordova. It is a plain Cordova app with some custom plugins added, e.g. for socket communication and Bluetooth Low Energy (BLE).</p>
 </div>
 
-<div class="box">
-	<p>Copyright &copy; 2013-2014 Evothings AB</p>
-</div>
+<script src="../js/include-footer.js"></script>
 
 </div></div>
 </body>
