@@ -14,6 +14,11 @@ html, body {
 	text-decoration: none;
 }
 
+h1 {
+	font-size: 2.2em;
+	margin: 0.2em 0;
+}
+
 h2 {
 	font-size: 1.6em;
 	margin: 0.2em 0;
@@ -112,7 +117,8 @@ ul {
 }
 
 .btn {
-	text-transform: uppercase !important;
+	/*text-transform: uppercase !important;*/
+	/*font-size: 160%;*/
 	color: white !important;
 }
 
