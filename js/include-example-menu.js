@@ -1,6 +1,6 @@
 // Example menu.
 document.write(
-	'<div class="box content-index">'
+	'<div class="evo-box evo-content-index">'
 	+	'<script src="../js/include-evothings-logo.js"></script>'
 	+	'<a href="../examples/hello-world.html">Hello World</a><br/>'
 	+	'<a href="../examples/hue-lights.html">Philips Hue Demo</a><br/>'
