@@ -1,18 +1,153 @@
+/*
+ * CSS for documentation content.
+ */
+
+/* Documentation content base CSS. */
 
 @import 'fonts/ProximaNova.css';
 
-body {
-	/*font-family: 'Proxima Nova Regular';*/
+.evo-content {
+	margin: 0em 0em;
+	font-family: 'Proxima Nova Regular';
+	text-decoration: none;
 }
 
-html, body {
-	/*margin: 0;
-	padding: 0;
-	width: 100%;
-	background-color: #FFFFFF;*/
-	/*font-family: sans-serif;*/
-	/*text-decoration: none;*/
+/* Restore standard CSS for documentation content.
+   Based on: http://www.w3.org/TR/CSS2/sample.html */
+
+.evo-content address,
+.evo-content blockquote,
+.evo-content dd,
+.evo-content div,
+.evo-content dl,
+.evo-content dt,
+.evo-content fieldset,
+.evo-content form,
+.evo-content frame,
+.evo-content frameset,
+.evo-content h1,
+.evo-content h2,
+.evo-content h3,
+.evo-content h4,
+.evo-content h5,
+.evo-content h6,
+.evo-content noframes,
+.evo-content ol,
+.evo-content p,
+.evo-content ul,
+.evo-content center,
+.evo-content dir,
+.evo-content hr,
+.evo-content menu,
+.evo-content pre		{ display: block; unicode-bidi: embed; clear: none }
+.evo-content li			{ display: list-item }
+.evo-content head		{ display: none }
+.evo-content table		{ display: table }
+.evo-content tr			{ display: table-row }
+.evo-content thead		{ display: table-header-group }
+.evo-content tbody		{ display: table-row-group }
+.evo-content tfoot		{ display: table-footer-group }
+.evo-content col		{ display: table-column }
+.evo-content colgroup	{ display: table-column-group }
+.evo-content td,
+.evo-content th			{ display: table-cell }
+.evo-content caption	{ display: table-caption }
+.evo-content th			{ font-weight: bolder; text-align: center }
+.evo-content caption	{ text-align: center }
+.evo-content body		{ margin: 8px }
+.evo-content h1			{ font-size: 2em; margin: .67em 0 }
+.evo-content h2			{ font-size: 1.5em; margin: .75em 0 }
+.evo-content h3			{ font-size: 1.17em; margin: .83em 0 }
+.evo-content h4,
+.evo-content p,
+.evo-content blockquote,
+.evo-content ul,
+.evo-content fieldset,
+.evo-content form,
+.evo-content ol,
+.evo-content dl,
+.evo-content dir,
+.evo-content menu		{ margin: 1.12em 0 }
+.evo-content h5			{ font-size: .83em; margin: 1.5em 0 }
+.evo-content h6			{ font-size: .75em; margin: 1.67em 0 }
+.evo-content h1,
+.evo-content h2,
+.evo-content h3,
+.evo-content h4,
+.evo-content h5,
+.evo-content h6,
+.evo-content b,
+.evo-content strong		{ font-weight: bolder }
+.evo-content blockquote	{ margin-left: 40px; margin-right: 40px }
+.evo-content i,
+.evo-content cite,
+.evo-content em,
+.evo-content var,
+.evo-content address	{ font-style: italic }
+.evo-content pre,
+.evo-content tt,
+.evo-content code,
+.evo-content kbd,
+.evo-content samp		{ font-family: monospace }
+.evo-content pre		{ white-space: pre }
+.evo-content button,
+.evo-content textarea,
+.evo-content input,
+.evo-content select		{ display: inline-block }
+.evo-content big		{ font-size: 1.17em }
+.evo-content small,
+.evo-content sub,
+.evo-content sup		{ font-size: .83em }
+.evo-content sub		{ vertical-align: sub }
+.evo-content sup		{ vertical-align: super }
+.evo-content table		{ border-spacing: 2px; }
+.evo-content thead,
+.evo-content tbody,
+.evo-content tfoot		{ vertical-align: middle }
+.evo-content td,
+.evo-content th,
+.evo-content tr			{ vertical-align: inherit }
+.evo-content s,
+.evo-content strike,
+.evo-content del		{ text-decoration: line-through }
+.evo-content hr			{ border: 1px inset }
+.evo-content
+.evo-content ol,
+.evo-content ul,
+.evo-content dir,
+.evo-content menu,
+.evo-content dd			{ margin-left: 40px }
+.evo-content ol			{ list-style-type: decimal }
+.evo-content ol ul,
+.evo-content ul ol,
+.evo-content ul ul,
+.evo-content ol ol		{ margin-top: 0; margin-bottom: 0 }
+.evo-content u,
+.evo-content ins		{ text-decoration: underline }
+.evo-content br:before	{ content: "\A"; white-space: pre-line }
+.evo-content center		{ text-align: center }
+
+/* Begin bidirectionality settings (do not change) */
+BDO[DIR="ltr"]  { direction: ltr; unicode-bidi: bidi-override }
+BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
+
+*[DIR="ltr"]    { direction: ltr; unicode-bidi: embed }
+*[DIR="rtl"]    { direction: rtl; unicode-bidi: embed }
+
+@media print {
+	.evo-content h1		{ page-break-before: always }
+	.evo-content h1,
+	.evo-content h2,
+	.evo-content h3,
+	.evo-content h4,
+	.evo-content h5,
+	.evo-content h6		{ page-break-after: avoid }
+	.evo-content ul,
+	.evo-content ol,
+	.evo-content dl		{ page-break-before: avoid }
 }
+
+/* CSS for documentation content. */
 
 .evo-page {
 	margin: 0 auto;
@@ -34,12 +169,6 @@ html, body {
 	font-size: 2.2em;
 	font-weight: normal;
 	text-align: center;
-}
-
-.evo-content {
-	margin: 0em 0em;
-	font-family: 'Proxima Nova Regular';
-	text-decoration: none;
 }
 
 .evo-box {
@@ -89,21 +218,22 @@ html, body {
 }
 
 .evo-content ul {
-	font-size: 1.0em;
-	margin: 0.5em 0;
-	list-style: disc inside none;
+	list-style-type: disc;
+	list-style-position: outside;
+	margin: 0px 40px;
+	padding: 0px;
 }
 
 .evo-content ol {
-   list-style-type: decimal;
-   list-style-position: inside;
+	list-style-type: decimal;
+	list-style-position: outside;
+	margin: 0px 40px;
+	padding: 0px;
 }
-
 
 .evo-content ul {
 	display: table;
 }
-
 
 .evo-content .img-example-screenshot {
 	width: 250px;
@@ -125,6 +255,8 @@ html, body {
 	position: relative;
 	float: right;
 }
+
+/* CSS for buttons adopted from Bootstrap. */
 
 .evo-btn {
 	/*text-transform: uppercase !important;*/
@@ -352,22 +484,3 @@ html, body {
 	border-color: #9d9d9d !important;
 	background-color: #9d9d9d !important;
 }
-
-/*
-#left {
-	float: left;
-	width: 20px;
-	height: 50px;
-}
-
-#right {
-	float: right;
-	width: 20px;
-	width: 50px;
-}
-
-#center {
-	background-color: #F00F0F;
-	margin: 20px 20px;
-}
-*/

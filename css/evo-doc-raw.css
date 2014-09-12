@@ -1,0 +1,14 @@
+/*
+ * CSS additions/overwrites for documentation viewed raw or offline.
+ */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #FFFFFF;
+}
+
+.evo-content {
+	margin: 1em 1em;
+}
