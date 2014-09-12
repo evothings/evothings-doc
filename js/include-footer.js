@@ -7,8 +7,10 @@
 		+ '</div>')
 
 
-	// When browsing documentation online we call a script
-	// to rewrite links to work with the website layout.
+	// When browsing documentation online we call this script to
+	// to rewrite links to work inside an iframe (currently an iframe
+	// is not used, this is kept just in case, the logic that detects
+	// the iframe is in doc-links.js).
 	var protocol = window.location.protocol
 	if (protocol != 'file:')
 	{
