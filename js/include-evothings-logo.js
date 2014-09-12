@@ -8,5 +8,5 @@
 
 	document.write(
 		'<a href="http://evothings.com"><img src="' + path +
-			'images/evothings-logo.png" width="90%" /></a><br/>')
+			'images/evothings_logo_outline.svg" width="100%" /></a><br/>')
 })()
