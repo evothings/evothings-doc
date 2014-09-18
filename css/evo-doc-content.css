@@ -135,7 +135,7 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 *[DIR="rtl"]    { direction: rtl; unicode-bidi: embed }
 
 @media print {
-	.evo-content h1		{ page-break-before: always }
+	.evo-content h1		{ page-break-before: avoid }
 	.evo-content h1,
 	.evo-content h2,
 	.evo-content h3,
@@ -254,6 +254,37 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 	margin-left: 20px;
 	position: relative;
 	float: right;
+}
+
+/* Assume narrow screen. */
+#main-menu-wide {
+	display: none;
+}
+#main-menu-narrow {
+	display: block;
+}
+
+/* If screen is wide override narrow settings. */
+@media all and (min-width: 600px) {
+	#main-menu-wide {
+		display: block;
+	}
+	#main-menu-narrow {
+		display: none;
+	}
+}
+
+/* Hide menus when printing the page. */
+@media print {
+	.evo-content-index {
+		display: none !important;
+	}
+	#main-menu-wide {
+		display: none;
+	}
+	#main-menu-narrow {
+		display: none;
+	}
 }
 
 /* CSS for buttons adopted from Bootstrap. */
@@ -379,6 +410,50 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 .evo-btn-group > .evo-btn-group:last-child > .evo-btn:first-child {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+}
+
+.evo-btn-group-vertical > .evo-btn,
+.evo-btn-group-vertical > .evo-btn-group,
+.evo-btn-group-vertical > .evo-btn-group > .evo-btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+}
+.evo-btn-group-vertical > .evo-btn-group > .evo-btn {
+  float: none;
+}
+.evo-btn-group-vertical > .evo-btn + .evo-btn,
+.evo-btn-group-vertical > .evo-btn + .evo-btn-group,
+.evo-btn-group-vertical > .evo-btn-group + .evo-btn,
+.evo-btn-group-vertical > .evo-btn-group + .evo-btn-group {
+  margin-top: -1px;
+  margin-left: 0;
+}
+.evo-btn-group-vertical > .evo-btn:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.evo-btn-group-vertical > .evo-btn:first-child:not(:last-child) {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.evo-btn-group-vertical > .evo-btn:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 4px;
+}
+.evo-btn-group-vertical > .evo-btn-group:not(:first-child):not(:last-child) > .evo-btn {
+  border-radius: 0;
+}
+.evo-btn-group-vertical > .evo-btn-group:first-child:not(:last-child) > .evo-btn:last-child,
+.evo-btn-group-vertical > .evo-btn-group:first-child:not(:last-child) > .dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.evo-btn-group-vertical > .evo-btn-group:last-child:not(:first-child) > .evo-btn:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .evo-btn-group-justified {

@@ -22,7 +22,7 @@
 	// Include JS/CSS common for both offline/raw and for Wordpress.
 	document.write(
 		'<script src="' + path + 'libs/jquery/jquery-2.0.3.js"></script>'
-		+ '<link rel="stylesheet" href="' + path + 'css/evo-doc-content.css" media="screen" />')
+		+ '<link rel="stylesheet" href="' + path + 'css/evo-doc-content.css" media="all" />')
 
 	// Include CSS used only for offline/raw.
 	if (raw || protocol == 'file:')

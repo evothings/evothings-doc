@@ -69,13 +69,11 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server, that will tell devices to run and reload apps. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
 
-	<p>You have two options, to use either the web browser on the device, or use a hybrid app, either the Evothings Client app (available on Google Play), or a custom hybrid app like a Cordova application.</p>
+	<p>Use the Evothings Client app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app. It is possible to connect from the web browser of the device (just enter the connect address shown in the Workbench window in the URL field of the browser).</p>
 
-	<p>Note that when using a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or BlueTooth Low Energy. For most IoT apps, you will need to use the Evothings App or build your own hybrid app with the functionality you require.</p>
+	<p>However, when connecting from a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or Bluetooth Low Energy. For most IoT apps, you will need to use the Evothings Client app or build your own hybrid app with the functionality you require.</p>
 
-	<p>To connect from a web browser, simply enter the URL displayed in the bottom panel of the main workbench window.</p>
-
-	<p>To connect from the Evothings App, use the "Scan" button to automatically detect the running Workbench application, or enter the URL in the address field and press "Connect".</p>
+	<p>To connect from the Evothings Client app, use the "Scan" button to automatically detect the running Workbench application, or enter the connect URL in the address field and press "Connect".</p>
 </div>
 
 <div id="LiveEditing" class="evo-box">
@@ -108,18 +106,48 @@ Copyright (c) 2013-2014 Evothings AB
 
 <pre>http://192.168.43.226:4042</pre>
 
+<h3>Connecting from an Android app</h3>
+
 <p>Here is an example of how to connect from an Android WebView:</p>
 
 <pre>WebView mWebView = new WebView(this);
 mWebView.getSettings().setJavaScriptEnabled(true);
 setWebViewClient(new WebViewClient());
+// Replace IP-address with the address displayed in the Workbench!
 mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 <p>Make sure the WebView has JavaScript enabled, and that it has a WebViewClient (otherwise, URLs opened from within the WebView will be opened in an external browser, rather than in the WebView itself).</p>
+
+<h3>Connecting from an iOS app</h3>
+
+<pre>// Create a web view ("self" is the View Controller).
+UIWebView* webView = [[UIWebView alloc] initWithFrame: self.view.bounds];
+
+// Example of how to set properties for the web view.
+webView.autoresizingMask =
+    UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleWidth;
+webView.scalesPageToFit = NO;
+webView.scrollView.bounces = NO;
+self.automaticallyAdjustsScrollViewInsets = NO;
+
+// Replace IP-address with the address displayed in the Workbench!
+NSURL* url = [NSURL URLWithString:@"http://192.168.43.226:4042"];
+
+// Connect to the Workbench.
+NSURLRequest* request = [NSURLRequest
+    requestWithURL: url
+    cachePolicy: NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+    timeoutInterval: 10];
+[webView loadRequest: request];
+
+// Display the web view.
+[self.view addSubview: webView];</pre>
+
 </div>
 
 <div id="UsingCordovaPhoneGap" class="evo-box">
-<h2>Using Cordova/PhoneGap</h2>
+<h2>Using Cordova or PhoneGap</h2>
 
 	<p>Evothings Studio works great when developing apps with Apache Cordova (or Adobe PhoneGap). You can skip the entire build step and get a fast workflow with quick turn-around times.</p>
 
@@ -173,7 +201,7 @@ mWebView.loadUrl("http://192.168.43.226:4042");</pre>
 
 	<p>In the coding space, you can evaluate JavaScript code snippets interactively on connected devices. Just select the code you wish to run, and press the "Eval" button. The selected code is sent to connected devices and evaluated. The return value is displayed in the log view in the bottom panel.</p>
 
-	<p>To display log messages, use the hyper.log() function. The log message is displayed in the lov view. Exemple:</p>
+	<p>To display log messages, use the <code>hyper.log()</code> function. The log message is displayed in the lov view. Exemple:</p>
 
 	<pre>hyper.log('Hello World')</pre>
 
