@@ -265,7 +265,7 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 }
 
 /* If screen is wide override narrow settings. */
-@media all and (min-width: 600px) {
+@media all and (min-width: 800px) {
 	#main-menu-wide {
 		display: block;
 	}
