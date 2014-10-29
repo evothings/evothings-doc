@@ -8,13 +8,13 @@ Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>Create and Build Your App</title>
+<title>Cordova Guide</title>
 <script src="../js/include-viewport.js"></script>
 <script src="../js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div class="evo-heading">Create and Build Your App</div>
+<div class="evo-heading">Cordova Guide</div>
 
 <div class="evo-page"><div class="evo-content">
 
@@ -23,7 +23,7 @@ Copyright (c) 2013-2014 Evothings AB
 <div class="evo-box evo-content-index">
 	<script src="../js/include-build-top-menu.js"></script>
 	<div class="evo-box">
-		<a href="#Introduction">Create and Build Your App</a><br/>
+		<a href="#Introduction">Cordova Guide</a><br/>
 		<a href="#CreatingCordovaProject">Creating a Cordova Project</a><br/>
 		<a href="#BuildingForIOS">Building for iOS</a><br/>
 		<a href="#BuildingForAndroid">Building for Android</a><br/>
@@ -36,9 +36,9 @@ Copyright (c) 2013-2014 Evothings AB
 </div>
 
 <div id="Introduction" class="evo-box">
-	<h1>Create and Build Your App</h1>
+	<h1>Cordova Guide</h1>
 
-	<p><a href="http://cordova.apache.org/">Apache Cordova</a> is a build system for creating native apps with bundled HTML and JavaScript content. Apps built with Cordova are native apps that can be published on the app stores. Furthermore, you can add custom native plugins to extend the functionality of your app.</p>
+	<p><a href="http://cordova.apache.org/">Apache Cordova</a> is a build system for creating native mobile apps with bundled HTML and JavaScript content. Apps built with Cordova are native apps that can be published on the app stores. Furthermore, you can add custom native plugins to extend the functionality of your app.</p>
 
 	<p>To learn how to install Cordova and mobile SDKs on your system, please go to the <a href="http://cordova.apache.org/">Build Overview</a>.</p>
 
@@ -178,10 +178,22 @@ www
 		<li><p>Build the project and launch the app on a device. Note that the device must be on the same network as your desktop machine running Evothings Workbench. When you launch the app, it should connect to the Workbench and display the Connect screen.</p></li>
 		<li><p>Find the <b>index.html</b> file of you project in the <b>www</b> folder using a file explorer (Finder on iOS X, Explorer on Windows).</p></li>
 		<li><p>Drag the file <b>index.html</b> into the Evothings Workbench window. This adds your project to the project list.</p></li>
-		<li><p>Click the <b>Run</b> button of your project.</p></li>
+		<li><p>Click the <b>Run</b> button of your project. Clicking Run activates your project, and tells the Workbench that this is the project to reload when changes are made. You only need to click Run once. Any document you edit and save in the current project will automatically reload the app on your device.</p></li>
 	</ol>
 
 	<p>Now you can just edit your HTML/CSS/JS files in any text editor. When you save a file, the app will be reloaded on the device!</p>
+
+	<p><b><i>As an alternative to editing the config.xml file</i></b> you can create a link or button in index.html that connects to the Workbench. Here is how to do this:</p>
+	<ol>
+		<li><p>Open the file <b>index.html</b> (located in your Cordova project folder) in a text editor.</p></li>
+		<li><p>Add HTML code to make a link that connect to the Workbench when selected.
+		For example, if the Workbench address is "192.168.43.131:4042" the link looks like this:
+		<pre>&lt;a href="http://192.168.43.131:4042"&gt;Connect&lt;/a&gt;</pre>
+		Save the file.</p></li>
+		<li><p>Proceed to build the project and launch the app on a device. When the app is started, the index.html built into the app will display. When selecting "Connect" the app will connect to the Workbench and you can run any HTML file inside the app, including index.html itself (which is kind of mind-boggling!).</p></li>
+	</ol>
+
+	<p>If the Workbench address changes (for example if you get a new IP address from the WiFi network), you need to update the connect string in config.xml or the link address in index.html and rebuild the Cordova app. In this case you also have to close and restart the Workbench for everything to work.</p>
 
 	<p>Note that you can run your app on multiple devices/platforms, for instance an Android tablet and an iPad. When you update your code, the app will be reloaded on all connected devices!</p>
 </div>
@@ -203,7 +215,7 @@ www
 	<p>The same goes for the Evothings Client app. It is available on iOS and Android, but should be possible to build from source for any platform supported by Cordova. (But you would miss the plugins not available for the target platform.) </p>
 </div>
 
-<script src="../../js/include-footer.js"></script>
+<script src="../js/include-footer.js"></script>
 
 </div></div>
 </body>
