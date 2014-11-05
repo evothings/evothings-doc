@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <!--
-File: ble-ti-sensortag.html
+File: ble-ti-sensortag-sensors.html
 Description: Example documentation.
 Author: Mikael Kindborg
 Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>TI SensorTag Demo</title>
+<title>TI SensorTag Sensors</title>
 <script src="../js/include-viewport.js"></script>
 <script src="../js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div class="evo-heading">TI SensorTag Demo</div>
+<div class="evo-heading">TI SensorTag Sensors</div>
 
 <div class="evo-page"><div class="evo-content">
 
@@ -24,11 +24,11 @@ Copyright (c) 2013-2014 Evothings AB
 <div class="evo-box">
 	<img class="img-example-platform-support" src="../images/examples/target-evothings-app.png"/>
 
-	<h1>TI SensorTag Demo</h1>
+	<h1>TI SensorTag Sensors</h1>
 
-	<p><b>Make An App For The SensorTag.</b> This app charts magnetometer data from the <a href="http://www.ti.com/ww/en/wireless_connectivity/sensortag/">Texas Instruments SensorTag</a>. Note that you must run this app in the Evothings client app, or build a Cordova app with the plugin com.evothings.ble. Device with support for Bluetooth 4.0 is required.</p>
+	<p><b>Learn How To Read SensorTag Sensors.</b> This app displays all the sensors available in the <a href="http://www.ti.com/ww/en/wireless_connectivity/sensortag/">Texas Instruments SensorTag</a>. Note that you must run this app in the Evothings client app, or build a Cordova app with the plugin com.evothings.ble. Device with support for Bluetooth 4.0 is required.</p>
 
-	<img class="img-example-screenshot" src="../images/examples/ti-sensortag-demo-screenshot.png"/>
+	<img class="img-example-screenshot" src="../images/examples/ti-sensortag-sensors-screenshot.png"/>
 
 </div>
 
@@ -36,10 +36,11 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Source Code</h2>
 
 	<p>You can browse the source code for this example at the
-	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/ti-sensortag-demo">Evothings GitHub repository</a></p>
+	<a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/ti-sensortag-sensors">Evothings GitHub repository</a></p>
 
-	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ti-sensortag-demo/index.html">index.html</a> is the entry point of the app.</p>
-	<p>The file File <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ti-sensortag-demo/app.js">app.js</a> contains JavaScript code for the app that communicates with the SensorTag using BLE.</p>
+	<p>The file <a href="https://github.com/evothings/EvoThingsExamples/blob/master/examples/ti-sensortag-sensors/index.html">index.html</a> is the main file of the app, which also contains JavaScript code for the app that communicates with the SensorTag using BLE.</p>
+
+	<p>This examples uses a high-level JavaScript library for the SensorTag found in file ti-sensortag.js.</p>
 </div>
 
 <div class="evo-box">
@@ -63,10 +64,9 @@ Copyright (c) 2013-2014 Evothings AB
 	<ul>
 		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
 		<li>Run the Evothings client app on an Android mobile device and connect to the Workbench.</li>
-		<li>Launch the example "TI SensorTag Demo" from the Workbench window.</li>
+		<li>Launch the example "TI SensorTag Sensors" from the Workbench window.</li>
 		<li>Press the "activate" button on the SensorTag.</li>
-		<li>Touch the "start" button in the app.</li>
-		<li>If everything works, the app should detect the SensorTag and start plotting magnetometer data on the canvas.</li>
+		<li>If everything works, the app should detect the SensorTag and start display sensor values. Also try pressing the two buttons on the top of the SensorTag.</li>
 	</ul>
 </div>
 
