@@ -106,7 +106,11 @@ Copyright (c) 2013-2014 Evothings AB
 		<li>Evothings Client for Android now has full support for evothings: URLs.</li>
 		<li>There is a new example app for the Texas Instruments SensorTag.</li>
 		<li>Several bugfixes have been made. The BLE Scan example has been updated to work stable on Android.</li>
+		<li>On page reload a 1000 ms second pause had been introduced before next reload can be made. This is to fix a bug on iOS 8 that can cause page loading to hang. This means that when clicking the RUN buttons in the Workbench window, you much wait a second between clicks for reload to happen. The pause should not be a noticeable unless clicking very rapidly on the RUN buttons.</li>
 		<li>GitHub source code repositories have been renamed for consistency.</li>
+		<li>JavaScript library files and UI files used in example apps have been renamed for consistency.</li>
+		<li>If you use the <b>evothings-examples</b> source code repository, it should be mentioned that library files and UI files are found in folder <b>resources</b>. Use Ruby script <b>build.rb</b> to copy library files to examples. In the downloaded version of Evothings Studio examples are already pre-built.</li>
+		<li>Two new examples, Nordic BLE and RFduinio BLE, are found in the examples folder (but are not included in the Workbench window). To run these examples, drag the index.html files to the Workbench window and click RUN. These examples are currently not included in the documentation.</li>
 		<li>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></li>
 	</ul>
 
