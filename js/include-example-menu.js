@@ -14,4 +14,8 @@ document.write(
 	+	'<a href="../examples/ble-ti-sensortag.html">TI SensorTag Demo</a><br/>'
 	+	'<a href="../examples/ble-ti-sensortag-sensors.html">TI SensorTag Sensors</a><br/>'
 	+	'<a href="../examples/hue-lights.html">Philips Hue Demo</a><br/>'
+	+	'<a href="../examples/rfduino-led-onoff.html">RFduino Led On Off</a><br/>'
+	+	'<a href="../examples/lightbluebean-basic.html">LightBlue Bean Basic</a><br/>'
+	+	'<a href="../examples/bluno-helloworld.html">Bluno Hello World</a><br/>'
+	+	'<a href="../examples/nordic-ble.html">Nordic Led On/Off</a><br/>'
 	+ '</div>')
