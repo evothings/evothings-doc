@@ -18,4 +18,6 @@ document.write(
 	+	'<a href="../examples/lightbluebean-basic.html">LightBlue Bean Basic</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno Hello World</a><br/>'
 	+	'<a href="../examples/nordic-ble.html">Nordic Led On/Off</a><br/>'
+	+	'<a href="../examples/redbearlabs-simplecontrol.html">RedBearLab Simple Control</a><br/>'
+	+	'<a href="../examples/redbearlabs-simplechat.html">RedBearLab Simple Chat</a><br/>'
 	+ '</div>')
