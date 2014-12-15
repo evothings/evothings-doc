@@ -20,8 +20,8 @@ document.write(
 	+	'<a href="../examples/arduino-ble.html">Arduino BLE</a><br/>'
 	+	'<a href="../examples/arduino-scriptable-tcp.html">Arduino Scriptable TCP</a><br/>'
 
-	+	'<a href="../examples/redbearlabs-simplecontrol.html">RedBearLab Simple Control</a><br/>'
-	+	'<a href="../examples/redbearlabs-simplechat.html">RedBearLab Simple Chat</a><br/>'
+	+	'<a href="../examples/redbearlab-simplecontrol.html">RedBearLab Simple Control</a><br/>'
+	+	'<a href="../examples/redbearlab-simplechat.html">RedBearLab Simple Chat</a><br/>'
 
 	+	'<a href="../examples/lightbluebean-basic.html">LightBlue Bean Basic</a><br/>'
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino Led On Off</a><br/>'
