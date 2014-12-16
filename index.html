@@ -135,9 +135,10 @@ Copyright (c) 2013-2014 Evothings AB
 	<p><b>Libraries:</b></p>
 	<ul>
 		<li>Updated TISensorTag library (support for accessing firmware version, calculation of sensor values etc).</li>
-		<li>New library file evothings.js, which must be included in all apps that use Evothings library functions. Supports asynchronous loading of JavaScript libraries, using the evothings.loadScript function.</li>
+		<li>New library file <a href="https://github.com/evothings/evothings-examples/blob/master/resources/libs/evothings/evothings.js">evothings.js</a>, which must be included in all apps that use Evothings library functions. Supports asynchronous loading of JavaScript libraries, using the evothings.loadScript function. Use function evothings.scriptsLoaded(doneCallback) to ensure all script have been loaded, or pass a callback to evothings.loadScript to know when a single script has loaded. These callbacks take no parameters.</li>
 		<li>New JavaScript library evothings.util with support for number conversions etc.
-		<li>The cordova-ble plugin has support for accessing advertisement data in the easyble.js library.</li>
+		<li>The cordova-ble plugin has support for accessing advertisement data using the easyble.js library.</li>
+		<li>easyble.js asynchronously loads util.js. To be safe, use evothings.scriptsLoaded(doneCallback) to ensure all scripts are loaded before using functions in easyble.js. Example TI SensorTag Sensors uses this method, see code at the end of <a href="https://github.com/evothings/evothings-examples/blob/master/examples/ti-sensortag-sensors/index.html">index.html</a>.</li>
 	</ul>
 
 	<h3>Evothings Studio 1.0.0</h3>
