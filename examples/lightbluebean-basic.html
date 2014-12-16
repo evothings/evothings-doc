@@ -27,40 +27,34 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<h1>LightBlue Bean - Basic</h1>
 
-	<p>
-		This example shows you how to build a mobile application that connects to your <a href="https://punchthrough.com/bean/">LightBlue Bean</a> and, when connected, allows you to configure the LED as well as read the ambient temperature.
-	</p>
+	<p>This example shows you how to build a mobile application that connects to your <a href="https://punchthrough.com/bean/">LightBlue Bean</a> and, when connected, allows you to configure the LED as well as read the ambient temperature.</p>
 
+	<img class="img-example-screenshot" src="../images/examples/lightbluebean-basic-startscreen-screenshot.png"/>
 	<img class="img-example-screenshot" src="../images/examples/lightbluebean-basic-screenshot.png"/>
+
 </div>
 
 <div class="evo-box">
 	<h2>Source Code</h2>
 
-	<p>
-		You can browse the source code for this example at the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/lightblue-bean-basic">Evothings GitHub repository</a>
-	</p>
+	<p>You can browse the source code for this example at the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/lightblue-bean-basic">Evothings GitHub repository</a></p>
 
-	<p>
-		The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/lightblue-bean-basic/app/index.html">index.html</a> contains the HTML markup of the app and the buisness logic is placed in the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/lightblue-bean-basic/app/app.js">app.js</a>
-	</p>
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/lightblue-bean-basic/app/index.html">index.html</a> contains the HTML markup of the app and the buisness logic is placed in the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/lightblue-bean-basic/app/app.js">app.js</a></p>
 
 </div>
 
 <div class="evo-box">
 	<h2>What You Need</h2>
 
-	<p>
-		This example runs in Evothings Client on Android or iOS.
-	</p>
+	<p>This example runs in Evothings Client on Android or iOS.</p>
 
-	<p>
-		An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android version 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart the Evothings client app and/or reset Bluetooth on the device.
-	</p>
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android version 4.3 or later is needed.</p>
 
-	<p> 
-		You also need a <a href="https://punchthrough.com/bean/">LightBlue Bean</a> running the sketch provided in the <a href="https://github.com/evothings/EvoThingsExamples/tree/master/examples/lightbluebean-basic">Evothings GitHub repository</a>.
-	</p>
+	<p>You need a <a href="https://punchthrough.com/bean/">LightBlue Bean device</a>.</p>
+
+	<p>Currently, to program the Bean an OS X machine is needed, with the Arduino IDE installed (Punch Through Design writes Windows 8 support coming soon).</p>
+
+	<img class="img-example-arduino-sketch" src="../images/examples/lightbluebean-photo.jpg"/>
 </div>
 
 <div class="evo-box">
@@ -68,15 +62,19 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>Follow these steps to get started with this example:</p>
 	<ul>
-		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
-		<li>Connect to the Workbench from either the Evothings client app or a web browser (mobile or desktop).</li>
+		<li>Make sure you have <a href="https://punchthrough.com/bean/getting-started/">set up your Arduino IDE for use with LightBlue Bean</a>.</li>
+		<li>Connect to your bean using the Bean Loader application</li>
+		<li>Program the Bean with the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/lightblue-bean-basic/LightBlueBean_Basic/LightBlueBean_Basic.ino">LightBlueBean_Basic.ino</a> sketch. Note that this sketch is provided with the Evothings Studio download, in the <b>examples/lightblue-bean-basic/LightBlueBean_Basic</b> folder.</li>
+		<li>Disconnect from the bean using the Bean Loader application, so that the mobile app can find it (when connected the bean does not advertise, and cannot be found when scanning for it).</li>
+		<li>Run Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Connect to the Workbench from either the Evothings client app.</li>
 		<li>Run the "LightBlue Bean - Basic" example from the Workbench window.</li>
-		<li>Upload <a href="https://github.com/evothings/evothings-examples/blob/master/examples/lightblue-bean-basic/LightBlueBean_Basic/LightBlueBean_Basic.ino">this</a> Arduino sketch to the LightBlue Bean</li>
+
 		<li>Play around with the application and use it as a starting point for your project</li>
 	</ul>
 
 	<p>
-		<a href="http://evothings.com/connecting-your-phone-to-the-lightblue-bean/">Here</a> is a blog post that explains the application example in detail. 
+		<a href="http://evothings.com/connecting-your-phone-to-the-lightblue-bean/">Read more in the blog post</a> that explains the LightBlue Bean application example in detail.
 	</p>
 </div>
 

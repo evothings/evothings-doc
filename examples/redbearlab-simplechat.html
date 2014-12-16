@@ -28,10 +28,12 @@ Copyright (c) 2013-20145 Evothings AB
 	<h1>RedBearLab - Simple Chat</h1>
 
 	<p>
-		This application is a reimplementation of an example application that <a href="http://redbearlab.com/">RedBearLab</a> provides (<a href="https://github.com/RedBearLab/iOS/tree/master/Examples">iOS</a>, <a href="https://github.com/RedBearLab/Android/tree/master/Examples/Chat">Android</a>). The application shows you how to communicate in both directions with your RedBearLab board. In this particular example you can send text messages in both directions. 
+		This application is a reimplementation of an example application that <a href="http://redbearlab.com/">RedBearLab</a> provides (<a href="https://github.com/RedBearLab/iOS/tree/master/Examples">iOS example app</a>, <a href="https://github.com/RedBearLab/Android/tree/master/Examples/Chat">Android example app</a>). The example is a chat application that shows how to communicate between multiple mobile phones connected to the RedBearLab board by sending text messages in both directions.
 	</p>
 
+	<img class="img-example-screenshot" src="../images/examples/redbearlab-simplechat-startscreen-screenshot.png"/>
 	<img class="img-example-screenshot" src="../images/examples/redbearlab-simplechat-screenshot.png"/>
+
 </div>
 
 <div class="evo-box">
@@ -53,32 +55,28 @@ Copyright (c) 2013-20145 Evothings AB
 
 	<h2>What You Need</h2>
 
-	<p>
-		This example runs in Evothings Client on Android or iOS, or in any web browser (mobile or desktop).
-	</p>
+	<p>This example runs in Evothings Client on Android or iOS.</p>
 
-	<p>
-		An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android version 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart the Evothings client app and/or reset Bluetooth on the device.
-	</p>
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android version 4.3 or later is needed.</p>
 
-	<p>
-		You also need one of RedBearLab development boards that has an implementation of the Simple Control example available. 
-	<p>
+	<p>You need one of RedBearLab development boards that has an implementation of the Simple Control example available, for example <a href="http://redbearlab.com/blend/">Blend</a> or <a href="http://redbearlab.com/blendmicro/">Blend Micro</a>. You can also use an Arduino with a <a href="http://redbearlab.com/bleshield/">BLE Shield</a>. (No additional hardware components are needed for the chat example.)<p>
+
+	<p>Photo of the RedBearLab BLE Shield:</p>
+	<img class="img-example-arduino-sketch" src="../images/examples/redbearlab-simplechat-board-photo.jpg"/>
+
 </div>
 
 <div class="evo-box">
 
 	<h2>How To Get Up And Running</h2>
 
-	<p>
-		Follow these steps to get started with this example:
-	</p>
+	<p>Follow these steps to get started with this example:</p>
 	<ul>
-		<li>Compile and upload the Simple Chat application to your RedBearLab board. Since the example is available across many of RedBearLab products you have to find the correct source code on their <a href="http://redbearlab.com">site</a>.</li>
-		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
-		<li>Connect to the Workbench from either the Evothings client application.</li>
+		<li>Compile and upload the Simple Chat application to your RedBearLab board. This is one of the demo sketches that comes with the RedBearLab setup for the Arduino IDE. See the getting started instructions for <a href="http://redbearlab.com/getting-started-blend/">Blend</a>, <a href="http://redbearlab.com/getting-started-blendmicro/">Blend Micro</a>, or the <a href="http://redbearlab.com/getting-started-bleshield/">BLE Shield</a>.</li>
+		<li>Run Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Connect to the Workbench from the Evothings client application.</li>
 		<li>Run the "RedBearLab - Simple Chat" example from the Workbench window.</li>
-		<li>Press "Scan" and then connect to your board.</li>
+		<li>Press "Scan" in the app and then connect to your board from the list of devices displayed.</li>
 		<li>Play around with the application and the software.</li>
 	</ul>
 </div>
