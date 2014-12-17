@@ -4,7 +4,7 @@
 File: redbearlab-simplecontrol.html
 Description: Template for example documentation.
 Author: Andreas Lundquist
-Copyright (c) 2013-20145 Evothings AB
+Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
@@ -28,7 +28,7 @@ Copyright (c) 2013-20145 Evothings AB
 
 	<h1>RedBearLab - Simple Control</h1>
 
-	<p>This application is a reimplementation of an example application that <a href="http://redbearlab.com/">RedBearLab</a> provides (<a href="https://github.com/RedBearLab/iOS/tree/master/Examples/SimpleControls_iOS">iOS example app</a>, <a href="https://github.com/RedBearLab/Android/tree/master/Examples/SimpleControls">Android example app</a>). The application shows you how to communicate in both directions with your RedBearLab board (read/write). The example hardware setup contains LEDs and a potentiometer connected to the development board. See the above example apps for hardware setup.</p>
+	<p>This application is a reimplementation of an example application that <a href="http://redbearlab.com/">RedBearLab</a> provides (<a href="https://itunes.apple.com/se/app/ble-controller/id855062200?mt=8">iOS example app</a> - <a href="https://github.com/RedBearLab/iOS/tree/master/Examples/SimpleControls_iOS">Source code</a>, <a href="https://play.google.com/store/apps/details?id=com.redbear.redbearbleclient">Android example app</a> - <a href="https://github.com/RedBearLab/Android/tree/master/Examples/SimpleControls">Source code</a>). The application shows you how to communicate in both directions with your RedBearLab board (read/write). The example hardware setup contains LEDs and a potentiometer connected to the development board. See the above example apps for hardware setup.</p>
 
 	<img class="img-example-screenshot" src="../images/examples/redbearlab-simplecontrol-startscreen-screenshot.png"/>
 
@@ -61,21 +61,27 @@ Copyright (c) 2013-20145 Evothings AB
 
 	<p>You need one of RedBearLab development boards that has an implementation of the Simple Control example available, for example <a href="http://redbearlab.com/blend/">Blend</a> or <a href="http://redbearlab.com/blendmicro/">Blend Micro</a>. You can also use an Arduino with a <a href="http://redbearlab.com/bleshield/">BLE Shield</a>.<p>
 
-	<p>You also need the additional hardware components used in the example, such as LEDs and a potentiometer.<p>
+	<p>You also need the following hardware components in order to build the external circuit.<p>
 
-	<p>Here is a list of components:</p>
 	<ul>
 		<li>2 x LED</li>
 		<li>2 x 220 Ohm resistor</li>
 		<li>1 x 1 kOhm resistor</li>
 		<li>1 x Potentiometer</li>
-		<li>1 x digital button</li>
+		<li>1 x Digital button</li>
 		<li>1 x 100 &mu;F capacitor</li>
-		<li>1 x servo</li>
+		<li>1 x Servo</li>
 	</ul>
+
+	<p>Fritzing sketch of the external cricuit:</p>
+	<img class="img-example-arduino-sketch" src="../images/examples/redbearlab-simplecontrol-circuit.png"/>
 
 	<p>Photo of the hardware setup:</p>
 	<img class="img-example-arduino-sketch" src="../images/examples/redbearlab-simplecontrol-board-photo.jpg"/>
+
+
+
+
 
 </div>
 
