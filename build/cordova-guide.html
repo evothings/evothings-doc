@@ -24,6 +24,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<script src="../js/include-build-top-menu.js"></script>
 	<div class="evo-box">
 		<a href="#Introduction">Cordova Guide</a><br/>
+		<a href="#SummaryOfBuildSteps">Summary of Build Steps</a><br/>
 		<a href="#CreatingCordovaProject">Creating a Cordova Project</a><br/>
 		<a href="#BuildingForIOS">Building for iOS</a><br/>
 		<a href="#BuildingForAndroid">Building for Android</a><br/>
@@ -46,6 +47,50 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<!-- Check that the version number in this cordova link matches evothings-client/workfile.rb, @requiredCordovaVersion. -->
 	<p>You can also consult the Cordova documentation to learn more about how to set up and build projects: <a href="http://cordova.apache.org/docs/en/3.6.0/guide_cli_index.md.html">cordova.apache.org/docs/en/3.6.0/guide_cli_index.md.html</a></p>
+</div>
+
+<div id="SummaryOfBuildSteps" class="evo-box">
+	<h2>Summary of Build Steps</h2>
+
+	<p>When you have used Evothings Client to develop an app it is straightforward to create a Cordova app from your project files. In essence, just put your HTML/CSS/JS files into the Cordova "www" folder. That's it!</p>
+
+	<p>You can also <a href="#SetupCordovaForEvothings">run your Cordova app from Evothings Workbench</a>, and take advantage of the fast reload-on-save functionality. This means there is no need to rebuild the Cordova app during development, unless you made native code changes such as adding a new plugin.</p>
+
+	<p>Here is a step-by-step guide for how to create a Cordova app from your Evothings project. For details regarding each step, see sections below.</p>
+
+	<p>Initial setup to create the project:</p>
+
+	<ul>
+		<li><p><a href="#CreatingCordovaProject">Create</a> a new Cordova project</p></li>
+		<li><p>Delete the contents of the www folder</p></li>
+		<li><p>Move or copy in the files in the Evothings project folder to the Cordova www folder</p></li>
+		<li><p><a href="#AddingPlugins">Add plugins</a> needed</p></li>
+		<li><p>Add target platforms (ios and/or android)</p></li>
+	</ul>
+
+	<p>For each code update:</p>
+	<ul>
+		<li><p>Build for the target platforms</p></li>
+	</ul>
+
+	<p>Example of one-time initial setup:<p>
+
+	<pre>cordova create DemoProject com.evothings.demoapp DemoApp
+cd DemoProject
+(delete files in www-folder, using file browser or command line)
+(move or copy files from your project to www, using file browser or command line)
+(add plugins using <b>cordova plugin add</b>)
+cordova platform add ios
+cordova platform add android</pre>
+
+	<p>Then build the native app (for iOS and Android):<p>
+
+	<pre>cordova build ios
+cordova build android</pre>
+
+    <p>As mentioned, to <a href="#SetupCordovaForEvothings">save development time</a> you can use Evothings Workbench with any Cordova app. This gives you fast reload-on-save with your own app (in this case you do not use Evothings Client). This is useful for example if you wish yo use plugins not included in Evothings Client.<p>
+
+    <p>Read on for detailed descriptions of the steps outlined above.<p>
 </div>
 
 <div id="CreatingCordovaProject" class="evo-box">
@@ -129,9 +174,10 @@ platforms
     ant-build
       (generated apk-file is found here)
 plugins
-  (plugins are added here)
+  (plugins are added here using the command line)
 www
   index.html (main HTML-file specified in config.xml)
+  (other HTML/CSS/JS files used by the app)
 </pre>
 <p>The main HTML-file display when your app launches is specified in <b>config.xml</b>. Usually this file is named <b>index.html</b>, but you can name it anything as long as the name matches the setting in config.xml. You can also specify a connect URL to Evothings Workbench, read on below for further details.</p>
 </div>
