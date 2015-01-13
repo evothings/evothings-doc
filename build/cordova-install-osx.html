@@ -114,8 +114,8 @@ brew install ant</pre>
 		<pre>cd
 nano .bashrc</pre>
 		</p></li>
-		<li><p>In the nano editor, add the following line, with "/Users/username/android" substituted by the actual location of the Android SDK:
-		<pre>export PATH=/Users/username/android/sdk/platform-tools:/Users/username/android/sdk/tools:$PATH</pre>
+		<li><p>In the nano editor, add the following line, with "/Users/username/android" substituted by the actual location of the Android SDK (note that there are two paths in one line, separated by a colon):
+		<p><code>export PATH=/Users/username/android/sdk/platform-tools:/Users/username/android/sdk/tools:$PATH</code></p>
 		Save and exit by typing CTRL+O (the letter key O) and CTRL+X.</p></li>
 		<li><p>Next, check that .bashrc is loaded by .bash_profile (.bash_profile is loaded when you open a terminal window, and we want the path set for terminal windows). Open the file <b>.bash_profile</b> in nano:
 		<pre>nano .bash_profile</pre>
