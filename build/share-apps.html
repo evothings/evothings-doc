@@ -24,7 +24,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<script src="../js/include-build-top-menu.js"></script>
 	<div class="evo-box">
 		<a href="#Introduction">Two Ways to Share Apps</a><br/>
-		<a href="#RunYourAppFromEvothingsClient">Run Your App From Evothings Client</a><br/>
+		<a href="#RunYourAppFromEvothingsClient">Run Your App In Evothings Client</a><br/>
 		<a href="#BuildNativeAppWithCordova">Build a Native App With Cordova</a><br/>
 		<a href="#SummaryAndAdvice">Summary and Advice</a><br/>
 	</div>
@@ -35,16 +35,18 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>It is fun to share apps you create with others. To make your work available to others, you have the following options:</p>
 	<ul>
 		<li><p>Put your HTML and JavaScript files on a web server and run the app
-from the Evothings Client app (estimated time 15 minutes).</p></li>
+in Evothings Client (estimated time 15 minutes).</p></li>
 		<li><p>Build a native app with Apache Cordova (estimated time 2 - 8 hours), and publish on the app stores (estimated time 4 - 16 hours depending on which app stores you target).</p></li>
 	</ul>
 </div>
 
 <div id="RunYourAppFromEvothingsClient" class="evo-box">
-	<h2>Run Your App From Evothings Client</h2>
-	<p>To run your app from Evothings Client, do as follows:</p>
+	<h2>Run Your App In Evothings Client</h2>
+
+	<h3>How to run your app from a web server</h3>
+	<p>To run your app in Evothings Client, do as follows:</p>
 	<ul>
-		<li><p>Upload your HTML, CSS, JavaScript and media files (images) to a web server. Note that you don't need to include any Cordova JavaScript files. The file cordova.js and Cordova plugin files are bundled with the Evothings Client app.</p></li>
+		<li><p>Upload your HTML, CSS, JavaScript and media files (images) to a web server. Note that you don't need to upload any Cordova JavaScript files. The file cordova.js and Cordova plugin files are bundled with the Evothings Client app.</p></li>
 		<li><p>Install and run the Evothings Client app on your mobile device.</p></li>
 		<li><p>Enter the url to the main HTML file on the web server in the address
 field, and press the Connect button. For example if you have
@@ -54,11 +56,22 @@ open that page in Evothings client.</p></li>
 		<li><p>The drawback is you must be online to run your apps.</p></li>
 		<li><p>The positive thing is that it is very quick and easy to share apps with others. Just ask them to install the Evothings Client app and supply a url to your app or start page.</p></li>
 	</ul>
-	<p>To make sharing of apps even easier, you can create links using the evothings: URL scheme. Evothings links can be shared by email or on any website, e.g. on Twitter, on a blog or on an intranet page. The user just selects the link, and the Evothings Client app launches with the app pointed to by the link. <p>
+
+	<h3>Easy sharing with evothings: URLs</h3>
+	<p>To make sharing of apps even easier, you can create links using the evothings: URL scheme. Evothings links can be shared by email or on any website, e.g. on Twitter, on a blog or on an intranet. The user just selects the link, and the Evothings Client app launches with the app pointed to by the link. <p>
 	<p>Here is an example:</p>
 	<pre>evothings://mysite.com/demo/myapp.html</pre>
 	<p>That URL will launch the Evothings Client app and open:</p>
 	<pre>http://mysite.com/demo/myapp.html</pre>
+
+	<h3>Solutions to cache problems</h3>
+	<p>A potential problem is that Evothings Client does not load the new version of the app when the app has been updated on the web server. Testing we have done indicates iOS does not cache apps, but Android does.</p>
+	<p>The current solution is to include the following meta tags in the head section of index.html, this makes Android not cache the app (works well on iOS too):</p>
+	<pre>&lt;meta http-equiv="pragma" content="no-cache" /&gt;
+&lt;meta http-equiv="expires" content="-1" /&gt</pre>
+	<p>If you have published apps without the above tags, the users have to clear the web cache on Android to get the new version. Go to Settings/Apps/Evothings and select "Clear data" to clear the cache.</p>
+	<p>You can also put a Reload button in the app (which can be useful during development):</p>
+	<pre>&lt;button onclick="window.location.reload(true)"&gtReload&lt;/button&gt</pre>
 </div>
 
 <div id="BuildNativeAppWithCordova" class="evo-box">
