@@ -57,5 +57,33 @@ INSERT_PLUGIN_LIST_HERE
 <script src="../js/include-footer.js"></script>
 
 </div></div>
+
+<script>
+;(function()
+{
+	// Insert link to raw plugin documentation pages,
+	// but only if browsing online.
+	var protocol = window.location.protocol
+	if (protocol != 'file:')
+	{
+		$('#SupportedPlugins a').each(function( key, value ) {
+			updatePluginDocLink(value)
+		})
+	}
+
+	// Function that modified the href attribute of a plugin doc link.
+	function updatePluginDocLink(element)
+	{
+		var obj = $(element)
+		var href = obj.attr('href')
+		if (href.indexOf('../plugins') > -1)
+		{
+			href = href.replace('../plugins/', 'http://evothings.com/doc/raw/plugins/')
+			obj.attr('href', href)
+		}
+	}
+})()
+</script>
+
 </body>
 </html>
