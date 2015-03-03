@@ -1,2 +1,4 @@
 .DS_Store
 evothings-app.css
+/plugins
+/lib-doc
