@@ -3,7 +3,7 @@
 	// Insert page footer element.
 	document.write(
 		'<div class="evo-box">'
-		+	'<p>Copyright &copy; 2013-2014 Evothings AB</p>'
+		+	'<p>Copyright &copy; 2013-2015 Evothings AB</p>'
 		+ '</div>')
 
 	// Insert link to raw HTML page, but only if browsing online.

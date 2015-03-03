@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: release-notes.html
+Description: Evothings Studio release notes.
+Author: Mikael Kindborg
+Copyright (c) 2013-2015 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Evothings Studio Release Notes</title>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div class="evo-heading">Release Notes</div>
+
+<div class="evo-page"><div class="evo-content">
+
+<script src="../js/include-main-menu.js"></script>
+
+<div class="evo-box evo-content-index">
+	<script src="js/include-evothings-logo.js"></script>
+	<a href="#ReleaseNotes">Release Notes</a><br/>
+	<a href="#EvothingsStudio110">EvothingsStudio 1.1.0</a><br/>
+	<a href="#EvothingsStudio100">EvothingsStudio 1.0.0</a><br/>
+	<a href="#EvothingsStudio080">EvothingsStudio 0.8.0</a><br/>
+	<a href="#EvothingsStudio073">EvothingsStudio 0.7.3</a><br/>
+	<a href="#EvothingsStudio070">EvothingsStudio 0.7.0</a><br/>
+	<a href="#EvothingsStudio060">EvothingsStudio 0.6.0</a><br/>
+</div>
+
+<div id="ReleaseNotes" class="evo-box">
+	<h1>Release Notes</h1>
+	<p>Learn what is new in each release of Evothings Studio.</p>
+</div>
+
+<div id="EvothingsStudio110" class="evo-box">
+	<h2>Evothings Studio 1.1.0</h2>
+
+	<p>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></p>
+
+	<p><b>Evothings Workbench:</b></p>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Evothings Workbench has support for network switching (automatic detection of network switching). However, you will need to reconnect from Evothings Client after a network switch.</li>
+		<li>Update of node-webkit to version 0.11.2</li>
+		<li>Evothings Workbench now comes in 32- and 64-bit versions for Windows.</li>
+		<li>Evothings Workbench supports 64-bit versions of OS X (32-bit Mac computers are currently not supported, but can be added if needed, contact us for further information).</li>
+		<li>Updated documentation, including new example apps.</li>
+	</ul>
+
+	<p><b>Evothings Client:</b></p>
+	<ul>
+		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
+		<li>Plugin for Estimote Beacons has been added. Special credits to <a href="https://github.com/kdzwinel">Konrad Dzwinel</a> who is the original creator of this plugin.</li>
+		<li>Local notification plugin added (can be used for background notifications).</li>
+	</ul>
+
+	<p><b>Example apps:</b></p>
+	<ul>
+		<li>New example app for Estimote Beacons.</li>
+		<li>Two new example apps for RedBearLabs.</li>
+		<li>New example app for LightBlue Bean.</li>
+		<li>New example app for Nordic Eval Kit.</li>
+		<li>New example app for RFduino.</li>
+		<li>New example app for DFRobot Bluno.</li>
+		<li>Updated TISensorTag example apps.</li>
+		<li>Updated iBeacon Scan app to use the new API of the Cordova iBeacon plugin.</li>
+		<li>In BLE Scan, display of device.address has been removed on iOS, this is a UUID that can be mistaken for an iBeacon UUID (which it is not, it is just a temporary UUID assigned by iOS).</li>
+	</ul>
+
+	<p><b>Libraries:</b></p>
+	<ul>
+		<li>Updated TISensorTag library (support for accessing firmware version, calculation of sensor values etc).</li>
+		<li>New library file <a href="https://github.com/evothings/evothings-examples/blob/master/resources/libs/evothings/evothings.js">evothings.js</a>, which must be included in all apps that use Evothings library functions. Supports asynchronous loading of JavaScript libraries, using the evothings.loadScript function. Use function evothings.scriptsLoaded(doneCallback) to ensure all script have been loaded, or pass a callback to evothings.loadScript to know when a single script has loaded. These callbacks take no parameters.</li>
+		<li>New JavaScript library evothings.util with support for number conversions etc.
+		<li>The cordova-ble plugin has support for accessing advertisement data using the easyble.js library.</li>
+		<li>easyble.js asynchronously loads util.js. To be safe, use evothings.scriptsLoaded(doneCallback) to ensure all scripts are loaded before using functions in easyble.js. Example TI SensorTag Sensors uses this method, see code at the end of <a href="https://github.com/evothings/evothings-examples/blob/master/examples/ti-sensortag-sensors/index.html">index.html</a>.</li>
+	</ul>
+</div>
+
+<div id="EvothingsStudio100" class="evo-box">
+	<h2>Evothings Studio 1.0.0</h2>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
+		<li>The Evothings Client app has improved iBeacon support with enhanced performance and stability during application reload, and an updated TCP/UDP socket plugin.</li>
+		<li>Evothings Client for Android now has full support for evothings: URLs.</li>
+		<li>There is a new example app for the Texas Instruments SensorTag.</li>
+		<li>Several bugfixes have been made. The BLE Scan example has been updated to work stable on Android.</li>
+		<li>GitHub source code repositories have been renamed for consistency.</li>
+		<li>JavaScript library files and UI files used in example apps have been renamed for consistency.</li>
+		<li>If you use the <b>evothings-examples</b> source code repository, it should be mentioned that library files and UI files are found in folder <b>resources</b>. Use Ruby script <b>build.rb</b> to copy library files to examples. In the downloaded version of Evothings Studio examples are already pre-built.</li>
+		<li>Two new examples, Nordic BLE and RFduinio BLE, are found in the examples folder (but are not included in the Workbench window). To run these examples, drag the index.html files to the Workbench window and click RUN. These examples are currently not included in the documentation.</li>
+		<li>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></li>
+	</ul>
+</div>
+
+<div id="EvothingsStudio080" class="evo-box">
+	<h2>Evothings Studio 0.8.0 Beta</h2>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
+		<li>Evothings Client now supports sharing of apps by hosting them on a web server. Furthermore, you can use evothings: URLs to make it easy for people to launch your apps by selecting a link on a web site or in an email. Read more on the page <a href="build/share-apps.html">Share Your App</a>.</li>
+		<li>The Evothings Client app features new native plugins for iBeacons (iOS, Android) and serial Bluetooth (Android), and updated Bluetooth Low Energy (BLE) plugin.</li>
+		<li>Cordova plugins that present potential security risks have been removed from Evothings Client (e.g. file access and contacts). If you need an app with these plugins, you can build your own version of Evothings Client or contact us.</li>
+		<li>Documentation is updated with a guide for <a href="build/build-overview.html">How To Build Native Apps</a> from your Evothings project using Apache Cordova.</li>
+		<li>The Evothings Client app has a new UI.</li>
+		<li>There is a new example app for iBeacons.</li>
+		<li>The Example apps also have the new UI design, with improved navigability, and a stronger visual identity and clarity.</li>
+		<li>Evothings Workbench now displays a notification when a new version of Evothings Studio is available.</li>
+		<li>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></li>
+	</ul>
+</div>
+
+<div id="EvothingsStudio073" class="evo-box">
+	<h2>Evothings Studio 0.7.3 Beta</h2>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Supported platforms for the Evothings client app are Android and iOS.</li>
+		<li>This version of Evothings Studio features updated examples, bug fixes, improved BLE support in the Evothings Client app on Android and iOS.</li>
+		<li>Positions of the Workbench Project window (the main window) and the Tools window are now saved between sessions. The Tools window has improved scrolling of the log panel, and a button to switch auto scroll on and off.</li>
+		<li>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></li>
+	</ul>
+</div>
+
+<div id="EvothingsStudio070" class="evo-box">
+	<h2>Evothings Studio 0.7.0 Beta</h2>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Supported platforms for the Evothings client app are Android and iOS.</li>
+		<li>This version introduces support for Bluetooth Low Energy (BLE) on iOS, available in the iOS Evothings Client app. Please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings client app if BLE should stop working. On iOS reloading BLE app usually works fine. It is however important to close connected devices before the page reloads. Please see the example programs for ways to accomplish this.</li>
+	</ul>
+</div>
+
+<div id="EvothingsStudio060" class="evo-box">
+	<h2>Evothings Studio 0.6.0 Beta</h2>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Supported platform for the Evothings client app is Android (iOS will follow in a forthcoming release).</li>
+		<li>Bluetooth Low Energy (BLE) is implemented in the Evothings client app, but please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings client app if BLE should stop working.</li>
+	</ul>
+</div>
+
+<script src="../js/include-footer.js"></script>
+
+</div></div>
+</body>
+</html>
