@@ -9,7 +9,8 @@ document.write(
 
 	+	'<a href="../examples/ble-scan.html">BLE Scan</a><br/>'
 	+	'<a href="../examples/ibeacon-scan.html">iBeacon Scan</a><br/>'
-	+	'<a href="../examples/estimote-scan.html">Estimote Scan</a><br/>'
+	+	'<a href="../examples/estimote-beacons.html">Estimote Beacons</a><br/>'
+	+	'<a href="../examples/estimote-nearables.html">Estimote Nearables</a><br/>'
 	+	'<a href="../examples/ble-discovery.html">BLE Discovery</a><br/>'
 
 	+	'<a href="../examples/ble-ti-sensortag.html">TI SensorTag Demo</a><br/>'
