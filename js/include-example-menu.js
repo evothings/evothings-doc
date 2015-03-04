@@ -27,5 +27,6 @@ document.write(
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino Led On Off</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno Hello World</a><br/>'
 	+	'<a href="../examples/nordic-ble.html">Nordic Led On/Off</a><br/>'
+	+	'<a href="../examples/mediatek-linkit.html">MediaTek Linkit ONE Position</a><br/>'
 
 	+ '</div>')

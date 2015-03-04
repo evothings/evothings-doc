@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: mediatek-linkit.html
+Description: Mediatek Linkit ONE.
+Author: Andreas Lundquist
+Copyright (c) 2013-20145 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>MediaTek LinkIt ONE Position</title>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div class="evo-heading">Title here</div>
+
+<div class="evo-page"><div class="evo-content">
+
+<script src="../js/include-main-menu.js"></script>
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<!-- Always use the Evothings Client icon, do not use the "any browser icon". -->
+	<img class="img-example-platform-support" src="../images/examples/target-evothings-app.png"/>
+
+	<h1>MediaTek LinkIt ONE Position</h1>
+
+	<p> This example shows you how to create an application that connects to a lightweight web server running on a MediaTek LinkIt ONE. From the server the position of the board is fetched and then displayed on a map from Google Maps.</p>
+
+	<!-- Insert application screen shot here-->
+	<img class="img-example-screenshot" src="../images/examples/mediatek-linkit-startscreen-screenshot.png"/>
+	<img class="img-example-screenshot" src="../images/examples/mediatek-linkit-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<!-- Explain application structure here, comment on main files and link to them -->
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the <a target="_blank" href="https://github.com/evothings/evothings-examples/tree/master/examples/mediatek-linkit">Evothings GitHub repository</a></p>
+
+	<p>The file <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/app/index.html">index.html</a> contains the HTML markup of the app and the buisness logic is placed in the <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/app/app.js">app.js</a></p>
+
+
+	<p>The Arduino sketch can be found <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/mediatek_linkit/mediatek_linkit.ino">here</a>.</p>
+
+
+</div>
+
+<div class="evo-box">
+	<!-- Explain what the user needs in terms of hardware as well as softare in order to run the example -->
+	<h2>What You Need</h2>
+
+	<p>This example runs in Evothings Client on Android or iOS.</p>
+
+	<p>You need an iOS or Android device as well as a <a target="_blank" href="http://www.seeedstudio.com/depot/LinkIt-ONE-p-2017.html">LinkIt ONE</a> from <a target="_blank" href="http://www.mediatek.com/">MediaTek</a>.</p>
+
+	<p>You also need a computer running Microsoft Windows or Ubuntu.
+
+</div>
+
+<div class="evo-box">
+	<!-- Explain briefly how to get up and running -->
+	<h2>How To Get Up And Running</h2>
+	<p>Follow these steps to get started with this example:</p>
+	<ol>
+		<li>Connect the WiFi and GPS antenna to the development board.</li>
+		<li>Change the <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/mediatek_linkit/mediatek_linkit.ino#L31">WIFI_AP</a>, <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/mediatek_linkit/mediatek_linkit.ino#L32">WIFI_PASSWORD</a> and <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/mediatek_linkit/mediatek_linkit.ino#L35">WIFI_AUTH</a> to match your WiFi configuration.</li>
+		<li>Compile and upload the changed <a href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/mediatek_linkit/mediatek_linkit.ino">sketch</a> to your LinkIt ONE.</li>
+		<li>Open a serial monitor and note the IP adress.
+		<li>Run the Evothings Workbench on your computer.</li>
+		<li>Connect to the Workbench from the Evothings client app.</li>
+		<li>Add your <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/">Google Maps Javascript API v3</a> key to <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit/app/index.html#L24">index.html</a>.
+		<li>Run the "MediaTek LinkIt ONE - Position" example from the Workbench window.</li>
+		<li>Connect to your development board using the IP adress noted in previous step.</li>
+	</ol>
+</div>
+
+<script src="../js/include-footer.js"></script>
+
+</div></div>
+</body>
+</html>
