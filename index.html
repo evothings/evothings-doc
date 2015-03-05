@@ -87,7 +87,9 @@ Copyright (c) 2013-2014 Evothings AB
 		<li>The app should now connect to Evothings Workbench and display the message "Connected".</li>
 		<li>Click the "Run" button of one of the apps in Evothings Workbench. Does the mobile display the app you selected? If so, you are up and running!</li>
 		<li>You can connect any number of mobile devices, and instantly see the result on each of them!</li>
-		<li><b>Mobile devices must be on the same local WiFi network as the computer running Evothings Workbench to be able connect using the "Scan" method.</b> If your computer has a public IP address, you can connect devices from anywhere on the Internet!</li>
+		<li>To create your own project, just drag and drop an HTML file into the Workbench project list. When you press RUN that file and all included files will be launched on connected mobile devices. Sort the project list using drag and drop.</li>
+		<li><b>Mobile devices must be on the same local WiFi network as the computer running the Workbench to be able connect using the "Scan" method, and network client isolation must be turned off.</b></li>
+		<li>If your computer has a public IP address, you can connect from anywhere on the Internet!</li>
 	</ul>
 
 	<p>Learn more about <a href="studio/workbench.html">Evothings Workbench</a> and <a href="studio/mobile-app.html">Evothings Client</a>.</p>
@@ -95,11 +97,17 @@ Copyright (c) 2013-2014 Evothings AB
 
 <div id="Troubleshooting" class="evo-box">
 	<h2>Troubleshooting</h2>
-	<p>These are some known issues and suggestions to how they can be resolved.</p>
-	<h3>If Evothings Client can't find or connect to the Workbench</h3>
+	<p><strong>If Evothings Client can't find or connect to the Workbench:</strong></p>
 	<ul>
 		<li>Make sure that your mobile device and computer are on the same WiFi network.</li>
-		<li>Check with your network administrator or router settings that network client isolation isn't enabled. In case it is enabled, Evothings Studio won't work properly. We're working on a solution for this.</li>
+		<li>Network client isolation must be turned off. Some WiFi networks such as public networks or enterprise networks have this enabled. Please check your router settings or ask your network administrator. In case client isolation is enabled, Evothings Studio will not work. We are working on a solution for this.</li>
+		<li>Alternatively, you can:
+			<ul>
+				<li>Use your own WiFi router or mobile phone with WiFi sharing (this is easy to set up, just connect your computer and mobile phone/tablet to the same network).</li>
+				<li>Use a Virtual Private Network (VPN).</li>
+				<li>Use a Reverse SSH tunnel (the details of how to set this up is beyond the scope of this document).</li>
+			</ul>
+		</li>
 	</ul>
 </div>
 
