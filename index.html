@@ -82,14 +82,15 @@ Copyright (c) 2013-2014 Evothings AB
 	<ul>
 		<li>Download and run the Evothings Workbench application on your computer.</li>
 		<li>Download and install the Evothings Client app on your mobile device.</li>
+		<li>Connect both your computer running Evothings Workbench and your mobile devices running Evothings Client to the same WiFi network.
 		<li>Launch the app and select "Scan". Select your computer running Evothings Workbench from the list.</li>
+		<li>If your computer does not appear in the list, please check the Troubleshooting section.</li>
 		<li>Alternatively, enter the URL shown in the bottom panel of the Workbench and click "Connect".</li>
 		<li>The app should now connect to Evothings Workbench and display the message "Connected".</li>
 		<li>Click the "Run" button of one of the apps in Evothings Workbench. Does the mobile display the app you selected? If so, you are up and running!</li>
-		<li>You can connect any number of mobile devices, and instantly see the result on each of them!</li>
+		<li>You can connect any number of mobile devices, and instantly see the result on all of them!</li>
 		<li>To create your own project, just drag and drop an HTML file into the Workbench project list. When you press RUN that file and all included files will be launched on connected mobile devices. Sort the project list using drag and drop.</li>
 		<li><b>Mobile devices must be on the same local WiFi network as the computer running the Workbench to be able connect using the "Scan" method, and network client isolation must be turned off.</b></li>
-		<li>If your computer has a public IP address, you can connect from anywhere on the Internet!</li>
 	</ul>
 
 	<p>Learn more about <a href="studio/workbench.html">Evothings Workbench</a> and <a href="studio/mobile-app.html">Evothings Client</a>.</p>
@@ -100,12 +101,13 @@ Copyright (c) 2013-2014 Evothings AB
 	<p><strong>If Evothings Client can't find or connect to the Workbench:</strong></p>
 	<ul>
 		<li>Make sure that your mobile device and computer are on the same WiFi network.</li>
-		<li>Network client isolation must be turned off. Some WiFi networks such as public networks or enterprise networks have this enabled. Please check your router settings or ask your network administrator. In case client isolation is enabled, Evothings Studio will not work. We are working on a solution for this.</li>
-		<li>You may your own WiFi router or mobile phone with WiFi sharing. On iOS, this is called "Personal Hotspot". On Android, it is usually called "Portable hotspot" or "Internet sharing".</li>
+		<li>Make sure that network client isolation is turned off. It is off by default on most home routers, but some public or enterprise WiFi networks have it on. Please check your router settings or ask your network administrator. In the case where client isolation is enabled, Evothings Studio will not work by using the WiFi network for direct communication between Evothings Client and the Workbench.</li>
+		<li>If client isolation is in effect, the easiest solution is usually to use your own WiFi router or a mobile phone with WiFi sharing. On iOS, this is called "Personal Hotspot". On Android, it is usually called "Portable hotspot" or "Internet sharing".</li>
 		<li>Alternatively, you can:
 			<ul>
-				<li>Use a Virtual Private Network (VPN).</li>
-				<li>Use a Reverse SSH tunnel.</li>
+				<li>use a Virtual Private Network (VPN), or</li>
+				<li>use a Reverse SSH tunnel, or</li>
+				<li>run Evothings Workbench on a computer with a public IP address. In that case you can use that address to connect from anywhere on the Internet.</li>
 			</ul>
 			The details of how to set these up is beyond the scope of this document.
 		</li>
