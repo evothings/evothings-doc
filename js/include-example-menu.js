@@ -13,8 +13,8 @@ document.write(
 	+	'<a href="../examples/estimote-nearables.html">Estimote Nearables</a><br/>'
 	+	'<a href="../examples/ble-discovery.html">BLE Discovery</a><br/>'
 
-	+	'<a href="../examples/ble-ti-sensortag.html">TI SensorTag Demo</a><br/>'
-	+	'<a href="../examples/ble-ti-sensortag-sensors.html">TI SensorTag Sensors</a><br/>'
+	+	'<a href="../examples/ble-ti-sensortag.html">Texas Instruments SensorTag Demo</a><br/>'
+	+	'<a href="../examples/ble-ti-sensortag-sensors.html">Texas Instruments SensorTag Sensors</a><br/>'
 
 	+	'<a href="../examples/arduino-led-onoff-tcp.html">Arduino LED On/Off TCP</a><br/>'
 	+	'<a href="../examples/arduino-led-onoff-ble.html">Arduino LED On/Off BLE</a><br/>'
@@ -27,7 +27,7 @@ document.write(
 	+	'<a href="../examples/lightbluebean-basic.html">LightBlue Bean Basic</a><br/>'
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino Led On Off</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno Hello World</a><br/>'
-	+	'<a href="../examples/nordic-ble.html">Nordic Led On/Off</a><br/>'
+	+	'<a href="../examples/nordic-ble.html">Nordic Semiconductor Led On/Off</a><br/>'
 	+	'<a href="../examples/mediatek-linkit.html">MediaTek Linkit ONE Position</a><br/>'
 
 	+ '</div>')
