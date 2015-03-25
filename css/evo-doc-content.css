@@ -263,6 +263,9 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 #main-menu-narrow {
 	display: block;
 }
+.evo-content-index {
+	display: none !important;
+}
 
 /* If screen is wide override narrow settings. */
 @media all and (min-width: 800px) {
@@ -271,6 +274,9 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 	}
 	#main-menu-narrow {
 		display: none;
+	}
+	.evo-content-index {
+		display: block !important;
 	}
 }
 
