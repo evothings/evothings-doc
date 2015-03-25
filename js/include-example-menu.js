@@ -13,8 +13,9 @@ document.write(
 	+	'<a href="../examples/estimote-nearables.html">Estimote&nbsp;Nearables</a><br/>'
 	+	'<a href="../examples/ble-discovery.html">BLE&nbsp;Discovery</a><br/>'
 
-	+	'<a href="../examples/ble-ti-sensortag.html">TI&nbsp;SensorTag&nbsp;Demo</a><br/>'
+	+	'<a href="../examples/ble-ti-sensortag-accelerometer.html">TI&nbsp;SensorTag&nbsp;Accelerometer</a><br/>'
 	+	'<a href="../examples/ble-ti-sensortag-sensors.html">TI&nbsp;SensorTag&nbsp;Sensors</a><br/>'
+	+	'<a href="../examples/ble-ti-sensortag.html">TI&nbsp;SensorTag&nbsp;Demo</a><br/>'
 
 	+	'<a href="../examples/arduino-led-onoff-tcp.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;TCP</a><br/>'
 	+	'<a href="../examples/arduino-led-onoff-ble.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;BLE</a><br/>'
