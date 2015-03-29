@@ -24,15 +24,15 @@ Copyright (c) 2013-2015 Evothings AB
 	<script src="../js/include-evothings-logo.js"></script>
 	<a href="#Introduction">API Overview</a><br/>
 	<a href="#SupportedPlugins">Supported Plugins</a><br/>
-	<a href="#Libraries">Libraries</a> (<a class="evo-lib-link" href="../lib-doc/index.html">direct link</a>)<br/>
+	<a href="#Libraries">Evothings Libraries</a> (<a class="evo-lib-link" href="../lib-doc/index.html">direct link</a>)<br/>
 </div>
 
 <div id="Introduction" class="evo-box">
 	<h1>API Overview</h1>
 
 	<p>Evothings Client ships with selected Cordova plugins, which are listed below.</p>
-	<p>Evothings also provides a number of JavaScript libraries, some of which are built on top of the Cordova plugins, some are for generic use.</p>
-	<p>Below the API documentation for plugins and libraries are listed.</p>
+	<p>Evothings also provides a number of JavaScript libraries, some of which are built on top of the Cordova plugins, some which are generic.</p>
+	<p>Below you find the API documentation for plugins and libraries.</p>
 </div>
 
 <div id="SupportedPlugins" class="evo-box">
@@ -41,17 +41,52 @@ Copyright (c) 2013-2015 Evothings AB
 	<p>The Evothings Client app comes pre-packaged with the following Cordova Plugins:</p>
 INSERT_PLUGIN_LIST_HERE
 
-	<p>Note that the JavaScript source files for the plugins are packaged into the Evothings Client app. You don’t include these files in your HTML code, they are included automatically with cordova.js.</p>
+	<p>Note that the JavaScript source files for the plugins are packaged into the Evothings Client app. You don't include these files in your HTML code, they are included automatically with cordova.js.</p>
 </div>
+<style>
+code {
+	font-size: 1.2em;
+}
+</style>
 
 <div id="Libraries" class="evo-box">
-	<h2>Libraries</h2>
+	<h2>Evothings JavaScript Libraries</h2>
 
-	<p>Here you will find JSDoc generated <a class="evo-lib-link" href="../lib-doc/index.html">API documentation for Evothings JavaScript libraries</a>.</p>
+	<p>The <a class="evo-lib-link" href="../lib-doc/index.html">Evothings JavaScript libraries</a> provide useful functionality for IoT enabled mobile apps.</p>
 
-	<p>The source code for the JavaScript libraries is found on GitHub: <a href="http://evothings.com/doc/documentation/libs/">https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings</a></p>
+	<p>These libraries are included using a script tag in the HTML code, or asynchronously using the evothings.loadScript() function.</p>
+
+	<p>Here is an overview of the libraries:</p>
+	<ul>
+		<li><strong>Evothings.js</strong> - <code>evothings/evothings.js</code> contains functions for asynchronous loading of JavaScript files and platform checking functions.</li>
+		<li><strong>EasyBLE</strong> - <code>evothings/easyble/easyble.js</code> contains high-level functions for accessing BLE devices. This library is written on top of the <a href="https://github.com/evothings/cordova-ble">cordova-ble plugin</a>, and asynchronously includes the Util library.</li>
+		<li><strong>Util</strong> - <code>evothings/util/util.js</code> contains functions for parsing numbers encoded as binary data. This library is used by the EasyBLE library.</li>
+		<li><strong>TISensorTag</strong> - <code>evothings/tisensortag/tisensortag.js</code> is a high-level library for the Texas Instruments Bluetooth Smart SensorTag. This library asynchronously includes the EasyBLE library.</li>
+		<li><strong>Microcontrollers</strong> - Libraries are provided for a different microcontrollers, such as Arduino, Nordic Semiconductor, and RFduino. These are basic libraries that support connecting to a device and writing data.</li>
+	</ul>
+
+	<p>When using a library that asynchronously includes another library using evothings.loadScript() it is good practice to always wait for all libraries to have loaded before calling any library functions. This is typically done in the Cordova 'deviceready' event handler. Here is an example:</p>
+
+<pre>
+function initialise()
+{
+    // All async scripts are loaded, the app is
+    // ready to be initialised.
+}
+
+document.addEventListener(
+    'deviceready',
+    function() { evothings.scriptsLoaded(initialise) })
+</pre>
+
+	<p>Browse the JSDoc generated <a class="evo-lib-link" href="../lib-doc/index.html">API documentation for the Evothings JavaScript libraries</a> to learn more.</p>
+
+	<p>The source code for the libraries is found on GitHub: <a href="https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings">https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings</a></p>
 
 	<p>Some of the JavaScript libraries are written to communicate with Arduino sketches. The Arduino source code is found here: <a href="https://github.com/evothings/evothings-examples/tree/master/resources/arduino">https://github.com/evothings/evothings-examples/tree/master/resources/arduino</a></p>
+
+	<p>Please note that the example app code in the <a href="https://github.com/evothings/evothings-examples">evothings-examples</a> repository on GitHub does not contain any library files in the application folders. You must run a <a href="https://github.com/evothings/evothings-examples/blob/master/README.md">build script</a> which copies library files in the <a href="https://github.com/evothings/evothings-examples/tree/master/resources">resources folder</a> to each example. This is done to avoid code duplication in the GitHub repository and make maintenance easier. <strong>Note that in the download package of Evothings Studio the examples are already built and include all required libraries.</strong> You only need to build examples if you are working with the files in the GitHub repository.</p>
+
 </div>
 
 <script src="../js/include-footer.js"></script>
