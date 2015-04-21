@@ -4,7 +4,7 @@ document.write(
 	+	'<script src="../js/include-evothings-logo.js"></script>'
 
 	+	'<a href="../examples/hello-world.html">Hello&nbsp;World</a><br/>'
-	+	'<a href="../examples/cordova-basic.html">Cordova&nbsp;Basic</a><br/>'
+	+	'<a href="../examples/cordova-accelerometer.html">Cordova&nbsp;Accelerometer</a><br/>'
 	+	'<a href="../examples/hue-lights.html">Philips&nbsp;Hue&nbsp;Demo</a><br/>'
 
 	+	'<a href="../examples/ble-scan.html">BLE&nbsp;Scan</a><br/>'
@@ -15,7 +15,8 @@ document.write(
 
 	+	'<a href="../examples/ble-ti-sensortag-accelerometer.html">TI&nbsp;SensorTag&nbsp;Accelerometer</a><br/>'
 	+	'<a href="../examples/ble-ti-sensortag-sensors.html">TI&nbsp;SensorTag&nbsp;Sensors</a><br/>'
-	+	'<a href="../examples/ble-ti-sensortag.html">TI&nbsp;SensorTag&nbsp;Demo</a><br/>'
+	+	'<a href="../examples/ble-ti-sensortag-cc2650-demo.html">TI&nbsp;SensorTag&nbsp;CC2650&nbsp;Demo</a><br/>'
+	+	'<a href="../examples/ble-ti-sensortag-cc2541-demo.html">TI&nbsp;SensorTag&nbsp;CC2541&nbsp;Demo</a><br/>'
 
 	+	'<a href="../examples/arduino-led-onoff-tcp.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;TCP</a><br/>'
 	+	'<a href="../examples/arduino-led-onoff-ble.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;BLE</a><br/>'

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: ble-ti-sensortag.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>TI SensorTag Demo</title>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div class="evo-heading">TI SensorTag Demo</div>
+
+<div class="evo-page"><div class="evo-content">
+
+<script src="../js/include-main-menu.js"></script>
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<img class="img-example-platform-support" src="../images/examples/target-evothings-app.png"/>
+
+	<h1>TI SensorTag CC2541 Demo</h1>
+
+	<p><b>Demo of TI SensorTag CC2541.</b> This app charts data from the TI SensorTag CC2541</a>. If you have the TI SensorTag CC2650 released 2015, please check out the example <a href="ble-ti-sensortag-cc2650-demo.html">TI SensorTag CC2650 Demo</a>.<p>
+
+	<p>This example uses direct low-level access to BLE services and characteristics of the SensorTag. This is useful for study purposes or if you want to handle details of the communication with the SensorTag yourself. For an easy-to-use high-level SensorTag library please see the examples <a href="ble-ti-sensortag-accelerometer.html">TI SensorTag Accelerometer</a> and <a href="ble-ti-sensortag-sensors.html">TI SensorTag Sensors</a>.</p>
+
+	<p>Run this app in the Evothings client app, or build a Cordova app with the plugin com.evothings.ble. Device with support for Bluetooth 4.0 is required.</p>
+
+	<img class="img-example-screenshot" src="../images/examples/ti-sensortag-cc2541-demo-screenshot.png"/>
+
+</div>
+
+<div class="evo-box">
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/evothings-examples/tree/master/examples/ti-sensortag-cc2541-demo">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/ti-sensortag-cc2541-demo/index.html">index.html</a> is the entry point of the app.</p>
+
+	<p>The file File <a href="https://github.com/evothings/evothings-examples/blob/master/examples/ti-sensortag-cc2541-demo/app.js">app.js</a> contains JavaScript code for the app that communicates with the SensorTag using BLE.</p>
+</div>
+
+<div class="evo-box">
+	<h2>What You Need</h2>
+
+	<img style="width:100px;height:auto;float:left;margin-right:8px;margin-bottom:8px;" src="../images/examples/ti-sensortag-cc2541.png"/>
+
+	<p>This example runs in Evothings Client on Android or iOS.</p>
+
+	<p>You need to run the example in the Evothings client app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble. See page <a href="../studio/mobile-app.html">Evothings Client</a> for further details.</p>
+
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android version 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart the Evothings client app and/or reset Bluetooth on the device.</p>
+
+	<p>You need the TI SensorTag CC2541. Please make sure it is upgraded to firmware version 1.5 or higher.</p>
+</div>
+
+<div class="evo-box">
+	<h2>How To Get Up And Running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Run the Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run the Evothings client app on an Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "TI SensorTag CC2541 Demo" from the Workbench window.</li>
+		<li>Press the "activate" button on the SensorTag.</li>
+		<li>Touch the "start" button in the app.</li>
+		<li>If everything works, the app should detect the SensorTag and start plotting magnetometer data on the canvas.</li>
+	</ul>
+</div>
+
+<script src="../js/include-footer.js"></script>
+
+</div></div>
+</body>
+</html>
