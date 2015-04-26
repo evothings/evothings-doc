@@ -21,7 +21,7 @@ document.write(
 	+	'<a href="../examples/mbed-custom-gap.html">mbed&nbsp;Custom&nbsp;GAP</a><br/>'
 	+	'<a href="../examples/mbed-custom-gatt.html">mbed&nbsp;Custom&nbsp;GATT</a><br/>'
 	+	'<a href="../examples/nordic-nRF51-ble.html">Nordic&nbsp;nRF51&nbsp;BLE</a><br/>'
-	+	'<a href="../examples/nordic-nRF51822-ble.html">Nordic&nbsp;Led&nbsp;On/Off</a><br/>'
+	+	'<a href="../examples/nordic-nRF51822-ble.html">Nordic&nbsp;nRF51822&nbsp;BLE</a><br/>'
 
 	+	'<a href="../examples/arduino-led-onoff-tcp.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;TCP</a><br/>'
 	+	'<a href="../examples/arduino-led-onoff-ble.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;BLE</a><br/>'
