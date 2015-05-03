@@ -53,8 +53,9 @@ Copyright (c) 2013-2015 Evothings AB
 
 	<p><b>Example apps:</b></p>
 	<ul>
-		<li>New example apps for the TI SensorTag CC2650 and CC2541.</li>
-		<li>New example apps for ARM mbed and Nordic Semiconductor.</li>
+		<li>Several new and updated example apps for the TI SensorTag CC2650 and CC2541.</li>
+		<li>New example apps for ARM mbed ("mbed Custom GAP" and "mbed Custom GATT") contributed by the mbed community. Many thanks for this much appreciated contribution!
+		<li>New example app for Nordic Semiconductor and ARM mbed ("Nordic Semiconductor nRF51 DK BLE").</li>
 		<li>New example app "Cordova Accelerometer" that demonstrates how to read the accelerometer of the mobile device. This example replaces the "Cordova Basic" example.</li>
 	</ul>
 
@@ -64,6 +65,23 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>The FastClick library is now included with all examples for a responsive UI experience.</li>
 		<li>Bugfixes.</li>
 	</ul>
+
+	<p><b>Known issues:</b></p>
+	<p>During testing, we have experienced the following issues with the current firmware versions (0.89 and 1.01) of the TI SensorTag CC2650:</p>
+	<ul>
+		<li>The SensorTag has been observed to disconnect when in use.</li>
+		<li>
+Simultaneously enabling movement sensors (Accelerometer, Gyroscope, Magnetometer) and Luxometer sensors has been reported to make sensors stop working.</li>
+		<li>
+The Magnetometer sensor freezes after displaying initial values.</li>
+		<li>
+Calculations of sensor values for Humidity, Accelerometer, and Gyroscope need to be investigated and possibly revised. Calculations for Temperature, Barometer and Luxometer have been tested correct.</li>
+		<li>
+If problems are experienced, try to power cycle the SensorTag as a workaround (remove and insert battery).</li>
+	</ul>
+
+	<p>We have experienced that the example apps for Nordic Semiconductor nRF51 DK and ARM mbed do not work reliably on LG Flex (Android) and Google Nexus 7 (Android).</p>
+
 </div>
 
 <div id="EvothingsStudio113" class="evo-box">
