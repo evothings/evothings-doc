@@ -80,12 +80,13 @@ Calculations of sensor values for Humidity, Accelerometer, and Gyroscope need to
 If problems are experienced, try to power cycle the SensorTag as a workaround (remove and insert battery).</li>
 	</ul>
 
-	<p>We have experienced that the example apps for Nordic Semiconductor nRF51 DK and ARM mbed do not work reliably on LG Flex (Android) and Google Nexus 7 (Android).</p>
-
-	<p>When passing binary data to hyper.log() Evothings Workbench crashes.</p>
+	<p>We have experienced that the example apps for Nordic Semiconductor nRF51 DK and ARM mbed sometimes don't work reliably on Android (issues observed with LG Flex and Google Nexus 7).</p>
 
 	<p>Evothings Workbench may crash when switching network or switching user and logging in again. As a workaround, please quit the Workbench before switching user.</p>
 
+	<p>Calls to hyper.log() cause Evothings Workbench to crash when passing in data objects that cannot be cloned by the socket.io decoder. Examples are function objects and certain binary encoded data. As a workaround, pass only plain strings or stringified objects to hyper.log().</p>
+
+	<p>On OS X, if Evothings Workbench should crash, you need to Force Quit to terminate the application.</p>
 </div>
 
 <div id="EvothingsStudio113" class="evo-box">
