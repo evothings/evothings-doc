@@ -84,7 +84,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 
 	<p>Evothings Workbench may crash when switching network or switching user and logging in again. As a workaround, please quit the Workbench before switching user.</p>
 
-	<p>Calls to hyper.log() cause Evothings Workbench to crash when passing in data objects that cannot be cloned by the socket.io decoder. Examples are function objects and certain binary encoded data. As a workaround, pass only plain strings or stringified objects to hyper.log().</p>
+	<p>Calls to hyper.log() cause Evothings Workbench to crash when passing in data objects that cannot be cloned by node-webkit function Window.postMessage. Examples are function objects and certain binary encoded data. As a workaround, pass only plain strings or stringified objects to hyper.log().</p>
 
 	<p>On OS X, if Evothings Workbench should crash, you need to Force Quit to terminate the application.</p>
 </div>
