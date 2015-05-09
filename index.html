@@ -4,7 +4,7 @@
 File: index.html
 Description: Evothings Studio documentation.
 Author: Mikael Kindborg
-Copyright (c) 2013-2014 Evothings AB
+Copyright (c) 2013-2015 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
@@ -25,8 +25,6 @@ Copyright (c) 2013-2014 Evothings AB
 	<a href="#Introduction">Evothings Studio</a><br/>
 	<a href="#Screenshots">Screenshots</a><br/>
 	<a href="#QuickStart">Getting Started</a><br/>
-	<a href="#Troubleshooting">Troubleshooting</a><br/>
-	<a href="#ReleaseNotes">Release Notes</a> (<a href="studio/release-notes.html">direct link</a>)<br/>
 	<a href="#DeployingApps">Deploying Your Apps</a><br/>
 	<a href="#GoodToKnow">Good To Know</a><br/>
 	<a href="#SourceCode">Source Code</a><br/>
@@ -40,8 +38,8 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p><b>Evothings Studio consists of:</b></p>
 	<ul>
-		<li><a href="studio/workbench.html">Evothings Workbench</a> - Desktop IDE that supports fast turn around development and live editing of apps running on mobile devices.</li>
-		<li><a href="studio/mobile-app.html">Evothings Client</a> - Mobile application for running IoT apps written in HTML/JavaScript. Connect from any number of mobile devices running the Evothings Client to the Workbench and enjoy simultaneous live reload.</li>
+		<li><a href="studio/workbench.html">Evothings Studio Workbench</a> - Desktop IDE that supports fast turn around development and live editing of apps running on mobile devices.</li>
+		<li><a href="studio/mobile-app.html">Evothings Studio App</a> - Mobile application for running IoT apps written in HTML/JavaScript. Connect from any number of mobile devices running the Evothings App to the Workbench and enjoy simultaneous live reload.</li>
 		<li><a href="examples/examples.html">Example Apps</a> - Collection of example apps to get started quickly and get inspiration for making IoT apps.</li>
 		<li><a href="studio/api-overview.html#SupportedPlugins">Native Plugins</a> - Plugins implemented in the Cordova framework that provide native IoT functionality from JavaScript.</li>
 		<li><b>Universal Editor/IDE support</b> - Use any text editor or programming IDE to code with instant-reload-on-save. Also works with graphics editors. Just press save to reload changes on connected mobile devices.</li>
@@ -62,7 +60,7 @@ Copyright (c) 2013-2014 Evothings AB
 		<span style="width:50px;height:50px;display:inline-block"></span>
 		<a href="studio/mobile-app.html">
 			<img style="width:150px;height:auto;border:1px solid #000000;"
-				src="images/evothings-client-screenshot-1.png"/>
+				src="images/evothings-app-screenshot-1.png"/>
 		</a>
 	</p>
 </div>
@@ -72,49 +70,21 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p><b>Very quick version:</b></p>
 	<ul>
-		<li>Ensure your computer and mobile device are connected to the same WiFi network.</li>
-		<li>Download and run the Evothings Workbench application on your computer.</li>
-		<li>Install and run the Evothings Client app on your mobile device.</li>
-		<li>AP/Client Isolation may exist on some routers, please ensure the setting is disabled.</li>
-		<li>Connect from Evothings Client to the Workbench.</li>
-		<li>Click the "Run" button of the "Hello World" example.</li>
+		<li>Ensure your computer and mobile device have Internet access.</li>
+		<li>Download and run the Evothings Studio Workbench application on your computer.</li>
+		<li>Install and run the Evothings Studio app on your mobile device.</li>
+		<li>Enter the Connect Key you get in the Workbench in the mobile app and connect.</li>
+		<li>Click the RUN button of the "Hello World" example in the Workbench.</li>
 	</ul>
 
-	<p><b>Slightly longer version:</b></p>
+	<p><b>Good to know:</b></p>
 	<ul>
-		<li>Download and run the Evothings Workbench application on your computer.</li>
-		<li>Download and install the Evothings Client app on your mobile device.</li>
-		<li>Connect both your computer running Evothings Workbench and your mobile devices running Evothings Client to the same WiFi network.
-		<li>Launch the app and select "Scan". Select your computer running Evothings Workbench from the list.</li>
-		<li>If your computer does not appear in the list, please check the Troubleshooting section.</li>
-		<li>Alternatively, enter the URL shown in the bottom panel of the Workbench and click "Connect".</li>
-		<li>The app should now connect to Evothings Workbench and display the message "Connected".</li>
-		<li>Click the "Run" button of one of the apps in Evothings Workbench. Does the mobile display the app you selected? If so, you are up and running!</li>
 		<li>You can connect any number of mobile devices, and instantly see the result on all of them!</li>
-		<li>To create your own project, just drag and drop an HTML file into the Workbench project list. When you press RUN that file and all included files will be launched on connected mobile devices. Sort the project list using drag and drop.</li>
-		<li><b>Mobile devices must be on the same local WiFi network as the computer running the Workbench to be able connect using the "Scan" method, and network client isolation must be turned off.</b></li>
+		<li>To create your own project, just drag and drop an HTML file (like "index.html") into the Workbench project list, and press RUN to launch on connected mobile devices.</li>
+		<li>Sort the project list using drag and drop.</li>
 	</ul>
 
-	<p>Learn more about <a href="studio/workbench.html">Evothings Workbench</a> and <a href="studio/mobile-app.html">Evothings Client</a>.</p>
-</div>
-
-<div id="Troubleshooting" class="evo-box">
-	<h2>Troubleshooting</h2>
-	<p><strong>If Evothings Client can't find or connect to the Workbench:</strong></p>
-	<ul>
-		<li>Make sure that your mobile device and computer are on the same WiFi network.</li>
-		<li>Configure any firewalls on the computer to allow Evothings Workbench to handle inbound and outbound connections.</li>
-		<li>Make sure that network client isolation is turned off. It is off by default on most home routers, but some public or enterprise WiFi networks have it on. Please check your router settings or ask your network administrator. In the case where client isolation is enabled, Evothings Studio will not work by using the WiFi network for direct communication between Evothings Client and the Workbench.</li>
-		<li>If client isolation is in effect, the easiest solution is usually to use your own WiFi router or a mobile phone with WiFi sharing. On iOS, this is called "Personal Hotspot". On Android, it is usually called "Portable hotspot" or "Internet sharing".</li>
-		<li>Alternatively, you can:
-			<ul>
-				<li>use a Virtual Private Network (VPN), or</li>
-				<li>use a Reverse SSH tunnel, or</li>
-				<li>run Evothings Workbench on a computer with a public IP address. In that case you can use that address to connect from anywhere on the Internet.</li>
-			</ul>
-			The details of how to set these up is beyond the scope of this document.
-		</li>
-	</ul>
+	<p>Learn more about <a href="studio/workbench.html">Evothings Workbench</a> and <a href="studio/mobile-app.html">Evothings App</a>.</p>
 </div>
 
 <div id="ReleaseNotes" class="evo-box">
@@ -125,7 +95,7 @@ Copyright (c) 2013-2014 Evothings AB
 <div id="DeployingApps" class="evo-box">
 	<h2>Deploying Your Apps</h2>
 	<p>To deploy your final app developed with Evothings Studio on an app store, you build your app with Apache Cordova. Read more in the guide <a href="build/build-overview.html">How To Build Native Apps</a>.</p>
-	<p>The quickest and easiest way to share your app with others, is putting your app on a web server, asking your users to download Evothings Client and enter the URL to your app. Find out the details in the guide <a href="build/share-apps.html">Share Your App</a>.</p>
+	<p>The quickest and easiest way to share your app with others, is putting your app on a web server, asking your users to download the Evothings Studio app and enter the URL to your app. Find out the details in the guide <a href="build/share-apps.html">Share Your App</a>.</p>
 </div>
 
 <div id="GoodToKnow" class="evo-box">
@@ -133,7 +103,6 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>Ask questions and give feedback on the <a href="http://evothings.com/forum/">Evothings Forum</a>.</p>
 	<p>Bugs and feature requests can be reported using the GitHub issue tracker, see links to repositories under the "Source Code" section.</p>
 	<p>You are encouraged to explore the "Tools" window tab in <a href="studio/workbench.html">Evothings Workbench</a>. This window displays output from the hyper.log() function, and lets you evaluate JavaScript code interactively on connected devices. This is very useful for debugging purposes, for trying out code snippets and inspecting the value of variables.</p>
-	<p>For apps that do not require native device functionality, any modern browser (desktop or mobile) can be used as a client with Evothings Workbench. When connecting using a browser, use the URL displayed in the bottom panel of the Workbench window (don't forget the port number).</p>
 </div>
 
 <div id="SourceCode" class="evo-box">
@@ -142,8 +111,8 @@ Copyright (c) 2013-2014 Evothings AB
 	<ul>
 		<li>Evothings Workbench: <a href="https://github.com/evothings/evothings-studio">
 			github.com/evothings/evothings-studio</a></li>
-		<li>Evothings client app: <a href="https://github.com/evothings/evothings-client">
-			github.com/evothings/evothings-client</a></li>
+		<li>Evothings Studio App: <a href="https://github.com/evothings/evothings-studio-app">
+			github.com/evothings/evothings-studio-app</a></li>
 		<li>Examples: <a href="https://github.com/evothings/evothings-examples">
 			github.com/evothings/evothings-examples</a></li>
 		<li>Documentation: <a href="https://github.com/evothings/evothings-doc">

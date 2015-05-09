@@ -23,6 +23,7 @@ Copyright (c) 2013-2015 Evothings AB
 <div class="evo-box evo-content-index">
 	<script src="js/include-evothings-logo.js"></script>
 	<a href="#ReleaseNotes">Release Notes</a><br/>
+	<a href="#EvothingsStudio200Alpha1">EvothingsStudio 2.0.0 Alpha 1</a><br/>
 	<a href="#EvothingsStudio120">EvothingsStudio 1.2.0</a><br/>
 	<a href="#EvothingsStudio113">EvothingsStudio 1.1.3</a><br/>
 	<a href="#EvothingsStudio110">EvothingsStudio 1.1.0</a><br/>
@@ -36,6 +37,34 @@ Copyright (c) 2013-2015 Evothings AB
 <div id="ReleaseNotes" class="evo-box">
 	<h1>Release Notes</h1>
 	<p>Learn what is new in each release of Evothings Studio.</p>
+</div>
+
+<div id="EvothingsStudio200Alpha1" class="evo-box">
+	<h2>Evothings Studio 2.0.0 Alpha 1</h2>
+
+	<p>This is an early release of a major upgrade to Evothings Studio. Highlights of this version include:</p>
+	<ul>
+		<li>Connect to Evothings Workbench from any mobile device with Internet access (no need to be on the same WiFi network).</li>
+		<li>Easy to connect to Evothings Workbench for users independently of physical location or network. You can now develop mobile IoT apps anywhere as long as you have an Internet connection. Moreover, you can demo apps remotely for users and customers, running your apps directly on their mobile devices.</li>
+		<li>No need to configure routers of firewalls.</li>
+		<li>Quicker live reload (automatic reload when saving a file). Speedup is a factor of 3-4 for large applications.</li>
+	</ul>
+
+	<p><b>Evothings Studio Workbench:</b></p>
+	<ul>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Compatible with the new Evothings Studio app.</li>
+		<li>Updated documentation.</li>
+		<li>Easy to generate a connect key for connecting from mobile devices.</li>
+	</ul>
+
+	<p><b>Evothings Studio App:</b></p>
+	<ul>
+		<li>Supported platforms are iOS and Android.</li>
+		<li>Easy to connect to Evothings Workbench using a connect key.</li>
+		<li>Connect from anywhere on the Internet. You can connect to remote Workbenches, to test apps directly on your mobile device.</li>
+		<li>You can also enter a URL to load apps from a web site.</li>
+	</ul>
 </div>
 
 <div id="EvothingsStudio120" class="evo-box">
@@ -104,7 +133,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 
 	<p><b>Evothings Client:</b></p>
 	<ul>
-		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
+		<li>Supported platforms for the Evothings Studio app are Android and iOS.</li>
 		<li>Updated support for Estimote Beacons.</li>
 		<li>Support for Estimote Nearables (Stickers) has been added on iOS (not available on Android).</li>
 		<li>Support for accessing BLE advertisement data using using library easyble.js added to iOS (also available on Android).</li>
@@ -142,7 +171,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 
 	<p><b>Evothings Client:</b></p>
 	<ul>
-		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
+		<li>Supported platforms for the Evothings Studio app are Android and iOS.</li>
 		<li>Plugin for Estimote Beacons has been added. Special credits to <a href="https://github.com/kdzwinel">Konrad Dzwinel</a> who is the original creator of this plugin.</li>
 		<li>Local notification plugin added (can be used for background notifications).</li>
 	</ul>
@@ -174,8 +203,8 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 	<h2>Evothings Studio 1.0.0</h2>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
-		<li>The Evothings Client app has improved iBeacon support with enhanced performance and stability during application reload, and an updated TCP/UDP socket plugin.</li>
+		<li>Supported platforms for the Evothings Studio app are Android and iOS.</li>
+		<li>the Evothings Studio app has improved iBeacon support with enhanced performance and stability during application reload, and an updated TCP/UDP socket plugin.</li>
 		<li>Evothings Client for Android now has full support for evothings: URLs.</li>
 		<li>There is a new example app for the TI SensorTag.</li>
 		<li>Several bugfixes have been made. The BLE Scan example has been updated to work stable on Android.</li>
@@ -191,12 +220,12 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 	<h2>Evothings Studio 0.8.0 Beta</h2>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Supported platforms for the Evothings Client app are Android and iOS.</li>
+		<li>Supported platforms for the Evothings Studio app are Android and iOS.</li>
 		<li>Evothings Client now supports sharing of apps by hosting them on a web server. Furthermore, you can use evothings: URLs to make it easy for people to launch your apps by selecting a link on a web site or in an email. Read more on the page <a href="build/share-apps.html">Share Your App</a>.</li>
-		<li>The Evothings Client app features new native plugins for iBeacons (iOS, Android) and serial Bluetooth (Android), and updated Bluetooth Low Energy (BLE) plugin.</li>
+		<li>the Evothings Studio app features new native plugins for iBeacons (iOS, Android) and serial Bluetooth (Android), and updated Bluetooth Low Energy (BLE) plugin.</li>
 		<li>Cordova plugins that present potential security risks have been removed from Evothings Client (e.g. file access and contacts). If you need an app with these plugins, you can build your own version of Evothings Client or contact us.</li>
 		<li>Documentation is updated with a guide for <a href="build/build-overview.html">How To Build Native Apps</a> from your Evothings project using Apache Cordova.</li>
-		<li>The Evothings Client app has a new UI.</li>
+		<li>the Evothings Studio app has a new UI.</li>
 		<li>There is a new example app for iBeacons.</li>
 		<li>The Example apps also have the new UI design, with improved navigability, and a stronger visual identity and clarity.</li>
 		<li>Evothings Workbench now displays a notification when a new version of Evothings Studio is available.</li>
@@ -208,8 +237,8 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 	<h2>Evothings Studio 0.7.3 Beta</h2>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Supported platforms for the Evothings client app are Android and iOS.</li>
-		<li>This version of Evothings Studio features updated examples, bug fixes, improved BLE support in the Evothings Client app on Android and iOS.</li>
+		<li>Supported platforms for the Evothings Studio app are Android and iOS.</li>
+		<li>This version of Evothings Studio features updated examples, bug fixes, improved BLE support in the Evothings Studio app on Android and iOS.</li>
 		<li>Positions of the Workbench Project window (the main window) and the Tools window are now saved between sessions. The Tools window has improved scrolling of the log panel, and a button to switch auto scroll on and off.</li>
 		<li>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></li>
 	</ul>
@@ -219,8 +248,8 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 	<h2>Evothings Studio 0.7.0 Beta</h2>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Supported platforms for the Evothings client app are Android and iOS.</li>
-		<li>This version introduces support for Bluetooth Low Energy (BLE) on iOS, available in the iOS Evothings Client app. Please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings client app if BLE should stop working. On iOS reloading BLE app usually works fine. It is however important to close connected devices before the page reloads. Please see the example programs for ways to accomplish this.</li>
+		<li>Supported platforms for the Evothings Studio app are Android and iOS.</li>
+		<li>This version introduces support for Bluetooth Low Energy (BLE) on iOS, available in the iOS Evothings Client app. Please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings Studio app if BLE should stop working. On iOS reloading BLE app usually works fine. It is however important to close connected devices before the page reloads. Please see the example programs for ways to accomplish this.</li>
 	</ul>
 </div>
 
@@ -228,8 +257,8 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 	<h2>Evothings Studio 0.6.0 Beta</h2>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Supported platform for the Evothings client app is Android (iOS will follow in a forthcoming release).</li>
-		<li>Bluetooth Low Energy (BLE) is implemented in the Evothings client app, but please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings client app if BLE should stop working.</li>
+		<li>Supported platform for the Evothings Studio app is Android (iOS will follow in a forthcoming release).</li>
+		<li>Bluetooth Low Energy (BLE) is implemented in the Evothings Studio app, but please note that BLE on Android is not always stable. Unfortunately this affects Evothings Workbench in that it may not work to reload apps that use BLE. A workaround is to restart the Evothings Studio app if BLE should stop working.</li>
 	</ul>
 </div>
 

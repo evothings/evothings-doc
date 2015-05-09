@@ -17,7 +17,7 @@
 		+	'<button type="button" '
 		+		'class="evo-btn evo-btn-lg evo-btn-yellow">Workbench</button>'
 		+	'<button type="button" '
-		+		'class="evo-btn evo-btn-lg evo-btn-green">Client</button>'
+		+		'class="evo-btn evo-btn-lg evo-btn-green">App</button>'
 		+ '</div>')
 */
 

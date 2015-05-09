@@ -69,11 +69,11 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server, that will tell devices to run and reload apps. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
 
-	<p>Use the Evothings Client app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app. It is possible to connect from the web browser of the device (just enter the connect address shown in the Workbench window in the URL field of the browser).</p>
+	<p>Use the Evothings Studio app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app. It is possible to connect from the web browser of the device (just enter the connect address shown in the Workbench window in the URL field of the browser).</p>
 
-	<p>However, when connecting from a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or Bluetooth Low Energy. For most IoT apps, you will need to use the Evothings Client app or build your own hybrid app with the functionality you require.</p>
+	<p>However, when connecting from a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or Bluetooth Low Energy. For most IoT apps, you will need to use the Evothings Studio app or build your own hybrid app with the functionality you require.</p>
 
-	<p>To connect from the Evothings Client app, use the "Scan" button to automatically detect the running Workbench application, or enter the connect URL in the address field and press "Connect".</p>
+	<p>To connect from the Evothings Studio app, use the "Scan" button to automatically detect the running Workbench application, or enter the connect URL in the address field and press "Connect".</p>
 </div>
 
 <div id="LiveEditing" class="evo-box">
@@ -152,46 +152,6 @@ NSURLRequest* request = [NSURLRequest
 	<p>Evothings Studio works great when developing apps with Apache Cordova (or Adobe PhoneGap). You can skip the entire build step and get a fast workflow with quick turn-around times.</p>
 
 	<p>The <a href="../build/cordova-guide.html">Cordova Guide</a> contains a step by step description of <a href="../build/cordova-guide.html#SetupCordovaForEvothings">How to use Evothings Studio with a Cordova application</a>.</p>
-
-<!-- TODO: Unused text kept as a reference. Delete in the future.
-	<p>Here is a step-by-step guide.</p>
-
-	<h3>Create your Cordova project</h3>
-
-	<p>If you don't have a Cordova project already, you first need to create it. Install Cordova and create a new project by following the instructions in the guide <a href="../build/build-overview.html">How To Build Native Apps</a>. It is a good idea to build and test run the generated project, so you now everything works.</p>
-
-	<h3>Launch Evothings Workbench</h3>
-
-	<p>Launch the Workbench application, if it is not already running, so you can find out the connect address for the URL to use with Cordova. The address is displayed at the bottom panel of the main window.</p>
-
-	<h3>Insert the Evothings Workbench URL</h3>
-
-	<p>When the Cordova app launches, it loads the main HTML page of the app. When using Evothings Studio, you instead need the app to connect to the Workbench server when it loads. Specify the connect URL in file <b>config.xml</b> in the Cordova project.</p>
-
-	<p>Open the file config.xml in a text editor. Change this line:</p>
-
-	<pre>&lt;content src="../index.html" /&gt;</pre>
-
-	<p>to this (assuming the connect address is 192.168.0.102:4042):</p>
-
-	<pre>&lt;content src="http://192.168.0.102:4042" /&gt;</pre>
-
-	<h3>Build and launch the app</h3>
-
-	<p>Now, build your app using Cordova and launch it on a device or emulator. When the app starts, it should display the Connected page.</p>
-
-	<p>Your app is now ready to run projects from the Workbench.</p>
-
-	<h3>Drag the main HTML file into the Workbench</h3>
-
-	<p>If you have not done this step, drag the main HTML file of your app into the Workbench main window. This is the file www/index.html in your Cordova project.</p>
-
-	<h3>Click Run</h3>
-
-	<p>Click the Run button to launch your app on the connected device. Clicking Run activates your project, and tells the Workbench that this is the project to reload when changes are made.</p>
-
-	<p>You only need to click Run once. Any document you edit and save in the current project will automatically reload the app on your device.</p>
--->
 </div>
 
 <div id="JavaScriptTools" class="evo-box">
