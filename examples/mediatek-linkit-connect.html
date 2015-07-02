@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: mediatek-linkit-connect.html
+Description: Mediatek Linkit Connect 7681.
+Author: Andreas Lundquist
+Copyright (c) 2013-2015 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>MediaTek LinkIt Connect 7681</title>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div class="evo-heading">Title here</div>
+
+<div class="evo-page"><div class="evo-content">
+
+<script src="../js/include-main-menu.js"></script>
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<!-- Always use the Evothings Client icon, do not use the "any browser icon". -->
+	<img class="img-example-platform-support" src="../images/examples/target-evothings-app.png"/>
+
+	<h1>MediaTek LinkIt Connect 7681</h1>
+
+	<p>This example shows you how to build an application that lets you contrle the leds on the MediaTek LinkIt Connect 7681 development board using TCP-sockets. </p>
+
+	<!-- Insert application screen shot here-->
+	<img class="img-example-screenshot" src="../images/examples/mediatek-linkit-connect-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<!-- Explain application structure here, comment on main files and link to them -->
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the <a target="_blank" href="https://github.com/evothings/evothings-examples/tree/master/examples/mediatek-linkit-connect">Evothings GitHub repository</a></p>
+
+	<p>The file <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit-connect/app/index.html">index.html</a> contains the HTML markup of the app and the buisness logic is placed in the <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit-connect/app/app.js">app.js</a></p>
+
+	<p>The patch that you need to apply to the SDK fetched from MediaTek can be found <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/mediatek-linkit-connect/Evothings-MediaTek-Connect-7681-TCP-Led.patch">here</a>.</p>
+
+</div>
+
+<div class="evo-box">
+	<!-- Explain what the user needs in terms of hardware as well as softare in order to run the example -->
+	<h2>What You Need</h2>
+
+	<p>This example runs in Evothings Client on Android or iOS.</p>
+
+	<p>You need an iOS or Android device as well as a <a target="_blank" href="http://labs.mediatek.com/site/global/developer_tools/mediatek_7681/whatis_7681/index.gsp">LinkIt Connect 7681</a> from <a target="_blank" href="http://www.mediatek.com/">MediaTek</a>.</p>
+
+	<p>You also need a computer running Microsoft Windows or Ubuntu.
+
+</div>
+
+<div class="evo-box">
+	<!-- Explain briefly how to get up and running -->
+	<h2>How To Get Up And Running</h2>
+	<p>Follow these steps to get started with this example:</p>
+	<ol>
+		<li>Install the software development kit (1.71) provided by MediaTek, how to do that can be found in their <a target="_blank" href="http://labs.mediatek.com/site/global/developer_tools/mediatek_7681/documentation/index.gsp">Developer's guide</a>.</li> 
+		<li>Copy the Evothings-MediaTek-Connect-7681-TCP-Led.patch to the path and execute the following command: <tt>patch -p1 < Evothings-MediaTek-Connect-7681-TCP-Led.patch</tt></li>
+		<li>Open the file <tt>cust/iot_custom.c</tt> and find the function <tt>IoT_Cust_SM_Smnt()</tt>. Change the <tt>Ssid</tt> variable to the name of your network and the <tt>Passphrase</tt> to the password of named network. </li>
+		<li>Open a serial connection to the board and note the IP address och the board.</li>
+		<li>Run the Evothings Workbench on your computer.</li>
+		<li>Connect to the Workbench from the Evothings client app.</li>
+		<li>Run the "MediaTek LinkIt Connect 7681" example from the Workbench window.</li>
+		<li>Connect to your development board using the IP address noted in previous step.</li>
+	</ol>
+</div>
+
+<script src="../js/include-footer.js"></script>
+
+</div></div>
+</body>
+</html>
