@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: esp8266.html
+Description: ESP8266.
+Author: Andreas Lundquist
+Copyright (c) 2013-2015 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>ESP8266</title>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div class="evo-heading">ESP8266</div>
+
+<div class="evo-page"><div class="evo-content">
+
+<script src="../js/include-main-menu.js"></script>
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<!-- Always use the Evothings Client icon, do not use the "any browser icon". -->
+	<img class="img-example-platform-support" src="../images/examples/target-evothings-app.png"/>
+
+	<h1>ESP8266</h1>
+
+	<p>This example shows you how to build an application that lets you control a led connected to a ESP8266 module.</p>
+
+	<!-- Insert application screen shot here-->
+	<img class="img-example-screenshot" src="../images/examples/esp8266-startView-screenshot.png"/>
+	<img class="img-example-screenshot" src="../images/examples/esp8266-controlView-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<!-- Explain application structure here, comment on main files and link to them -->
+	<h2>Source Code</h2>
+
+	<p>You can browse the source code for this example at the <a target="_blank" href="https://github.com/evothings/evothings-examples/tree/master/examples/esp8266">Evothings GitHub repository</a></p>
+
+	<p>The file <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/esp8266/app/index.html">index.html</a> contains the HTML markup of the app and the buisness logic is placed in the <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/esp8266/app/app.js">app.js</a></p>
+
+	<p>The source code for the module can be found <a target="_blank" href="https://github.com/evothings/evothings-examples/blob/master/examples/esp8266/esp8266/esp8266.ino">here</a>.</p>
+
+</div>
+
+<div class="evo-box">
+	<!-- Explain what the user needs in terms of hardware as well as softare in order to run the example -->
+	<h2>What You Need</h2>
+
+	<p>It still is a bit of a challenge to get the module up and running. We suggest that you join the community on <a href="http://www.esp8266.com" target="_blank">www.esp8266.com</a> to learn more about the available modules.</p>
+
+	<p>This example runs in Evothings Client on Android or iOS.</p>
+
+	<li>1 x <a href="http://www.esp8266.com/wiki/doku.php?id=esp8266-module-family" target="_blank">ESP-01</a> (or any other compatible module)</li>
+	<li>1 x USB - Serial cable (3.3 volt)</li>
+	<li>1 x Power supply (3.3 volt)</li>
+	<li>1 x LED</li>
+	<li>1 x 1 kOhm resistor</li>
+	<li>An iOS or Android smartphone</li>
+
+</div>
+
+<div class="evo-box">
+	<!-- Explain briefly how to get up and running -->
+	<h2>How To Get Up And Running</h2>
+	<p>Follow these steps to get started with this example:</p>
+	<ol>
+		<li>Install the latest version of the <a href="http://www.arduino.cc" target="_blank">Arduino IDE</a>.</li>
+		<li>Start Arduino and open Perferences window.</li>
+		<li>Enter <tt>http://arduino.esp8266.com/package_esp8266com_index.json</tt> into Additional Board Manager URLs field.</li>
+		<li>Open Boards Manager from Tools &gt; Board menu and install esp8266 platform (and don't forget to select your ESP8266 board from Tools &gt; Board menu after installation).</li>
+		<li>Connect your module to your computer. (This step is a bit tricky and it seems like there are a lot of different suggenstion on which circuit to use, we used the circuit found <a href="https://github.com/esp8266/Arduino#esp-to-serial" target="_blank">here</a>)</li>
+		<li>Connect a led and 1 kOhm resistor in series with <tt>GPIO2</tt></li>
+		<li>Compile and upload the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/esp8266/esp8266/esp8266.ino" target="_blank">esp8266.ino</a> sketch (Dont forget to add your WiFi credentials to the sketch).</li>
+		<li>Open a serial monitor and note the displayed IP address.</li>
+		<li>Run the Evothings Workbench on your computer.</li>
+		<li>Connect to the Workbench from the Evothings client app.</li>
+		<li>Run the "ESP8266" example from the Workbench window.</li>
+		<li>Connect to your development board using the IP address noted in previous step.</li>
+
+	</ol>
+</div>
+
+<script src="../js/include-footer.js"></script>
+
+</div></div>
+</body>
+</html>

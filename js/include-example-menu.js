@@ -36,5 +36,6 @@ document.write(
 	+	'<a href="../examples/lightbluebean-basic.html">LightBlue&nbsp;Bean&nbsp;Basic</a><br/>'
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino&nbsp;Led&nbsp;On/Off</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno&nbsp;Hello&nbsp;World</a><br/>'
+	+	'<a href="../examples/esp8266.html">ESP8266</a><br/>'
 
 	+ '</div>')
