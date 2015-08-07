@@ -52,7 +52,7 @@ Copyright (c) 2013-2014 Evothings AB
 <div id="SummaryOfBuildSteps" class="evo-box">
 	<h2>Summary of Build Steps</h2>
 
-	<p>When you have used the Evothings Studio App to develop an app it is straightforward to create a Cordova app from your project files. In essence, just put your HTML/CSS/JS files into the Cordova "www" folder. That's it!</p>
+	<p>When you have used the Evothings Viewer app to develop an app it is straightforward to create a Cordova app from your project files. In essence, just put your HTML/CSS/JS files into the Cordova "www" folder. That's it!</p>
 
 	<p>You can also <a href="#SetupCordovaForEvothings">run your Cordova app from Evothings Workbench</a>, and take advantage of the fast reload-on-save functionality. This means there is no need to rebuild the Cordova app during development, unless you made native code changes such as adding a new plugin.</p>
 
@@ -88,7 +88,7 @@ cordova platform add android</pre>
 	<pre>cordova build ios
 cordova build android</pre>
 
-    <p>As mentioned, to <a href="#SetupCordovaForEvothings">save development time</a> you can use Evothings Workbench with any Cordova app. This gives you fast reload-on-save with your own app (in this case you do not use the Evothings Studio App). This is useful for example if you wish to use plugins not included in the Evothings Studio App.<p>
+    <p>As mentioned, to <a href="#SetupCordovaForEvothings">save development time</a> you can use Evothings Workbench with any Cordova app. This gives you fast reload-on-save with your own app (in this case you do not use the Evothings Viewer app). This is useful for example if you wish to use plugins not included in the Evothings Viewer app.<p>
 
     <p>Read further below for detailed descriptions of the steps outlined above.<p>
 </div>
@@ -210,7 +210,7 @@ www
 	<h2>Setup Your Cordova Project for Evothings</h2>
 	<p>Evothings Workbench monitors the files in the current project and reloads the project on connected devices when a file is updated. This works with any web browser or web view widget. Automatic reload-on-save works with any Cordova project.</p>
 
-	<p>Note that the Evothings Studio App itself is built with Cordova, with plugins added for e.g. socket communication and Bluetooth Low Energy (BLE).</p>
+	<p>Note that the Evothings Viewer app itself is built with Cordova, with plugins added for e.g. socket communication and Bluetooth Low Energy (BLE).</p>
 
 	<p>To Evothings-enable your Cordova project, do as follows:</p>
 	<ol>
@@ -246,7 +246,7 @@ www
 
 <!--
 <div id="BuildingCustomEvothingsApp" class="evo-box">
-	<h2>Building a Custom Evothings Studio App</h2>
+	<h2>Building a Custom Evothings Viewer</h2>
 	<p>TODO: Write!</p>
 </div>
 -->
@@ -258,7 +258,7 @@ www
 
 	<p>Cordova comes with a set of plugins that are supported for a wide range of platforms. Evothings apps can use custom plugins available for iOS and Android. As long as you do not require socket communication or BLE, you should be able to use Evothings Studio to build apps for any platform supported by Cordova.</p>
 
-	<p>The same goes for the Evothings Studio App. It is available on iOS and Android, but should be possible to build from source for any platform supported by Cordova. (But you would miss the plugins not available for the target platform.) </p>
+	<p>The same goes for the Evothings Viewer app. It is available on iOS and Android, but should be possible to build from source for any platform supported by Cordova. (But you would miss the plugins not available for the target platform.) </p>
 </div>
 
 <script src="../js/include-footer.js"></script>
@@ -287,7 +287,7 @@ iOS you get an Xcode project you can open and run, for Android you get
 and apk-file you can install on your device.</p></li>
 		<li><p>Note that it works perfectly fine to develop the Cordova app in
 Evothings Studio. Just drag and drop index.html in project list in the
-Workbench window. Then run the app using the Evothings Studio App, or ...</p></li>
+Workbench window. Then run the app using the Evothings Viewer app, or ...</p></li>
 		<li><p>Enter the connect url in place of index.html in config.xml. When you
 start the app it will connect to the Workbench, just click run to
 launch your app.</p></li>
