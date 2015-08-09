@@ -27,7 +27,9 @@ Copyright (c) 2013-2014 Evothings AB
 	<a href="#Connecting">Connecting From a Device</a><br/>
 	<a href="#LiveEditing">Live Editing</a><br/>
 	<a href="#CreatingYourOwnProject">Creating Your Own Project</a><br/>
+	<!--
 	<a href="#ConnectingFromHybridApps">Connecting From Hybrid Apps</a><br/>
+	-->
 	<a href="#UsingCordovaPhoneGap">Using Cordova/PhoneGap</a><br/>
 	<a href="#JavaScriptTools">JavaScript Tools</a><br/>
 	<a href="#SourceCode">Source Code</a><br/>
@@ -40,7 +42,7 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>The Workbench has three windows:</p>
 	<ul>
-		<li>The main window that displays a list of projects (apps) you can run on mobile devices.</li>
+		<li>The main window that handles connect codes and lists projects (apps) you can run on mobile devices.</li>
 		<li>The JavaScript Tools window, where you can interactively run code on connected devices and view log output.</li>
 		<li>The Feedback section, where your input is superimportant for the evolution of Evothings Studio.</li>
 	</ul>
@@ -53,15 +55,20 @@ Copyright (c) 2013-2014 Evothings AB
 <div id="MainWindow" class="evo-box">
 
 	<img style="width:400px;height:auto;float:right;margin-left:20px;margin-bottom:20px;"
-		src="../images/evothings-workbench-screenshot.png"/>
+		src="../images/evothings-workbench-screenshot-2.png"/>
 
 	<h2>Main Window</h2>
 
-	<p>The main window displays a list of projects. Drag and drop HTML files here to create new project entries. You can rearrange items by dragging them around, or move them off the list by clicking the [x] symbol. Note that this will not delete any files in the project, it just  removes the project entry from the list.</p>
+	<p>The main window has three tabs:</p>
+	<ul>
+		<li>First tab is for connecting to the Reload Server. Here you get a connect code you use in the Viewer app.</li>
+		<li>Second tab displays a list of example projects.</li>
+		<li>Third tab is for your own projects. Drag and drop HTML files here to create new project entries. You can rearrange items by dragging them around, or move them off the list by clicking the [x] symbol. Note that this will not delete any files in the project, it just removes the project entry from the list.</li>
+	</ul>
 
-	<p>When you click the "Run" button, that project will launch on connected devices. If no device is connected, a local browser window will open on the selected project as a back-up.</p>
+	<p>When you click the "Run" button, that project will launch on connected devices.</p>
 
-	<p>Click the "Open" button to display the files in the project. From the file list, you can open files in any editors you have installed on your machine.</p>
+	<p>Click the "Open" button to display the files in the project. From the file list, you can open files in any editor you have installed on your machine.</p>
 </div>
 
 <div id="Connecting" class="evo-box">
@@ -69,11 +76,10 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server, that will tell devices to run and reload apps. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
 
-	<p>Use the Evothings Viewer app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app. It is possible to connect from the web browser of the device (just enter the connect address shown in the Workbench window in the URL field of the browser).</p>
+	<p>Use the Evothings Viewer app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app.</p>
 
-	<p>However, when connecting from a web browser, functionality will be limited to the services provided by the browser. For example, you will not be able to use advanced networking or Bluetooth Low Energy. For most IoT apps, you will need to use the Evothings Viewer app or build your own hybrid app with the functionality you require.</p>
+	<p>Enter the connect code obtained in the "Connect" tab in the Viewer app, and press the "Connect" button in the app. If the code times out you can easily get a new code from the Workbench.</p>
 
-	<p>To connect from the Evothings Viewer app, use the "Scan" button to automatically detect the running Workbench application, or enter the connect URL in the address field and press "Connect".</p>
 </div>
 
 <div id="LiveEditing" class="evo-box">
@@ -95,10 +101,11 @@ Copyright (c) 2013-2014 Evothings AB
 	<li>Drag the file into the Workbench window and drop it there.</li>
 	<li>The file is now added as a project that you can run on connected devices.</li>
 	<li>You can move project entries using drag-and-drop, and delete them by clicking the delete icon (this will not delete any files in your project folder).</li>
-	<li>When clicking "Run" the files in that project the folder is monitored, and the app is reloaded when any file is updated. Currently up to three levels of subdirectories are monitored. This can be configured in the file settings.js.</li>
+	<li>When clicking "Run" the files in that project the folder is monitored, and the app is reloaded when any file is updated. Currently up to three levels of subdirectories are monitored. The number of levels scanned can be configured in the Settings dialog found under the menu icon in the Workbench window.</li>
 	</ul>
 </div>
 
+<!--
 <div id="ConnectingFromHybridApps" class="evo-box">
 <h2>Connecting From Hybrid Apps</h2>
 
@@ -143,8 +150,8 @@ NSURLRequest* request = [NSURLRequest
 
 // Display the web view.
 [self.view addSubview: webView];</pre>
-
 </div>
+-->
 
 <div id="UsingCordovaPhoneGap" class="evo-box">
 <h2>Using Cordova or PhoneGap</h2>
