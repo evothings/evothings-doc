@@ -208,7 +208,14 @@ www
 
 <div id="SetupCordovaForEvothings" class="evo-box">
 	<h2>Setup Your Cordova Project for Evothings</h2>
+
 	<p>Evothings Workbench monitors the files in the current project and reloads the project on connected clients when a file is updated. This works with any web browser or web view widget. Automatic reload-on-save works with any Cordova project.</p>
+
+	<p>In a project created with Cordova 5 or higher, you must comment out or remove the following meta tag from index.html for live reload to work:</p>
+<pre>&lt;meta http-equiv="Content-Security-Policy" content="default-src 'self'
+    data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self'
+    'unsafe-inline'; media-src *"&gt;
+</pre>
 
 	<p>Note that the Evothings Client app itself is built with Cordova. It is a plain Cordova app with some custom plugins added, e.g. for socket communication and Bluetooth Low Energy (BLE).</p>
 
@@ -222,6 +229,7 @@ www
 		For example, if the address is "192.168.43.131:4042", you would enter this URL:
 		<pre>&lt;content src="http://192.168.43.131:4042" /&gt;</pre>
 		Save the file.</p></li>
+		<li><p>Make sure <b>index.html</b> does not contain the meta tag <code>http-equiv="Content-Security-Policy"</code>.</p></li>
 		<li><p>Build the project and launch the app on a device. Note that the device must be on the same network as your desktop machine running Evothings Workbench. When you launch the app, it should connect to the Workbench and display the Connect screen.</p></li>
 		<li><p>Find the <b>index.html</b> file of you project in the <b>www</b> folder using a file explorer (Finder on iOS X, Explorer on Windows).</p></li>
 		<li><p>Drag the file <b>index.html</b> into the Evothings Workbench window. This adds your project to the project list.</p></li>
