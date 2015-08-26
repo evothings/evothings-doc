@@ -8,6 +8,7 @@ document.write(
 	+	'<a href="../examples/hue-lights.html">Philips&nbsp;Hue&nbsp;Demo</a><br/>'
 
 	+	'<a href="../examples/ble-scan.html">BLE&nbsp;Scan</a><br/>'
+	+	'<a href="../examples/eddystone-scan.html">Eddystone&nbsp;Scan</a><br/>'
 	+	'<a href="../examples/ibeacon-scan.html">iBeacon&nbsp;Scan</a><br/>'
 	+	'<a href="../examples/estimote-beacons.html">Estimote&nbsp;Beacons</a><br/>'
 	+	'<a href="../examples/estimote-nearables.html">Estimote&nbsp;Nearables</a><br/>'
