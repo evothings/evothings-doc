@@ -7,6 +7,6 @@
 			 : '../'
 
 	document.write(
-		'<a href="http://evothings.com"><img src="' + path +
+		'<a href="https://evothings.com"><img src="' + path +
 			'images/evothings_logo_outline.svg" width="100%" /></a><br/>')
 })()
