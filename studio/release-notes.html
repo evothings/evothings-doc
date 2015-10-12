@@ -23,9 +23,7 @@ Copyright (c) 2013-2015 Evothings AB
 <div class="evo-box evo-content-index">
 	<script src="js/include-evothings-logo.js"></script>
 	<a href="#ReleaseNotes">Release Notes</a><br/>
-	<a href="#EvothingsStudio200Alpha3">EvothingsStudio 2.0.0 Alpha 3</a><br/>
-	<a href="#EvothingsStudio200Alpha2">EvothingsStudio 2.0.0 Alpha 2</a><br/>
-	<a href="#EvothingsStudio200Alpha1">EvothingsStudio 2.0.0 Alpha 1</a><br/>
+	<a href="#EvothingsStudio200Beta1">EvothingsStudio 2.0.0 Beta 1</a><br/>
 	<a href="#EvothingsStudio120">EvothingsStudio 1.2.0</a><br/>
 	<a href="#EvothingsStudio113">EvothingsStudio 1.1.3</a><br/>
 	<a href="#EvothingsStudio110">EvothingsStudio 1.1.0</a><br/>
@@ -41,84 +39,45 @@ Copyright (c) 2013-2015 Evothings AB
 	<p>Learn what is new in each release of Evothings Studio.</p>
 </div>
 
-<div id="EvothingsStudio200Alpha3" class="evo-box">
-	<h2>Evothings Studio 2.0.0 Alpha 3</h2>
+<div id="EvothingsStudio200Beta1" class="evo-box">
+	<h2>Evothings Studio 2.0.0 Beta 1</h2>
 
-	<p><b>Evothings Workbench:</b></p>
+	<p>Highlights of Evothings Studio version 2.0:</p>
 	<ul>
-		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Connect to Evothings Workbench from any mobile device with Internet access (no need to be on the same WiFi network).</li>
+		<li>No need to configure routers or firewalls.</li>
+		<li>Easy to connect to Evothings Workbench for users independently of physical location or network. You can now develop mobile IoT apps anywhere as long as you have an Internet connection. Moreover, you can demo apps remotely for users and customers, running your apps directly on their mobile devices.</li>
+		<li>Quicker live reload (automatic reload when saving a file). Speedup is a factor of 3-4 for large applications.</li>
+		<li>Improved caching that results in quicker loading of apps.</li>
+	</ul>
+
+	<p><b>Evothings Studio Workbench:</b></p>
+	<ul>
 		<li>Works with the new Evothings Viewer app.</li>
-		<li>Longer connect key timeout.</li>
-		<li>Bug fixes.</li>
+		<li>Easy to generate a connect key for connecting from Evothings Viewer.</li>
+		<li>For security reasons the connect key expires after some time. Just generate a new key if this happens. You can connect from a new device at any time by generating a new key. </li>
+		<li>Already connected devices are not affected when generating a new connect key, they will still be connected.</li>
+		<li>Login to get quick-connect functionality (reconnect with one button press when launching the Viewer app).</li>
+		<li>Demo and test apps live anywhere in the world by connecting to a remote Workbench or web server.</li>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 	</ul>
 
 	<p><b>Evothings Viewer:</b></p>
 	<ul>
+		<li>Easy to connect to Evothings Workbench using a connect key.</li>
+		<li>Quickly connect to the Workbench where you are logged in next time you launch the app. No need to generate and enter a connect key, very quick to connect with just one button press.</li>
+		<li>Connect from anywhere on the Internet. Users can connect to remote Workbenches by entering the corresponding connect key, to do testing and remote demos.</li>
+		<li>Easy to connect to Evothings Workbench using a connect key.</li>
+		<li>You can connect from any number of devices at any time. Just generate a new connect key if it has timed out. Connected devices stay connected also when you generate a new connect key.</li>
+		<li>Improved loading of apps and faster reload. Speedup is a factor of 3-4 for large applications.</li>
 		<li>Available for iOS and Android.</li>
-		<li>User-friendly connect key validation.</li>
-		<li>Improve reload performance.</li>
-		<li>Easily demo and test apps live anywhere in the world by connecting to a remote Workbench or web server.</li>
 	</ul>
 
 	<p><b>Examples and libraries:</b></p>
 	<ul>
 		<li>New library for writing Eddystone beacon applications.</li>
 		<li>New example app "Eddystone Scan" that scans for Eddystone beacons.</li>
-	</ul>
-</div>
-
-<div id="EvothingsStudio200Alpha2" class="evo-box">
-	<h2>Evothings Studio 2.0.0 Alpha 2</h2>
-
-	<p>This is an early release of a major upgrade to Evothings Studio. Highlights of this version:</p>
-	<ul>
-		<li>Connect to Evothings Workbench from any mobile device with Internet access (no need to be on the same WiFi network).</li>
-		<li>Easy to connect to Evothings Workbench for users independently of physical location or network. You can now develop mobile IoT apps anywhere as long as you have an Internet connection. Moreover, you can demo apps remotely for users and customers, running your apps directly on their mobile devices.</li>
-		<li>No need to configure routers of firewalls.</li>
-		<li>Improved caching that results in quicker re-run of apps and quicker live reload (automatic reload when saving a file). Speedup is at least a factor of 3-4 for large applications.</li>
-	</ul>
-
-	<p><b>Evothings Workbench:</b></p>
-	<ul>
-		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Works with the new Evothings Viewer app.</li>
-		<li>Updated documentation.</li>
-		<li>Easy to generate a connect key for connecting from mobile devices.</li>
-	</ul>
-
-	<p><b>Evothings Viewer:</b></p>
-	<ul>
-		<li>Supported platforms are iOS and Android.</li>
-		<li>Easy to connect to Evothings Workbench using a connect key.</li>
-		<li>Connect from anywhere on the Internet. You can connect to remote Workbenches by entering the corresponding connect key, to test apps directly on your mobile device.</li>
-		<li>Improved error handling.</li>
-	</ul>
-</div>
-
-<div id="EvothingsStudio200Alpha1" class="evo-box">
-	<h2>Evothings Studio 2.0.0 Alpha 1</h2>
-
-	<p>This is an early release of a major upgrade to Evothings Studio. Highlights of this version include:</p>
-	<ul>
-		<li>Connect to Evothings Workbench from any mobile device with Internet access (no need to be on the same WiFi network).</li>
-		<li>Easy to connect to Evothings Workbench for users independently of physical location or network. You can now develop mobile IoT apps anywhere as long as you have an Internet connection. Moreover, you can demo apps remotely for users and customers, running your apps directly on their mobile devices.</li>
-		<li>No need to configure routers of firewalls.</li>
-		<li>Quicker live reload (automatic reload when saving a file). Speedup is a factor of 3-4 for large applications.</li>
-	</ul>
-
-	<p><b>Evothings Studio Workbench:</b></p>
-	<ul>
-		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
-		<li>Works with the new Evothings Viewer app.</li>
-		<li>Updated documentation.</li>
-		<li>Easy to generate a connect key for connecting from mobile devices.</li>
-	</ul>
-
-	<p><b>Evothings Viewer:</b></p>
-	<ul>
-		<li>Supported platforms are iOS and Android.</li>
-		<li>Easy to connect to Evothings Workbench using a connect key.</li>
-		<li>Connect from anywhere on the Internet. You can connect to remote Workbenches by entering the corresponding connect key, to test apps directly on your mobile device.</li>
+		<li><a href="https://github.com/evothings/cordova-eddystone">Eddystone Cordova plugin</a> is available if you wish to build a native app using Cordova, PhoneGap Build, or Ionic.</li>
 	</ul>
 </div>
 
