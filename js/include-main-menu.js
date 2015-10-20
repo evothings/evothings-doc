@@ -26,7 +26,7 @@
 		'<div id="main-menu-wide" '
 		+	'class="hyper-main-menu evo-btn-group evo-btn-group-justified">'
 		+	'<a href="' + path + 'index.html" type="button" '
-		+		'class="evo-btn evo-btn-lg evo-btn-red">Studio v2</a>'
+		+		'class="evo-btn evo-btn-lg evo-btn-red">Studio 2.0</a>'
 		+	'<a href="' + path + 'studio/tutorials.html" type="button" '
 		+		'class="evo-btn evo-btn-lg evo-btn-yellow">Tutorials</a>'
 		+	'<a href="' + path + 'studio/api-overview.html" type="button" '
