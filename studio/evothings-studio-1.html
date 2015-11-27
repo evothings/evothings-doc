@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: evothings-studio-1.html
+Description: Documentation for Evothings Studio 1.2.
+Author: Mikael Kindborg
+Copyright (c) 2013-2015 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<title>Evothings Studio 1.2</title>
+<script src="../js/include-viewport.js"></script>
+<script src="../js/include-css-scripts.js"></script>
+</head>
+
+<body>
+<div class="evo-heading">Evothings Studio 1.2</div>
+
+<div class="evo-page"><div class="evo-content">
+
+<script src="../js/include-main-menu.js"></script>
+
+<div class="evo-box evo-content-index">
+	<script src="../js/include-evothings-logo.js"></script>
+	<a href="#Introduction">Evothings Studio 1.2</a><br/>
+	<a href="#Difference">Differences between 1.2 and 2.0</a><br/>
+	<a href="#QuickStart">Getting Started</a><br/>
+	<a href="#Troubleshooting">Troubleshooting</a><br/>
+	<a href="#Upgrade">Upgrading to version 2.0</a><br/>
+</div>
+
+<div id="Introduction" class="evo-box">
+	<h1>Evothings Studio 1.2</h1>
+
+	<p>Evothings Studio 1.2 is the first generation of Evothings Studio. Is is now being replaced by Evothings Studio version 2.0.</p>
+
+	<p>This page provides documentation for users of Evothings Studio 1.2.</p>
+
+	<p>Evothings Studio 1.2 consists of:</p>
+	<ul>
+		<li><b>Evothings Workbench</b> - Desktop application that supports fast turn around development and live editing of apps running on mobile devices.</li>
+		<li><b>Evothings Client</b> - Mobile application for running IoT apps written in HTML/JavaScript.</li>
+		<li><b>Universal Editor/IDE support</b> - Use any text editor or programming IDE to code with instant-reload-on-save. Also works with graphics editors. Just press save to reload changes on connected mobile devices.</li>
+	</ul>
+</div>
+
+<div id="Difference" class="evo-box">
+	<h2>Differences between version 1.2 and 2.0</h2>
+	<p>The following are the main differences between Evothings Studio 1.2 and 2.0:</p>
+	<ul>
+		<li>Evothings Viewer is used in place of Evothings Client in version 2.0.</li>
+		<li>An important difference is the method used to connect from mobile devices to Evothings Workbench.</li>
+		<li>Version 1.2 uses a local WiFi network to connect from Evothings Client to Evothings Workbench.</li>
+		<li>Version 2.0 uses a hosted service (Evothings Cloud Server) to connect from Evothings Viewer to Evothings Workbench.</li>
+		<li>In version 2.0, Evothings Workbench and connected mobile devices no longer need to be on the same local WiFi network.</li>
+		<li>Evothings Workbench version 2.0 has more features and an improved user interface.</li>
+		<li>Evothings Studio 2.0 is the basis for future versions of Evothings Studio.</li>
+	</ul>
+
+	<p><b>Apps developed with Evothings Studio 1.2 are fully compatible with Evothings Studio 2.0.</b></p>
+</div>
+
+<div id="QuickStart" class="evo-box">
+	<h2>Getting Started</h2>
+
+	<p><b>Very quick version:</b></p>
+	<ul>
+		<li>Ensure your computer and mobile device are connected to the same WiFi network.</li>
+		<li>Download and run the Evothings Workbench application on your computer.</li>
+		<li>Install and run the Evothings Client app on your mobile device.</li>
+		<li>AP/Client Isolation may exist on some routers, please ensure the setting is disabled.</li>
+		<li>Connect from Evothings Client to the Workbench.</li>
+		<li>Click the "Run" button of the "Hello World" example.</li>
+	</ul>
+
+	<p><b>Slightly longer version:</b></p>
+	<ul>
+		<li>Download and run the Evothings Workbench application on your computer. Make sure to extract the files to your Desktop or other User folder if using Windows.</li>
+		<li>Download and install the Evothings Client app on your mobile device.</li>
+		<li>Connect both your computer running Evothings Workbench and your mobile devices running Evothings Client to the same WiFi network.
+		<li>Launch the app and select "Scan". Select your computer running Evothings Workbench from the list.</li>
+		<li>If your computer does not appear in the list, please check the Troubleshooting section.</li>
+		<li>Alternatively, enter the URL shown in the bottom panel of the Workbench and click "Connect".</li>
+		<li>The app should now connect to Evothings Workbench and display the message "Connected".</li>
+		<li>Click the "Run" button of one of the apps in Evothings Workbench. Does the mobile display the app you selected? If so, you are up and running!</li>
+		<li>You can connect any number of mobile devices, and instantly see the result on all of them!</li>
+		<li>To create your own project, just drag and drop an HTML file into the Workbench project list. When you press RUN that file and all included files will be launched on connected mobile devices. Sort the project list using drag and drop.</li>
+		<li><b>Mobile devices must be on the same local WiFi network as the computer running the Workbench to be able connect using the "Scan" method, and network client isolation must be turned off.</b></li>
+	</ul>
+
+	<p>Learn more about <a href="studio/workbench.html">Evothings Workbench</a> and <a href="studio/mobile-app.html">Evothings Client</a>.</p>
+</div>
+
+<div id="Troubleshooting" class="evo-box">
+	<h2>Troubleshooting</h2>
+	<p><strong>If Evothings Client can't find or connect to the Workbench:</strong></p>
+	<ul>
+		<li>Make sure that your mobile device and computer are on the same WiFi network.</li>
+		<li>Configure any firewalls on the computer to allow Evothings Workbench to handle inbound and outbound connections.</li>
+		<li>Make sure that network client isolation is turned off. It is off by default on most home routers, but some public or enterprise WiFi networks have it on. Please check your router settings or ask your network administrator. In the case where client isolation is enabled, Evothings Studio will not work by using the WiFi network for direct communication between Evothings Client and the Workbench.</li>
+		<li>If client isolation is in effect, the easiest solution is usually to use your own WiFi router or a mobile phone with WiFi sharing. On iOS, this is called "Personal Hotspot". On Android, it is usually called "Portable hotspot" or "Internet sharing".</li>
+		<li>Alternatively, you can:
+			<ul>
+				<li>use a Virtual Private Network (VPN), or</li>
+				<li>use a Reverse SSH tunnel, or</li>
+				<li>run Evothings Workbench on a computer with a public IP address. In that case you can use that address to connect from anywhere on the Internet.</li>
+			</ul>
+			The details of how to set these up is beyond the scope of this document.
+		</li>
+	</ul>
+</div>
+
+<div id="Upgrade" class="evo-box">
+	<h2>Upgrading to Evothings Studio 2.0</h2>
+
+	<p><b>Apps developed with Evothings Studio 1.2 are fully compatible with Evothings Studio 2.0.</b> Just download the new version and you are up and running.</p>
+
+	<p>Here is how to upgrade:</p>
+	<ul>
+		<li>It is very easy to upgrade to Evothings Studio 2.0. Just <a href="https://evothings.com/download">download the new version from the download page</a>.</li>
+		<li>Install the Evothings Viewer app on your mobile devices. This app is used in place of Evothings Client. Download from <a href="https://itunes.apple.com/nz/app/evothings-viewer/id1029452707?mt=8">Apple App Store</a> and <a href="https://play.google.com/store/apps/details?id=com.evothings.evothingsviewer&hl=en">Google Play Store</a>.</li>
+		<li>Follow the on-screen instructions provided in Evothings Workbench to get started.</li>
+		<li>Tutorials and guides on the Evothings web site will be updated for version 2.0. Meanwhile, most things work the same, and existing tutorials are applicable also to version 2.0. The main difference is that Evothings Viewer is used in place of Evothings Client.</li>
+	</ul>
+</div>
+
+<script src="js/include-footer.js"></script>
+
+</div></div>
+</body>
+</html>
+

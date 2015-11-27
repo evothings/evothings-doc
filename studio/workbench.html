@@ -25,8 +25,10 @@ Copyright (c) 2013-2014 Evothings AB
 	<a href="#Introduction">Evothings Workbench</a><br/>
 	<a href="#MainWindow">Main Window</a><br/>
 	<a href="#Connecting">Connecting From a Device</a><br/>
+	<a href="#Running">Running an App</a><br/>
+	<a href="#CreatingYourOwnProject">Creating Your Own App</a><br/>
+	<a href="#AppFileStructure">Application File Structure</a><br/>
 	<a href="#LiveEditing">Live Editing</a><br/>
-	<a href="#CreatingYourOwnProject">Creating Your Own Project</a><br/>
 	<!--
 	<a href="#ConnectingFromHybridApps">Connecting From Hybrid Apps</a><br/>
 	-->
@@ -61,14 +63,14 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>The main window has three tabs:</p>
 	<ul>
-		<li>First tab is for connecting to the Reload Server. Here you get a connect code you use in the Viewer app.</li>
-		<li>Second tab displays a list of example projects.</li>
-		<li>Third tab is for your own projects. Drag and drop HTML files here to create new project entries. You can rearrange items by dragging them around, or move them off the list by clicking the [x] symbol. Note that this will not delete any files in the project, it just removes the project entry from the list.</li>
+		<li><b>Connect</b>. First tab is for connecting to the Evothings Cloud Server. Here you get a connect key for use in the Viewer app.</li>
+		<li><b>Examples</b>. Second tab displays a list of example apps.</li>
+		<li><b>My Apps</b>. Third tab is for your own apps.</li>
 	</ul>
 
 	<p>When you click the "Run" button, that project will launch on connected devices.</p>
 
-	<p>Click the "Open" button to display the files in the project. From the file list, you can open files in any editor you have installed on your machine.</p>
+	<p>Click the "Code" button to display the files in the project. From the file list, you can open files in any editor you have installed on your machine.</p>
 </div>
 
 <div id="Connecting" class="evo-box">
@@ -79,29 +81,60 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>Use the Evothings Viewer app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app.</p>
 
 	<p>Enter the connect code obtained in the "Connect" tab in the Viewer app, and press the "Connect" button in the app. If the code times out you can easily get a new code from the Workbench.</p>
+</div>
 
+<div id="Running" class="evo-box">
+	<h2>Running an Example App</h2>
+
+	<p>To run one of the example apps, make sure the Viewer is connected to the Workbench, then click the "Run" button on the app you wish to run.</p>
+
+	<p>Some of the example apps require that you change settings in the source code for them to work properly. You cannot edit the code of the example apps directly, you need to make a copy first. Click the "Copy" button to do this. It will create a copy of the app under "My Apps". The click "Code" to open a system file browser showing the application files.</p>
+</div>
+
+<div id="CreatingYourOwnProject" class="evo-box">
+	<h2>Creating Your Own App</h2>
+
+	<p>To create your own app in "My Apps" you have three options:</p>
+	<ul>
+		<li>Click the "New" button in the main menu bar.</li>
+		<li>Click the "Copy" button on an example app.</li>
+		<li>Drag and drop an .html file to the Workbench window.</li>
+	</ul>
+
+	<p>How to use the tab "My Apps":</p>
+	<ul>
+		<li>When clicking "Run" the app is launched in connected mobile devices.</li>
+		<li>You can remove app entries listed under "My Apps" by clicking the small close (x) icon. This will not remove files on disk. To add back a removed app, drag and drop the index.html file of the app to the Workbench window.</li>
+		<li>Sort the list of apps using drag and drop (note that this is disabled in the "Examples" tab).</li>
+		<li>To change the name of the app displayed in the list, edit the &lt;title&gt; tag in file index.html.</li>
+		<li>You can change the icon shown in the list by replacing the file app-icon.png in the folder of the app.</li>
+		<li>Changes to the app title or the icon will be displayed when you Run of reload the app.</li>
+	</ul>
+</div>
+
+<div id="AppFileStructure" class="evo-box">
+	<h2>Application File Structure</h2>
+
+	<p>An Evothings app is just a standard web page. Any web page can be launched as an app in Evothings Viewer.</p>
+	<p>When you create an app using the "New" or "Copy" button, you will also get an icon displayed in the lisp of apps, and a settings file called evothings.json. If you add an app using drag and drop, the file evothings.json will be created for you first time you run the app.</p>
+	<p>To make use of the Apache Cordova framework, include the file "cordova.js" in index.html. Check out the example apps for how this is done. "Cordova Accelerometer" is a good example to start with.</p>
+	<p>The main HTML file of the app is named "index.html" by convention. Evothings example apps use this naming convention, as do Cordova applications. This file is the entry point of your mobile application. You may name the main HTML file of your app anything you like. Just drag and drop the file onto the Workbench window, and it is added to "My Apps". It is however convenient to follow the convention of using "index.html" for easy compatibility with Cordova and other frameworks.</p>
 </div>
 
 <div id="LiveEditing" class="evo-box">
 	<h2>Live Editing</h2>
-	<p>To test the live editing feature of HyperReload, try out the following:</p>
-	<ul>
-	<li>Click the "Open" button of one of the demo apps in the Workbench window, for instance the "Hello World" example.</li>
-	<li>Open the file "../index.html" in a text editor.</li>
-	<li>Change something in the HTML code, for example, change the &lt;h1&gt; heading to: <pre>&lt;h1&gt;I am alive!&lt;/h1&gt;</pre></li>
-	<li>Save the file. The changes you made should be instantly displayed on connected devices.</li>
-	</ul>
-</div>
 
-<div id="CreatingYourOwnProject" class="evo-box">
-	<h2>Creating Your Own Project</h2>
-	<p>To add your own project to the Workbench, do this:</p>
+	<p>When "Run" is clicked on an app in "My Apps", that app becomes the active app. The files in the app's folder are monitored, and the app is reloaded when any file is updated.</p>
+
+	<p>Currently up to three levels of subdirectories are monitored. The number of levels scanned can be configured in the Settings dialog found under the "More" menu.</p>
+
+	<p>Here is how to live edit an app:</p>
 	<ul>
-	<li>Open the folder with the HTML file that is the main file of your application (typically "../index.html", but any name is fine). The file must be a valid HTML file and it must have extension ".html" or ".htm".</li>
-	<li>Drag the file into the Workbench window and drop it there.</li>
-	<li>The file is now added as a project that you can run on connected devices.</li>
-	<li>You can move project entries using drag-and-drop, and delete them by clicking the delete icon (this will not delete any files in your project folder).</li>
-	<li>When clicking "Run" the files in that project the folder is monitored, and the app is reloaded when any file is updated. Currently up to three levels of subdirectories are monitored. The number of levels scanned can be configured in the Settings dialog found under the menu icon in the Workbench window.</li>
+		<li>Click "Run" to make your app the active app.</li>
+		<li>Click the "Code" button. This opens a system file browser for the application files.</li>
+		<li>Open the file you wish to edit, for example "index.html", in a text editor. Any text editor or IDE should work.</li>
+		<li>Change something in the code. For instance, change the &lt;h1&gt; heading to: <pre>&lt;h1&gt;I am alive!&lt;/h1&gt;</pre></li>
+		<li>Save the file. The changes you made should be instantly displayed on connected mobile devices.</li>
 	</ul>
 </div>
 

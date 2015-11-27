@@ -21,8 +21,9 @@ Copyright (c) 2013-2015 Evothings AB
 <script src="../js/include-main-menu.js"></script>
 
 <div class="evo-box evo-content-index">
-	<script src="js/include-evothings-logo.js"></script>
+	<script src="../js/include-evothings-logo.js"></script>
 	<a href="#ReleaseNotes">Release Notes</a><br/>
+	<a href="#EvothingsStudio200Beta2">EvothingsStudio 2.0.0 Beta 2</a><br/>
 	<a href="#EvothingsStudio200Beta1">EvothingsStudio 2.0.0 Beta 1</a><br/>
 	<a href="#EvothingsStudio120">EvothingsStudio 1.2.0</a><br/>
 	<a href="#EvothingsStudio113">EvothingsStudio 1.1.3</a><br/>
@@ -39,6 +40,46 @@ Copyright (c) 2013-2015 Evothings AB
 	<p>Learn what is new in each release of Evothings Studio.</p>
 </div>
 
+<div id="EvothingsStudio200Beta2" class="evo-box">
+	<h2>Evothings Studio 2.0.0 Beta 2</h2>
+
+	<p>Evothings Studio 2.0 Beta 2 features an improved Workbench UI with new functionality and easy-to-follow instructions. Reload performance and stability in the workflow have also been improved.</p>
+
+	<h3>Evothings Studio Workbench</h3>
+	<ul>
+		<li>Works with the Evothings Viewer app.</li>
+		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
+		<li>Available for Windows, OS X, and Linux.</li>
+		<li>Overall improved UI of the Workbench with clearer instructions and new functionality for an improved workflow.</li>
+		<li>Improved documentation, guides and help texts.</li>
+		<li>Improved getting started instructions.</li>
+		<li>Improved UI and help texts for Connect and Login.</li>
+		<li>Improved stability for live reloading of apps on iOS 9.</li>
+		<li>New function to copy example apps to the “My Apps” tab.</li>
+		<li>New function to create a new project based on a basic application template.</li>
+		<li>A warning is displayed when clicking the delete (x) icon on an app in the “My Apps” tab (note that removing apps from “My Apps” list  does not remove the actual files on disk).</li>
+		<li>Instructions for how to change the name of an app displayed under the “My Apps” tab.
+		<li>Added icons for the example apps listing and an option to create your own icons for apps in the “My Apps” tab.</li>
+		<li>Improved login/logout function with a checkbox option, allowing the Workbench to remember login credentials for Google+.</li>
+		<li>Added menu option in the “More” menu to make it easy to provide feedback. Your feedback is most welcome!</li>
+	</ul>
+
+	<h3>Evothings Viewer</h3>
+	<ul>
+		<li>Available for iOS and Android.</li>
+		<li>Bugs related to changed behavior in iOS9 have been fixed.</li>
+On iOS 9, to prevent application content from expanding the view when DOM elements move off screen, you’ll want to add the directive <code>shrink-to-fit=no</code> to the meta “viewport” setting in index.html. You don’t need to do any specific platform check when using this setting; it can be used for both iOS and Android (the directive is ignored on Android, which does not have this problem in the first place).</li>
+		<li>Reload performance and stability are both improved. On iOS 9, the occasionally experienced problems when loading/reloading the content of the web container has now been fixed.</li>
+	</ul>
+
+	<h3>Examples apps</h3>
+	<p>Two new example apps have been added!</p>
+	<ul>
+		<li>New example app for the ESP8266 WiFi module.</li>
+		<li>New example for the MediaTek LinkIt Connect 7681.</li>
+	</ul>
+</div>
+
 <div id="EvothingsStudio200Beta1" class="evo-box">
 	<h2>Evothings Studio 2.0.0 Beta 1</h2>
 
@@ -51,7 +92,7 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>Quicker live reload (automatic reload when saving a file). Speedup is a factor of 3-4 for large applications.</li>
 	</ul>
 
-	<p><b>Evothings Studio Workbench:</b></p>
+	<h3>Evothings Studio Workbench</h3>
 	<ul>
 		<li>Works with the new Evothings Viewer app.</li>
 		<li>Easy to generate a connect key for connecting from Evothings Viewer.</li>
@@ -61,7 +102,7 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 	</ul>
 
-	<p><b>Evothings Viewer:</b></p>
+	<h3>Evothings Viewer</h3>
 	<ul>
 		<li>Improved loading of apps and faster reload. Speedup is a factor of 3-4 for large applications.</li>
 		<li>Easy to connect to Evothings Workbench using a connect key.</li>
@@ -71,7 +112,7 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>Available for iOS and Android.</li>
 	</ul>
 
-	<p><b>Examples and libraries:</b></p>
+	<h3>Examples and libraries</h3>
 	<ul>
 		<li>New library for writing Eddystone beacon applications.</li>
 		<li>New example app "Eddystone Scan" that scans for Eddystone beacons.</li>
@@ -84,7 +125,7 @@ Copyright (c) 2013-2015 Evothings AB
 
 	<p>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></p>
 
-	<p><b>Evothings Workbench:</b></p>
+	<h3>Evothings Workbench</h3>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 		<li>Updated documentation.</li>
@@ -92,7 +133,7 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>Bugfixes.</li>
 	</ul>
 
-	<p><b>Example apps:</b></p>
+	<h3>Example apps</h3>
 	<ul>
 		<li>Several new and updated example apps for the TI SensorTag CC2650 and CC2541.</li>
 		<li>New example apps for ARM mbed ("mbed Custom GAP" and "mbed Custom GATT") contributed by the mbed community. Many thanks for this much appreciated contribution!
@@ -100,14 +141,14 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>New example app "Cordova Accelerometer" that demonstrates how to read the accelerometer of the mobile device. This example replaces the "Cordova Basic" example.</li>
 	</ul>
 
-	<p><b>Libraries:</b></p>
+	<h3>Libraries</h3>
 	<ul>
 		<li>The JavaScript library for TI SensorTag has been refactored and extended.</li>
 		<li>The FastClick library is now included with all examples for a responsive UI experience.</li>
 		<li>Bugfixes.</li>
 	</ul>
 
-	<p><b>Known issues:</b></p>
+	<h3>Known issues</h3>
 	<p>During testing, we have experienced the following issues with the current firmware versions (0.89 and 1.01) of the TI SensorTag CC2650:</p>
 	<ul>
 		<li>The SensorTag has been observed to disconnect when in use.</li>
@@ -135,7 +176,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 
 	<p>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></p>
 
-	<p><b>Evothings Workbench:</b></p>
+	<h3>Evothings Workbench</h3>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 		<li>Updated documentation.</li>
@@ -143,7 +184,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>Bugfixes.</li>
 	</ul>
 
-	<p><b>Evothings Client:</b></p>
+	<h3>Evothings Client</h3>
 	<ul>
 		<li>Supported platforms for the Evothings Viewer app are Android and iOS.</li>
 		<li>Updated support for Estimote Beacons.</li>
@@ -151,7 +192,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>Support for accessing BLE advertisement data using using library easyble.js added to iOS (also available on Android).</li>
 	</ul>
 
-	<p><b>Example apps:</b></p>
+	<h3>Example apps</h3>
 	<ul>
 		<li>New example app for Estimote Nearables.</li>
 		<li>Updated example app for Estimote Beacons.</li>
@@ -159,7 +200,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>BLE Scan has been updated to remove inactive BLE devices from the display list every ten seconds.</li>
 	</ul>
 
-	<p><b>Libraries:</b></p>
+	<h3>Libraries</h3>
 	<ul>
 		<li>Documentation of libraries and plugin APIs has been added. See the <a href="api-overview.html">API Overview</a> page.</li>
 		<li>Bugfixes.</li>
@@ -171,7 +212,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 
 	<p>Find all downloads for this version of Evothings Studio at: <a href="http://evothings.com/download">evothings.com/download</a></p>
 
-	<p><b>Evothings Workbench:</b></p>
+	<h3>Evothings Workbench</h3>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 		<li>Evothings Workbench has support for network switching (automatic detection of network switching). However, you will need to reconnect from Evothings Client after a network switch.</li>
@@ -181,14 +222,14 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>Updated documentation, including new example apps.</li>
 	</ul>
 
-	<p><b>Evothings Client:</b></p>
+	<h3>Evothings Client</h3>
 	<ul>
 		<li>Supported platforms for the Evothings Viewer app are Android and iOS.</li>
 		<li>Plugin for Estimote Beacons has been added. Special credits to <a href="https://github.com/kdzwinel">Konrad Dzwinel</a> who is the original creator of this plugin.</li>
 		<li>Local notification plugin added (can be used for background notifications).</li>
 	</ul>
 
-	<p><b>Example apps:</b></p>
+	<h3>Example apps</h3>
 	<ul>
 		<li>New example app for Estimote Beacons.</li>
 		<li>Two new example apps for RedBearLabs.</li>
@@ -201,7 +242,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>In BLE Scan, display of device.address has been removed on iOS, this is a UUID that can be mistaken for an iBeacon UUID (which it is not, it is just a temporary UUID assigned by iOS).</li>
 	</ul>
 
-	<p><b>Libraries:</b></p>
+	<h3>Libraries</h3>
 	<ul>
 		<li>Updated TISensorTag library (support for accessing firmware version, calculation of sensor values etc).</li>
 		<li>New library file <a href="https://github.com/evothings/evothings-examples/blob/master/resources/libs/evothings/evothings.js">evothings.js</a>, which must be included in all apps that use Evothings library functions. Supports asynchronous loading of JavaScript libraries, using the evothings.loadScript function. Use function evothings.scriptsLoaded(doneCallback) to ensure all script have been loaded, or pass a callback to evothings.loadScript to know when a single script has loaded. These callbacks take no parameters.</li>
@@ -216,7 +257,7 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 		<li>Supported platforms for the Evothings Viewer app are Android and iOS.</li>
-		<li>the Evothings Viewer app has improved iBeacon support with enhanced performance and stability during application reload, and an updated TCP/UDP socket plugin.</li>
+		<li>The Evothings Viewer app has improved iBeacon support with enhanced performance and stability during application reload, and an updated TCP/UDP socket plugin.</li>
 		<li>Evothings Client for Android now has full support for evothings: URLs.</li>
 		<li>There is a new example app for the TI SensorTag.</li>
 		<li>Several bugfixes have been made. The BLE Scan example has been updated to work stable on Android.</li>
@@ -234,10 +275,10 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
 		<li>Supported platforms for the Evothings Viewer app are Android and iOS.</li>
 		<li>Evothings Client now supports sharing of apps by hosting them on a web server. Furthermore, you can use evothings: URLs to make it easy for people to launch your apps by selecting a link on a web site or in an email. Read more on the page <a href="build/share-apps.html">Share Your App</a>.</li>
-		<li>the Evothings Viewer app features new native plugins for iBeacons (iOS, Android) and serial Bluetooth (Android), and updated Bluetooth Low Energy (BLE) plugin.</li>
+		<li>The Evothings Viewer app features new native plugins for iBeacons (iOS, Android) and serial Bluetooth (Android), and updated Bluetooth Low Energy (BLE) plugin.</li>
 		<li>Cordova plugins that present potential security risks have been removed from Evothings Client (e.g. file access and contacts). If you need an app with these plugins, you can build your own version of Evothings Client or contact us.</li>
 		<li>Documentation is updated with a guide for <a href="build/build-overview.html">How To Build Native Apps</a> from your Evothings project using Apache Cordova.</li>
-		<li>the Evothings Viewer app has a new UI.</li>
+		<li>The Evothings Viewer app has a new UI.</li>
 		<li>There is a new example app for iBeacons.</li>
 		<li>The Example apps also have the new UI design, with improved navigability, and a stronger visual identity and clarity.</li>
 		<li>Evothings Workbench now displays a notification when a new version of Evothings Studio is available.</li>
