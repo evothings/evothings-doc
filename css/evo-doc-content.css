@@ -2,15 +2,7 @@
  * CSS for documentation content.
  */
 
-/* Documentation content base CSS. */
-
 @import 'fonts/ProximaNova.css';
-
-.evo-content {
-	margin: 0em 0em;
-	font-family: 'Proxima Nova Regular', Helvetica, Arial;
-	text-decoration: none;
-}
 
 /* Restore standard CSS for documentation content.
    Based on: http://www.w3.org/TR/CSS2/sample.html */
@@ -147,20 +139,124 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 	.evo-content dl		{ page-break-before: avoid }
 }
 
+/* Documentation content base CSS. */
+
+
+
 /* CSS for documentation content. */
 
-.evo-page {
-	margin: 0 auto;
-	max-width: 55em;
-	/*color: #222222;*/
+/*** Begin new elements ***/
+
+html, body
+{
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	/*-webkit-text-size-adjust: 100%;*/
+}
+
+html
+{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+*, *:before, *:after
+{
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+*:not(input)
+{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+*
+{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+a
+{
+	/*color: #CB414B;*/
+	color: #AA0000;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.evo-page
+{
 	/*border-right: 1px solid #000000;
 	border-bottom: 1px solid #000000;*/
+	font-family: 'Proxima Nova Regular', 'Lato', Helvetica, Arial;
+	font-size: 18px;
+	text-decoration: none;
 }
+
+.evo-page-header
+{
+	border-bottom: 2px solid #AA0000;
+}
+
+.evo-page-header-menu,
+.evo-page-content
+{
+	margin: 0px auto;
+	max-width: 800px;
+	padding: 10px;
+}
+
+.evo-page-header-menu-logo
+{
+	width: 120px;
+	height: auto;
+	margin: 5px 10px 2px 0px;
+}
+
+.evo-page-header-menu-buttons
+{
+	float: right;
+	margin: 20px 0px 10px 10px;
+}
+
+.evo-page-header-menu-buttons a
+{
+	display: inline-block;
+	text-decoration: none;
+	padding: 10px 0px 10px 10px;
+	margin: 0px;
+	color: #656565;
+	display: inline-block;
+	text-transform: uppercase;
+	font-size: 120%;
+}
+
+.evo-page-header-menu-buttons a:hover
+{
+	color: #AA0000;
+}
+
+.evo-page-content
+{
+}
+
+/*** End of new elements ***/
+
+.evo-content {
+	margin: 0em 0em;
+	font-family: 'Proxima Nova Regular', Helvetica, Arial;
+	text-decoration: none;
+}
+
 
 /* Elements with this class are not displayed, they are
 	 not used in the new page layout. */
 .evo-heading {
-	display: none;
+	display: block;
 	padding: 0.3em 0 0.3em 0;
 	/* background: #FF7F00; */
 	/* background: #FF7744; */
@@ -207,7 +303,7 @@ BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
 }
 
 .evo-content a {
-	color: #3767A5;
+	color: rgb(255,90,100);
 	font-weight: bold;
 	text-decoration: none;
 }

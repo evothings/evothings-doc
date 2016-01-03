@@ -12,7 +12,6 @@
 	}
 
 	var protocol = window.location.protocol
-	var raw = window.location.href.indexOf('/raw') > -1
 	var path =
 		((window.location.href.indexOf('index.html') > -1) ||
 		 (window.location.href.indexOf('.html') == -1))
@@ -22,14 +21,7 @@
 	// Include JS/CSS common for both offline/raw and for Wordpress.
 	document.write(
 		'<script src="' + path + 'libs/jquery/jquery-2.0.3.js"></script>'
-		+ '<link rel="stylesheet" href="' + path + 'css/evo-doc-content.css" media="all" />')
-
-	// Include CSS used only for offline/raw.
-	if (raw || protocol == 'file:')
-	{
-		document.write(
-			'<link rel="stylesheet" href="' + path + 'css/evo-doc-raw.css" media="screen" />')
-	}
+		+ '<link rel="stylesheet" href="' + path + 'css/evo-doc-content.css" />')
 
 	// Only add Google Analytics if documentation is read online.
 	// TODO: Disable if not viewed online in raw mode?

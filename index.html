@@ -8,20 +8,42 @@ Copyright (c) 2013-2015 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
-<title>Evothings Studio</title>
+<title>Evothings Studio Documentation</title>
 <script src="js/include-viewport.js"></script>
 <script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div class="evo-heading">Evothings Studio</div>
 
-<div class="evo-page"><div class="evo-content">
+<xscript src="js/include-page-header.js"></xscript>
 
-<script src="js/include-main-menu.js"></script>
+<div class="evo-page">
+
+<div class="evo-page-header">
+<div class="evo-page-header-menu">
+<img class="evo-page-header-menu-logo"
+	onclick="location.replace('http://evothings.com')"
+	src="images/evothings_logo_outline.svg"/>
+
+<div class="evo-page-header-menu-buttons">
+<a href="index.html">Studio</a>
+<a href="studio/tutorials.html">Tutorials</a>
+<a href="studio/api-overview.html">API</a>
+<a href="examples/examples.html">Examples</a>
+<a href="build/build-overview.html">Build</a>
+</div>
+
+<script>
+$('.evo-page-header-menu-buttons a:nth-child(1)').css('color', '#AA0000')
+</script>
+
+</div><!-- evo-page-header-menu -->
+</div><!-- evo-page-header -->
+
+<div class="evo-page-content">
 
 <div class="evo-box evo-content-index">
-	<script src="js/include-evothings-logo.js"></script>
+	<xscript src="js/include-evothings-logo.js"></xscript>
 	<a href="#Introduction">Evothings Studio</a><br/>
 	<a href="#Version12">Documentation for version 1.2</a><br/>
 	<a href="#Screenshots">Screenshots</a><br/>
@@ -149,8 +171,10 @@ Copyright (c) 2013-2015 Evothings AB
 	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="http://evothings.com">evothings.com</a></p>
 </div>
 
-<script src="js/include-footer.js"></script>
+<xscript src="js/include-footer.js"></xscript>
 
-</div></div>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
 </body>
 </html>
