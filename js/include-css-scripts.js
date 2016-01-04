@@ -14,6 +14,7 @@
 	var protocol = window.location.protocol
 	var path =
 		((window.location.href.indexOf('index.html') > -1) ||
+		 (window.location.href.indexOf('index-start.html') > -1) ||
 		 (window.location.href.indexOf('.html') == -1))
 			 ? ''
 			 : '../'

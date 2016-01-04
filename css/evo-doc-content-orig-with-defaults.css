@@ -4,6 +4,147 @@
 
 @import 'fonts/ProximaNova.css';
 
+/* Restore standard CSS for documentation content.
+   Based on: http://www.w3.org/TR/CSS2/sample.html */
+
+.evo-content address,
+.evo-content blockquote,
+.evo-content dd,
+.evo-content div,
+.evo-content dl,
+.evo-content dt,
+.evo-content fieldset,
+.evo-content form,
+.evo-content frame,
+.evo-content frameset,
+.evo-content h1,
+.evo-content h2,
+.evo-content h3,
+.evo-content h4,
+.evo-content h5,
+.evo-content h6,
+.evo-content noframes,
+.evo-content ol,
+.evo-content p,
+.evo-content ul,
+.evo-content center,
+.evo-content dir,
+.evo-content hr,
+.evo-content menu,
+.evo-content pre		{ display: block; unicode-bidi: embed; clear: none }
+.evo-content li			{ display: list-item }
+.evo-content head		{ display: none }
+.evo-content table		{ display: table }
+.evo-content tr			{ display: table-row }
+.evo-content thead		{ display: table-header-group }
+.evo-content tbody		{ display: table-row-group }
+.evo-content tfoot		{ display: table-footer-group }
+.evo-content col		{ display: table-column }
+.evo-content colgroup	{ display: table-column-group }
+.evo-content td,
+.evo-content th			{ display: table-cell }
+.evo-content caption	{ display: table-caption }
+.evo-content th			{ font-weight: bolder; text-align: center }
+.evo-content caption	{ text-align: center }
+.evo-content body		{ margin: 8px }
+.evo-content h1			{ font-size: 2em; margin: .67em 0 }
+.evo-content h2			{ font-size: 1.5em; margin: .75em 0 }
+.evo-content h3			{ font-size: 1.17em; margin: .83em 0 }
+.evo-content h4,
+.evo-content p,
+.evo-content blockquote,
+.evo-content ul,
+.evo-content fieldset,
+.evo-content form,
+.evo-content ol,
+.evo-content dl,
+.evo-content dir,
+.evo-content menu		{ margin: 1.12em 0 }
+.evo-content h5			{ font-size: .83em; margin: 1.5em 0 }
+.evo-content h6			{ font-size: .75em; margin: 1.67em 0 }
+.evo-content h1,
+.evo-content h2,
+.evo-content h3,
+.evo-content h4,
+.evo-content h5,
+.evo-content h6,
+.evo-content b,
+.evo-content strong		{ font-weight: bolder }
+.evo-content blockquote	{ margin-left: 40px; margin-right: 40px }
+.evo-content i,
+.evo-content cite,
+.evo-content em,
+.evo-content var,
+.evo-content address	{ font-style: italic }
+.evo-content pre,
+.evo-content tt,
+.evo-content code,
+.evo-content kbd,
+.evo-content samp		{ font-family: monospace }
+.evo-content pre		{ white-space: pre }
+.evo-content button,
+.evo-content textarea,
+.evo-content input,
+.evo-content select		{ display: inline-block }
+.evo-content big		{ font-size: 1.17em }
+.evo-content small,
+.evo-content sub,
+.evo-content sup		{ font-size: .83em }
+.evo-content sub		{ vertical-align: sub }
+.evo-content sup		{ vertical-align: super }
+.evo-content table		{ border-spacing: 2px; }
+.evo-content thead,
+.evo-content tbody,
+.evo-content tfoot		{ vertical-align: middle }
+.evo-content td,
+.evo-content th,
+.evo-content tr			{ vertical-align: inherit }
+.evo-content s,
+.evo-content strike,
+.evo-content del		{ text-decoration: line-through }
+.evo-content hr			{ border: 1px inset }
+.evo-content
+.evo-content ol,
+.evo-content ul,
+.evo-content dir,
+.evo-content menu,
+.evo-content dd			{ margin-left: 40px }
+.evo-content ol			{ list-style-type: decimal }
+.evo-content ol ul,
+.evo-content ul ol,
+.evo-content ul ul,
+.evo-content ol ol		{ margin-top: 0; margin-bottom: 0 }
+.evo-content u,
+.evo-content ins		{ text-decoration: underline }
+.evo-content br:before	{ content: "\A"; white-space: pre-line }
+.evo-content center		{ text-align: center }
+
+/* Begin bidirectionality settings (do not change) */
+BDO[DIR="ltr"]  { direction: ltr; unicode-bidi: bidi-override }
+BDO[DIR="rtl"]  { direction: rtl; unicode-bidi: bidi-override }
+
+*[DIR="ltr"]    { direction: ltr; unicode-bidi: embed }
+*[DIR="rtl"]    { direction: rtl; unicode-bidi: embed }
+
+@media print {
+	.evo-content h1		{ page-break-before: avoid }
+	.evo-content h1,
+	.evo-content h2,
+	.evo-content h3,
+	.evo-content h4,
+	.evo-content h5,
+	.evo-content h6		{ page-break-after: avoid }
+	.evo-content ul,
+	.evo-content ol,
+	.evo-content dl		{ page-break-before: avoid }
+}
+
+/* Documentation content base CSS. */
+
+
+
+/* CSS for documentation content. */
+
 /*** Begin new elements ***/
 
 html, body
@@ -11,7 +152,6 @@ html, body
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
-	background-color: #FFFFFF;
 	/*-webkit-text-size-adjust: 100%;*/
 }
 
@@ -69,14 +209,14 @@ a
 }
 
 .evo-page-header-menu,
-.evo-content
+.evo-page-content
 {
 	margin: 0px auto;
 	max-width: 900px;
 	padding: 10px 20px;
 }
 
-.evo-content
+.evo-page-content
 {
 	margin-top: 100px;
 }
@@ -117,13 +257,20 @@ a
 	{
 		position: static;
 	}
-	.evo-content
+	.evo-page-content
 	{
 		margin-top: 0px;
 	}
 }
 
 /*** End of new elements ***/
+
+.evo-content {
+	margin: 0em 0em;
+	font-family: 'Proxima Nova Regular', Helvetica, Arial;
+	text-decoration: none;
+}
+
 
 /* Elements with this class are not displayed, they are
 	 not used in the new page layout. */
@@ -152,7 +299,7 @@ a
 .evo-content-index {
 	float: right;
 	width: 30%;
-	margin: 1.5em 0em 1.5em 1.5em;
+	margin: 2em 0em 1.5em 1.5em;
 	padding: 1em 1em 1em 1em;
 	border: 1px solid #000000;
 	-webkit-border-radius: 0.4em;
@@ -224,76 +371,39 @@ a
 	float: right;
 }
 
-.evo-card-layout
-{
-    display: block;
-    overflow: auto;
-}
-
-.evo-card
-{
-	display: inline-block;
-	vertical-align: top;
-    width: 46%;
-    min-height: 300px;
-    max-height: 400px;
-	margin: 0px 5px 10px 5px;
-	padding: 0px 0px;
-	background: rgb(255,255,255);
-	cursor: pointer;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	/*
-	border: 2px solid #656565;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	*/
-}
-
-.evo-card img
-{
-	display: block;
-	width: 100%;
-	height: auto;
-	cursor: pointer;
-}
-
-.evo-card h2
-{
-	margin: 10px 10px;
-
-}
-
-.evo-card p
-{
-	margin: 10px 10px;
-}
-
-
 /* Assume narrow screen. */
-.evo-content-index
-{
+#main-menu-wide {
+	display: none;
+}
+#main-menu-narrow {
+	display: block;
+}
+.evo-content-index {
 	display: none !important;
 }
 
 /* If screen is wide override narrow settings. */
 @media all and (min-width: 800px) {
-	.evo-content-index
-	{
+	#main-menu-wide {
+		display: block;
+	}
+	#main-menu-narrow {
+		display: none;
+	}
+	.evo-content-index {
 		display: block !important;
 	}
 }
 
 /* Hide menus when printing the page. */
 @media print {
-	.evo-content-index
-	{
+	.evo-content-index {
 		display: none !important;
 	}
-	.evo-page-header
-	{
+	#main-menu-wide {
+		display: none;
+	}
+	#main-menu-narrow {
 		display: none;
 	}
 }
