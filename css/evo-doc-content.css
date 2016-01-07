@@ -228,18 +228,29 @@ a
 {
     display: block;
     overflow: auto;
+    clear: both;
+    background: blue;
+}
+
+.evo-card-layout .evo-card:nth-child(even)
+{
+    margin-left: 15px !important;
 }
 
 .evo-card
 {
 	display: inline-block;
 	vertical-align: top;
-    width: 46%;
-    min-height: 300px;
-    max-height: 400px;
-	margin: 0px 5px 10px 5px;
+    width: 48%;
+    overflow: hidden;
+    /*min-height: 300px;
+    max-height: 400px;*/
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
 	padding: 0px 0px;
-	background: rgb(255,255,255);
+	background: rgb(255,255,55);
 	cursor: pointer;
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -262,13 +273,13 @@ a
 
 .evo-card h2
 {
-	margin: 10px 10px;
+	margin: 0px 0px 0px 0px;
 
 }
 
 .evo-card p
 {
-	margin: 10px 10px;
+	margin: 0px 0px 0px 0px;
 }
 
 
