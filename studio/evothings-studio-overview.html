@@ -8,47 +8,22 @@ Copyright (c) 2013-2016 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
+<script src="../js/include-head.js"></script>
 <title>Evothings Studio Documentation</title>
-<script src="js/include-viewport.js"></script>
-<script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
 
-<xscript src="js/include-page-header.js"></xscript>
-
 <div class="evo-page">
-
-<div class="evo-page-header">
-<div class="evo-page-header-menu">
-<img class="evo-page-header-menu-logo"
-	onclick="location.replace('http://evothings.com')"
-	src="images/evothings_logo_outline.svg"/>
-
-<div class="evo-page-header-menu-buttons">
-<a href="index.html">Studio</a>
-<a href="studio/tutorials.html">Tutorials</a>
-<a href="studio/api-overview.html">API</a>
-<a href="examples/examples.html">Examples</a>
-<a href="build/build-overview.html">Build</a>
-</div>
-
-<script>
-$('.evo-page-header-menu-buttons a:nth-child(1)').css('color', '#AA0000')
-</script>
-
-</div><!-- evo-page-header-menu -->
-</div><!-- evo-page-header -->
-
+<script src="../js/include-page-header.js"></script>
 <div class="evo-content">
 
 <div class="evo-box evo-content-index">
-	<xscript src="js/include-evothings-logo.js"></xscript>
 	<a href="#Introduction">Evothings Studio</a><br/>
 	<a href="#Version12">Documentation for version 1.2</a><br/>
 	<a href="#Screenshots">Screenshots</a><br/>
 	<a href="#QuickStart">Getting Started</a><br/>
-	<a href="#ReleaseNotes">Release Notes</a> (<a href="studio/release-notes.html">direct link</a>)<br/>
+	<a href="#ReleaseNotes">Release Notes</a> (<a href="release-notes.html">direct link</a>)<br/>
 	<a href="#DeployingApps">Deploying Your Apps</a><br/>
 	<a href="#GoodToKnow">Good To Know</a><br/>
 	<a href="#SourceCode">Source Code</a><br/>
@@ -61,42 +36,42 @@ $('.evo-page-header-menu-buttons a:nth-child(1)').css('color', '#AA0000')
 
 	<p><b>This is the documentation for Evothings Studio version 2.0.</b></p>
 
-	<p><b>Note to users of version 1.2:</b> Visit the <a href="studio/evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> for the specific workings of this version.</p>
+	<p><b>Note to users of version 1.2:</b> Visit the <a href="evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> for the specific workings of this version.</p>
 
 	<p>Evothings Studio is a set of development tools, designed for development of mobile apps using web technologies. Evothings Studio is specifically designed for development of apps for the Internet of Things.</p>
 
 	<p><b>Evothings Studio consists of:</b></p>
 	<ul>
-		<li><a href="studio/workbench.html">Evothings Workbench</a> - Desktop IDE that supports fast turn around development and live editing of apps running on mobile devices.</li>
-		<li><a href="studio/mobile-app.html">Evothings Viewer</a> - Mobile application for running IoT apps written in HTML/JavaScript. Connect from any number of mobile devices running the Evothings Viewer app to the Workbench and enjoy simultaneous live reload.</li>
-		<li><a href="examples/examples.html">Example Apps</a> - Collection of example apps to get started quickly and get inspiration for making IoT apps.</li>
-		<li><a href="studio/api-overview.html#SupportedPlugins">Native Plugins</a> - Plugins implemented in the Cordova framework that provide native IoT functionality from JavaScript.</li>
+		<li><a href="workbench.html">Evothings Workbench</a> - Desktop IDE that supports fast turn around development and live editing of apps running on mobile devices.</li>
+		<li><a href="evothings-viewer.html">Evothings Viewer</a> - Mobile application for running IoT apps written in HTML/JavaScript. Connect from any number of mobile devices running the Evothings Viewer app to the Workbench and enjoy simultaneous live reload.</li>
+		<li><a href="examples.html">Example Apps</a> - Collection of example apps to get started quickly and get inspiration for making IoT apps.</li>
+		<li><a href="../api/api-overview.html#SupportedPlugins">Native Plugins</a> - Plugins implemented in the Cordova framework that provide native IoT functionality from JavaScript.</li>
 		<li><b>Universal Editor/IDE support</b> - Use any text editor or programming IDE to code with instant-reload-on-save. Also works with graphics editors. Just press save to reload changes on connected mobile devices.</li>
 	</ul>
 
 	<p>With Evothings Workbench you can take advantage of HTML5 technologies and JavaScript to develop mobile web apps and hybrid apps - with very fast turn-around time. Use any text editor or graphical editor to author HTML, CSS and JavaScript. Every time you save, the app is instantly reloaded, and you can directly see the result. This also works with image editors.</p>
 
-	<p>The <a href="studio/mobile-app.html">Evothings Viewer</a> mobile app is a native application that you run on your mobile devices. It connects to <a href="studio/workbench.html">Evothings Workbench</a> to enable live editing of your HTML/CSS/JavaScript code. The app contains native functionality that is accessible from JavaScript, such as Bluetooth Low Energy.</p>
+	<p>The <a href="evothings-viewer.html">Evothings Viewer</a> mobile app is a native application that you run on your mobile devices. It connects to <a href="workbench.html">Evothings Workbench</a> to enable live editing of your HTML/CSS/JavaScript code. The app contains native functionality that is accessible from JavaScript, such as Bluetooth Low Energy.</p>
 </div>
 
 <div id="Version12" class="evo-box">
 	<h2>Documentation for Evothings Studio version 1.2</h2>
 
-	<p>Consult the <a href="studio/evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
+	<p>Consult the <a href="evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
 </div>
 
 <div id="Screenshots" class="evo-box">
 	<h2>Screenshots</h2>
-	<p>Evothings Workbench screenshots. Visit the <a href="studio/workbench.html">Workbench documentation</a> to learn more.</p>
+	<p>Evothings Workbench screenshots. Visit the <a href="workbench.html">Workbench documentation</a> to learn more.</p>
 	<p>
 		<img style="width:250px;height:auto;"
-			src="images/evothings-workbench-screenshot-1.png"/>
+			src="../images/evothings-workbench-screenshot-1.png"/>
 		<span style="width:5px;height:50px;display:inline-block"></span>
 		<img style="width:250px;height:auto;"
-			src="images/evothings-workbench-screenshot-2.png"/>
+			src="../images/evothings-workbench-screenshot-2.png"/>
 		<span style="width:5px;height:50px;display:inline-block"></span>
 		<img style="width:250px;height:auto;"
-				src="images/evothings-workbench-screenshot-3.png"/>
+				src="../images/evothings-workbench-screenshot-3.png"/>
 	</p>
 </div>
 
@@ -121,25 +96,25 @@ $('.evo-page-header-menu-buttons a:nth-child(1)').css('color', '#AA0000')
 		<li>If you wish to connect from a mobile device and the connect key has timed out, just generate a new key in the Workbench. Connected devices stay connected also when you generate a new connect key.</li>
 	</ul>
 
-	<p>Learn more about <a href="studio/workbench.html">Evothings Studio Workbench</a> and <a href="studio/mobile-app.html">Evothings Viewer</a>.</p>
+	<p>Learn more about <a href="workbench.html">Evothings Studio Workbench</a> and <a href="evothings-viewer.html">Evothings Viewer</a>.</p>
 </div>
 
 <div id="ReleaseNotes" class="evo-box">
 	<h2>Release Notes</h2>
-	<p>The <a href="studio/release-notes.html">Release Notes</a> is the place to learn what is new in each release of Evothings Studio.</p>
+	<p>The <a href="release-notes.html">Release Notes</a> is the place to learn what is new in each release of Evothings Studio.</p>
 </div>
 
 <div id="DeployingApps" class="evo-box">
 	<h2>Deploying Your Apps</h2>
-	<p>To deploy your final app developed with Evothings Studio on an app store, you build your app with Apache Cordova. Read more in the guide <a href="build/build-overview.html">How To Build Native Apps</a>.</p>
-	<p>The quickest and easiest way to share your app with others, is putting your app on a web server, asking your users to download the Evothings Viewer app and enter the URL to your app. Find out the details in the guide <a href="build/share-apps.html">Share Your App</a>.</p>
+	<p>To deploy your final app developed with Evothings Studio on an app store, you build your app with Apache Cordova. Read more in the guide <a href="../build/build-overview.html">How To Build Native Apps</a>.</p>
+	<p>The quickest and easiest way to share your app with others, is putting your app on a web server, asking your users to download the Evothings Viewer app and enter the URL to your app. Find out the details in the guide <a href="../build/share-apps.html">Share Your App</a>.</p>
 </div>
 
 <div id="GoodToKnow" class="evo-box">
 	<h2>Good To Know</h2>
-	<p>Ask questions and give feedback on the <a href="http://evothings.com/forum/">Evothings Forum</a>.</p>
+	<p>Ask questions and give feedback on the <a href="//evothings.com/forum/">Evothings Forum</a>.</p>
 	<p>Bugs and feature requests can be reported using the GitHub issue tracker, see links to repositories under the "Source Code" section.</p>
-	<p>You are encouraged to explore the "Tools" window tab in <a href="studio/workbench.html">Evothings Workbench</a>. This window displays output from the hyper.log() function, and lets you evaluate JavaScript code interactively on connected devices. This is very useful for debugging purposes, for trying out code snippets and inspecting the value of variables.</p>
+	<p>You are encouraged to explore the "Tools" window tab in <a href="workbench.html">Evothings Workbench</a>. This window displays output from the hyper.log() function, and lets you evaluate JavaScript code interactively on connected devices. This is very useful for debugging purposes, for trying out code snippets and inspecting the value of variables.</p>
 </div>
 
 <div id="SourceCode" class="evo-box">
@@ -169,11 +144,10 @@ $('.evo-page-header-menu-buttons a:nth-child(1)').css('color', '#AA0000')
 <div id="AboutUs" class="evo-box">
 	<h2>About Us</h2>
 
-	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="http://evothings.com">evothings.com</a></p>
+	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="//evothings.com">evothings.com</a></p>
 </div>
 
-<xscript src="js/include-footer.js"></xscript>
-
+<script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->
 </div><!-- evo-page -->
 

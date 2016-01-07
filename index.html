@@ -5,44 +5,76 @@ File: index.html
 Description: Evothings Studio documentation.
 Author: Mikael Kindborg
 Copyright (c) 2013-2016 Evothings AB
+
+TODO: Make following redirects:
+
+doc/studio/evothings-studio-1.html -> doc/studio/evothings-studio-1.2.html
+doc/studio/mobile-app.html -> doc/studio/evothings-viewer.html
+doc/studio/api-overview.html -> doc/api/api-overview.html
+doc/studio/tutorials.html -> doc/tutorials/tutorials.html
+
+TODO: Redirect from /raw links to /doc:
+
+./build/build-overview.html
+./build/cordova-guide.html
+./build/cordova-install-linux.html
+./build/cordova-install-osx.html
+./build/cordova-install-windows.html
+./build/publish-android.html
+./build/publish-ios.html
+./build/share-apps.html
+./examples/arduino-ble.html
+./examples/arduino-led-onoff-ble.html
+./examples/arduino-led-onoff-tcp.html
+./examples/arduino-scriptable-tcp.html
+./examples/ble-discovery.html
+./examples/ble-scan.html
+./examples/ble-ti-sensortag-accelerometer.html
+./examples/ble-ti-sensortag-cc2541-demo.html
+./examples/ble-ti-sensortag-cc2650-demo.html
+./examples/ble-ti-sensortag-sensors.html
+./examples/bluno-helloworld.html
+./examples/canvas-basic.html
+./examples/cordova-accelerometer.html
+./examples/cordova-basic.html
+./examples/eddystone-scan.html
+./examples/esp8266.html
+./examples/estimote-beacons.html
+./examples/estimote-nearables.html
+./examples/examples.html
+./examples/hello-world.html
+./examples/hue-lights.html
+./examples/ibeacon-scan.html
+./examples/lightbluebean-basic.html
+./examples/mbed-custom-gap.html
+./examples/mbed-custom-gatt.html
+./examples/mediatek-linkit-connect.html
+./examples/mediatek-linkit.html
+./examples/nordic-nRF51-ble.html
+./examples/nordic-nRF51822-ble.html
+./examples/redbearlab-simplechat.html
+./examples/redbearlab-simplecontrol.html
+./examples/rfduino-led-onoff.html
+./index.html
+./studio/api-overview.html
+./studio/evothings-studio-1.html
+./studio/mobile-app.html
+./studio/plugins.html
+./studio/release-notes.html
+./studio/tutorials.html
+./studio/workbench.html
 -->
 <head>
 <meta charset="utf-8">
+<script src="js/include-head.js"></script>
 <title>Evothings Studio Documentation</title>
-<script src="js/include-viewport.js"></script>
-<script src="js/include-css-scripts.js"></script>
 </head>
 
 <body>
 
-<xscript src="js/include-page-header.js"></xscript>
-
 <div class="evo-page">
-
-<div class="evo-page-header">
-<div class="evo-page-header-menu">
-<img class="evo-page-header-menu-logo"
-	onclick="location.replace('http://evothings.com')"
-	src="images/evothings_logo_outline.svg"/>
-
-<div class="evo-page-header-menu-buttons">
-<a href="index.html">Start</a>
-<a href="index.html">Tools</a>
-<a href="studio/api-overview.html">API</a>
-<a href="studio/tutorials.html">Tutorials</a>
-<a href="examples/examples.html">Examples</a>
-<a href="build/build-overview.html">Cordova</a>
-</div>
-
-<script>
-//$('.evo-page-header-menu-buttons a:nth-child(1)').css('color', '#AA0000')
-</script>
-
-</div><!-- evo-page-header-menu -->
-</div><!-- evo-page-header -->
-
+<script src="js/include-page-header.js"></script>
 <div class="evo-content">
-
 <div class="evo-card-layout">
 
 <div class="evo-card">
@@ -116,7 +148,7 @@ Copyright (c) 2013-2016 Evothings AB
 
 	<p><b>This is the documentation for Evothings Studio version 2.0.</b></p>
 
-	<p><b>Note to users of version 1.2:</b> Visit the <a href="studio/evothings-studio-1.html">documentation page for Evothings Studio version 1.2</a> for the specific workings of this version.</p>
+	<p><b>Note to users of version 1.2:</b> Visit the <a href="studio/evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> for the specific workings of this version.</p>
 
 	<p>Evothings Studio is a set of development tools, designed for development of mobile apps using web technologies. Evothings Studio is specifically designed for development of apps for the Internet of Things.</p>
 
@@ -125,7 +157,7 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-card">
 	<h2>Documentation for Evothings Studio version 1.2</h2>
 
-	<p>Consult the <a href="studio/evothings-studio-1.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
+	<p>Consult the <a href="studio/evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
 </div>
 
 <div class="evo-card">
@@ -150,13 +182,11 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-card">
 	<h2>About Us</h2>
 
-	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="http://evothings.com">evothings.com</a></p>
+	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="//evothings.com">evothings.com</a></p>
 </div>
 
-</div>
-
-<xscript src="js/include-footer.js"></xscript>
-
+</div><!-- evo-card-layout -->
+<script src="js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->
 </div><!-- evo-page -->
 

@@ -8,23 +8,19 @@ Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
+<script src="../js/include-head.js"></script>
 <title>Arduino BLE Example</title>
-<script src="../js/include-viewport.js"></script>
-<script src="../js/include-css-scripts.js"></script>
 </head>
 
 <body>
-<div class="evo-heading">Arduino BLE Example</div>
 
-<div class="evo-page"><div class="evo-content">
-
-<script src="../js/include-main-menu.js"></script>
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
 
 <script src="../js/include-example-menu.js"></script>
 
 <div class="evo-box">
-	<img class="img-example-platform-support" src="images/target-evothings-app.png"/>
-
 	<h1>Arduino BLE</h1>
 
 	<p><b>Communicate With Arduino Over BLE.</b> This is an experimental example, that shows how to communicate with an Arduino board equipped with the Bluetooth Low Energy (BLE) shield.</p>
@@ -47,7 +43,7 @@ Copyright (c) 2013-2014 Evothings AB
 
 	<p>This example runs in the Evothings Viewer app on Android or iOS.</p>
 
-	<p>You need to run the example in the Evothings Viewer app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble. Read more in the documentation of the <a href="../studio/mobile-app.html">Evothings Viewer</a>.</p>
+	<p>You need to run the example in the Evothings Viewer app. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble. Read more in the documentation of the <a href="../studio/evothings-viewer.html">Evothings Viewer</a>.</p>
 
 	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. In addition Android 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart the Evothings Viewer app and/or reset Bluetooth on the device.</p>
 
@@ -72,8 +68,9 @@ Copyright (c) 2013-2014 Evothings AB
 	<p>The ON &amp; OFF buttons controls digital pin 2 on the Arduino, here connected to a LED (long leg is the anode - connect to plus - and short one the cathode to be attached to minus if relevant or ground (GND pin). The plot also demonstrates reading an input signal from analog pin A0 - which is here connected to a variable resistor (potentiometer). Please experiment with your own circuits and let us know how cool they are!</p>
 </div>
 
-<script src="../js/include-footer.js"></script>
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
 
-</div></div>
 </body>
 </html>
