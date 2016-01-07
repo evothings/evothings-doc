@@ -229,7 +229,6 @@ a
     display: block;
     overflow: auto;
     clear: both;
-    background: blue;
 }
 
 .evo-card-layout .evo-card:nth-child(even)
@@ -245,12 +244,12 @@ a
     overflow: hidden;
     /*min-height: 300px;
     max-height: 400px;*/
-	margin-top: 0px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	margin-left: 0px;
 	margin-right: 0px;
 	padding: 0px 0px;
-	background: rgb(255,255,55);
+	background: rgb(255,255,255);
 	cursor: pointer;
 	-moz-user-select: none;
 	-webkit-user-select: none;
