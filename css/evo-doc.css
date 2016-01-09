@@ -68,6 +68,12 @@ a
 	background: white;
 }
 
+.evo-box:target
+{
+	padding-top: 100px;
+	margin-top: -100px;
+}
+
 .evo-page-header-menu,
 .evo-content
 {
@@ -103,7 +109,7 @@ a
 	color: #656565;
 	display: inline-block;
 	text-transform: uppercase;
-	font-size: 120%;
+	font-size: 110%;
 }
 
 .evo-page-header-menu-buttons a:hover
@@ -111,23 +117,12 @@ a
 	color: #AA0000;
 }
 
-/* If screen is narrow removed fixed header layout. */
-@media all and (max-width: 700px) {
-	.evo-page-header
-	{
-		position: static;
-	}
-	.evo-content
-	{
-		margin-top: 0px;
-	}
-}
-
 /*** End of new elements ***/
 
 /* Elements with this class are not displayed, they are
 	 not used in the new page layout. */
-.evo-heading {
+.evo-heading
+{
 	display: block;
 	padding: 0.3em 0 0.3em 0;
 	/* background: #FF7F00; */
@@ -139,7 +134,8 @@ a
 	text-align: center;
 }
 
-.evo-box {
+.evo-box
+{
 	margin: 0.5em 0em;
 	padding: 0.2em 0.2em;
 	/*border: 1px solid #000000;
@@ -149,7 +145,8 @@ a
 	font-weight: normal;
 }
 
-.evo-content-index {
+.evo-content-index
+{
 	float: right;
 	width: 30%;
 	margin: 1.5em 0em 1.5em 1.5em;
@@ -159,62 +156,73 @@ a
 	border-radius: 0.4em;
 }
 
-.evo-content h1 {
+.evo-content h1
+{
 	font-size: 2.2em;
 	margin: 0.2em 0;
 }
 
-.evo-content h2 {
+.evo-content h2
+{
 	font-size: 1.6em;
 	margin: 0.2em 0;
 }
 
-.evo-content h3 {
+.evo-content h3
+{
 	font-size: 1.4em;
 	margin: 0.4em 0 0.2em 0;
 }
 
-.evo-content a {
+.evo-content a
+{
 	color: rgb(255,90,100);
 	font-weight: bold;
 	text-decoration: none;
 }
 
-.evo-content p {
+.evo-content p
+{
 	font-size: 1.0em;
 	margin: 0.5em 0;
 }
 
-.evo-content ul {
+.evo-content ul
+{
 	list-style-type: disc;
 	list-style-position: outside;
 	margin: 0px 40px 10px 40px;
 	padding: 0px;
 }
 
-.evo-content ol {
+.evo-content ol
+{
 	list-style-type: decimal;
 	list-style-position: outside;
 	margin: 0px 40px;
 	padding: 0px;
 }
 
-.evo-content ul {
-	display: table;
+.evo-content ul
+{
+	display: table; /* Why? */
 }
 
-.evo-content .img-example-screenshot {
+.evo-content .img-example-screenshot
+{
 	width: 250px;
 	height: auto;
 	border: 1px solid #000000;
 }
 
-.evo-content .img-example-arduino-sketch {
+.evo-content .img-example-arduino-sketch
+{
 	width: 400px;
 	height: auto;
 }
 
-.evo-content .img-example-platform-support {
+.evo-content .img-example-platform-support
+{
 	width: auto;
 	height: 74px;
 	margin-top: 4px;
@@ -265,8 +273,10 @@ a
 .evo-card img
 {
 	display: block;
-	width: 100%;
-	height: auto;
+	max-width: 100%;
+	max-height: 400px;
+	object-fit: contain;
+	margin: 0px auto;
 	cursor: pointer;
 }
 
@@ -281,302 +291,56 @@ a
 	margin: 0px 0px 0px 0px;
 }
 
-
-/* Assume narrow screen. */
-.evo-content-index
+/* If screen is narrow removed fixed header layout. */
+@media all and (max-width: 800px)
 {
-	display: none !important;
-}
-
-/* If screen is wide override narrow settings. */
-@media all and (min-width: 800px) {
-	.evo-content-index
+	.evo-page-header
 	{
-		display: block !important;
+		position: static;
+	}
+	.evo-content
+	{
+		margin-top: 0px;
+	}
+	.evo-box:target
+	{
+		padding-top: 0px;
+		margin-top: 0px;
 	}
 }
 
+/* If screen is narrow hide content index. */
+@media all and (max-width: 800px)
+{
+	.evo-content-index
+	{
+		display: none !important;
+	}
+}
+
+@media all and (max-width: 700px)
+{
+	.evo-card
+	{
+    	width: 99%;
+    }
+
+    .evo-card-layout .evo-card:nth-child(even)
+	{
+    	margin-left: 0px !important;
+	}
+}
+
+
 /* Hide menus when printing the page. */
-@media print {
+@media print
+{
 	.evo-content-index
 	{
 		display: none !important;
 	}
 	.evo-page-header
 	{
-		display: none;
+		display: none !important;
 	}
-}
-
-/* CSS for buttons adopted from Bootstrap. */
-
-.evo-btn {
-	/*text-transform: uppercase !important;*/
-	display: inline-block;
-	padding: 6px 12px;
-	margin-bottom: 0;
-	font-size: 14px;
-	font-weight: normal;
-	line-height: 1.42857143;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	background-image: none;
-	border: 1px solid transparent;
-	border-radius: 4px;
-}
-
-.evo-btn:focus,
-.evo-btn:active:focus,
-.evo-btn.active:focus {
-	outline: thin dotted;
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px;
-}
-.evo-btn:hover,
-.evo-btn:focus {
-	color: #333;
-	text-decoration: none;
-}
-.evo-btn:active,
-.evo-btn.active {
-	background-image: none;
-	outline: 0;
-	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-}
-
-.evo-btn-lg,
-.evo-btn-group-lg > .evo-btn {
-	padding: 10px 16px;
-	font-size: 18px;
-	line-height: 1.33;
-	border-radius: 6px;
-}
-
-.evo-btn-group,
-.evo-btn-group-vertical {
-	position: relative;
-	display: inline-block;
-	vertical-align: middle;
-}
-.evo-btn-group > .evo-btn,
-.evo-btn-group-vertical > .evo-btn {
-	position: relative;
-	float: left;
-}
-.evo-btn-group > .evo-btn:hover,
-.evo-btn-group-vertical > .evo-btn:hover,
-.evo-btn-group > .evo-btn:focus,
-.evo-btn-group-vertical > .evo-btn:focus,
-.evo-btn-group > .evo-btn:active,
-.evo-btn-group-vertical > .evo-btn:active,
-.evo-btn-group > .evo-btn.active,
-.evo-btn-group-vertical > .evo-btn.active {
-	z-index: 2;
-}
-.evo-btn-group > .evo-btn:focus,
-.evo-btn-group-vertical > .evo-btn:focus {
-	outline: 0;
-}
-.evo-btn-group .evo-btn + .evo-btn,
-.evo-btn-group .evo-btn + .evo-btn-group,
-.evo-btn-group .evo-btn-group + .evo-btn,
-.evo-btn-group .evo-btn-group + .evo-btn-group {
-	margin-left: -1px;
-}
-.evo-btn-toolbar {
-	margin-left: -5px;
-}
-.evo-btn-toolbar .evo-btn-group,
-.evo-btn-toolbar .input-group {
-	float: left;
-}
-.evo-btn-toolbar > .evo-btn,
-.evo-btn-toolbar > .evo-btn-group,
-.evo-btn-toolbar > .input-group {
-	margin-left: 5px;
-}
-.evo-btn-group > .evo-btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-	border-radius: 0;
-}
-.evo-btn-group > .evo-btn:first-child {
-	margin-left: 0;
-}
-.evo-btn-group > .evo-btn:first-child:not(:last-child):not(.dropdown-toggle) {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.evo-btn-group > .evo-btn:last-child:not(:first-child),
-.evo-btn-group > .dropdown-toggle:not(:first-child) {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-.evo-btn-group > .evo-btn-group {
-	float: left;
-}
-.evo-btn-group > .evo-btn-group:not(:first-child):not(:last-child) > .evo-btn {
-	border-radius: 0;
-}
-.evo-btn-group > .evo-btn-group:first-child > .evo-btn:last-child,
-.evo-btn-group > .evo-btn-group:first-child > .dropdown-toggle {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-.evo-btn-group > .evo-btn-group:last-child > .evo-btn:first-child {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
-.evo-btn-group-vertical > .evo-btn,
-.evo-btn-group-vertical > .evo-btn-group,
-.evo-btn-group-vertical > .evo-btn-group > .evo-btn {
-  display: block;
-  float: none;
-  width: 100%;
-  max-width: 100%;
-}
-.evo-btn-group-vertical > .evo-btn-group > .evo-btn {
-  float: none;
-}
-.evo-btn-group-vertical > .evo-btn + .evo-btn,
-.evo-btn-group-vertical > .evo-btn + .evo-btn-group,
-.evo-btn-group-vertical > .evo-btn-group + .evo-btn,
-.evo-btn-group-vertical > .evo-btn-group + .evo-btn-group {
-  margin-top: -1px;
-  margin-left: 0;
-}
-.evo-btn-group-vertical > .evo-btn:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
-.evo-btn-group-vertical > .evo-btn:first-child:not(:last-child) {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.evo-btn-group-vertical > .evo-btn:last-child:not(:first-child) {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 4px;
-}
-.evo-btn-group-vertical > .evo-btn-group:not(:first-child):not(:last-child) > .evo-btn {
-  border-radius: 0;
-}
-.evo-btn-group-vertical > .evo-btn-group:first-child:not(:last-child) > .evo-btn:last-child,
-.evo-btn-group-vertical > .evo-btn-group:first-child:not(:last-child) > .dropdown-toggle {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.evo-btn-group-vertical > .evo-btn-group:last-child:not(:first-child) > .evo-btn:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
-.evo-btn-group-justified {
-	display: table;
-	width: 100%;
-	table-layout: fixed;
-	border-collapse: separate;
-}
-.evo-btn-group-justified > .evo-btn,
-.evo-btn-group-justified > .evo-btn-group {
-	display: table-cell;
-	float: none;
-	width: 1%;
-}
-.evo-btn-group-justified > .evo-btn-group .evo-btn {
-	width: 100%;
-}
-
-.evo-btn-red {
-		color: white !important;
-	border-color: #e15a64 !important;
-	background-color: #e15a64 !important;
-}
-.evo-btn-red:hover,
-.evo-btn-red:active {
-	border-color: #cb414b !important;
-	background-color: #cb414b !important;
-}
-
-.evo-btn-yellow {
-		color: white !important;
-	border-color: #ecd53b !important;
-	background-color: #ecd53b !important;
-}
-.evo-btn-yellow:hover,
-.evo-btn-yellow:active	{
-	border-color: #d9c022 !important;
-	background-color: #d9c022 !important;
-}
-
-.evo-btn-green {
-		color: white !important;
-	border-color: #54dfb3 !important;
-	background-color: #54dfb3 !important;
-}
-.evo-btn-green:hover,
-.evo-btn-green:active	{
-	border-color: #3aca9c !important;
-	background-color: #3aca9c !important;
-}
-
-.evo-btn-blue {
-		color: white !important;
-	border-color: #6bc6ce !important;
-	background-color: #6bc6ce !important;
-}
-.evo-btn-blue:hover,
-.evo-btn-blue:active	{
-	border-color: #52afb8 !important;
-	background-color: #52afb8 !important;
-}
-
-.evo-btn-indigo {
-		color: white !important;
-	border-color: #b48b9b !important;
-	background-color: #b48b9b !important;
-}
-.evo-btn-indigo:hover,
-.evo-btn-indigo:active {
-	border-color: #9c7283 !important;
-	background-color: #9c7283 !important;
-}
-
-.evo-btn-arctic {
-		color: white !important;
-	border-color: #f3f3f3 !important;
-	background-color: #f3f3f3 !important;
-}
-.evo-btn-arctic:hover,
-.evo-btn-arctic:active {
-	border-color: #656565 !important;
-	background-color: #656565 !important;
-}
-
-.evo-btn-aluminium {
-		color: white !important;
-	border-color: #e2e2e2 !important;
-	background-color: #e2e2e2 !important;
-}
-.evo-btn-aluminium:hover,
-.evo-btn-aluminium:active {
-	border-color: #c0c0c0 !important;
-	background-color: #c0c0c0 !important;
-}
-
-.evo-btn-charcoal {
-		color: white !important;
-	border-color: #b9b9b9 !important;
-	background-color: #b9b9b9 !important;
-}
-.evo-btn-charcoal:hover,
-.evo-btn-charcoal:active	{
-	border-color: #9d9d9d !important;
-	background-color: #9d9d9d !important;
 }
