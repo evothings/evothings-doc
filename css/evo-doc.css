@@ -42,8 +42,12 @@ html
 
 a
 {
+	outline: 0;
+}
+
+a
+{
 	/*color: #CB414B;*/
-	color: #AA0000;
 	text-decoration: none;
 	font-weight: 700;
 }
@@ -70,8 +74,8 @@ a
 
 .evo-box:target
 {
-	padding-top: 100px;
-	margin-top: -100px;
+	padding-top: 110px;
+	margin-top: -110px;
 }
 
 .evo-page-header-menu,
@@ -79,12 +83,30 @@ a
 {
 	margin: 0px auto;
 	max-width: 900px;
-	padding: 10px 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.evo-page-header-menu
+{
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
+
+.evo-page-header-spacer
+{
+	float: right;
+	width: 1px;
+	height: 30px;
 }
 
 .evo-content
 {
+	clear: both;
 	margin-top: 100px;
+	padding-top: 1px;
+	padding-bottom: 20px;
 }
 
 .evo-page-header-menu-logo
@@ -96,15 +118,16 @@ a
 
 .evo-page-header-menu-buttons
 {
+	clear: both;
 	float: right;
-	margin: 20px 0px 10px 10px;
+	margin: 20px 0px 0px 0px;
 }
 
 .evo-page-header-menu-buttons a
 {
 	display: inline-block;
 	text-decoration: none;
-	padding: 10px 0px 10px 10px;
+	padding: 0px 0px 10px 10px;
 	margin: 0px;
 	color: #656565;
 	display: inline-block;
@@ -113,6 +136,31 @@ a
 }
 
 .evo-page-header-menu-buttons a:hover
+{
+	color: #AA0000;
+}
+
+.evo-page-header-top-buttons
+{
+	position: absolute;
+	top: 12px;
+	right: 10px;
+}
+
+.evo-page-header-top-buttons a
+{
+	display: inline-block;
+	text-decoration: none;
+	padding: 0px 0px 0px 0px;
+	margin: 0px;
+	/*color: #CC0000;*/
+	color: rgb(255,90,100);
+	display: inline-block;
+	text-transform: none;
+	font-size: 130%;
+}
+
+.evo-page-header-top-buttons a:hover
 {
 	color: #AA0000;
 }
@@ -241,19 +289,19 @@ a
 
 .evo-card-layout .evo-card:nth-child(even)
 {
-    margin-left: 15px !important;
+    margin-left: 5% !important;
 }
 
 .evo-card
 {
 	display: inline-block;
 	vertical-align: top;
-    width: 48%;
+    width: 47%;
     overflow: hidden;
     /*min-height: 300px;
     max-height: 400px;*/
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	margin-left: 0px;
 	margin-right: 0px;
 	padding: 0px 0px;
@@ -263,7 +311,8 @@ a
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	/*
-	border: 2px solid #656565;
+	padding: 10px 10px;
+	border: 1px solid #656565;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -273,17 +322,22 @@ a
 .evo-card img
 {
 	display: block;
+	height: 175px;
+	max-width: 300px;
 	max-width: 100%;
-	max-height: 400px;
 	object-fit: contain;
-	margin: 0px auto;
+	margin: 15px auto;
 	cursor: pointer;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .evo-card h2
 {
 	margin: 0px 0px 0px 0px;
-
+	font-size: 180%;
+	/*color: #AA0000;*/
 }
 
 .evo-card p
@@ -300,6 +354,7 @@ a
 	}
 	.evo-content
 	{
+		padding-top: 0px;
 		margin-top: 0px;
 	}
 	.evo-box:target

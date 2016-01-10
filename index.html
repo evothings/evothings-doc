@@ -75,116 +75,123 @@ TODO: Redirect from /raw links to /doc:
 <div class="evo-page">
 <script src="js/include-page-header.js"></script>
 <div class="evo-content">
+
+<div class="evo-box">
+	<p>Welcome to the Evothings Studio documentation web site. If there is something you cannot find, please feel free to ask at the <a href="https://evothings.com/forum">Evothings Forum</a>. Get Evothings Studio on the <a href="https://evothings.com/download">download page</a>, it is free and open source.</p>
+</div>
+
 <div class="evo-card-layout">
 
-<div class="evo-card">
-	<h2>Up and running with Evothings Studio in 90 seconds</h2>
-	<p>Download Evothings Studio, install Evothings Viewer on your mobile phone, and prepare for a 90 second ride to running and start coding a mobile IoT app!</p>
+<!-- Getting started for beginners -->
+
+<div class="evo-card" onclick="evothings.doc.openDocPage('tutorials/evothings-studio-getting-started.html')">
+	<img src="tutorials/images/evothings-studio-getting-started.jpg"/>
+	<h2>Evothings Studio in 90 seconds</h2>
+	<p>Download Evothings Studio, install Evothings Viewer on your mobile phone, and prepare for a 90 second ride to be up and running with coding an IoT app!</p>
+	<p><a href="tutorials/evothings-studio-getting-started.html">Get going!</a></p>
 </div>
 
-<div class="evo-card">
-	<h2>Creating your first app</h2>
-	<p>Friendly guide to creating an app with Evothings Studio. Learn some good to know shortcuts and how to organise your code. The result is an app ready to be published as a native app build with Apache Cordova.</p>
-	<img src="images/evothings-tools-screenshot.png" />
+<div class="evo-card" onclick="evothings.doc.openDocPage('tutorials/create-your-first-app.html')">
+	<img src="tutorials/images/ibeacon-scan-kontaktio.jpg" />
+	<h2>Create your first app</h2>
+	<p>Friendly guide to creating a mobile app with Evothings Studio. Learn some good to know shortcuts and how to organise your code. The result is an app ready to be published as a native app build with Apache Cordova.</p>
+	<p><a href="tutorials/create-your-first-app.html">Read on to learn more</a></p>
 </div>
 
-<div class="evo-card">
+<!-- BLE and Eddystone -->
+
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/bluetooth-smart-starterkit.html')">
+	<img src="starterkits/images/bluetooth-smart-logo.png" style="height:100px;"/>
 	<h2>Getting started with Bluetooth Low Energy (BLE)</h2>
-	<p>Learn about the workings of BLE and how to create apps that communicate with your BLE devices. We provide examples, templates and tutorials to help you take off.</p>
+	<p>Learn about Bluetooth Low Energy, also known as BLE, Bluetooth LE and Bluetooth Smart. Learn how to create mobile apps that communicate with your BLE devices. <!--We provide examples, templates and tutorials to help you take off.--></p>
+	<p><a href="tutorials/bluetooth-smart-starterkit.html">Read more</a></p>
 </div>
 
-<div class="evo-card">
-	<h2>Eddystone(tm) and beacons for the Physical Web</h2>
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/eddystone-starterkit.html')">
+	<img src="starterkits/images/eddystone-logo.jpg" style="height:100px;"/>
+	<h2>Eddystone&trade; and beacons for the Physical Web</h2>
 	<p>Get started with Eddystone compatible beacons in 5 minutes! Use templates and example apps as a starting points for your physical web applications.</p>
+	<p><a href="starterkits/eddystone-starterkit.html">Show me Eddystone</a></p>
 </div>
 
-<div class="evo-card">
+<!-- iBeacon and Cloud -->
+
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/ibeacon-starterkit.html')">
+	<img src="starterkits/images/estimote-beacons.jpg" style="height:150px;"/>
 	<h2>Getting started with iBeacon apps</h2>
 	<p>What you need to know to get going with an iBeacon app that runs on iOS and Android.</p>
+	<p><a href="starterkits/ibeacon-starterkit.html">Learn how to make iBeacon apps</a></p>
 </div>
 
-<div class="evo-card">
-	<h2>Evothings Studio Tools Documentation</h2>
-	<p>Learn all about Evothings Workbench and the Evothings Viewer app.</p>
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/iot-cloud-starterkit.html')">
+	<img src="starterkits/images/mqtt-logo.png" style="height:150px; max-width:300px;"/>
+	<h2>Communicating with the cloud (MQTT and more)</h2>
+	<p>Learn how to communicate with IoT Cloud providers from your mobile app.</p>
+	<p><a href="starterkits/evothings-studio-starterkit.html">Read more</a></p>
 </div>
 
-<div class="evo-card">
-	<h2>Evothings Studio tricks and tips</h2>
-	<p>Summary of what you need to know to make full use of Evothings Studio.</p>
+<!-- Microcontrollers -->
+
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/arduino-starterkit.html')">
+	<img src="starterkits/images/arduino-logo.png" style="height:100px;"/>
+	<h2>Getting started with Arduino apps</h2>
+	<p>Learn how to make mobile apps that communicate with microcontrollers like Arduino, RedBar Lab, LinkIt One, and many more.</p>
+	<p><a href="starterkits/evothings-studio-starterkit.html">Read more</a></p>
 </div>
 
-<div class="evo-card">
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/evothings-studio-starterkit.html')">
+	<img src="images/evothings-workbench-viewer-photo.jpg" />
+	<h2>Evothings Studio Starter Kit</h2>
+	<p>Guide to Evothings Studio documentation and resources.</p>
+	<p><a href="starterkits/evothings-studio-starterkit.html">Read more</a></p>
+</div>
+
+<!-- APIs and Cordova -->
+
+<div class="evo-card" onclick="evothings.doc.openDocPage('api/api-overview.html')">
+	<img src="images/evothings-workbench-viewer-photo.jpg" />
 	<h2>API Overview and Documentation</h2>
 	<p>Learn about JavaScript APIs for Internet of Things apps. Bluetooth Low Energy, Eddystone, iBeacon and more.</p>
+	<p><a href="starterkits/evothings-studio-starterkit.html">Go to the API documentation</a></p>
 </div>
 
-<div class="evo-card">
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/cordova-starterkit.html')">
+	<img src="starterkits/images/cordova-logo.png" />
+	<h2>How to build a native app with Cordova</h2>
+	<p>Learn now to build native apps ready to be published on Apple App Store and Google Play Store.</p>
+	<p><a href="starterkits/cordova-starterkit.html">Read more</a></p>
+</div>
+
+<!-- Unused -->
+
+<!--
+<div class="evo-card" onclick="evothings.doc.openDocPage('studio/evothings-studio-overview.html')">
+	<img src="images/evothings-workbench-viewer-photo.jpg" />
+	<h2>Evothings Studio Tools Documentation</h2>
+	<p>Learn about Evothings Workbench and the Evothings Viewer app.</p>
+	<p><a href="studio/evothings-studio-overview.html">Read documentation</a></p>
+</div>
+-->
+
+<!--
+<div class="evo-card" onclick="evothings.doc.openDocPage('api/api-overview.html')">
 	<h2>Example app overview</h2>
 	<p></p>
 </div>
+-->
 
-<div class="evo-card">
-	<h2>How to build a native app with Cordova</h2>
+<!--<div class="evo-card" onclick="evothings.doc.openDocPage('studio/evothings-studio-tricks-and-tips.html')">
+	<h2>Evothings Studio tricks and tips</h2>
+	<p>Summary of what you need to know to make full use of Evothings Studio.</p>
+</div>-->
+
+<!--
+<div class="evo-card" onclick="evothings.doc.openDocPage('starterkits/ti-sensortag-starterkit.html')">
+	<img src="images/eddystone-logo.jpg" style="height:100px;"/>
+	<h2>Getting started with The TI SensorTag</h2>
 	<p></p>
 </div>
-
-<div class="evo-card">
-	<h2>Cordova install guide</h2>
-	<p></p>
-</div>
-
-<div class="evo-card">
-	<h2>Arduino apps</h2>
-	<p></p>
-</div>
-
-<div class="evo-card">
-	<h2>Communicating with the cloud (MQTT and more)</h2>
-	<p></p>
-</div>
-
-<div class="evo-card">
-
-	<h2>Evothings Studio 2.0</h2>
-
-	<p><b>This is the documentation for Evothings Studio version 2.0.</b></p>
-
-	<p><b>Note to users of version 1.2:</b> Visit the <a href="studio/evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> for the specific workings of this version.</p>
-
-	<p>Evothings Studio is a set of development tools, designed for development of mobile apps using web technologies. Evothings Studio is specifically designed for development of apps for the Internet of Things.</p>
-
-</div>
-
-<div class="evo-card">
-	<h2>Documentation for Evothings Studio version 1.2</h2>
-
-	<p>Consult the <a href="studio/evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
-</div>
-
-<div class="evo-card">
-	<h2>Screenshots</h2>
-	<p>Evothings Workbench screenshots. Visit the <a href="studio/workbench.html">Workbench documentation</a> to learn more.</p>
-	<img src="images/evothings-workbench-screenshot-1.png"/>
-</div>
-
-<div class="evo-card">
-	<h2>Getting Started</h2>
-
-	<p><b>Super-quick guide:</b></p>
-	<ul>
-		<li>Ensure your computer and mobile device have Internet access.</li>
-		<li>Download and run the Evothings Studio Workbench application on your computer.</li>
-		<li>Install and run the Evothings Viewer app on your mobile device.</li>
-		<li>Enter the Connect Key you get in the Workbench in the mobile app and connect.</li>
-		<li>Click the RUN button of the "Hello World" example in the Workbench.</li>
-	</ul>
-</div>
-
-<div class="evo-card">
-	<h2>About Us</h2>
-
-	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="//evothings.com">evothings.com</a></p>
-</div>
+-->
 
 </div><!-- evo-card-layout -->
 <script src="js/include-page-footer.js"></script>
