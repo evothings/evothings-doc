@@ -185,7 +185,7 @@ a
 .evo-box
 {
 	margin: 0.5em 0em;
-	padding: 0.2em 0.2em;
+	padding: 0.2em 0em;
 	/*border: 1px solid #000000;
 	-webkit-border-radius: 0.5em;
 	border-radius: 0.5em;*/
@@ -319,7 +319,7 @@ a
 	*/
 }
 
-.evo-card img
+.evo-card-image
 {
 	display: block;
 	height: 175px;
@@ -336,7 +336,7 @@ a
 .evo-card h2
 {
 	margin: 0px 0px 0px 0px;
-	font-size: 180%;
+	font-size: 120%;
 	/*color: #AA0000;*/
 }
 
