@@ -9,7 +9,7 @@ Copyright (c) 2013-2016 Evothings AB
 <head>
 <meta charset="utf-8">
 <script src="../js/include-head.js"></script>
-<title>Eddystone StarterKit</title>
+<title>Eddystone Starter Kit</title>
 </head>
 
 <body>
@@ -19,9 +19,113 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-content">
 
 <div id="Introduction" class="evo-box">
-	<h1>Getting started with mobile apps for Eddystone beacons and the Physical Web</h1>
 
-	<p>TODO: Add content.</p>
+<h1>Eddystone Starter Kit - Getting started with mobile apps for Eddystone beacons and the Physical Web</h1>
+<p>This Starter Kit gets you up and running with creating mobile applications for the Physical Web using the Evothings JavaScript Eddystone API. When you attach a beacon to an object, it becomes part of the Physical Web, and object that a mobile app can monitor and track. It is easy to write Eddystone apps using the fast workflow of Evothings Studio. Read on to learn more!</p>
+
+<h2>Eddystone at a glance</h2>
+<p>Eddystone beacons are based on a new type of beacon technology. The Eddystone protocol was developed by Google, and is an open and extensible standard for beacons. Beacon vendors have embraced the standard and offer Eddystone compatible beacons.</p>
+<p>In comparison with iBeacon technology, Eddystone gives you more information, such as the URL of the beacon (hence the concept of the "Physical Web"), signal strength, temperature and battery level. The standard also has room for extensions such as data from embedded sensors, for example motion, orientation, temperature, humidity, light and sound.</p>
+<p>With the Evothings JavaScript API for Eddystone, it is very easy for web developers to develop beacon applications.</p>
+<p>With the Evothings Viewer app and Evothings Workbench, you can develop Eddystone apps directly on mobile phones and tablets. When you connect multiple phones to the Workbench, all of them will run the app and reload updates as you edit the code. Any changes you make to the code will instantly be sent to all devices each time you save any of the files in the app. It is easy to develop mobile applications in JavaScript for Eddystone beacons with this fast workflow.</p>
+<p>The Eddystone functionality is implemented as a Cordova/PhoneGap plugin. This is an open-source plugin you can use to build a native app for publication on the Google Play Store and the Apple App Store.</p>
+
+<h2>What you need to get started</h2>
+<p>Here is what you need to get up and running:</p>
+<ul>
+<li>Get your hands on Eddystone compatible beacons. See list of <a href="https://developers.google.com/beacons/" target="_blank">beacon manufacturers on the Google Beacon site</a>. You can also use an Eddystone emulator if you don’t have any beacons, for example: <a href="https://github.com/don/node-eddystone-beacon" target="_blank">github.com/don/node-eddystone-beacon</a>.</li>
+<li><a href="https://evothings.com/download">Download Evothings Workbench</a> and install on your computer</li>
+<li>Install Evothings Viewer from Apple App Store or Google Play)</li>
+<li>An Internet connection</li>
+<li>If you are new to Evothings Studio, it can be helpful to consult the <a href="../studio/evothings-studio-overview.html#Introduction">Evothings Studio Starter Kit</a>. You can also learn as you go through this guide.</li>
+</ul>
+
+<h2>Run the Eddystone Scan example app</h2>
+<p>The easiest way to get started is to explore the Eddystone Scan example app that comes with the Evothings Studio download:</p>
+<ul>
+<li>Launch Evothings Workbench on your computer and get a connect key under the "Connect" tab.</li>
+<li>Launch Evothings Viewer on your mobile phone, enter the connect code and tap the CONNECT button.</li>
+<li>Locate the example app <strong>Eddystone Scan</strong> in the Workbench example app list.</li>
+<li>Click RUN.</li>
+</ul>
+
+
+<p>Experiment by making some changes to the code:</p>
+<ul>
+<li>Click CODE - this opens a file browser with the source code of the app</li>
+<li>Open a code file in a text editor and make some changes, for example, open index.html and change the h1 header tag text.</li>
+<li>Save the file</li>
+<li>The app now reloads on the connected device(s) and displays your updates</li>
+</ul>
+
+<h2>How to create your own Eddystone app</h2>
+<p>An Evothings app is just a folder with HTML/JavaScript files (and other content such as CSS files and images). The minimal project is just a single HTML file.</p>
+<p>A project needs to have a main HTML file, which is the file launched when the app starts. This file is typically named "index.html". Just drag and drop your main HTML file into the Workbench project list and then click RUN.</p>
+<p>Here is a summary of the steps to create an app for use with Evothings Studio:</p>
+<ul>
+<li>Create a folder for the app</li>
+<li>Create content files (HTML, JavaScript, CSS, etc)</li>
+<li>Add any JavaScript libraries needed</li>
+<li>Drag the main HTML file into the Workbench window</li>
+<li>Click RUN</li>
+</ul>
+<p>A quick way to create a custom app is to just copy an example app and modify it. You can use the Estimote Nearables example app as a starting point.</p>
+<p><b>Note</b> that the JavaScript include files for Cordova plugins are bundled with the Evothings Client app, so these should not be added again. Including the link to "cordova.js" will in turn include the JavaScript files for all plugins.</p>
+<p>In order to build a native app, generate a Cordova project and copy or move your files to the "www" folder in the Cordova project. Read on below for more details and links to documentation pages for how to do this.</p>
+
+<h2>Explore the Nearables JavaScript library</h2>
+For how to build a native Eddystone app, see the article that presents the Cordova Eddystone plugin: Detecting Eddystone™ beacons in JavaScript made easy. This tutorial contains step-by-step instructions for how to build an Eddystone app you can publish on the app stores.
+
+
+
+<h2>Explore the Eddystone JavaScript library</h2>
+<p>The GitHub repository for the Estimote Cordova/PhoneGap plugin has documentation for the <a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/documentation.md#nearables-api-for-ios-estimote-stickers" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/documentation.md#nearables-api-for-ios-estimote-stickers', 'JavaScript Nearables API']);" >JavaScript Nearables API</a>.</p>
+<p>There is also  <a href="//evomedia.evothings.com/jsdoc/phonegap-estimotebeacons/estimote.nearables.html">JavaScript Nearables reference documentation</a> available (generated using JSDoc).</p>
+<p>The JavaScript library for Estimote Nearables is implemented as a Cordova plugin that is open source and available on GitHub. This plugin supports both Estimote Beacons and Nearables. Additionally, the "Beacon Finder" example app demonstrates both the Estimote Beacon API and the Nearable API.</p>
+<p>Here are links to the plugin:</p>
+<ul>
+<li><a href="https://github.com/evothings/phonegap-estimotebeacons" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons', 'Plugin home page']);" >Plugin home page</a></li>
+<li><a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/documentation.md" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/documentation.md', 'Overview of the JavaScript API']);" >Overview of the JavaScript API</a></li>
+<li><a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md', 'Beacon Finder']);" >Beacon Finder</a> example app</li>
+<li><a href="https://github.com/evothings/phonegap-estimotebeacons/tree/master/examples/beacon-finder" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/tree/master/examples/beacon-finder', 'Source code']);" >Source code</a> for the example app</li>
+</ul>
+
+<h2>Beacon Finder example app</h2>
+<p>The Beacon Finder example app demonstrates more parts of the API compared to the Estimote Nearables example. This app demonstrates both how to program for Estimote Beacons and Nearables.</p>
+<p>You can run the Beacon Finder app in Evothings Client, and you can also build a native app using Cordova.</p>
+<p>Follow these steps to run Beacon Finder in Evothings Client:</p>
+<ul>
+<li><a href="https://github.com/evothings/phonegap-estimotebeacons/archive/master.zip" onclick="_gaq.push(['_trackEvent','download','https://github.com/evothings/phonegap-estimotebeacons/archive/master.zip']);" >Download the files on GitHub</a> (or use git clone)</li>
+<li>Open the folder <strong>examples/beacon-finder/www</strong> in a file browser</li>
+<li>Drag file <strong>index.html</strong> and drop it in the project list in Evothings Workbench</li>
+<li>Connect to the Workbench from Evothings Client</li>
+<li>Click RUN on the project entry</li>
+</ul>
+<p>To create a native Beacon Finder app using Cordova, follow the build <a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md', 'instructions on GitHub']);" >instructions on GitHub</a>. Read more about Cordova in the <a href="cordova-starterkit.html">Cordova IoT Starter Kit</a>.</p>
+
+
+<li>To build native apps you need the Apache Cordova build tools</li>
+
+
+https://developers.google.com/beacons/
+
+
+<h2>Useful background knowledge</h2>
+<p>If you are new to Evothings Studio, read the <a href="../studio/evothings-studio-overview.html#Introduction">Introduction in the documentation</a> to get a basic understanding of the development tools used. We also recommend the <a href="../starterkits/evothings-studio-starterkit.html">Evothings Starter Kit</a>.</p>
+<p>Apache Cordova is a build system for creating native apps developed in HTML/JavaScript. You can use Evothings Studio without Cordova, but if you want to create native apps for publishing it is required. Read more in the <a href="../starterkits/cordova-starterkit.html">Cordova IoT Starter Kit</a>.</p>
+
+
+<h2>Useful links</h2>
+<ul>
+<li><a href="http://estimote.com/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://estimote.com/', 'Estimote company home page']);" >Estimote company home page</a></li>
+<li><a href="https://evothings.com/forum/viewforum.php?f=11">Evothings forum for Estimote technologies</a></li>
+<li><a href="https://github.com/evothings/phonegap-estimotebeacons" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons', 'Cordova/PhoneGap plugin for Estimote Beacons and Nerables']);" >Cordova/PhoneGap plugin for Estimote Beacons and Nerables</a></li>
+<li><a href="ibeacon-starterkit.html">Starter Kit for iBeacon</a> (contains related information)</li>
+<li><a href="evothings-studio-starterkit.html/">Evothings Starter Kit</a> (getting started with Evothings Studio)</li>
+<li><a href="cordova-starterkit.html">Cordova IoT Starter Kit</a> (for building native apps)</li>
+<li><a href="https://evothings.com/download/">Evothings download page</a></li>
+</ul>
+
 </div>
 
 <script src="../js/include-page-footer.js"></script>

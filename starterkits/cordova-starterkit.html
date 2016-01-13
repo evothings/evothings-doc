@@ -9,7 +9,7 @@ Copyright (c) 2013-2016 Evothings AB
 <head>
 <meta charset="utf-8">
 <script src="../js/include-head.js"></script>
-<title>Cordova StarterKit</title>
+<title>Cordova IoT Starter Kit</title>
 </head>
 
 <body>
@@ -18,12 +18,83 @@ Copyright (c) 2013-2016 Evothings AB
 <script src="../js/include-page-header.js"></script>
 <div class="evo-content">
 
-<div id="Introduction" class="evo-box">
-	<h1>Building native apps with Apache Cordova</h1>
+<div class="evo-box">
 
-	<p>TODO: Add content.</p>
-</div>
+<h1>Cordova IoT Starter Kit - Building native apps with Apache Cordova</h1>
+<p>On this page we have collected information about using the Apache Cordova build system with Evothings Studio. This enables you to build native mobile applications for the Internet of Things (IoT).</p>
 
+<h2>Quick introduction to Cordova</h2>
+<p>Cordova is used to create a native app from an app developed in JavaScript/HTML.</p>
+<p>A very useful part of Cordova is the plugin system. Plugins provide access to native device functionality from JavaScript. There are many ready-to-use plugins available. You can also write your own plugins.</p>
+<p>Plugins have two parts, a native code implementation (usually written in Objective-C or Swift on iOS and in Java on Android) and a JavaScript library (shared between platforms).</p>
+<p>You can use Evothings Studio without Cordova, but if you want to create native apps it is what you want to use.<br /></p>
+
+<h2>What you need to get started</h2>
+<p>To build apps with Cordova you need to install Cordova itself and also the mobile SDKs (Software Development Kits) for the mobile platforms you wish to deploy your app on. The main platforms used by Evothings are iOS and Android.</p>
+<p>Installing Cordova and the SDKs can be a bit time consuming and requires that you can use command line tools. Once installed Cordova is easy to use, so don&#8217;t give up.</p>
+<p>To help you in installing and using Cordova the Evothings documentation contains a <a href="../build/build-overview.html">Cordova Build Guide</a>.</p>
+<p>The highlights of this guide are:</p>
+<ul>
+<li><a href="../build/build-overview.html#Install">Installing Cordova</a> (note that there are separate guides for <a href="../build/cordova-install-windows.html">Windows</a>, <a href="../build/cordova-install-osx.html">OS X</a>, and <a href="../build/cordova-install-linux.html">Linux</a>)</li>
+<li><a href="../build/cordova-guide.html">Using Cordova</a> (this is similar for all desktop operating systems)</li>
+</ul>
+<p>To summarize, you need to install Cordova on your desktop/laptop machine, and you also need to install the mobile SDKs for the platforms you wish to build apps for. On OS X you can build apps for both iOS and Android. On Windows and Linux you can build apps for Android, but not for iOS (there is no iOS SDK for Windows/Linux).</p>
+<h2>Useful background knowledge</h2>
+<p>If you are new to Evothings Studio, read the <a href="../studio/evothings-studio-overview.html">Introduction in the documentation</a> to get a basic understanding of the development tools used.</p>
+<h2>Evothings Viewer is a Cordova app</h2>
+<p>It can be useful to know that Evothings Viewer is itself an app built with Cordova.</p>
+<p>Evothings Viewer has a number of plugins included, see the <a href="../api/api-overview.html#SupportedPlugins">plugin listing</a> in the documentation. </p>
+<p>When you build your own Cordova app, you should keep track of which plugins are used by your app so you can add them to the Cordova project (if you are not sure, just ask on the <a href="https://evothings.com/forum/">Evothings Forum</a>).</p>
+<p>To build Evothings Viewer is easy. Just get the <a href="https://github.com/evothings/evothings-viewer" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/evothings-viewer', 'GitHub repository for Evothings Viewer']);">get the source code and follow the instructions given in the GitHub repositort</a>.</p>
+
+<h2>Strategies for app development using Evothings Studio and Cordova</h2>
+<p>The two main tools in Evothings Studio are Evothings Workbench and Evothings Viewer. The Workbench provides the live reload workflow used with Evothings Viewer. You can also use Evothings Workbench and live reload with any Cordova application.</p>
+<p>When developing an app with Evothings Studio, you have two options:</p>
+<p><strong>Use Evothings Workbench and Evothings Viewer.</strong> Very quick to get started, just install Evothings Workbench and Evothings Viewer and you are up and running (no need to install Cordova, SDKs and build a native app). You can readily create a Cordova project when needed and place your JavaScript/HTML files there.</p>
+<p><strong>Use Evothings Workbench with your custom Cordova app.</strong> This is useful when you want to add Cordova plugins that are not included with Evothings Viewer. If you plan to make a final build and publish your app on the app stores, it can be convenient to create a Cordova project and keep your JavaScript/HTML files in the www folder of the project. Then it is easy to build a native app at any point during the development process. Note that if you use only plugins supported by Evothings Viewer, you can still use Evothings Viewer during development.</p>
+
+<h2>How to create a Cordova app from an Evothings project</h2>
+<p>An Evothings project is just a folder with HTML/JavaScript files (and other content such as CSS files and images). The minimal project is just one HTML file.</p>
+<p>These are the steps to create a Cordova project from an Evothings app, for example one of the example apps that comes with the Evothings Studio download:</p>
+<ul>
+<li>Create a Cordova project (using the command line tools)</li>
+<li>Delete the files in the www folder of the newly created Cordova project</li>
+<li>Copy (or move) your HTML/JavaScript files to the www folder in the Cordova project</li>
+<li>Add any plugins needed by your app</li>
+</ul>
+<p><a href="../build/cordova-guide.html#SummaryOfBuildSteps">Read on in the Cordova Guide</a> to learn the details and see actual command tool examples.</p>
+
+<h2>Developing a Cordova app using Evothings Workbench</h2>
+<p>You can use the live reload mechanism and JavaScript tools available in Evothings with your Cordova app.</p>
+<p>There are two options:</p>
+<p><strong>Develop the app using Evothings Viewer.</strong> This works great given that your app does not depend on any additional plugins besides the ones that are included with Evothings Viewer. Just drag index.html into the Workbench and click RUN. When you are ready to test/ship the app, you build it like any Cordova app.</p>
+<p><strong>Build a custom version of Evothings Viewer.</strong> This is the solution when your app needs a custom set of plugin. Get the <a href="https://github.com/evothings/evothings-viewer">source code for Evothings Viewer on GitHub</a> and and follow the instructions given in the repository. Update the file package.json with the plugins you wish to use (you can also remove plugins you don't want to have). Then build and install your custom Viewer and connect to the Workbench. Drag index.html of the Cordova app you are developing into the Workbench, click RUN, and you are up and running. (Yes, it is fully possible to run Evothings Viewer inside Evothings Viewer, that is how we develop the Viewer app!)</p>
+
+<h2>Evothings projects vs. Cordova projects</h2>
+<p>An Evothings project is just a folder with HTML/JavaScript files and other web content.</p>
+<p>A Cordova project has a special folder structure, and the JavaScript/web files goes into the "www" folder.</p>
+<p>Here is an <a href="../build/cordova-guide.html#CordovaDirectoryStructure">overview of the Cordova directory structure</a>.</p>
+
+<h2>Plugins and JavaScript files</h2>
+<p>The JavaScript files for Cordova plugins are bundled with the app by the Cordova build system. These files should not be copied to the www folder, and they should not be included into the HTML file using a script tag.</p>
+<p>You only need to include the "cordova.js" file in a script tag. Including "cordova.js" in turn will include the JavaScript files for all the plugins installed in the app.</p>
+<p>However, any JavaScript files or libraries that reference a plugin must be present in the www folder (or subfolder) and be included using a script tag.</p>
+<p>This can sometimes be confusing and is good to keep in mind. If you want to read the JavaScript source code for a plugin, you can either look in the plugin folder in your Cordova project or browse the source for the plugin online (usually on GitHub).</p>
+
+<h2>Useful links</h2>
+<ul>
+<li><a href="https://evothings.com/hybrid-app-development-made-fast/">Hybrid app development made fast</a></li>
+<li><a href="http://cordova.apache.org/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://cordova.apache.org/', 'Apache Cordova home page']);" >Apache Cordova home page</a></li>
+<li><a href="http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html#The%20Command-Line%20Interface', 'Cordova command line (CLI) documentation']);" >Cordova command line (CLI) documentation</a></li>
+<li><a href="../build/build-overview.html">Evothings Cordova Build Guide</a></li>
+<li><a href="../build/build-overview.html#Install">How to install Cordova and mobile SDKs</a></li>
+<li><a href="../api/api-overview.html#SupportedPlugins">Plugins included with Evothings Viewer</a></li>
+<li><a href="../build/cordova-guide.html#SummaryOfBuildSteps">How to build a Cordova app</a></li>
+<li><a href="../build/cordova-guide.html#SetupCordovaForEvothings">Using Evothings Workbench with Cordova</a></li>
+<li><a href="../studio/evothings-studio-overview.html">Overview of Evothings Studio</a></li>
+</ul>
+
+</div><!-- evo-box -->
 
 <script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->
