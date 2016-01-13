@@ -206,14 +206,14 @@ a
 
 .evo-content h1
 {
-	font-size: 2.2em;
-	margin: 0.2em 0;
+	font-size: 1.9em;
+	margin: 0.5em 0;
 }
 
 .evo-content h2
 {
 	font-size: 1.6em;
-	margin: 0.2em 0;
+	margin: 0.4em 0 0.2em 0;
 }
 
 .evo-content h3
@@ -280,6 +280,22 @@ a
 	float: right;
 }
 
+.evo-content-side-image-small
+{
+	float: right;
+	width: 200px;
+	height: auto;
+	margin: 0 0 10px 10px;
+}
+
+.evo-content-side-image-large
+{
+	float: right;
+	width: 300px;
+	height: auto;
+	margin: 0 0 10px 10px;
+}
+
 .evo-card-layout
 {
     display: block;
@@ -336,7 +352,7 @@ a
 .evo-card h2
 {
 	margin: 0px 0px 0px 0px;
-	font-size: 120%;
+	font-size: 125%;
 	/*color: #AA0000;*/
 }
 
@@ -344,6 +360,12 @@ a
 {
 	margin: 0px 0px 0px 0px;
 }
+
+.evo-border-1
+{
+	border: 1px solid #999999;
+}
+
 
 /* If screen is narrow removed fixed header layout. */
 @media all and (max-width: 800px)
@@ -383,6 +405,12 @@ a
     .evo-card-layout .evo-card:nth-child(even)
 	{
     	margin-left: 0px !important;
+	}
+
+	.evo-content-side-image-small,
+	.evo-content-side-image-large
+	{
+		display: none;
 	}
 }
 
