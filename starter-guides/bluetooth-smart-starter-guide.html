@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: bluetooth-smart-starter-guide.html
+Description: Bluetooth Low Energy Starter Guide.
+Author: Mikael Kindborg
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Bluetooth Low Energy Starter Guide</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+
+<div class="evo-box">
+	<h1>Getting started with mobile apps for Bluetooth Low Energy (BLE)</h1>
+
+<p>In this Starter Guide you will find everything needed to get started with creating mobile applications in JavaScript for the <a href="http://www.ti.com/sensortag" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.ti.com/sensortag', 'TI Bluetooth Smart SensorTag']);" target="_blank">TI Bluetooth Smart SensorTag</a>. With the SensorTag and Evothings Studio it is very easy to prototype and develop novel mobile IoT applications that can use all sorts of sensor data available to produce many types of applications. Read on to find out how to get started!</p>
+
+<h2>IoT made easy with the TI SensorTag</h2>
+<p>The <a href="http://www.ti.com/sensortag" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.ti.com/sensortag', 'TI Bluetooth Smart SensorTag']);" target="_blank">TI Bluetooth Smart SensorTag</a> is a new type of smart device that packs many different sensors into a small battery-powered unit. You can use the SensorTag for a wide variety of IoT applications.</p>
+<p>It is perfect to use the device for quick prototyping, for example new kinds of fitness applications, various sensor-based alarms, interaction devices that use the accelerometer/gyroscope, game controllers, smartwatch prototypes, sports sensors and much more. For all these, mobile applications play a central role to display information to the end user.</p>
+<p>With <a href="//evothings.com/download/" target="_blank">Evothings Studio</a> it is easy to prototype and develop IoT applications that use the SensorTag. Use the open-source Evothings JavaScript library for the Bluetooth Smart SensorTag to get started quickly &#8211; it takes care of all the heavy lifting and both iOS and Android are supported. Find out the details below.</p>
+<p>The Bluetooth Smart SensorTag uses Bluetooth Low Energy (BLE) to communicate with a mobile phone or tablet. There are also upcoming versions for WiFi and for 6LoWPAN/ZigBee. Support for these will be added to the Evothings Studio as they become available.</p>
+
+<h2>What you need to get started</h2>
+<p>Here is what you need to get up and running:</p>
+<ul>
+<li>TI Bluetooth Smart SensorTag (<a href="http://www.ti.com/sensortag" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.ti.com/sensortag', 'order at the TI web site']);" >order at the TI web site</a>)</li>
+<li><a href="//evothings.com/">Evothings Studio</a> (<a href="//evothings.com/download/" target="_blank">download</a> for OS X, Windows and Linux)</li>
+<li>Evothings Client app (install on iOS or Android phones/tablets, get it from Apple App Store or Google Play)</li>
+<li>WiFi network that allows client connections (network client isolation must be disabled)</li>
+<li>Basic knowledge of Evothings Studio (you can also learn as you go through this tutorial)</li>
+<li>To build an application to distribute yourself you will need the Apache Cordova build tools</li>
+</ul>
+
+<h2>Good to know</h2>
+<p>If you are new to Evothings Studio, take a moment to read the <a href="//evothings.com/doc/index.html#Introduction">Introduction in the documentation</a> to get a basic understanding of the development tools used. We also recommend reviewing the <a href="//evothings.com/evothings-studio-starter-kit/"  target="_blank">Evothings Starter Guide</a>.</p>
+<p>Apache Cordova is a build system for creating native apps developed in HTML5 and JavaScript. You can use Evothings Studio without Cordova as we provide the Evothings Client app  to run your applications in, but if you want to create your own application for publishing it is required. We have written a lot more on this topic in the <a href="//evothings.com/cordova-starter-kit/">Cordova IoT Starter Guide</a>.</p>
+
+<h2>Run the example apps</h2>
+<h3>Try out the TI SensorTag Accelerometer example</h3>
+<p>The quickest way to get started with the device and the development environment is to explore the SensorTag example apps that comes with the Evothings Studio download:</p>
+<ul>
+<li>Launch Evothings Workbench on your computer</li>
+<li>Launch Evothings Client on your mobile phone(s), press SCAN and connect to the Workbench running on your computer</li>
+<li>Locate the example app &#8220;TI SensorTag Accelerometer&#8221; in the Workbench project list</li>
+<li>Click RUN</li>
+<li>Activate the SensorTag by clicking the activate button on the tag (see picture below)</li>
+<li>Hold the SensorTag with front side up and tilt it to move the Evothings Logo on the screen.</li>
+</ul>
+<p><img src="//evomedia.evothings.com/2015/05/TISensorTagCC2650_Instructions.png" alt="TISensorTagCC2650_Instructions" style="width:500px;height:auto;margin:10px auto;display:block;" /></p>
+<h3>Make changes to the code</h3>
+<p>Next step is to try out making some changes to the code:</p>
+<ul>
+<li>Click CODE &#8211; this opens a file browser with the source code of the app</li>
+<li>Open file <code>index.html</code> in a text editor and make some changes to the code. For example, change size of the <code>#sprite</code> element by changing the CSS width to this: <code>width: 100px;</code></li>
+<li>Save the file</li>
+<li>The app will reload on all the connected mobile device(s) and reflect the updates</li>
+</ul>
+<p>You can also change the image file <code>sprite.svg</code> to your own image. Any image file (PNG, JPG, GIF) work just fine, but remember to update the image reference in the HTML code, for example:</p>
+<p><code>&lt;img id="sprite" src="MyImage.png" /&gt;</code></p>
+<h3>Explore more example apps</h3>
+<p>You should also explore the other example apps for the SensorTag. Here is a quick overview of the examples:</p>
+<ul>
+<li>TI SensorTag Accelerometer &#8211; move a UI object using the accelerometer (this example uses the high-level library tisensortag.js)</li>
+<li>TI SensorTag Sensors &#8211; displays all the sensors available (uses the high-level library tisensortag.js)</li>
+<li>TI SensorTag Demo &#8211; Charts sensor data on an HTML5 canvas (this is a low-level example that writes/read directly to the BLE services and characteristics of the SensorTag)</li>
+</ul>
+
+<h2>The TI SensorTag JavaScript library</h2>
+<p>The SensorTag high-level JavaScript library is in file tisensortag.js &#8211; it uses the easyble.js library which in turn uses the underlying native cordova-ble plugin. It has been written in a way to work transparently with the original SensorTag and the latest one available from TI.</p>
+<p>On the <a href="//evothings.com/doc/raw/studio/api-overview.html#Libraries"  target="_blank">Evothings API overview page</a> you will find more information about these libraries and links to technical documentation.</p>
+<p>A good way to get started is to examine the TI SensorTag Sensors example app that comes with Evothings Studio and see how the <code>tisensortag.js</code> library is used. This example is quite elaborate, and for a smaller example check out TI SensorTag Accelerometer.</p>
+<h2>How to create a custom SensorTag app</h2>
+<p>An Evothings application is just a folder with HTML/JavaScript files (and other assets such as CSS files and images). The minimal project is just a single HTML file.</p>
+<p>A project needs to have a main HTML file, which is the file launched when the app starts. This file is typically named &#8220;index.html&#8221;. Simply drag and drop your main HTML file into the Workbench project list, it will be added seamlessly and then click RUN to start it.</p>
+<p>Here is a quick summary of the steps required to create an app for use with Evothings Studio:</p>
+<ul>
+<li>Create a folder for the app</li>
+<li>Create content files (HTML, JavaScript, CSS, etc)</li>
+<li>Add any JavaScript libraries needed</li>
+<li>Drag the main HTML file into the Workbench window</li>
+<li>Click RUN</li>
+</ul>
+<p>A quick and easy way to create a custom application is to just copy an example app and modify it. You can use the one of the SensorTag example app, or any of the example apps as a starting point.</p>
+
+<h2>Build a native app</h2>
+<p>In order to build a native app, you will need to generate a Cordova project and copy or move your files to the &#8220;www&#8221; folder in the Cordova project. Read more about Cordova and how it works in the <a href="//evothings.com/cordova-starter-kit/">Cordova IoT Starter Guide</a>.</p>
+<h2>Useful links</h2>
+<ul>
+<li><a href="http://www.ti.com/sensortag" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.ti.com/sensortag', 'TI SensorTag home page']);" target="_blank">TI SensorTag home page</a></li>
+<li><a href="//evothings.com/forum/viewforum.php?f=12" target="_blank">Evothings forum for TI technologies</a></li>
+<li><a href="//evothings.com/evothings-studio-starter-kit/" target="_blank">Evothings Starter Guide</a> (getting started with Evothings Studio)</li>
+<li><a href="//evothings.com/cordova-starter-kit/" target="_blank">Cordova IoT Starter Guide</a> (for building native apps)</li>
+<li><a href="//evothings.com/download/" target="_blank">Evothings download page</a></li>
+</ul>
+
+<h2>Get started now - up and running in 5 minutes</h2>
+<p>With <a href="//evothings.com/download/" target="_blank">Evothings Studio</a> it is easy to prototype and develop IoT applications. Download Evothings Studio now and spend 5 minutes to get started. Order the TI SensorTag and familiarize yourself with Evothings Studio to be ready to hack away upon delivery of the device!</p>
+
+</div>!-- evo-box -->
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
