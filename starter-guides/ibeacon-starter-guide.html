@@ -21,50 +21,61 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-box">
 
 <h1>iBeacon Starter Guide - Getting Started with Mobile Apps for iBeacon</h1>
-<p>In this guide, we have collected everything you need to get started with creating iBeacon apps in JavaScript/HTML.</p>
+<p>In this guide, we have collected everything you need to get started with creating mobile apps in JavaScript/HTML for iBeacon compatible proximity beacons.</p>
 
-<!--
 <h2>What you need to get started</h2>
-<div style="width:280px;height:auto;float:right;background-color:#f9f9f9;padding:5px;"><img src="https://evomedia.evothings.com/2015/02/beacons-in-box.jpg" alt="beacons-in-box" style="float:right;width:100%;height:auto;margin-left:5px;margin-bottom:5px;" />
-<div style="float:right;font-size:9pt" >In Estimote Beacons Developer Kit, the beacons come in sets of three units</div>
-</div>
-<p>Here is what you need:</p>
+<img class="evo-content-side-image-small" src="images/beacons-in-box.jpg"/>
+<p>Here are the things you need to start creating iBeacon apps in JavaScript:</p>
 <ul>
-<li>Estimote Beacons (<a href="http://estimote.com/#jump-to-products" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://estimote.com/#jump-to-products', 'order at the Estimote web site']);" >order at the Estimote web site</a>)</li>
+<li>iBeacon compatible devices - many vendors offer iBeacon devices, for example <a href="http://kontakt.io" target="_blank">Kontakt.io</a>, <a href="http://estimote.com" target="_blank">Estimote</a>, <a href="http://www.radiusnetworks.com/" target="_blank">Radius Networks</a>, <a href="http://www.ekoor.io/" target="_blank">EKOOR</a>, <a href="http://www.ufobeacon.com/" target="_blank">Ufo Beacon</a>, and <a href="http://bluvision.com/physical-web-eddystone-ibeacon-support/" target="_blank">Bluvision</a></li>
 <li><a href="https://evothings.com/">Evothings Studio</a> (<a href="https://evothings.com/download/">download</a> for OS X, Windows or Linux)</li>
-<li>Evothings Viewer app (install on iOS or Android phones/tables, get it from Apple App Store or Google Play)</li>
-<li>WiFi network that allows client connections</li>
-<li>Basic knowledge of Evothings Studio (you can learn as you go through this tutorial)</li>
-<li>To build native apps you need the Apache Cordova build tools</li>
+<li><a href="https://evothings.com/download">Download Evothings Workbench</a> and install on your computer</li>
+<li>Install Evothings Viewer from Apple App Store or Google Play)</li>
+<li>An Internet connection</li>
+<li>If you are new to Evothings Studio, it is helpful to consult the <a href="evothings-studio-starter-guide.html">Evothings Studio Starter Guide</a>. You can also learn as you go through this guide.</li>
 </ul>
 
-<h2>Useful background knowledge</h2>
-<p>If you are new to Evothings Studio, read the <a href="../studio/evothings-studio-overview.html#Introduction">Introduction in the documentation</a> to get a basic understanding of the development tools used.</p>
-<p>Apache Cordova is a build system for creating native apps developed in HTML/JavaScript. You can use Evothings Studio without Cordova, but if you want to create native apps it is needed. Read more in the <a href="cordova-starter-guide.html">Cordova IoT Starter Guide</a>.</p>
-
-<h2>Run the iBeacon example app</h2>
-<p>The easiest way to get going is to explore the Estimote example app that comes with the Evothings Studio download:</p>
+<h2>Run the iBeacon Scan example app</h2>
+<a href="../examples/ibeacon-scan.html"><img class="evo-content-side-image-small evo-border-1" src="../examples/images/ibeacon-scan-screenshot.png"/></a>
+<p>The easiest way to get started is to explore the iBeacon Scan example app that comes with the Evothings Studio download:</p>
 <ul>
-<li>Launch Evothings Workbench on your computer</li>
-<li>Launch Evothings Viewer on your mobile phone(s), press SCAN and connect to the Workbench running on your computer</li>
-<li>Locate the example app "iBeacon Scan" in the Workbench project list</li>
-<li>Click RUN</li>
+<li>Launch Evothings Workbench on your computer and get a connect key under the "Connect" tab.</li>
+<li>Launch Evothings Viewer on your mobile phone, enter the connect code and tap the CONNECT button.</li>
+<li>Go to the Workbench Examples screen and locate the app <strong>iBeacon Scan</strong>.</li>
+<li>Click RUN.</li>
+<li>The app will start scanning for beacons automatically and display data for found beacons.</li>
 </ul>
-<p>Then make some changes to the code:</p>
-<ul>
-<li>Click CODE - this open a file browser with the source code of the app</li>
-<li>Open a code file in a text editor and make some changes, for example, open index.html and change the h1 header tag text.</li>
-<li>Save the file</li>
-<li>The app now reloads on the connected device(s) and displays your updates</li>
-</ul>
-<p><a href="https://evothings.com/how-to-get-started-with-estimote-beacon-mobile-app-development-in-5-minutes">Watch the video</a> in the iBeacon getting started blog post to see the above steps in action.</p>
 
 <h2>How to create your own iBeacon app</h2>
-<div style="width:280px;height:auto;float:right;background-color:#f9f9f9;padding:5px;"><img src="https://evomedia.evothings.com/2015/02/beacon-in-restaurant.jpg" alt="beacon-in-restaurant"  style="float:right;width:100%;height:auto;margin-left:5px;margin-bottom:5px;" />
-<div style="float:right;font-size:9pt" >Your beacon app can be used to add information nodes to public places, like shopping malls and restaurants. </div>
+<p>A quick way to create your own app is to copy the example app:</p>
+<ul>
+<li>Click COPY on the iBeacon Scan app.</li>
+<li>Fill in the name of the app folder and the parent folder where you want the app folder to be created.</li>
+<li>Click CREATE and the new app appears under "My Apps".</li>
+<li>Click RUN to launch the app. This will make it the currently active app and it is now watched for live reload on file save.</li>
+</ul>
+<p>Experiment by making some changes to the code:</p>
+<ul>
+<li>Click CODE - this opens a file browser with the source code of the app</li>
+<li>Open a code file in a text editor and make some changes, for example, open index.html and change the h1 header tag text.</li>
+<li>Save the file.</li>
+<li>The app now reloads on the connected device(s) and displays your updates.</li>
+<li>If the app does not reload, click RUN to make sure it is the active app.</li>
+</ul>
+<p>To change the label that appears in the "My Apps" listing, alter the title tag in index.html.</p>
+
+<h2>Explore the iBeacon JavaScript library</h2>
+<p>The iBeacon JavaScript library is packaged as a Cordova plugin. Cordova is a build tool that enables creating native apps you can publish on Apple App Store and Google Play.
+<p>If you visit the GitHub repository for the <a href="https://github.com/evothings/cordova-plugin-ibeacon/">iBeacon Cordova/PhoneGap plugin</a> you will find documentation about the iBeacon JavaScript API.
+<p>In addition, the tutorial <a href="https://evothings.com/quick-guide-to-writing-mobile-ibeacon-applications-in-javascript/">Quick guide to writing mobile iBeacon applications in JavaScript</a> introduces the library and provides background information about iBeacon.</p>
+
+<h2>Create your own iBeacon app from scratch</h2>
+<div class="evo-content-side-box-large">
+	<img src="images/beacon-in-restaurant.jpg"/>
+	<p>Your beacon app can be used to add information to public places, like shopping malls and restaurants.</p>
 </div>
 <p>An Evothings app is just a folder with HTML/JavaScript files (and other content such as CSS files and images). The minimal project is just one HTML file.</p>
-<p>A project should have one main HTML file, which is the file launched when the app starts. This file is typically named "index.html". Just drag and prop your main HTML file into the Workbench project list and then click RUN.</p>
+<p>A project should have one main HTML file, which is the file launched when the app starts. This file is typically named "index.html". Just drag and drop your main HTML file into the Workbench window and then click RUN.</p>
 <p>Here is a summary of the steps to create an app for use with Evothings Studio:</p>
 <ul>
 <li>Create a folder for the app</li>
@@ -75,46 +86,23 @@ Copyright (c) 2013-2016 Evothings AB
 </ul>
 <p>A quick way to create a custom app is to just copy an example app and modify it. You can use iBeacon Scan as a starting point.</p>
 <p>Note that the JavaScript library files for Cordova iBeacon plugin are bundled with the Evothings Viewer app, so these should not be added. Including the link to "cordova.js" will in turn include the JavaScript files for all installed plugins.</p>
+<p>Pro tip: When you add an app using drag and drop, a file called evothings.json will be created (if not already present). This file contains a UUID for the app and and optional icon image that is displayed in app listing the Workbench window. When you copy an app, keep in mind to change the UUID in the copied file (or just delete the evothings.json file in the copy, a new file with a unique UUID will be created when you press RUN).</p>
 
-<h2>Learn about the iBeacon JavaScript library</h2>
-<p>The tutorial <a href="https://evothings.com/how-to-develop-beacon-apps-in-javascript-with-evothings-studio-and-estimote/">How to develop beacon apps in JavaScript with Evothings Studio and Estimote</a> is a comprehensible guide to making JavaScript apps for Estimote Beacons, and is recommended reading.</p>
-<p>The JavaScript library for iBeacon is implemented as a Cordova plugin that is open source and available on GitHub:
+<!--
+The tutorial "Hands on guide to building a native JavaScript iBeacon app using Cordova" is not yet updated. Include this section when the tutorial is updated.
 
-<ul>
-<li><a href="https://github.com/evothings/phonegap-estimotebeacons" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons', 'Plugin home page']);" >Plugin home page</a></li>
-<li><a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/documentation.md" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/documentation.md', 'Overview of the JavaScript API']);" >Overview of the JavaScript API</a></li>
-<li><a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md', 'Beacon Finder']);" >Beacon Finder</a> example app</li>
-<li><a href="https://github.com/evothings/phonegap-estimotebeacons/tree/master/examples/beacon-finder" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/tree/master/examples/beacon-finder', 'Source code']);" >Source code</a> for the example app</li>
-</ul>
-
-<h2>Beacon Finder example app</h2>
-<p>The Beacon Finder example app demonstrates more parts of the API compared to the Estimote Beacons example.</p>
-<p>You can run the Beacon Finder app in Evothings Viewer, and you can also build a native app using Cordova.</p>
-<p>Follow these steps to run Beacon Finder in Evothings Viewer:</p>
-<ul>
-<li><a href="https://github.com/evothings/phonegap-estimotebeacons/archive/master.zip" onclick="_gaq.push(['_trackEvent','download','https://github.com/evothings/phonegap-estimotebeacons/archive/master.zip']);" >Download the files on GitHub</a> (or use git clone)</li>
-<li>Open the folder <strong>examples/beacon-finder/www</strong> in a file browser</li>
-<li>Drag file <strong>index.html</strong> and drop it in the project list in Evothings Workbench</li>
-<li>Connect to the Workbench from Evothings Viewer</li>
-<li>Click RUN on the project entry</li>
-</ul>
-<div style="width:280px;height:auto;float:right;background-color:#f9f9f9;padding:5px;"><img src="https://evomedia.evothings.com/2015/02/copier-with-beacon.jpg" alt="copier-with-beacon" style="float:right;width:100%;height:auto;margin-left:5px;margin-bottom:5px;" />
-<div style="float:right;font-size:9pt" >Real-world example, an Estimote beacon attached to copier, could easily be assigned to provide more user information via a clever app!</div>
-</div>
-<p>To create a native Beacon Finder app using Cordova, follow the build <a href="https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons/blob/master/examples/beacon-finder/README.md', 'instructions on GitHub']);" >instructions on GitHub</a>. Read more about Cordova in the <a href="cordova-starter-guide.html">Cordova IoT Starter Guide</a>.</p>
+<h2>Build a native mobile iBeacon app</h2>
+<p>The tutorial <a href="https://evothings.com/hands-on-guide-to-building-a-native-javascript-ibeacon-app-using-cordova/">Hands on guide to building a native JavaScript iBeacon app using Cordova</a> tells you how to build a native iBeacon app for Android and iOS using the Apache Cordova build system. Read more about Cordova in the <a href="cordova-starter-guide.html">Cordova Starter Guide</a>.</p>
+-->
 
 <h2>Useful links</h2>
-<li><a href="http://estimote.com/" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://estimote.com/', 'Estimote company home page']);" >Estimote company home page</a></li>
-<li><a href="https://evothings.com/how-to-get-started-with-estimote-beacon-mobile-app-development-in-5-minutes">Evothings Estimote quick-start guide</a></li>
-<li><a href="https://evothings.com/how-to-develop-beacon-apps-in-javascript-with-evothings-studio-and-estimote/">Evothings Estimote JavaScript tutorial</a></li>
-<li><a href="https://github.com/evothings/phonegap-estimotebeacons" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'https://github.com/evothings/phonegap-estimotebeacons', 'Estimote Cordova plugin']);" >Estimote Cordova plugin</a></li>
-<p>
-<li>Evothings Starter Guide - ADD LINK</li>
-<li><a href="cordova-starter-guide.html">Cordova IoT Starter Guide</a> how to build native iBeacon apps</li>
+<ul>
+<li><a href="https://evothings.com/quick-guide-to-writing-mobile-ibeacon-applications-in-javascript/">Quick guide to writing mobile iBeacon applications in JavaScript</a></li>
+<li><a href="https://evothings.com/diy-arduino-beacons/">DIY Arduino Beacons as an alternative to iBeacon</a></li>
+<li><a href="evothings-studio-starter-guide.html/">Evothings Starter Guide - Getting started with Evothings Studio</li>
+<li><a href="cordova-starter-guide.html">Cordova Starter Guide - Guide to building native apps</a></li>
 <li><a href="https://evothings.com/download/">Evothings download page</a></li>
-<li><a href="https://evothings.com/forum/viewforum.php?f=AddForumRefHere">Evothings forum for iBeacon</a></li>
 </ul>
--->
 
 </div><!-- evo-box -->
 

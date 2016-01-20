@@ -20,11 +20,15 @@ Copyright (c) 2013-2016 Evothings AB
 
 <div class="evo-box">
 
-<h1>Eddystone&trade; Starter Guide - Getting Started with Mobile Apps for Eddystone Beacons and the Physical Web</h1>
+<h1>Eddystone&trade; Starter Guide - Getting Started with Mobile Apps for Eddystone  Beacons and the Physical Web</h1>
 <img class="evo-content-side-image-small" src="images/eddystone-logo-2.png"/><p>This Starter Guide gets you up and running with creating mobile applications for the Physical Web using the Evothings JavaScript Eddystone API. When you attach a beacon to an object, it becomes part of the Physical Web, and object that a mobile app can monitor and track. It is easy to write Eddystone apps using the fast workflow of Evothings Studio. Read on to learn more!</p>
 
 <h2>Eddystone at a glance</h2>
 <p>Eddystone beacons are based on a new type of beacon technology. At the of this article you will find links to introductory articles that explain what Eddystone is. The Eddystone protocol was developed by Google, and is an open and extensible standard for beacons. Beacon vendors have embraced the standard and offer Eddystone compatible beacons.</p>
+<div class="evo-content-side-box-large">
+	<img src="images/copier-with-beacon.jpg"/>
+	<p>Real-world example - a beacon attached to copier can provide information and how-to guides via a clever mobile app!</p>
+</div>
 <p>In comparison with iBeacon technology, Eddystone gives you more information, such as the URL of the beacon (hence the concept of the "Physical Web"), signal strength, temperature and battery level. The standard also has room for extensions such as data from embedded sensors, for example motion, orientation, temperature, humidity, light and sound.</p>
 <p>With the Evothings JavaScript API for Eddystone, it is very easy for web developers to develop beacon applications.</p>
 <p>With the Evothings Viewer app and Evothings Workbench, you can develop Eddystone apps directly on mobile phones and tablets. When you connect multiple phones to the Workbench, all of them will run the app and reload updates as you edit the code. Any changes you make to the code will instantly be sent to all devices each time you save any of the files in the app. It is easy to develop mobile applications in JavaScript for Eddystone beacons with this fast workflow.</p>
@@ -46,9 +50,9 @@ Copyright (c) 2013-2016 Evothings AB
 <ul>
 <li>Launch Evothings Workbench on your computer and get a connect key under the "Connect" tab.</li>
 <li>Launch Evothings Viewer on your mobile phone, enter the connect code and tap the CONNECT button.</li>
-<li>Locate the example app <strong>Eddystone Scan</strong> in the Workbench example app list.</li>
+<li>Locate the app <strong>Eddystone Scan</strong> on the Examples screen in the Workbench.</li>
 <li>Click RUN.</li>
-<li>The app will start scanning for beacons automatically and display the beacon data received.</li>
+<li>The app will start scanning for beacons automatically and display data for found beacons.</li>
 </ul>
 
 <h2>How to create your own Eddystone app</h2>
@@ -57,9 +61,9 @@ Copyright (c) 2013-2016 Evothings AB
 <li>Click COPY on the Eddystone Scan app.</li>
 <li>Fill in the name of the app folder and the parent folder where you want the app folder to be created.</li>
 <li>Click CREATE and the new app appears under "My Apps".</li>
-<li>Click RUN to launch the app. This will it the currently active app and it is now watched for live reload on file save.</li>
+<li>Click RUN to launch the app. This will make it the currently active app and it is now watched for live reload on file save.</li>
 </ul>
-<p>Now experiment by making some changes to the code:</p>
+<p>Experiment by making some changes to the code:</p>
 <ul>
 <li>Click CODE - this opens a file browser with the source code of the app</li>
 <li>Open a code file in a text editor and make some changes, for example, open index.html and change the h1 header tag text.</li>
@@ -67,7 +71,7 @@ Copyright (c) 2013-2016 Evothings AB
 <li>The app now reloads on the connected device(s) and displays your updates.</li>
 <li>If the app does not reload, click RUN to make sure it is the active app.</li>
 </ul>
-<p>To change the label that appears in the "My Apps" listing, alter the title tag.</p>
+<p>To change the label that appears in the "My Apps" listing, alter the title tag in index.html.</p>
 
 <h2>Explore the Eddystone JavaScript library</h2>
 <p>The Eddystone JavaScript library is packaged as a Cordova plugin. Cordova is a build tool that enables creating native apps you can publish on Apple App Store and Google Play.

@@ -296,6 +296,44 @@ a
 	margin: 0 0 10px 10px;
 }
 
+.evo-content-side-box-small
+{
+	float: right;
+	width: 200px;
+	height: auto;
+	margin: 0 0 10px 10px;
+}
+
+.evo-content-side-box-large
+{
+	float: right;
+	width: 300px;
+	height: auto;
+	margin: 0 0 10px 10px;
+}
+
+.evo-content-side-box-small img
+{
+	width: 100%;
+	height: auto;
+}
+
+.evo-content-side-box-large img
+{
+	width: 100%;
+	height: auto;
+}
+
+.evo-content-side-box-small p
+{
+	font-size:85%;
+}
+
+.evo-content-side-box-large p
+{
+	font-size:85%;
+}
+
 .evo-card-layout
 {
     display: block;
@@ -408,7 +446,9 @@ a
 	}
 
 	.evo-content-side-image-small,
-	.evo-content-side-image-large
+	.evo-content-side-image-large,
+	.evo-content-side-box-small,
+	.evo-content-side-box-large
 	{
 		display: none;
 	}

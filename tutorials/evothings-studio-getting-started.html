@@ -18,11 +18,86 @@ Copyright (c) 2013-2016 Evothings AB
 <script src="../js/include-page-header.js"></script>
 <div class="evo-content">
 
-<div id="Introduction" class="evo-box">
-	<h1>Getting Started with Evothings Studio in 90 Seconds</h1>
+<div class="evo-box">
 
-	<p>TODO: Add content.</p>
-</div>
+<h1>Getting Started with Evothings Studio in 90 Seconds</h1>
+<p>This guide shows how to get started with developing mobile applications for the Internet of Things using Evothings Studio. Use your web development skills to code mobile apps in JavaScript and HTML that now have access to socket networking, BLE and iBeacon APIs.</p>
+<p><iframe src="https://www.youtube.com/embed/WuxPIEXo53s" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+<p>This video shows Evothings Studio 1.2 in action. Have patience, a new video featuring Evothings Studio 2.0 is under way!</p>
+
+<h2>Get started within minutes</h2>
+<p>It is easy to get started with mobile IoT application development using Evothings Studio. Here is what you need:</p>
+<ul>
+<li>Some basic knowledge about JavaScript and HTML.</li>
+<li>The Evothings Studio Workbench desktop application (get it with the Evothings Studio <a href="https://evothings.com/download/">download</a>).</li>
+<li>The Evothings Viewer mobile application (get it from <a href="https://itunes.apple.com/en/app/evothings-viewer/id1029452707?mt=8">Apple App Store</a> or <a href="https://play.google.com/store/apps/details?id=com.evothings.evothingsviewer&#038;hl=en">Google Play</a>).</li>
+<li>A text editor (pick your favourite editor!)</li>
+<li>Internet connectivity for your computer and mobile phone.</li>
+</ul>
+<p>With the above setup, you have everything you need to get going with mobile app development for the Internet of Things, including APIs for sockets, BLE (Bluetooth Low Energy) and iBeacon. Furthermore, you get a very nice live reload functionality that boosts development time by a factor 5 or more (i.e the edit/build/test cycle takes seconds rather than up to a minute as with Android Studio or Xcode).</p>
+<p><!--Watch the above video for an introduction that shows how to run and edit the "Hello World" example app in Evothings Studio.--></p>
+
+<h2>First time step-by-step guide</h2>
+<p>Here is a step-by-step guide to get you going, right from scratch:</p>
+<ul>
+<li><a href="https://evothings.com/download/">Download Evothings Studio</a> to your computer (the download contains Evothings Workbench, examples and documentation).</li>
+<li>Install the Evothings Viewer app on your mobile device(s).</li>
+<li>Start Evothings Workbench and get a connect key under the &#8220;Connect&#8221; tab.</li>
+<li>Launch Evothings Viewer on the phone, enter the connect key to hook up with your Workbench.</li>
+<li>On your computer, click the RUN button on the &#8220;Hello World&#8221; example in the Workbench.</li>
+<li>Done! You have now run your first app using Evothings Studio.</li>
+</ul>
+
+<h2>How to edit code</h2>
+<p>Next step is to modify the example code:</p>
+<ul>
+<li>Click the COPY button on the &#8220;Hello World&#8221; example.
+<li>
+<li>Fill in parent folder in the Copy dialog box and click Create.</li>
+<li>Your new &#8220;Hello World&#8221; app is listed under &#8220;My Apps&#8221;.</li>
+<li>Click RUN to make it the active app (this is needed to make live reload work).</li>
+<li>Click the CODE button.</li>
+<li>Open the index.html file in a text editor.</li>
+<li>Make some interesting changes to the code &#8211; e.g. modify the heading to say &#8220;Hello Evothings&#8221;. ;-)</li>
+<li>Save changes in the editor.</li>
+<li>Done! The app now automatically reloads on the device &#8211; changes are instantly visible.</li>
+</ul>
+
+<h2>Create your own project from scratch</h2>
+<p>To create your own mobile application project from the very beginning, follow these steps:</p>
+<ul>
+<li>Create a folder with the project files (HTML/CSS/JavaScript/media files).</li>
+<li>There needs to be at least one HTML file in the project &#8211; used as the entry point of the app.</li>
+<li>Drag the main HTML file, typically index.html, into the Workbench window.</li>
+<li>Now just click RUN on the app to launch it on the connected phones/tablets.</li>
+<li>Note that you can connect multiple mobile phones and tablets to Evothings Workbench. When you save any file in the project (or press RUN again), the app will reload on all of them!</li>
+</ul>
+<p>An Evothings app project is just a folder with your HTML and JavaScript files. Just like any web site. And as soon as anything is changed, the Workbench pushes it to all connected clients, just like that!</p>
+
+<h2>How to publish an app</h2>
+<p>There are two ways to publish a mobile application developed with Evothings Studio:</p>
+<ul>
+<li>Upload the project files to a web server and use Evothings Client to run the app. Just enter the URL to the main HTML file on the web server in Evothings Client and tap CONNECT. <a href="https://evothings.com/doc/build/share-apps.html">Read more here</a>.</li>
+<li>Build a native app using Cordova. Check out the <a href="https://evothings.com/cordova-starter-kit/">Cordova IoT Starter Kit</a> to learn more.</li>
+</ul>
+
+<h2>Useful hints</h2>
+<ul>
+<li>Press the &#8220;Tools&#8221; button in the Workbench to use debug logging and JavaScript evaluation tools.</li>
+<li><a href="https://evothings.com/doc/studio/workbench.html">Read more about the Workbench</a> in the documentation.</li>
+<li>Get inspired by the <a href="https://evothings.com/tutorials/">tutorials</a>. Many of them contain fully working examples you can use.</li>
+</ul>
+
+<h2>Get started right away</h2>
+<p><a href="https://evothings.com/download/">Download Evothings Studio now</a> and get started within minutes. It is fun and easy!</p>
+<p><b>Questions? &#8211; Visit the Evothings Forum</b><br />
+<a href="https:https://evothings.com/forum" target="_blank">evothings.com/forum</a></p>
+<p><b>Our Gitter main room, where developers can hang out and get help</b><br />
+<a href="https://gitter.im/evothings/evothings" target="_blank">gitter.im/evothings/evothings</a></p>
+<p><b>Our IRC channel on Freenode</b><br />
+<a href="http://webchat.freenode.net/?channels=evothings">webchat.freenode.net/?channels=evothings</a></p>
+
+</div><!-- evo-box -->
 
 <script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->
