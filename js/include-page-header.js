@@ -8,7 +8,7 @@
 		+	'<div class="evo-page-header-menu">'
 		+		'<a href="https://evothings.com">'
 		+			'<img class="evo-page-header-menu-logo" '
-		+				'src="' + path + 'images/evothings-logo.svg" />'
+		+				'src="' + path + 'images/evothings-logo.png" />'
 		+		'</a>'
 		+		'<div class="evo-page-header-top-buttons">'
 		+			'<a href="https://evothings.com/download">Download</a>'

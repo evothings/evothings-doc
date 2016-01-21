@@ -63,7 +63,7 @@ a
 
 .evo-page-header
 {
-	border-bottom: 2px solid #AA0000;
+	border-bottom: 2px solid #CE2029;
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -113,7 +113,7 @@ a
 {
 	width: 120px;
 	height: auto;
-	margin: 5px 10px 2px 0px;
+	margin: -5px 10px 0px 0px;
 }
 
 .evo-page-header-menu-buttons
@@ -137,7 +137,7 @@ a
 
 .evo-page-header-menu-buttons a:hover
 {
-	color: #AA0000;
+	color: #CE2029;
 }
 
 .evo-page-header-top-buttons
@@ -154,7 +154,7 @@ a
 	padding: 0px 0px 0px 0px;
 	margin: 0px;
 	/*color: #CC0000;*/
-	color: rgb(255,90,100);
+	color: #CE2029;
 	display: inline-block;
 	text-transform: none;
 	font-size: 130%;
@@ -162,7 +162,7 @@ a
 
 .evo-page-header-top-buttons a:hover
 {
-	color: #AA0000;
+	color: #CE2029;
 }
 
 /*** End of new elements ***/
@@ -207,24 +207,24 @@ a
 .evo-content h1
 {
 	font-size: 1.9em;
-	margin: 0.5em 0;
+	margin: 0.5em 0 0.5em 0;
 }
 
 .evo-content h2
 {
 	font-size: 1.6em;
-	margin: 0.4em 0 0.2em 0;
+	margin: 1em 0 0.2em 0;
 }
 
 .evo-content h3
 {
 	font-size: 1.4em;
-	margin: 0.4em 0 0.2em 0;
+	margin: 0.6em 0 0.2em 0;
 }
 
 .evo-content a
 {
-	color: rgb(255,90,100);
+	color: #CE2029;
 	font-weight: bold;
 	text-decoration: none;
 }
@@ -285,7 +285,7 @@ a
 	float: right;
 	width: 200px;
 	height: auto;
-	margin: 0 0 10px 10px;
+	margin: 0 0 10px 20px;
 }
 
 .evo-content-side-image-large
@@ -293,7 +293,7 @@ a
 	float: right;
 	width: 300px;
 	height: auto;
-	margin: 0 0 10px 10px;
+	margin: 0 0 10px 20px;
 }
 
 .evo-content-side-box-small
@@ -301,7 +301,7 @@ a
 	float: right;
 	width: 200px;
 	height: auto;
-	margin: 0 0 10px 10px;
+	margin: 0 0 10px 20px;
 }
 
 .evo-content-side-box-large
@@ -309,7 +309,7 @@ a
 	float: right;
 	width: 300px;
 	height: auto;
-	margin: 0 0 10px 10px;
+	margin: 0 0 10px 20px;
 }
 
 .evo-content-side-box-small img
@@ -326,12 +326,14 @@ a
 
 .evo-content-side-box-small p
 {
-	font-size:85%;
+	font-size: 80%;
+	color: #777777;
 }
 
 .evo-content-side-box-large p
 {
-	font-size:85%;
+	font-size: 80%;
+	color: #777777;
 }
 
 .evo-card-layout

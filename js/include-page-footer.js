@@ -25,7 +25,7 @@
 		if (0 < window.location.pathname.indexOf(pageFragment))
 		{
 			var selector = '.evo-page-header-menu-buttons a:nth-child(' + menuButtonIndex + ')'
-			$(selector).css('color', '#AA0000')
+			$(selector).css('color', '#CE2029')
 			return true
 		}
 		else
