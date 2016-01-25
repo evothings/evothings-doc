@@ -23,11 +23,20 @@ Copyright (c) 2013-2016 Evothings AB
 
 <p>A common application for the Internet of Things is sending data to some cloud service, for further processing storage and analysis. Data analysis and Business intelligence are important areas for IoT. This guide helps you sorting out the options for communication with cloud servers from a mobile app.</p>
 
+<h2>Secure connections - HTTP vs HTTPS</h2>
+<p>One thing to be aware of when writing code that communicates with servers from a web page is that web protocols come in two flavours, standard HTTP (non-encrypted data transfer) and HTTPS (encrypted secure data transfer).</p>
+<p>The tricky part is that an app loaded over HTTPS is not allowed to access resources over HTTP, you must use HTTPS also when loading images, css, scripts, and when using XHR. Web views only allow secure connections when from a securely loaded page.</p>
+<p>This is something to keep in mind when working with Evothings Studio, since Evothings Viewer uses HTTPS to communicate with the server that hooks up to the Workbench.</p>
+<p>For most apps this is not a problem, but if you need to access data on a server ("in the cloud"), the server must support HTTPS.</p>
+<p>If you need HTTP, you can use Evothings Studio 1.2 as a workaround to the problem with HTTPS. This version uses the local WiFi to connect from the Evothings Client app to Evothings Workbench. Read more about the <a href="../studio/evothings-studio-1.2.html#Difference">differences between Evothings Studio 1.2 and Evothings Studio 2.0</a>. </p>
+
 <h2>Network programming</h2>
 <p>A mobile phone uses TCP (or UPD) sockets to communicate with servers, either over WiFi or 3G/4G. Here are the ways available for hybrid HTML/JavaScript apps to do network programming.</p>
 
-<h3>XHR (XMLHttpRequest - also known as Ajax)</h3>
-<p>XHR or Ajax requests makes it possible to communicate with servers right from JavaScript with no native plugins.</p>
+<h3>XHR (XMLHttpRequest - also known as "Ajax")</h3>
+<p>With XHR ("Ajax requests") it is possible to communicate with servers right from JavaScript with no native plugins.</p>
+<p>Keep in mind that the server must support HTTPS when you use Evothings Studio.</p>
+
 <p>TODO: Explain</p>
 
 <h3>HTTP Plugin</h3>
@@ -39,8 +48,6 @@ Copyright (c) 2013-2016 Evothings AB
 <h3>Custom plugins</h3>
 <p>TODO: Explain</p>
 
-<h2>HTTP vs HTTPS - implications</h2>
-<p>TODO: Explain</p>
 
 <h2>Cloud tutorials</h2>
 <ul>
@@ -49,6 +56,7 @@ Copyright (c) 2013-2016 Evothings AB
 <li><a href="https://evothings.com/using-google-charts-in-your-app-to-visualise-data-from-parse-iot-cloud/" target="_blank">Using Google Charts in your app to visualise data from Parse IoT cloud</a></li>
 <li><a href="https://evothings.com/evothings-does-mqtt-with-bluemix/" target="_blank">Evothings does MQTT with IBM Bluemix</a></li>
 <li><a href="https://evothings.com/evothings-phoenix-neato/" target="_blank">Evothings + Phoenix = Neato</a></li>
+<li><a href="https://evothings.com/evothings-does-mqtt-with-vernemq-or-emqtt/" target="_blank">Evothings does MQTT with VerneMQ or EMQTT</a></li>
 </ul>
 
 <h2>Related tutorials</h2>
