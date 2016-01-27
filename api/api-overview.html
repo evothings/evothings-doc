@@ -22,7 +22,7 @@ Copyright (c) 2013-2015 Evothings AB
 	<script src="../js/include-evothings-logo.js"></script>
 	<a href="#Introduction">API Overview</a><br/>
 	<a href="#SupportedPlugins">Cordova Plugins</a><br/>
-	<a href="#Libraries">Evothings Libraries</a> (<a class="evo-lib-link" href="../lib-doc/index.html">direct link</a>)<br/>
+	<a href="#Libraries">Evothings Libraries</a> (<a href="../lib-doc/index.html">direct link</a>)<br/>
 </div>
 
 <div id="Introduction" class="evo-box">
@@ -30,7 +30,7 @@ Copyright (c) 2013-2015 Evothings AB
 
 	<p>The Evothings Viewer app ships with selected Cordova plugins, which are listed below.</p>
 	<p>Evothings also provides a number of JavaScript libraries, some of which are built on top of the Cordova plugins, some which are generic.</p>
-	<p>Below you find the API documentation for plugins and libraries.</p>
+	<p>Below you find API documentation for plugins and libraries.</p>
 </div>
 
 <div id="SupportedPlugins" class="evo-box">
@@ -53,6 +53,10 @@ Copyright (c) 2013-2015 Evothings AB
 
 	<h3>Network plugins (WiFi connectivity)</h3>
 
+	<a href="https://github.com/evothings/cordova-HTTP" target="_blank">
+		cordova-HTTP
+	</a>
+	<br/>
 	<a href="https://developer.chrome.com/apps/system_network" target="_blank">
 		chrome.system.network
 	</a>
@@ -171,7 +175,7 @@ code {
 <div id="Libraries" class="evo-box">
 	<h2>Evothings JavaScript Libraries</h2>
 
-	<p>The <a class="evo-lib-link" href="../lib-doc/index.html">Evothings JavaScript libraries</a> provide useful functionality for IoT enabled mobile apps.</p>
+	<p>The <a href="../lib-doc/index.html">Evothings JavaScript libraries</a> provide useful functionality for IoT enabled mobile apps.</p>
 
 	<p>These libraries are included using a script tag in the HTML code, or asynchronously using the evothings.loadScript() function.</p>
 
@@ -198,7 +202,7 @@ document.addEventListener(
     function() { evothings.scriptsLoaded(initialise) })
 </pre>
 
-	<p>Browse the JSDoc generated <a class="evo-lib-link" href="../lib-doc/index.html">API documentation for the Evothings JavaScript libraries</a> to learn more.</p>
+	<p>Browse the JSDoc generated <a href="../lib-doc/index.html">API documentation for the Evothings JavaScript libraries</a> to learn more.</p>
 
 	<p>The source code for the libraries is found on GitHub: <a href="https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings">https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings</a></p>
 
@@ -215,6 +219,7 @@ document.addEventListener(
 </div></div>
 
 <script>
+/*
 ;(function()
 {
 	// Insert link to raw plugin documentation pages,
@@ -252,6 +257,7 @@ document.addEventListener(
 		obj.attr('href', href)
 	}
 })()
+*/
 </script>
 
 </body>

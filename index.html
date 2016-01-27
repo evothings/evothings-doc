@@ -63,6 +63,15 @@ TODO: Redirect from /raw links to /doc:
 ./studio/release-notes.html
 ./studio/tutorials.html
 ./studio/workbench.html
+
+Redirect for raw:
+
+RedirectMatch ^/doc/raw/(.*)$ https://evothings.com/doc/$1
+
+Example redirect from */r1.kth.se/smartspaces/fun/*
+to https://smartspaces.r1.kth.se:8021/*
+
+RedirectMatch ^/smartspaces/fun/(.*)$ https://smartspaces.r1.kth.se:8021/$1
 -->
 <head>
 <meta charset="utf-8">

@@ -18,36 +18,43 @@ Copyright (c) 2013-2016 Evothings AB
 <script src="../js/include-page-header.js"></script>
 <div class="evo-content">
 
-<div class="evo-box">
+<div class="evo-content-box">
+
 <h1>IoT Cloud Starter Guide - Networking for Mobile Apps</h1>
 
 <p>A common application for the Internet of Things is sending data to some cloud service, for further processing storage and analysis. Data analysis and Business intelligence are important areas for IoT. This guide helps you sorting out the options for communication with cloud servers from a mobile app.</p>
 
 <h2>Secure connections - HTTP vs HTTPS</h2>
+
 <p>One thing to be aware of when writing code that communicates with servers from a web page is that web protocols come in two flavours, standard HTTP (non-encrypted data transfer) and HTTPS (encrypted secure data transfer).</p>
 <p>The tricky part is that an app loaded over HTTPS is not allowed to access resources over HTTP, you must use HTTPS also when loading images, css, scripts, and when using XHR. Web views only allow secure connections when from a securely loaded page.</p>
 <p>This is something to keep in mind when working with Evothings Studio, since Evothings Viewer uses HTTPS to communicate with the server that hooks up to the Workbench.</p>
 <p>For most apps this is not a problem, but if you need to access data on a server ("in the cloud"), the server must support HTTPS.</p>
-<p>If you need HTTP, you can use Evothings Studio 1.2 as a workaround to the problem with HTTPS. This version uses the local WiFi to connect from the Evothings Client app to Evothings Workbench. Read more about the <a href="../studio/evothings-studio-1.2.html#Difference">differences between Evothings Studio 1.2 and Evothings Studio 2.0</a>. </p>
+<p>To work around this restriction, the <a href="https://github.com/evothings/cordova-HTTP" target="_blank">Cordova HTTP plugin</a> can be used. See below for further details.</p>
+<!--<p>If you need to access web content such as over HTTP, you can use Evothings Studio 1.2 as a workaround to the problem with HTTPS. This version uses the local WiFi to connect from the Evothings Client app to Evothings Workbench. Read more about the <a href="../studio/evothings-studio-1.2.html#Difference">differences between Evothings Studio 1.2 and Evothings Studio 2.0</a>.</p>-->
 
 <h2>Network programming</h2>
+
 <p>A mobile phone uses TCP (or UPD) sockets to communicate with servers, either over WiFi or 3G/4G. Here are the ways available for hybrid HTML/JavaScript apps to do network programming.</p>
 
 <h3>XHR (XMLHttpRequest - also known as "Ajax")</h3>
+
 <p>With XHR ("Ajax requests") it is possible to communicate with servers right from JavaScript with no native plugins.</p>
-<p>Keep in mind that the server must support HTTPS when you use Evothings Studio.</p>
+<p>Keep in mind that the server must support HTTPS when you use Evothings Studio (see section above for explanation).</p>
+<p>If you use the <a href="http://jquery.com/" target="_blank">jQuery</a> library, it is easy to DO XHR calls using the <a href="http://api.jquery.com/jquery.ajax/" target="_blank">ajax()</a> function.</p>
 
-<p>TODO: Explain</p>
+<h3>Cordova HTTP plugin</h3>
+<p>Using the plugin <a href="https://github.com/evothings/cordova-HTTP" target="_blank">cordova-HTTP</a> you can access and download data from any server, without HTTPS/HTTP restrictions or cross-origin restrictions.</p>
+<p>With this plugin the app can fetch JSON data, HTML code, basically any text-encoded data. Fetching binary data is not supported. You can also upload JSON data with this plugin.</p>
+<p>The HTTP plugin is included with Evothings Viewer.</p>
 
-<h3>HTTP Plugin</h3>
-<p>TODO: Explain</p>
-
-<h3>Chrome Sockets</h3>
-<p>TODO: Explain</p>
+<h3>Chrome Sockets - TCP networking support</h3>
+<p>The <a href="https://github.com/MobileChromeApps?utf8=%E2%9C%93&query=cordova-plugin-chrome-apps-sockets" target="_blank">Mobile Chrome Apps socket plugins</a> can be used to access data and communicate with servers using the basic TPC protocol. The UPD protocol is also supported, but is not commonly used by IoT Cloud services.</p>
+<p>Have a look at the <a href="https://developer.chrome.com/apps/sockets_tcp" target="_blank">API reference for the Chrome Socket TCP plugin</a>.</p>
+<p>This plugin is included with Evothings Viewer.</p>
 
 <h3>Custom plugins</h3>
-<p>TODO: Explain</p>
-
+<p>As a final option for communicating with servers and Cloud services, you can write a custom Cordova plugin. Consult the Apache Cordova documentation for an overview of how to make your own plugin.</p>
 
 <h2>Cloud tutorials</h2>
 <ul>
@@ -66,7 +73,7 @@ Copyright (c) 2013-2016 Evothings AB
 <li><a href="https://evothings.com/download/">Evothings download page</a></li>
 </ul>
 
-</div><!-- evo-box -->
+</div><!-- evo-content-box -->
 
 <script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->
