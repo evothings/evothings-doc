@@ -26,10 +26,11 @@ Copyright (c) 2013-2014 Evothings AB
 		<a href="#BuildingForIOS">Building for iOS</a><br/>
 		<a href="#BuildingForAndroid">Building for Android</a><br/>
 		<a href="#AddingPlugins">Adding plugins</a><br/>
-		<a href="#CordovaDirectoryStructure">Cordova directory structure</a><br/>
+		<a href="#CordovaDirectoryStructure">Cordova file structure</a><br/>
 		<a href="#Workflow">Workflow speedup</a><br/>
 		<a href="#CustomiseEvothingsViewer">Customise Evothings Viewer</a><br/>
 		<a href="#SetupCordovaForEvothings">Setup a Cordova project with Evothings</a><br/>
+		<a href="#EvothingsCordova">Use Evothings Studio</a><br/>
 	</div>
 </div>
 
@@ -156,7 +157,7 @@ cordova build android</pre>
 </div>
 
 <div id="CordovaDirectoryStructure" class="evo-box">
-	<h2>Cordova directory structure</h2>
+	<h2>Cordova file structure</h2>
 	<p>This is the directory layout of a generated Cordova project. Put your HTML/CSS/JS in folder <b>www</b>. Edit <b>config.xml</b> to include the relevant settings for your project. Build output is found in the <b>platforms</b> folder.</p>
 	<pre>config.xml
 hooks
@@ -232,6 +233,12 @@ www
 	<p>When running the app in the Workbench, a file called <code>evothings.json</code> is created in the <code>www</code> folder. This file contains data used by the Workbench. There should be no harm in leaving this file as it is when building a stand-alone Cordova app, but you can of course exclude it if you would prefer that.</p>
 
 	<p>You can run your app on multiple devices/platforms at the same time, for instance an Android tablet and an iPad. When you save your code, the app will be reloaded on all connected devices.</p>
+</div>
+
+<div id="EvothingsCordova" class="evo-box">
+	<h2>Use Evothings Studio for Cordova app development</h2>
+	<p>Evothings Studio makes it easy to develop Cordova apps. Check out how to use your Cordova project with the <a href="cordova-guide.html#SetupCordovaForEvothings">fast Evothings workflow</a>.</p>
+	<p>It is easy and fun to get started with Evothings Studio. <a href="http://evothings.com/download/" target="_blank">Download now</a> and be up and running in 5 minutes!</p>
 </div>
 
 <script src="../js/include-page-footer.js"></script>

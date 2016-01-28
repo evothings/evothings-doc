@@ -24,7 +24,8 @@ Copyright (c) 2013-2016 Evothings AB
 		<a href="#InstallCordova">Install Cordova</a><br/>
 		<a href="#InstallXcode">Install Xcode</a><br/>
 		<a href="#InstallAndroidSDK">Install Android SDK</a><br/>
-		<a href="#NextStep">The Fun Begins</a><br/>
+		<a href="#NextStep">The fun begins</a><br/>
+		<a href="#EvothingsCordova">Use Evothings Studio</a><br/>
 	</div>
 </div>
 
@@ -37,14 +38,14 @@ Copyright (c) 2013-2016 Evothings AB
 	<h2>Install Cordova</h2>
 	<p>Follow these steps to install Cordova:</p>
 	<ol>
-		<li><p><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/">http://nodejs.org</a></p></li>
+		<li><p><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/" target="_blank">http://nodejs.org</a></p></li>
 		<li><p>Go ahead an run the downloaded installation file.</p></li>
 		<li><p>To test the installation, open a terminal window (make sure you open a new terminal window to get the settings made by the Node.js installation), and type:
 		<pre>node --version</pre>
 		If the version number is displayed, Node.js is installed and working!</p></li>
-		<li><p><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download the installer from: <a href="http://git-scm.com/">http://git-scm.com</a>.
+		<li><p><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download the installer from: <a href="http://git-scm.com/" target="_blank">http://git-scm.com</a>.
 		<li><p><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following in the terminal window to install:
-		<pre>npm install -g cordova@3.6.3-0.2.13</pre></p></li>
+		<pre>sudo npm install -g cordova</pre></p></li>
 		<li><p>Test the Cordova install by typing:
 		<pre>cordova --version</pre>
 		If you see the version number, you have successfully installed Apache Cordova!</p></li>
@@ -56,8 +57,8 @@ Copyright (c) 2013-2016 Evothings AB
 	<p>If you wish to develop iOS apps, go ahead and install Xcode, which is Apple's development tool for iOS app development:</p>
 	<ol>
 		<li><p>To access iOS development resources, you need to sign up for an Apple account if you have not already done that.</p></li>
-		<li><p>To deploy apps on devices (iPhone and iPad) and to publish apps on the AppStore, you should join Apple's <a href="https://developer.apple.com/programs/ios/">iOS Developer Program</a>. This costs 99 USD per year.</p></li>
-		<li><p>Install Xcode from: <a href="https://developer.apple.com/xcode/downloads/">https://developer.apple.com/xcode/downloads</a></p></li>
+		<li><p>To deploy apps on devices (iPhone and iPad) and to publish apps on the AppStore, you should join Apple's <a href="https://developer.apple.com/programs/ios/" target="_blank">iOS Developer Program</a>. This costs 99 USD per year.</p></li>
+		<li><p>Install Xcode from: <a href="https://developer.apple.com/xcode/downloads/" target="_blank">https://developer.apple.com/xcode/downloads</a></p></li>
 		<li><p>When the install is complete, launch Xcode and enable the command line tools for Xcode (these are used by Cordova).
 			<ul>
 				<li><p>From the <b>Xcode</b> menu, select <b>Preferences...</b></p></li>
@@ -65,7 +66,7 @@ Copyright (c) 2013-2016 Evothings AB
 				<li><p>Under <b>Components</b>, locate <b>Command Line Tools</b> and click the download icon.</p></li>
 			</ul>
 		</p></li>
-		<li><p>If you get stuck, try out the <a href="http://cordova.apache.org/docs/en/3.6.0/guide_platforms_ios_index.md.html">Cordova documentation for iOS</a>.</p></li>
+		<li><p>If you get stuck, try out the <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html" target="_blank">Cordova documentation for iOS</a>.</p></li>
 	</ol>
 	<p>Xcode is now ready to be used with Cordova. The way this works that that you create and build a Cordova project, the build process generates an Xcode project, that you just double-click to open. When your project is open in Xcode, you can run it in the iOS simulator or deploy the app to a device. Follow the instructions in the <a href="cordova-guide.html">Cordova Guide</a> to try this!</p>
 </div>
@@ -80,12 +81,12 @@ Copyright (c) 2013-2016 Evothings AB
 		<pre>javac -version</pre>
 		If you see a version number at or above 1.6 you should be good to go.
 		</p></li>
-		<li><p>If Java is not installed, get the <a href="http://support.apple.com/downloads/#java">Java for OS X installer</a> from Apple's download page. Direct link: <a href="http://support.apple.com/kb/DL1572">support.apple.com/kb/DL1572</a>.
+		<li><p>If Java is not installed, get the <a href="http://support.apple.com/downloads/#java" target="_blank">Java for OS X installer</a> from Apple's download page. Direct link: <a href="http://support.apple.com/kb/DL1572" target="_blank">support.apple.com/kb/DL1572</a>.
 		</p></li>
 	</ol>
 
 	<h3>Install Ant</h3>
-	<p><a href="http://ant.apache.org/">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. Use <a href="http://brew.sh/">Homebrew</a> to install Ant, using the following steps:</p>
+	<p><a href="http://ant.apache.org/" target="_blank">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. Use <a href="http://brew.sh/" target="_blank">Homebrew</a> to install Ant, using the following steps:</p>
 	<ol>
 		<li><p>Start by checking if you have Ant installed by opening a terminal window and run:
 		<pre>ant -version</pre>
@@ -105,7 +106,7 @@ brew install ant</pre>
 
 	<h3>Install Android Developer Tools (ADT)</h3>
 	<ol>
-		<li><p>Download the Android Developer Tools (Eclipse ADT) from <a href="http://developer.android.com/sdk">developer.android.com/sdk</a>. The install is a zip-file, which you can unpack to a location of your choice. Make a note of there you install the SDK files, as you will have to add these to the system path.</p></li>
+		<li><p>Download the Android Developer Tools (Eclipse ADT) from <a href="http://developer.android.com/sdk" target="_blank">developer.android.com/sdk</a>. The install is a zip-file, which you can unpack to a location of your choice. Make a note of there you install the SDK files, as you will have to add these to the system path.</p></li>
 		<li><p>Add the path to the folder where you unzipped the Android SDK tools to the files <b>.bash_profile</b> and <b>.bashrc</b> (these files are located in your home directory). This is needed for Cordova to find the Android build tools.</p></li>
 		<li><p>Edit <b>.bashrc</b> in nano (or any editor you prefer) by typing the following in a terminal window (the <b>cd</b> command takes you to your home directory).
 		<pre>cd
@@ -129,12 +130,18 @@ fi</pre></p></li>
 		This launches a window where you can select to install specific Android SDKs.</p></li>
 		<li><p>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also select the entry "Android 4.4.2 (API 19)". This is the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</p></li>
 	</ol>
-	<p>If you get stuck, consult the <a href="http://cordova.apache.org/docs/en/3.6.0/guide_platforms_android_index.md.html">Cordova documentation for Android</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/">Evothings Forum</a>.</p>
+	<p>If you get stuck, consult the <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html" target="_blank">Cordova documentation for Android</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/" target="_blank">Evothings Forum</a>.</p>
 </div>
 
 <div id="NextStep" class="evo-box">
-	<h2>The Fun Begins</h2>
+	<h2>The fun begins</h2>
 	<p>Next step is to create and build a Cordova project. Go to the <a href="cordova-guide.html">Cordova Guide</a> to learn more.</p>
+</div>
+
+<div id="EvothingsCordova" class="evo-box">
+	<h2>Use Evothings Studio for Cordova app development</h2>
+	<p>Evothings Studio makes it easy to develop Cordova apps. Check out how to use your Cordova project with the <a href="cordova-guide.html#SetupCordovaForEvothings">fast Evothings workflow</a>.</p>
+	<p>It is easy and fun to get started with Evothings Studio. <a href="http://evothings.com/download/" target="_blank">Download now</a> and be up and running in 5 minutes!</p>
 </div>
 
 <script src="../js/include-page-footer.js"></script>

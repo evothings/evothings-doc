@@ -4,7 +4,7 @@
 File: build-cordova-install-windows.html
 Description: How to install Cordova on Windows
 Author: Mikael Kindborg
-Copyright (c) 2013-2014 Evothings AB
+Copyright (c) 2013-2016 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
@@ -25,8 +25,9 @@ Copyright (c) 2013-2014 Evothings AB
 		<a href="#InstallJava">Install Java</a><br/>
 		<a href="#InstallAnt">Install Ant</a><br/>
 		<a href="#InstallAndroidSDKTools">Install Android SDK Tools</a><br/>
-		<a href="#IfYouGetStuck">If You Get Stuck</a><br/>
-		<a href="#NextStep">The Fun Begins</a><br/>
+		<a href="#IfYouGetStuck">If you get stuck</a><br/>
+		<a href="#NextStep">The fun begins</a><br/>
+		<a href="#EvothingsCordova">Use Evothings Studio</a><br/>
 	</div>
 </div>
 
@@ -41,14 +42,14 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install Cordova</h2>
 	<p>Follow these steps to install Cordova:</p>
 	<ol>
-		<li><p><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/">http://nodejs.org</a></p></li>
+		<li><p><b>Install Node.js.</b> Cordova runs on the Node.js platform, which needs to be installed as the first step. Download installer from: <a href="http://nodejs.org/" target="_blank">http://nodejs.org</a></p></li>
 		<li><p>Go ahead an run the downloaded installation file. It is recommended to use the default settings. Node.js needs to be added to the PATH environment variable, which is done by default.</p></li>
 		<li><p>To test the installation, open a command window (make sure you open a new command window to get the updated path settings made by the Node.js installation), and type:
 		<pre>node --version</pre>
 		If the version number is displayed, Node.js is installed and working!</p></li>
-		<li><p><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download and install from: <a href="http://git-scm.com/">http://git-scm.com</a>. Default settings are recommended.
+		<li><p><b>Install Git.</b> Git is a version control system, which is used by Cordova behind-the-scenes. Download and install from: <a href="http://git-scm.com/" target="_blank">http://git-scm.com</a>. Default settings are recommended.
 		<li><p><b>Install Cordova.</b> Cordova is installed using the Node Package Manager (npm). Type the following in the command window to install:
-		<pre>npm install -g cordova@3.6.3-0.2.13</pre></p></li>
+		<pre>npm install -g cordova</pre></p></li>
 		<li><p>Test the Cordova install by typing:
 		<pre>cordova --version</pre>
 		If you see the version number, you have successfully installed Apache Cordova!</p></li>
@@ -61,7 +62,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<pre>javac -version</pre>
 	<p>If you do not have the JDK installed, proceed as follows:</p>
 	<ol>
-		<li><p>Download the Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, find out using the Control Panel by selecting "System and Security" and then "System", where you will find the "System type" saying if your Windows version is 32-bit or 64-bit.</p></li>
+		<li><p>Download the Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/" target="_blank">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, find out using the Control Panel by selecting "System and Security" and then "System", where you will find the "System type" saying if your Windows version is 32-bit or 64-bit.</p></li>
 		<li><p>Go along and run the downloaded installer file. Using the default selections should be fine, but take a note of the directory in which you install the JDK. You will need to add this to the PATH in a later step below.</p></li>
 		<li><p>Next, update your path to include the JDK. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, which will open the System Properties window. Select the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
 		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button. (If there is no PATH entry in the list, click the New button to create one.)</p></li>
@@ -82,9 +83,9 @@ Copyright (c) 2013-2014 Evothings AB
 
 <div id="InstallAnt" class="evo-box">
 	<h2>Install Ant</h2>
-	<p><a href="http://ant.apache.org/">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. To install Ant, follow these steps:</p>
+	<p><a href="http://ant.apache.org/" target="_blank">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. To install Ant, follow these steps:</p>
 	<ol>
-		<li><p>Download Ant from here: <a href="http://ant.apache.org/bindownload.cgi">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b>apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</p></li>
+		<li><p>Download Ant from here: <a href="http://ant.apache.org/bindownload.cgi" target="_blank">ant.apache.org/bindownload.cgi</a>. Get the zip download available at the page. Click the zip-file link for the most recent release, e.g. <b>apache-ant-1.9.4-bin.zip</b>, and save the file to your machine.</p></li>
 		<li><p>Unpack the zip file to the directory on your machine where you want Ant to be installed. You can pick any directory for the install. In this guide we use this as an example:
 		<pre>C:\Users\miki\ant</pre>
 		Note that the files in the ant package should go directly into this directory. Make a note of the directory as you will need to add it to the PATH.</p></li>
@@ -109,7 +110,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<h2>Install the Android SDK Tools</h2>
 	<p>The SDK Tools for Android are used by Cordova to build Android apps. Follow these steps to install the SDK Tools:</p>
 	<ol>
-		<li><p>Go to the page <a href="http://developer.android.com/sdk">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</p></li>
+		<li><p>Go to the page <a href="http://developer.android.com/sdk" target="_blank">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</p></li>
 		<li><p>When downloaded, run the installer. You should do fine to use the default settings used by the installer, but make a note of the directory in which the SDK is installed, as you will have to add this to the PATH in the next step.</p></li>
 		<li><p>To add the SDK Tools to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
 		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</p></li>
@@ -129,8 +130,8 @@ Copyright (c) 2013-2014 Evothings AB
 </div>
 
 <div id="IfYouGetStuck" class="evo-box">
-	<h2>If You Get Stuck</h2>
-	<p>If you get stuck, consult the documentation at the respective web sites for Cordova, Java, Ant, and Android. The Cordova documentation specific for Android is found here: <a href="http://cordova.apache.org/docs/en/3.6.0/guide_platforms_android_index.md.html">cordova.apache.org/docs/en/3.6.0/guide_platforms_android_index.md.html</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/">Evothings Forum</a>.</p>
+	<h2>If you get stuck</h2>
+	<p>If you get stuck, consult the documentation at the respective web sites for Cordova, Java, Ant, and Android. The Cordova documentation has a <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html" target="_blank">platform guide for Android</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/" target="_blank">Evothings Forum</a>.</p>
 	<p>One thing to do is to inspect all the environment variables. You can do this from a command window (note that you have to open a new command window after updating environment variables for updated values to be available). This displays the system PATH:</p>
 	<pre>echo %PATH%</pre>
 	<p>Here is how to inspect the values of JAVA_HOME and ANT_HOME:</p>
@@ -139,8 +140,14 @@ echo %ANT_HOME%</pre>
 </div>
 
 <div id="NextStep" class="evo-box">
-	<h2>The Fun Begins</h2>
+	<h2>The fun begins</h2>
 	<p>Next step is to create and build a Cordova project. Go to the <a href="cordova-guide.html">Cordova Guide</a> to learn more.</p>
+</div>
+
+<div id="EvothingsCordova" class="evo-box">
+	<h2>Use Evothings Studio for Cordova app development</h2>
+	<p>Evothings Studio makes it easy to develop Cordova apps. Check out how to use your Cordova project with the <a href="cordova-guide.html#SetupCordovaForEvothings">fast Evothings workflow</a>.</p>
+	<p>It is easy and fun to get started with Evothings Studio. <a href="http://evothings.com/download/" target="_blank">Download now</a> and be up and running in 5 minutes!</p>
 </div>
 
 <script src="../js/include-page-footer.js"></script>
