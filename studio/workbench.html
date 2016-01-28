@@ -21,18 +21,19 @@ Copyright (c) 2013-2014 Evothings AB
 <div class="evo-box evo-content-index">
 	<script src="../js/include-evothings-logo.js"></script>
 	<a href="#Introduction">Evothings Workbench</a><br/>
-	<a href="#MainWindow">Main Window</a><br/>
-	<a href="#Connecting">Connecting From a Device</a><br/>
-	<a href="#Running">Running an App</a><br/>
-	<a href="#CreatingYourOwnProject">Creating Your Own App</a><br/>
-	<a href="#AppFileStructure">Application File Structure</a><br/>
-	<a href="#LiveEditing">Live Editing</a><br/>
+	<a href="#MainWindow">Main window</a><br/>
+	<a href="#Connecting">Connecting from a device</a><br/>
+	<a href="#Running">Running an app</a><br/>
+	<a href="#CreatingYourOwnProject">Creating your own app</a><br/>
+	<a href="#AppFileStructure">Application file structure</a><br/>
+	<a href="#LiveEditing">Live editing</a><br/>
 	<!--
 	<a href="#ConnectingFromHybridApps">Connecting From Hybrid Apps</a><br/>
 	-->
 	<a href="#UsingCordovaPhoneGap">Using Cordova/PhoneGap</a><br/>
 	<a href="#JavaScriptTools">JavaScript Tools</a><br/>
-	<a href="#SourceCode">Source Code</a><br/>
+	<a href="#Uninstall">Restore settings and uninstalling</a><br/>
+	<a href="#SourceCode">Source code</a><br/>
 </div>
 
 <div id="Introduction" class="evo-box">
@@ -57,7 +58,7 @@ Copyright (c) 2013-2014 Evothings AB
 	<img style="width:400px;height:auto;float:right;margin-left:20px;margin-bottom:20px;"
 		src="../images/evothings-workbench-screenshot-2.png"/>
 
-	<h2>Main Window</h2>
+	<h2>Main window</h2>
 
 	<p>The main window has three tabs:</p>
 	<ul>
@@ -72,25 +73,25 @@ Copyright (c) 2013-2014 Evothings AB
 </div>
 
 <div id="Connecting" class="evo-box">
-	<h2>Connecting from a Mobile Device</h2>
+	<h2>Connecting from a mobile device</h2>
 
-	<p>Before you can run an app on a device, you need to connect the device to the Workbench. The Workbench runs a server, that will tell devices to run and reload apps. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
+	<p>Before you can run an app on a mobile phone or tablet, you need to connect it to the Workbench. If you are not connected, nothing will display on the device. You can connect from one or many devices concurrently.</p>
 
-	<p>Use the Evothings Viewer app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps. You can also connect from a Cordova application or a custom hybrid app.</p>
+	<p>Use the Evothings Viewer app (available on Google Play and the Apple App Store) to connect to the Workbench and run apps.</p>
 
-	<p>Enter the connect code obtained in the "Connect" tab in the Viewer app, and press the "Connect" button in the app. If the code times out you can easily get a new code from the Workbench.</p>
+	<p>Enter the connect code obtained in the "Connect" tab in the Viewer app, and press the "Connect" button in the app. If the code times out you can easily get a new code from the Workbench. Once connected, there is no time out on the session.</p>
 </div>
 
 <div id="Running" class="evo-box">
-	<h2>Running an Example App</h2>
+	<h2>Running an app</h2>
 
-	<p>To run one of the example apps, make sure the Viewer is connected to the Workbench, then click the "Run" button on the app you wish to run.</p>
+	<p>To run one of the Evothings example apps, make sure the Viewer is connected to the Workbench, then click the "Run" button on the app you wish to run.</p>
 
 	<p>Some of the example apps require that you change settings in the source code for them to work properly. You cannot edit the code of the example apps directly, you need to make a copy first. Click the "Copy" button to do this. It will create a copy of the app under "My Apps". The click "Code" to open a system file browser showing the application files.</p>
 </div>
 
 <div id="CreatingYourOwnProject" class="evo-box">
-	<h2>Creating Your Own App</h2>
+	<h2>Creating your own app</h2>
 
 	<p>To create your own app in "My Apps" you have three options:</p>
 	<ul>
@@ -111,16 +112,16 @@ Copyright (c) 2013-2014 Evothings AB
 </div>
 
 <div id="AppFileStructure" class="evo-box">
-	<h2>Application File Structure</h2>
+	<h2>Application file structure</h2>
 
 	<p>An Evothings app is just a standard web page. Any web page can be launched as an app in Evothings Viewer.</p>
-	<p>When you create an app using the "New" or "Copy" button, you will also get an icon displayed in the lisp of apps, and a settings file called evothings.json. If you add an app using drag and drop, the file evothings.json will be created for you first time you run the app.</p>
+	<p>When you create an app using the "New" or "Copy" button, you will also get an icon displayed in the list of apps, and a settings file called evothings.json. If you add an app using drag and drop, the file evothings.json will be created for you first time you run the app.</p>
 	<p>To make use of the Apache Cordova framework, include the file "cordova.js" in index.html. Check out the example apps for how this is done. "Cordova Accelerometer" is a good example to start with.</p>
 	<p>The main HTML file of the app is named "index.html" by convention. Evothings example apps use this naming convention, as do Cordova applications. This file is the entry point of your mobile application. You may name the main HTML file of your app anything you like. Just drag and drop the file onto the Workbench window, and it is added to "My Apps". It is however convenient to follow the convention of using "index.html" for easy compatibility with Cordova and other frameworks.</p>
 </div>
 
 <div id="LiveEditing" class="evo-box">
-	<h2>Live Editing</h2>
+	<h2>Live editing</h2>
 
 	<p>When "Run" is clicked on an app in "My Apps", that app becomes the active app. The files in the app's folder are monitored, and the app is reloaded when any file is updated.</p>
 
@@ -185,7 +186,7 @@ NSURLRequest* request = [NSURLRequest
 -->
 
 <div id="UsingCordovaPhoneGap" class="evo-box">
-<h2>Using Cordova or PhoneGap</h2>
+	<h2>Using Cordova or PhoneGap</h2>
 
 	<p>Evothings Studio works great when developing apps with Apache Cordova (or Adobe PhoneGap). You can skip the entire build step and get a fast workflow with quick turn-around times.</p>
 
@@ -201,7 +202,7 @@ NSURLRequest* request = [NSURLRequest
 
 	<p>Clicking the "Tools" button opens the JavaScript Tools window. This window has two parts; a JavaScript coding space and a log view.</p>
 
-	<p>In the coding space, you can evaluate JavaScript code snippets interactively on connected devices. Just select the code you wish to run, and press the "Eval" button. The selected code is sent to connected devices and evaluated. The return value is displayed in the log view in the bottom panel.</p>
+	<p>In the coding space, you can evaluate JavaScript code snippets interactively on connected devices. Just select the code you wish to run, and press the "Eval Selection" button. The selected code is sent to connected devices and evaluated. The return value is displayed in the log view in the bottom panel.</p>
 
 	<p>To display log messages, use the <code>hyper.log()</code> function. The log message is displayed in the lov view. Exemple:</p>
 
@@ -211,13 +212,76 @@ NSURLRequest* request = [NSURLRequest
 
 	<pre>&lt;script&gt;console.log = hyper.log&lt;/script&gt;</pre>
 
+	<p>Button "Eval Selection" evaluates the selected JavaScript code on conencted mobile devices.</p>
+
+	<p>Button "Node Eval" is a special, it evaluates the selected JavaScript code in the Workbench itself. The Workbench is written in nw.js and node.js, and being able to evaluate code in this context is useful for testering service side code, scripting the Workbench, etc.</p>
+
 	<p>The Tools window very is useful for experimenting with code snippets, inspect and modify the state of the running program, and for debugging and debug logging.</p>
-	</div>
 
-	<div id="SourceCode" class="evo-box">
-		<h2>Source Code</h2>
-		<p>See the <a href="../studio/evothings-studio-overview.html#SourceCode">Source Code</a> section of the main documentation page.</p>
+</div>
 
+<div id="Uninstall" class="evo-box">
+
+	<h2>Restore settings and uninstalling</h2>
+
+	<p>Here is who to restore Workbench settings and how to remove Evothings Studio from your computer.</p>
+
+	<h3>Clearing all settings</h3>
+
+	<p>Clearing the Workbench settings is useful if you wish to restore original default values.</p>
+
+	<p>Evothings Workbench is written in nw.js. Settings are stored in localStorage.
+To clear all settings, open the Tools window, enter and select the following code and click the "Node Eval" button:</p>
+
+	<pre>var gui = require('nw.gui');
+localStorage.clear();
+gui.App.quit();</pre>
+
+	<p>The above code will clear localStorage and quit the Workbench without saving any settings.</p>
+
+	<p>The "Node Eval" button evaluates the selected code in the nw.js environment in the Workbench itself (this is also a useful and fun way to experiment with code snippets and for scripting the Workbench).</p>
+
+	<h3>Clearing all Workbench data</h3>
+
+	<p>Another way to clear settings is to delete the settings folder for Evothings Workbench.
+
+	<p>The location of this folder can be found by evaluating the following code in the Tools Window using "Node Eval", the result is displayed in the bottom panel:</p>
+
+	<pre>var gui = require('nw.gui');
+hyper.log(gui.App.dataPath);</pre>
+
+	<p>Quit the Workbench and delete this folder. When you start the workbench again you will have a clean slate.</p>
+
+	<p>If it does not work to obtain the folder location using the above code snippet, the locations are as follows (replace {username} with your actual user name):</p>
+
+	<p><strong>OS X:</strong></p>
+
+	<pre>/Users/{username}/Library/Application Support/evothings-studio</pre>
+
+	<p><strong>Windows:</strong></p>
+
+	<pre>C:\Users\{username}\AppData\Local\evothings-studio</pre>
+
+	<p><strong>Linux:</strong></p>
+
+	<pre>~/.config/evothings-studio</pre>
+
+
+	<h3>How to uninstall Evothings Studio</h3>
+
+	<p>To completely remove Evothings Workbench from your computer, delete the settings folder as described above and delete the unzipped Evothings Studio folder.</p>
+
+	<p>If you wish to remove your app files, you also need to delete the folder(s) where they are stored. The default location on all platforms is (where {userhome} is the user home folder):</p>
+
+	<pre>{userhome}/EvothingsStudio/MyApps</pre>
+
+	<p>You can find the location of this folder in the Workbench Settings dialog, open it by selecting the menu More/Settings.</p>
+
+</div>
+
+<div id="SourceCode" class="evo-box">
+	<h2>Source code</h2>
+	<p>See the <a href="../studio/evothings-studio-overview.html#SourceCode">Source Code</a> section of the main documentation page.</p>
 </div>
 
 <script src="../js/include-page-footer.js"></script>

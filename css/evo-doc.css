@@ -209,6 +209,11 @@ a
 	border-radius: 0.4em;
 }
 
+.evo-content-index-subitem
+{
+	margin-left: 10px;
+}
+
 .evo-content h1
 {
 	font-size: 1.9em;

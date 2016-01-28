@@ -20,21 +20,22 @@ Copyright (c) 2013-2016 Evothings AB
 
 <div class="evo-box evo-content-index">
 	<a href="#Introduction">Evothings Studio</a><br/>
-	<a href="#Version12">Documentation for version 1.2</a><br/>
+	<a href="workbench.html" class="evo-content-index-subitem">Evothings Workbench &rarr;</a><br/>
+	<a href="evothings-viewer.html" class="evo-content-index-subitem">Evothings Viewer &rarr;</a><br/>
+	<a href="release-notes.html" class="evo-content-index-subitem">Release notes &rarr;</a><br/>
 	<a href="#Screenshots">Screenshots</a><br/>
-	<a href="#QuickStart">Getting Started</a><br/>
-	<a href="#ReleaseNotes">Release Notes</a> (<a href="release-notes.html">direct link</a>)<br/>
-	<a href="#DeployingApps">Deploying Your Apps</a><br/>
-	<a href="#GoodToKnow">Good To Know</a><br/>
-	<a href="#SourceCode">Source Code</a><br/>
-	<a href="#AboutUs">About Us</a><br/>
+	<a href="#QuickStart">Getting started</a><br/>
+	<a href="#Uninstall">Uninstalling</a><br/>
+	<a href="#DeployingApps">Deploying your apps</a><br/>
+	<a href="#GoodToKnow">Good to know</a><br/>
+	<a href="#Version12">Docs for version 1.2</a><br/>
+	<a href="#SourceCode">Source code</a><br/>
+	<!--<a href="#AboutUs">About us</a><br/>-->
 </div>
 
 <div id="Introduction" class="evo-box">
 
 <h1>Evothings Studio 2.0</h1>
-
-	<p><b>This is the documentation for Evothings Studio version 2.0.</b></p>
 
 	<p><b>Note to users of version 1.2:</b> Visit the <a href="evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> for the specific workings of this version.</p>
 
@@ -54,12 +55,6 @@ Copyright (c) 2013-2016 Evothings AB
 	<p>The <a href="evothings-viewer.html">Evothings Viewer</a> mobile app is a native application that you run on your mobile devices. It connects to <a href="workbench.html">Evothings Workbench</a> to enable live editing of your HTML/CSS/JavaScript code. The app contains native functionality that is accessible from JavaScript, such as Bluetooth Low Energy.</p>
 </div>
 
-<div id="Version12" class="evo-box">
-	<h2>Documentation for Evothings Studio version 1.2</h2>
-
-	<p>Consult the <a href="evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
-</div>
-
 <div id="Screenshots" class="evo-box">
 	<h2>Screenshots</h2>
 	<p>Evothings Workbench screenshots. Visit the <a href="workbench.html">Workbench documentation</a> to learn more.</p>
@@ -76,12 +71,12 @@ Copyright (c) 2013-2016 Evothings AB
 </div>
 
 <div id="QuickStart" class="evo-box">
-	<h2>Getting Started</h2>
+	<h2>Getting started</h2>
 
 	<p><b>Super-quick guide:</b></p>
 	<ul>
 		<li>Ensure your computer and mobile device have Internet access.</li>
-		<li>Download and run the Evothings Studio Workbench application on your computer.</li>
+		<li><a href="https://evothings.com/download/" target="_blank">Download</a> and run the Evothings Studio Workbench application on your computer.</li>
 		<li>Install and run the Evothings Viewer app on your mobile device.</li>
 		<li>Enter the Connect Key you get in the Workbench in the mobile app and connect.</li>
 		<li>Click the RUN button of the "Hello World" example in the Workbench.</li>
@@ -96,56 +91,70 @@ Copyright (c) 2013-2016 Evothings AB
 		<li>If you wish to connect from a mobile device and the connect key has timed out, just generate a new key in the Workbench. Connected devices stay connected also when you generate a new connect key.</li>
 	</ul>
 
-	<p>Learn more about <a href="workbench.html">Evothings Studio Workbench</a> and <a href="evothings-viewer.html">Evothings Viewer</a>.</p>
+	<p>Learn more about <a href="workbench.html">Evothings Workbench</a> and <a href="evothings-viewer.html">Evothings Viewer</a>.</p>
+
+</div>
+
+<div id="Uninstall" class="evo-box">
+	<h2>Uninstall Evothings Studio</h2>
+	<p>Follow the instructions in the <a href="workbench.html#Uninstall">Restore settings and uninstalling</a> section to remove Evothings Studio from your computer.</p>
 </div>
 
 <div id="ReleaseNotes" class="evo-box">
-	<h2>Release Notes</h2>
+	<h2>Release notes</h2>
 	<p>The <a href="release-notes.html">Release Notes</a> is the place to learn what is new in each release of Evothings Studio.</p>
 </div>
 
 <div id="DeployingApps" class="evo-box">
-	<h2>Deploying Your Apps</h2>
+	<h2>Deploying your apps</h2>
 	<p>To deploy your final app developed with Evothings Studio on an app store, you build your app with Apache Cordova. Read more in the guide <a href="../build/build-overview.html">How To Build Native Apps</a>.</p>
 	<p>The quickest and easiest way to share your app with others, is putting your app on a web server, asking your users to download the Evothings Viewer app and enter the URL to your app. Find out the details in the guide <a href="../build/share-apps.html">Share Your App</a>.</p>
 </div>
 
 <div id="GoodToKnow" class="evo-box">
-	<h2>Good To Know</h2>
+	<h2>Good to know</h2>
 	<p>Ask questions and give feedback on the <a href="https://evothings.com/forum/">Evothings Forum</a>.</p>
 	<p>Bugs and feature requests can be reported using the GitHub issue tracker, see links to repositories under the "Source Code" section.</p>
 	<p>You are encouraged to explore the "Tools" window tab in <a href="workbench.html">Evothings Workbench</a>. This window displays output from the hyper.log() function, and lets you evaluate JavaScript code interactively on connected devices. This is very useful for debugging purposes, for trying out code snippets and inspecting the value of variables.</p>
 </div>
 
+<div id="Version12" class="evo-box">
+	<h2>Documentation for Evothings Studio version 1.2</h2>
+
+	<p>Consult the <a href="evothings-studio-1.2.html">documentation page for Evothings Studio version 1.2</a> to learn the difference between version 1.2 and 2.0, and how to upgrade to version 2.0.</p>
+</div>
+
 <div id="SourceCode" class="evo-box">
-	<h2>Source Code</h2>
+	<h2>Source code</h2>
 	<p>The source code for Evothings Studio is available on GitHub under the Apache License:</p>
 	<ul>
-		<li>Evothings Workbench: <a href="https://github.com/evothings/evothings-studio/tree/evothings2">
-			https://github.com/evothings/evothings-studio/tree/evothings2</a></li>
-		<li>Evothings Viewer: <a href="https://github.com/evothings/evothings-viewer">
+		<li>Evothings Workbench: <a href="https://github.com/evothings/evothings-studio/"  target="_blank">
+			https://github.com/evothings/evothings-studio/</a></li>
+		<li>Evothings Viewer: <a href="https://github.com/evothings/evothings-viewer" target="_blank">
 			github.com/evothings/evothings-viewer</a></li>
-		<li>Examples: <a href="https://github.com/evothings/evothings-examples">
+		<li>Examples: <a href="https://github.com/evothings/evothings-examples" target="_blank">
 			github.com/evothings/evothings-examples</a></li>
-		<li>Documentation: <a href="https://github.com/evothings/evothings-doc/tree/evothings2">
-			https://github.com/evothings/evothings-doc/tree/evothings2</a></li>
+		<li>Documentation: <a href="https://github.com/evothings/evothings-doc/" target="_blank" target="_blank">
+			https://github.com/evothings/evothings-doc/</a></li>
 		<li>Cordova BLE Plugin: <a href="https://github.com/evothings/cordova-ble">
 			github.com/evothings/cordova-ble</a></li>
-		<li>Cordova Eddystone Plugin: <a href="https://github.com/evothings/cordova-eddystone">
+		<li>Cordova Eddystone Plugin: <a href="https://github.com/evothings/cordova-eddystone" target="_blank">
 			github.com/evothings/cordova-eddystone</a></li>
-		<li>Cordova Estimote Plugin: <a href="https://github.com/evothings/phonegap-estimotebeacons">
+		<li>Cordova Estimote Plugin: <a href="https://github.com/evothings/phonegap-estimotebeacons" target="_blank">
 			github.com/evothings/phonegap-estimotebeacons</a></li>
 	</ul>
 	<p>Evothings Studio is based on HyperReload:<br/>
-	<a href="https://github.com/mikaelkindborg/HyperReload">
+	<a href="https://github.com/mikaelkindborg/HyperReload" target="_blank">
 		github.com/mikaelkindborg/HyperReload</a></p>
 </div>
 
+<!--
 <div id="AboutUs" class="evo-box">
 	<h2>About Us</h2>
 
 	<p>The team behind Evothings is a seasoned group of entrepreneurs, developers and experts at connecting mobile devices to other things. We have a simple passion that we want to improve, refurbish, evolve and augment buildings, vehicles, appliances, industrial applications, gadgets and/or other electronic things – to make them smarter and more connected. Visit us at: <a href="https://evothings.com">evothings.com</a></p>
 </div>
+-->
 
 <script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->

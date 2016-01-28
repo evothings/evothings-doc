@@ -2,7 +2,7 @@
 {
 	// Insert page footer element.
 	document.write(
-		'<div class="evo-box">'
+		'<div class="evo-box" style="margin-top:25px;font-size:90%;">'
 		+	'<p>Copyright &copy; 2013-2016 Evothings AB</p>'
 		+ '</div>')
 
