@@ -33,8 +33,7 @@
 
 	// Insert meta viewport tag.
 	document.write(
-		'<meta name="viewport" content="user-scalable=yes,' +
-			'initial-scale=1,width=device-width,target-densitydpi=device-dpi"/>')
+		'<meta name="viewport" content="user-scalable=yes,initial-scale=1,width=device-width"/>')
 
 	// Include CSS.
 	var path = evothings.doc.getLibPath()

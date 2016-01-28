@@ -4,12 +4,12 @@
 File: build-share-app.html
 Description: App sharing and build documentation.
 Author: Mikael Kindborg
-Copyright (c) 2013-2014 Evothings AB
+Copyright (c) 2013-2016 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
 <script src="../js/include-head.js"></script>
-<title>Share Your App</title>
+<title>Sharing your app</title>
 </head>
 
 <body>
@@ -19,51 +19,51 @@ Copyright (c) 2013-2014 Evothings AB
 <div class="evo-content">
 
 <div class="evo-box evo-content-index">
-	<script src="../js/include-build-top-menu.js"></script>
 	<div class="evo-box">
-		<a href="#Introduction">Two Ways to Share Apps</a><br/>
-		<a href="#RunYourAppFromEvothingsApp">Run Your App In Evothings Viewer</a><br/>
-		<a href="#BuildNativeAppWithCordova">Build a Native App With Cordova</a><br/>
-		<a href="#SummaryAndAdvice">Summary and Advice</a><br/>
+		<a href="#Introduction">Sharing your app</a><br/>
+		<a href="#RunYourAppFromEvothingsApp">Run an app in the Viewer</a><br/>
+		<a href="#ShareUsingURL">Share an app using a URL</a><br/>
+		<a href="#CacheProblems">Solving cache problems</a><br/>
 	</div>
 </div>
 
 <div id="Introduction" class="evo-box">
-	<h1>Two Ways to Share Apps</h1>
-	<p>It is fun to share apps you create with others. To make your work available to others, you have the following options:</p>
-	<ul>
-		<li><p>Put your HTML and JavaScript files on a web server and run the app
-using the Evothings Viewer app (estimated time 15 minutes).</p></li>
-		<li><p>Build a native app with Apache Cordova (estimated time 2 - 8 hours), and publish on the app stores (estimated time 4 - 16 hours depending on which app stores you target).</p></li>
-	</ul>
+	<h1>Sharing your app</h1>
+	<p>It is fun to share apps you create with others. To make your work available to others, the most simple option is to put your HTML and JavaScript files on a web server and run the app using Evothings Viewer (estimated time 15 minutes).</p>
 </div>
 
 <div id="RunYourAppFromEvothingsApp" class="evo-box">
-	<h2>Run Your App In the Evothings Viewer app</h2>
+	<h2>Run an app in the Viewer</h2>
 
-	<h3>How to run your app from a web server</h3>
-	<p>To run your app in the Evothings Viewer app, do as follows:</p>
+	<p>Evothings Viewer is a bit like a web browser for IoT. You can use it to run apps hosted on a web server. This is useful for testing and for quickly sharing apps for evaluation.</p>
+
+	<p>Here is how to run your app in Evothings Viewer:</p>
 	<ul>
-		<li><p>Upload your HTML, CSS, JavaScript and media files (images) to a web server. Note that you don't need to upload any Cordova JavaScript files. The file cordova.js and Cordova plugin files are bundled with the Evothings Viewer app.</p></li>
-		<li><p>Install and run the Evothings Viewer app on your mobile device.</p></li>
-		<li><p>Enter the URL to the main HTML file on the web server in the address
-field and press the Connect button. For example if you have
+		<li><p>Upload HTML, CSS, JavaScript and media files (images) to a web server. Note that you don't need to upload any Cordova JavaScript files. The file cordova.js and Cordova plugin files are bundled with Evothings Viewer.</p></li>
+		<li><p>Install and run Evothings Viewer on your mobile device.</p></li>
+		<li><p>Enter the URL to the main HTML file on the web server in the connect
+field and press the Connect button. For example, if you have
 index.html in the folder "demo", you can enter a url like this (just as with a web page!): https://evothings.com/demo</p></li>
 		<li><p>You can also make a menu page with links to all of your apps, and
-open that page in the Evothings Viewer app.</p></li>
-		<li><p>The drawback is you must be online to run your apps.</p></li>
-		<li><p>The positive thing is that it is very quick and easy to share apps with others. Just ask them to install the Evothings Viewer app and supply a URL to your app or start page.</p></li>
+open that page in the Viewer.</p></li>
+		<li><p>The drawback is that the user must be online to run the app.</p></li>
+		<li><p>The positive thing is that it is very quick and easy to share apps with others. Just ask them to install Evothings Viewer and supply a URL to your app or start page.</p></li>
 	</ul>
+</div>
 
-	<h3>Easy sharing with evothings: URLs</h3>
-	<p>To make sharing of apps even easier, you can create links using the evothings: URL scheme. Evothings links can be shared by email or on any website, e.g. on Twitter, on a blog or on an intranet. The user just selects the link, and the Evothings Viewer app launches with the app pointed to by the link. <p>
+<!--Easy sharing with evothings: URLs-->
+<div id="ShareUsingURL" class="evo-box">
+	<h2>Share an app using a URL</h2>
+	<p>To make sharing of apps even easier, you can create links using the <code>evothings:</code> URL scheme. Evothings links can be shared by email or on any website, e.g. on Twitter, on a blog or on an intranet. The user just selects the link, and Evothings Viewer launches with the app pointed to by the link. <p>
 	<p>Here is an example:</p>
 	<pre>evothings://mysite.com/demo/myapp.html</pre>
-	<p>That URL will launch the Evothings Viewer app and open:</p>
+	<p>That URL will launch Evothings Viewer and open:</p>
 	<pre>http://mysite.com/demo/myapp.html</pre>
+</div>
 
-	<h3>Solutions to cache problems</h3>
-	<p>A potential problem is that the Evothings Viewer app may not load the most recent files when your app code has been updated on the web server. Testing we have done indicates iOS does not cache apps, but Android does.</p>
+<div id="CacheProblems" class="evo-box">
+	<h2>Solving cache problems</h2>
+	<p>A potential problem is that Evothings Viewer may not load the most recent files when your app code has been updated on the web server. Testing we have done indicates iOS does not cache apps, but Android does.</p>
 	<p>The current solution is to include the following meta tags in the head section of index.html, this makes Android not cache the app (works well on iOS too):</p>
 	<pre>&lt;meta http-equiv="pragma" content="no-cache" /&gt;
 &lt;meta http-equiv="expires" content="-1" /&gt</pre>
@@ -72,21 +72,10 @@ open that page in the Evothings Viewer app.</p></li>
 	<pre>&lt;button onclick="window.location.reload(true)"&gtReload&lt;/button&gt</pre>
 </div>
 
-<div id="BuildNativeAppWithCordova" class="evo-box">
-	<h2>Build a Native App With Cordova</h2>
-	<p>Apache Cordova is a build system for creating native apps with bundled HTML and JavaScript content. Apps built with Cordova are native apps that can be published on the app stores.</p>
-	<p>The <a href="build-overview.html">Native App Build Overview</a> shows how to build apps with Cordova.</p>
-</div>
-
 <div id="SummaryAndAdvice" class="evo-box">
-	<h2>Summary and Advice</h2>
-	<ul>
-		<li><p>Start out easy and deploy your app on a web server, then run it
-from the Evothings Viewer app.</p></li>
-		<li><p>If you have several apps you wish to share, make an index page that acts like a menu or gallery you can use as a launchpad (just put links to your apps
-on the menu page, as you would for any web page).</p></li>
-		<li><p>When you are ready for app store publication, learn how to build native apps with Cordova.</p></li>
-	</ul>
+	<h2>Cool trick</h2>
+	<p>If you have several apps you wish to share, make an index page that acts like a menu or gallery you can use as a launchpad (just put links to your apps
+on the menu page, as you would for any web page).</p>
 </div>
 
 <script src="../js/include-page-footer.js"></script>
@@ -118,7 +107,7 @@ iOS you get an Xcode project you can open and run, for Android you get
 and apk-file you can install on your device.
 * Note that it works perfectly fine to develop the Cordova app in
 Evothings Studio. Just drag and drop index.html in project list in the
-Workbench window. Then run the app using the Evothings Viewer app, or ...
+Workbench window. Then run the app using Evothings Viewer, or ...
 * Enter the connect url in place of index.html in config.xml. When you
 start the app it will connect to the Workbench, just click run to
 launch your app.

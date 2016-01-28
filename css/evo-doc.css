@@ -212,6 +212,7 @@ a
 .evo-content-index-subitem
 {
 	margin-left: 10px;
+	display: inline-block;
 }
 
 .evo-content h1
