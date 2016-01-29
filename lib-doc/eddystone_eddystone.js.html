@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: eddystone/eddystone.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: eddystone/eddystone.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// This library scans for Eddystone beacons and translates their
+// advertisements into user-friendly variables.
+// The protocol specification is available at:
+// https://github.com/google/eddystone
+
+// prerequisites
+evothings.loadScripts([
+	'libs/evothings/easyble/easyble.js',
+])
+
+evothings.eddystone = {};
+
+(function() {
+// constants
+var BLUETOOTH_BASE_UUID = '-0000-1000-8000-00805f9b34fb';
+
+// false when scanning is off. true when on.
+var isScanning = false;
+
+/** Starts scanning for Eddystone devices.
+* &lt;p>Found devices and errors will be reported to the supplied callbacks.&lt;/p>
+* &lt;p>Will keep scanning indefinitely until you call stopScan().&lt;/p>
+* To conserve energy, call stopScan() as soon as you've found the device you're looking for.
+* &lt;p>Calling this function while scanning is in progress will fail.&lt;/p>
+*
+* @param {scanCallback} win
+* @param {failCallback} fail
+*/
+evothings.eddystone.startScan = function(win, fail) {
+	// If scanning is already in progress, fail.
+	if(isScanning) {
+		fail("Scanning already in progress!");
+		return;
+	}
+
+	isScanning = true;
+
+	// The device object given in this callback is reused by easyble.
+	// Therefore we can store data in it and expect to have the data still be there
+	// on the next callback with the same device.
+	evothings.easyble.startScan(function(device) {
+		// A device might be an Eddystone if it has advertisementData...
+		var ad = device.advertisementData;
+		if(!ad) return;
+		// With serviceData...
+		var sd = ad.kCBAdvDataServiceData;
+		if(!sd) return;
+		// And the 0xFEAA service.
+		var base64data = sd['0000feaa'+BLUETOOTH_BASE_UUID];
+		if(!base64data) return;
+		var byteArray = evothings.util.base64DecToArr(base64data);
+
+		// If the data matches one of the Eddystone frame formats,
+		// we can forward it to the user.
+		if(parseFrameUID(device, byteArray, win, fail)) return;
+		if(parseFrameURL(device, byteArray, win, fail)) return;
+		if(parseFrameTLM(device, byteArray, win, fail)) return;
+
+	}, function(error) {
+		fail(error);
+	});
+}
+
+/** This function is a parameter to startScan() and is called when a new device is discovered.
+* @callback scanCallback
+* @param {EddystoneDevice} device
+*/
+
+/** Object representing a BLE device. Inherits from evothings.easyble.EasyBLEDevice.
+* All uninherited properties are optional; they may be missing.
+* @typedef {Object} EddystoneDevice
+* @property {string} url - An Internet URL.
+* @property {number} txPower - A signed integer, the signal strength in decibels, factory-measured at a range of 0 meters.
+* @property {Uint8Array} nid - 10-byte namespace ID.
+* @property {Uint8Array} bid - 6-byte beacon ID.
+* @property {number} voltage - Device's battery voltage, in millivolts, or 0 (zero) if device is not battery-powered.
+* @property {number} temperature - Device's ambient temperature in 256:ths of degrees Celcius, or 0x8000 if device has no thermometer.
+* @property {number} adv_cnt - Count of advertisement frames sent since device's startup.
+* @property {number} dsec_cnt - Time since device's startup, in deci-seconds (10 units equals 1 second).
+*/
+
+/** Stop scanning for Eddystone devices.
+*/
+evothings.eddystone.stopScan = function() {
+	evothings.easyble.stopScan();
+	isScanning = false;
+}
+
+// Return true on frame type recognition, false otherwise.
+function parseFrameUID(device, data, win, fail) {
+	if(data[0] != 0x00) return false;
+	// The UID frame has 18 bytes + 2 bytes reserved for future use
+	// https://github.com/google/eddystone/tree/master/eddystone-uid
+	// Check that we got at least 18 bytes.
+	if(data.byteLength &lt; 18) {
+		fail("UID frame: invalid byteLength: "+data.byteLength);
+		return true;
+	}
+	device.txPower = evothings.util.littleEndianToInt8(data, 1);
+	device.nid = data.subarray(2, 12);  // Namespace ID.
+	device.bid = data.subarray(12, 18); // Beacon ID.
+	win(device);
+	return true;
+}
+
+function parseFrameURL(device, data, win, fail) {
+	if(data[0] != 0x10) return false;
+	if(data.byteLength &lt; 4) {
+		fail("URL frame: invalid byteLength: "+data.byteLength);
+		return true;
+	}
+	device.txPower = evothings.util.littleEndianToInt8(data, 1);
+	var url;
+	// URL scheme prefix
+	switch(data[2]) {
+		case 0: url = 'http://www.'; break;
+		case 1: url = 'https://www.'; break;
+		case 2: url = 'http://'; break;
+		case 3: url = 'https://'; break;
+		default: fail("URL frame: invalid prefix: "+data[2]); return true;
+	}
+	// Process each byte in sequence.
+	var i = 3;
+	while(i &lt; data.byteLength) {
+		var c = data[i];
+		// A byte is either a top-domain shortcut, or a printable ascii character.
+		if(c &lt; 14) {
+			switch(c) {
+				case 0: url += '.com/'; break;
+				case 1: url += '.org/'; break;
+				case 2: url += '.edu/'; break;
+				case 3: url += '.net/'; break;
+				case 4: url += '.info/'; break;
+				case 5: url += '.biz/'; break;
+				case 6: url += '.gov/'; break;
+				case 7: url += '.com'; break;
+				case 8: url += '.org'; break;
+				case 9: url += '.edu'; break;
+				case 10: url += '.net'; break;
+				case 11: url += '.info'; break;
+				case 12: url += '.biz'; break;
+				case 13: url += '.gov'; break;
+			}
+		} else if(c &lt; 32 || c >= 127) {
+			// Unprintables are not allowed.
+			fail("URL frame: invalid character: "+data[2]);
+			return true;
+		} else {
+			url += String.fromCharCode(c);
+		}
+
+		i += 1;
+	}
+	device.url = url;
+	win(device);
+	return true;
+}
+
+function parseFrameTLM(device, data, win, fail) {
+	if(data[0] != 0x20) return false;
+	if(data[1] != 0x00) {
+		fail("TLM frame: unknown version: "+data[1]);
+		return true;
+	}
+	if(data.byteLength != 14) {
+		fail("TLM frame: invalid byteLength: "+data.byteLength);
+		return true;
+	}
+
+	device.voltage = evothings.util.bigEndianToUint16(data, 2);
+
+	var temp = evothings.util.bigEndianToUint16(data, 4);
+	if(temp == 0x8000)
+		device.temperature = 0x8000;
+	else
+		device.temperature = evothings.util.bigEndianToInt16(data, 4) / 256.0;
+
+	device.adv_cnt = evothings.util.bigEndianToUint32(data, 6);
+	device.dsec_cnt = evothings.util.bigEndianToUint32(data, 10);
+
+	win(device);
+	return true;
+}
+
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="evothings.html">evothings</a></li><li><a href="evothings.arduinoble.html">arduinoble</a></li><li><a href="evothings.arduinoble.ArduinoBLEDevice.html">ArduinoBLEDevice</a></li><li><a href="evothings.arduinotcp.html">arduinotcp</a></li><li><a href="evothings.easyble.html">easyble</a></li><li><a href="evothings.easyble.EasyBLEDevice.html">EasyBLEDevice</a></li><li><a href="evothings.easyble.error.html">error</a></li><li><a href="evothings.nordicble.html">nordicble</a></li><li><a href="evothings.nordicble.NordicBLEDevice.html">NordicBLEDevice</a></li><li><a href="evothings.nRF51_ble.html">nRF51_ble</a></li><li><a href="evothings.os.html">os</a></li><li><a href="evothings.rfduinoble.html">rfduinoble</a></li><li><a href="evothings.rfduinoble.RFduinoBLEDevice.html">RFduinoBLEDevice</a></li><li><a href="evothings.tisensortag.html">tisensortag</a></li><li><a href="evothings.tisensortag.ble.html">ble</a></li><li><a href="evothings.tisensortag.ble.CC2541.html">CC2541</a></li><li><a href="evothings.tisensortag.ble.CC2650.html">CC2650</a></li><li><a href="evothings.tisensortag.ble.error.html">error</a></li><li><a href="evothings.tisensortag.ble.status.html">status</a></li><li><a href="evothings.tisensortag.SensorTagInstance.html">SensorTagInstance</a></li><li><a href="evothings.tisensortag.SensorTagInstanceBLE.html">SensorTagInstanceBLE</a></li><li><a href="evothings.tisensortag.SensorTagInstanceBLE_CC2541.html">SensorTagInstanceBLE_CC2541</a></li><li><a href="evothings.tisensortag.SensorTagInstanceBLE_CC2650.html">SensorTagInstanceBLE_CC2650</a></li><li><a href="evothings.util.html">util</a></li></ul><h3>Global</h3><ul><li><a href="global.html#HIGH">HIGH</a></li><li><a href="global.html#INPUT">INPUT</a></li><li><a href="global.html#LOW">LOW</a></li><li><a href="global.html#OUTPUT">OUTPUT</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Tue Oct 27 2015 14:39:06 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

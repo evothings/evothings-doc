@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: rfduinoble/rfduinoble.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: rfduinoble/rfduinoble.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// File: rfduinoble.js
+
+// Load dependent library EasyBLE.
+evothings.loadScript('libs/evothings/easyble/easyble.js')
+
+/**
+ * @namespace
+ * @author Patrik D.
+ * @description &lt;p>Functions for communicating with an RFduino board.&lt;/p>
+ * &lt;p>It is safe practise to call function {@link evothings.scriptsLoaded}
+ * to ensure dependent libraries are loaded before calling functions
+ * in this library.&lt;/p>
+ */
+evothings.rfduinoble = {};
+
+;(function()
+{
+	// Internal functions.
+	var internal = {};
+
+	/**
+	 * Stops any ongoing scan and disconnects any connected devices.
+	 * @public
+	 */
+	evothings.rfduinoble.close = function()
+	{
+		evothings.easyble.stopScan();
+		evothings.easyble.closeConnectedDevices();
+	};
+
+	/**
+	 * Called when you have connected to the board.
+	 * @callback evothings.rfduinoble.connectsuccess
+	 * @param {evothings.rfduinoble.RFduinoBLEDevice} device -
+	 * The connected BLE shield.
+	 */
+
+	/**
+	 * Connect to an RFduino board.
+	 * @param {evothings.rfduinoble.connectsuccess} success -
+	 * Success callback: success(device)
+	 * @param {function} fail - Error callback: fail(errorCode)
+	 * @public
+	 */
+	evothings.rfduinoble.connect = function(deviceName, success, fail)
+	{
+		evothings.easyble.startScan(
+			function(device)
+			{
+				console.log('found device: ' + device.name);
+				if (device.name == deviceName)
+				{
+					evothings.easyble.stopScan();
+					console.log('connectToDevice');
+					internal.connectToDevice(device, success, fail);
+				}
+			},
+			function(errorCode)
+			{
+				fail(errorCode);
+			});
+	};
+
+	/**
+	 * Connect to the device.
+	 * @private
+	 */
+	internal.connectToDevice = function(device, success, fail)
+	{
+		device.connect(
+			function(device)
+			{
+				// Get services info.
+				internal.getServices(device, success, fail);
+			},
+			function(errorCode)
+			{
+				fail(errorCode);
+			});
+	};
+
+	/**
+	 * Read all services from the device.
+	 * @private
+	 */
+	internal.getServices = function(device, success, fail)
+	{
+		device.readServices(
+			null, // null means read info for all services
+			function(device)
+			{
+				internal.addMethodsToDeviceObject(device);
+				success(device);
+			},
+			function(errorCode)
+			{
+				fail(errorCode);
+			});
+	};
+
+	/**
+	 * Add instance methods to the device object.
+	 * @private
+	 */
+	internal.addMethodsToDeviceObject = function(device)
+	{
+		/**
+		 * Object that holds info about an RFduino device.
+		 * @namespace evothings.rfduinoble.RFduinoBLEDevice
+		 */
+
+		/**
+		 * @function writeDataArray
+		 * @description Write data to an RFduino.
+		 * @param {Uint8Array} uint8array - The data to be written.
+		 * @memberof evothings.rfduinoble.RFduinoBLEDevice
+		 * @instance
+		 * @public
+		 */
+		device.writeDataArray = function(uint8array)
+		{
+			device.writeCharacteristic(
+				'00002222-0000-1000-8000-00805f9b34fb',
+				uint8array,
+				function()
+				{
+					console.log('writeCharacteristic success');
+				},
+				function(errorCode)
+				{
+					console.log('writeCharacteristic error: ' + errorCode);
+				});
+		};
+	};
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="evothings.html">evothings</a></li><li><a href="evothings.arduinoble.html">arduinoble</a></li><li><a href="evothings.arduinoble.ArduinoBLEDevice.html">ArduinoBLEDevice</a></li><li><a href="evothings.arduinotcp.html">arduinotcp</a></li><li><a href="evothings.easyble.html">easyble</a></li><li><a href="evothings.easyble.EasyBLEDevice.html">EasyBLEDevice</a></li><li><a href="evothings.easyble.error.html">error</a></li><li><a href="evothings.nordicble.html">nordicble</a></li><li><a href="evothings.nordicble.NordicBLEDevice.html">NordicBLEDevice</a></li><li><a href="evothings.nRF51_ble.html">nRF51_ble</a></li><li><a href="evothings.os.html">os</a></li><li><a href="evothings.rfduinoble.html">rfduinoble</a></li><li><a href="evothings.rfduinoble.RFduinoBLEDevice.html">RFduinoBLEDevice</a></li><li><a href="evothings.tisensortag.html">tisensortag</a></li><li><a href="evothings.tisensortag.ble.html">ble</a></li><li><a href="evothings.tisensortag.ble.CC2541.html">CC2541</a></li><li><a href="evothings.tisensortag.ble.CC2650.html">CC2650</a></li><li><a href="evothings.tisensortag.ble.error.html">error</a></li><li><a href="evothings.tisensortag.ble.status.html">status</a></li><li><a href="evothings.tisensortag.SensorTagInstance.html">SensorTagInstance</a></li><li><a href="evothings.tisensortag.SensorTagInstanceBLE.html">SensorTagInstanceBLE</a></li><li><a href="evothings.tisensortag.SensorTagInstanceBLE_CC2541.html">SensorTagInstanceBLE_CC2541</a></li><li><a href="evothings.tisensortag.SensorTagInstanceBLE_CC2650.html">SensorTagInstanceBLE_CC2650</a></li><li><a href="evothings.util.html">util</a></li></ul><h3>Global</h3><ul><li><a href="global.html#HIGH">HIGH</a></li><li><a href="global.html#INPUT">INPUT</a></li><li><a href="global.html#LOW">LOW</a></li><li><a href="global.html#OUTPUT">OUTPUT</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Tue Oct 27 2015 14:39:06 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
