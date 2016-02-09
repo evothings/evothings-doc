@@ -26,24 +26,20 @@
 
 	function enableGoogleAnalytics()
 	{
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', 'UA-44159401-1', 'auto');
-		ga('send', 'pageview');
-	}
+		// Google Analytics script.
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-44159401-1']);
+		_gaq.push(['_gat._forceSSL']);
+		_gaq.push(['_trackPageview']);
 
-	function pageHasLoaded()
-	{
-		// Highlight current menu section. Use path to highlight.
-		highliteCurrentMenuButton()
-
-		// Only enable Google Analytics if documentation is accessed online.
-		if (window.location.protocol != 'file:')
-		{
-			enableGoogleAnalytics()
-		}
+		(function () {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
 	}
 
 	function includeFooter()
@@ -58,8 +54,14 @@
 		var path = evothings.doc.getLibPath()
 		document.write('<script src="' + path + 'libs/jquery/jquery-2.1.1.js"></script>')
 
-		// Call function when page has loaded.
-		document.addEventListener('DOMContentLoaded', pageHasLoaded)
+		// Only enable Google Analytics if documentation is accessed online.
+		if (window.location.protocol != 'file:')
+		{
+			enableGoogleAnalytics()
+		}
+
+		// Highlight current menu section when page has loaded.
+		document.addEventListener('DOMContentLoaded', highliteCurrentMenuButton)
 	}
 
 	// Call main function that includes page footer code.
