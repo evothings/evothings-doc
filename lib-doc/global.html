@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Globals</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <h1>Globals</h1>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="global.html#HIGH">HIGH</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="global.html#INPUT">INPUT</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="global.html#LOW">LOW</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="global.html#OUTPUT">OUTPUT</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Abstract types</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="global.html#EddystoneDevice">EddystoneDevice</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="global.html#scanCallback">scanCallback(device)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <h3 id="HIGH"><span class="symbol-name">HIGH</span></h3>
+              <p>Value for setting a pin to on.</p>
+              <dl class="dl-compact">
+                <dt>To do</dt>
+                <dd>Move into namespace</dd>
+              </dl>
+              <h3 id="INPUT"><span class="symbol-name">INPUT</span></h3>
+              <p>Value for setting a pin to input.</p>
+              <dl class="dl-compact">
+                <dt>To do</dt>
+                <dd>Move into namespace</dd>
+              </dl>
+              <h3 id="LOW"><span class="symbol-name">LOW</span></h3>
+              <p>Value for setting a pin to off.</p>
+              <dl class="dl-compact">
+                <dt>To do</dt>
+                <dd>Move into namespace</dd>
+              </dl>
+              <h3 id="OUTPUT"><span class="symbol-name">OUTPUT</span></h3>
+              <p>Value for setting a pin to output.</p>
+              <dl class="dl-compact">
+                <dt>To do</dt>
+                <dd>Move into namespace</dd>
+              </dl>
+            </section>
+            <h2>Abstract types</h2>
+            <section>
+              <h3 id="EddystoneDevice"><span class="symbol-name">EddystoneDevice</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Object representing a BLE device. Inherits from evothings.easyble.EasyBLEDevice. All uninherited properties are optional; they may be missing.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>url</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An Internet URL.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>txPower</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>A signed integer, the signal strength in decibels, factory-measured at a range of 0 meters.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nid</p>
+                      </td>
+                      <td>
+                        <p>Uint8Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>10-byte namespace ID.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>bid</p>
+                      </td>
+                      <td>
+                        <p>Uint8Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>6-byte beacon ID.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>voltage</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Device's battery voltage, in millivolts, or 0 (zero) if device is not battery-powered.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>temperature</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Device's ambient temperature in 256:ths of degrees Celcius, or 0x8000 if device has no thermometer.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>adv_cnt</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Count of advertisement frames sent since device's startup.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>dsec_cnt</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Time since device's startup, in deci-seconds (10 units equals 1 second).</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="scanCallback"><span class="symbol-name">scanCallback</span><span class="signature"><span class="signature-params">(device)</span></span></h3>
+              <p>This function is a parameter to startScan() and is called when a new device is discovered.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>device</p>
+                      </td>
+                      <td>
+                        <p><a href="global.html#EddystoneDevice">EddystoneDevice</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 9, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

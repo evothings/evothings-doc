@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Namespace: nordicble</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small><a href="evothings.html">evothings</a>.<wbr></small><span class="symbol-name">nordicble</span></h1>
+            <p class="source-link">Source: <a href="nordic-nRF51822-ble_nordic-nRF51822-ble.js.html#source-line-13">nordic-nRF51822-ble/<wbr>nordic-nRF51822-ble.<wbr>js:13</a></p>
+            <div class="symbol-description">
+              <p>Functions for communicating with a Nordic BLE device.</p>
+              <p>It is safe practise to call function <a href="evothings.html#.scriptsLoaded">evothings.scriptsLoaded</a> to ensure dependent libraries are loaded before calling functions in this library.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Namespace</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.nordicble.NordicBLEDevice.html">NordicBLEDevice</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.nordicble.html#.close">close()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.nordicble.html#.connect">connect(success, fail)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Abstract type</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.nordicble.html#.connectsuccess">connectsuccess(device)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Namespace</h2>
+            <section id='members-links'>
+              <h3><a href="evothings.nordicble.NordicBLEDevice.html">NordicBLEDevice</a></h3>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".close"><span class="symbol-name">close</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Stops any ongoing scan and disconnects any connected devices.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".connect"><span class="symbol-name">connect</span><span class="signature"><span class="signature-params">(success, fail)</span></span></h3>
+              <p>Connect to the Nordic board.</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>evothings.nordicble.connect(
+  &#x27;LedButtonDemo&#x27;, // BLE name
+  function(device)
+  {
+    console.log(&#x27;connected!&#x27;);
+    device.writeDataArray(new Uint8Array([1]));
+    evothings.nordicble.close();
+  },
+  function(errorCode)
+  {
+    console.log(&#x27;Error: &#x27; + errorCode);
+  });</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>success</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.nordicble.html#.connectsuccess">evothings.nordicble.connectsuccess</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Success callback: success(device)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>fail</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Error callback: fail(errorCode)</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Abstract type</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".connectsuccess"><span class="symbol-name">connectsuccess</span><span class="signature"><span class="signature-params">(device)</span></span></h3>
+              <p>Called when you have connected to a Nordic board.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>device</p>
+                      </td>
+                      <td>
+                        <p>evothings.nordicble.ArduinoBLEDevice</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The connected BLE shield.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 9, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

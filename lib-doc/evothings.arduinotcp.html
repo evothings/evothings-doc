@@ -1,0 +1,513 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Namespace: arduinotcp</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small><a href="evothings.html">evothings</a>.<wbr></small><span class="symbol-name">arduinotcp</span></h1>
+            <p class="source-link">Source: <a href="arduinotcp_arduinotcp.js.html#source-line-40">arduinotcp/<wbr>arduinotcp.<wbr>js:40</a></p>
+            <div class="symbol-description">
+              <p>Functions for communicating with an Arduino WiFi shield or Ethernet shield.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.arduinotcp.html#.ipAddress">ipAddress</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.arduinotcp.html#.port">port</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.arduinotcp.html#.analogRead">analogRead(pinNumber, callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.clearAllTimers">clearAllTimers()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.connect">connect(hostname, port, callback)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.digitalRead">digitalRead(pinNumber, callback)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.arduinotcp.html#.digitalWrite">digitalWrite(pinNumber, value)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.disconnect">disconnect()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.getIpAddress">getIpAddress()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.pinMode">pinMode(pinNumber, mode)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.arduinotcp.html#.setInterval">setInterval(fun, ms)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.arduinotcp.html#.setTimeout">setTimeout(fun, ms)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".ipAddress"><span class="symbol-name">ipAddress</span></h3>
+              <p>The IP address of the Arduino board.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".port"><span class="symbol-name">port</span></h3>
+              <p>The port number used by the Arduino server.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".analogRead"><span class="symbol-name">analogRead</span><span class="signature"><span class="signature-params">(pinNumber, callback)</span></span></h3>
+              <p>Read an analog input value. The callback function is called with the value of the Arduino function analogRead().</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>pinNumber</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>pin number to read.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function called with analog value of pin. Format: callback(value) where is a number, or null on error.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".clearAllTimers"><span class="symbol-name">clearAllTimers</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Clear all timers.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".connect"><span class="symbol-name">connect</span><span class="signature"><span class="signature-params">(hostname, port, callback)</span></span></h3>
+              <p>Connect to a server running on the Arduino.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>hostname</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>port</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function called when connect operation has completed. Format: callback(successFlag) where successFlag is true on success and false on error.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".digitalRead"><span class="symbol-name">digitalRead</span><span class="signature"><span class="signature-params">(pinNumber, callback)</span></span></h3>
+              <p>Read a digital input value, callback is called with the value 'H' or 'L' corresponding to the result of the Arduino function digitalRead().
+              </p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>pinNumber</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>pin number to read</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Function called with value of pin. Format: callback(value) where value is 'H' or 'L', or null on error.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".digitalWrite"><span class="symbol-name">digitalWrite</span><span class="signature"><span class="signature-params">(pinNumber, value)</span></span></h3>
+              <p>Write a digital output value.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>pinNumber</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>pin number to read</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>HIGH or LOW</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".disconnect"><span class="symbol-name">disconnect</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Disconnect from the Arduino.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".getIpAddress"><span class="symbol-name">getIpAddress</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Returns the current IP address value.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code>&nbsp;IP address.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".pinMode"><span class="symbol-name">pinMode</span><span class="signature"><span class="signature-params">(pinNumber, mode)</span></span></h3>
+              <p>Set pin to output or input.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>pinNumber</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>pin number to read</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>mode</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>OUTPUT or INPUT</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".setInterval"><span class="symbol-name">setInterval</span><span class="signature"><span class="signature-params">(fun, ms)</span></span></h3>
+              <p>Start interval timer. This function makes it easier to use timer intervals in Arduino scripts.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>fun</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Timer function, takes no parameters.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ms</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Timer interval in milliseconds.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+              <h3 id=".setTimeout"><span class="symbol-name">setTimeout</span><span class="signature"><span class="signature-params">(fun, ms)</span></span></h3>
+              <p>Start timeout timer. This function makes it easier to use timeouts in Arduino scripts.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>fun</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Timer function, takes no parameters.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>ms</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Timer delay in milliseconds.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 9, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
