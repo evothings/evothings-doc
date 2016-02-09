@@ -1,0 +1,23 @@
+{
+	"tags": {
+		"allowUnknownTags": true,
+		"dictionaries": ["jsdoc","closure"]
+	},
+	"source": {
+		"include": ["../evothings-libraries/libs/evothings"],
+		"exclude": ["../evothings-libraries/libs/evothings/ui"],
+		"includePattern": ".+\\.js(doc)?$",
+		"excludePattern": "(^|\\/|\\\\)_"
+	},
+	"opts": {
+		"template": "./node_modules/jsdoc-baseline/",
+		"encoding": "utf8",
+		"destination": "./lib-doc",
+		"recurse": true
+	},
+	"plugins": [],
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": false
+	}
+}
