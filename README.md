@@ -20,7 +20,7 @@ The 'evothings-libraries' repo must be in a sibling folder of this repo for the 
 
 Build using npm (Node Package Manager):
 
-    npm init
+    npm install
     npm start
 
 The output folder that contains the generated documentation is:
