@@ -32,7 +32,7 @@ html
 *:not(input)
 {
 	-webkit-touch-callout: none;
-	-webkit-user-select: none;
+	/*-webkit-user-select: none;*/
 }
 
 *
@@ -379,9 +379,9 @@ a
 	padding: 0px 0px;
 	background: rgb(255,255,255);
 	cursor: pointer;
-	-moz-user-select: none;
+	/*-moz-user-select: none;
 	-webkit-user-select: none;
-	-ms-user-select: none;
+	-ms-user-select: none;*/
 	/*
 	padding: 10px 10px;
 	border: 1px solid #656565;
