@@ -93,14 +93,14 @@ a
 	padding-top: 10px;
 	padding-bottom: 0px;
 }
-
+/*
 .evo-page-header-spacer
 {
 	float: right;
 	width: 1px;
-	height: 30px;
+	height: 60px;
 }
-
+*/
 .evo-content
 {
 	clear: both;
@@ -118,9 +118,16 @@ a
 
 .evo-page-header-menu-buttons
 {
+	/*
+	Not used, absolute position used as default.
 	clear: both;
 	float: right;
 	margin: 20px 0px 0px 0px;
+	*/
+
+	position: absolute;
+	top: 60px;
+	right: 10px;
 }
 
 .evo-page-header-menu-buttons a
@@ -430,15 +437,36 @@ a
 	{
 		position: static;
 	}
-	.evo-content
-	{
-		padding-top: 0px;
-		margin-top: 0px;
-	}
 	.evo-box:target
 	{
 		padding-top: 0px;
 		margin-top: 0px;
+	}
+	.evo-content
+	{
+		padding-top: 0px;
+		/* Old value: margin-top: 0px; */
+		margin-top: 65px;
+	}
+	.evo-page-header-menu-buttons
+	{
+		position: absolute;
+		top: 120px;
+		left: 0px;
+	}
+}
+
+@media all and (max-width: 550px)
+{
+	.evo-content
+	{
+		margin-top: 90px;
+	}
+	.evo-page-header-menu-buttons
+	{
+		position: absolute;
+		top: 120px;
+		left: 0px;
 	}
 }
 
@@ -451,6 +479,7 @@ a
 	}
 }
 
+/* Hide side images when screen is narrow. */
 @media all and (max-width: 700px)
 {
 	.evo-card

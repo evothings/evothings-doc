@@ -13,8 +13,9 @@
 		+		'<div class="evo-page-header-top-buttons">'
 		+			'<a href="https://evothings.com/download">Download</a>'
 		+		'</div>'
-		+		'<div class="evo-page-header-spacer">'
-		+		'</div>'
+		// Not used.
+		//+		'<div class="evo-page-header-spacer">'
+		//+		'</div>'
 		+		'<div class="evo-page-header-menu-buttons">'
 		+			'<a href="' + path + 'index.html">Start</a>'
 		+			'<a href="' + path + 'studio/evothings-studio-overview.html">Studio</a>'
