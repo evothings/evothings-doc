@@ -4,7 +4,7 @@
 		"dictionaries": ["jsdoc","closure"]
 	},
 	"source": {
-		"include": ["../evothings-libraries/libs/evothings"],
+		"include": ["../evothings-libraries/libs/evothings", "../cordova-ble/ble.js"],
 		"exclude": ["../evothings-libraries/libs/evothings/ui"],
 		"includePattern": ".+\\.js(doc)?$",
 		"excludePattern": "(^|\\/|\\\\)_"
