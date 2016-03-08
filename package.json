@@ -4,10 +4,11 @@
   "description": "Build Evothings documentation (build libraries documentation)",
   "main": "build.js",
   "dependencies": {
+  },
+  "devDependencies": {
     "jsdoc": "^3.4.0",
     "jsdoc-baseline": "^0.0.1-dev"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "node jsdoc-gen.js",
     "test": "echo \"Error: no test specified\" && exit 1"
