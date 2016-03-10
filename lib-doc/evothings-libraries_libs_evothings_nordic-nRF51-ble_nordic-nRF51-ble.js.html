@@ -4,7 +4,7 @@
 <head>
   <meta name="generator" content="JSDoc 3.4.0">
   <meta charset="utf-8">
-  <title>Source: rfduinoble/rfduinoble.js</title>
+  <title>Source: evothings-libraries/libs/evothings/nordic-nRF51-ble/nordic-nRF51-ble.js</title>
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
@@ -26,64 +26,61 @@
         </div>
         <div id="jsdoc-main" role="main">
           <header class="page-header">
-            <h1>Source: rfduinoble/rfduinoble.js</h1>
+            <h1>Source: evothings-libraries/libs/evothings/nordic-nRF51-ble/nordic-nRF51-ble.js</h1>
           </header>
           <article>
-            <pre class="prettyprint linenums"><code>// File: rfduinoble.js
+            <pre class="prettyprint linenums"><code>// File: nordic-nRF51-ble.js
 
-// Load dependent library EasyBLE.
 evothings.loadScript(&#x27;libs/evothings/easyble/easyble.js&#x27;)
 
 /**
  * @namespace
- * @author Patrik D.
- * @description &amp;lt;p&gt;Functions for communicating with an RFduino board.&amp;lt;/p&gt;
- * &amp;lt;p&gt;It is safe practise to call function {@link evothings.scriptsLoaded}
- * to ensure dependent libraries are loaded before calling functions
- * in this library.&amp;lt;/p&gt;
- */
-evothings.rfduinoble &#x3D; {};
+ * @author Aaron Ardiri
+ * @description Functions for communicating with a Nordic BLE device.
+ *
+ * @example
+evothings.nRF51_ble.connect(
+	&#x27;nRF51-DK&#x27;, // BLE name
+	function(device)
+	{
+		console.log(&#x27;connected!&#x27;);
+		device.writeDataArray(new Uint8Array([1]));
+		evothings.nRF51_ble.close();
+	},
+	function(errorCode)
+	{
+		console.log(&#x27;Error: &#x27; + errorCode);
+	});
+*/
 
-;(function()
+// Object that exposes the nRF51-DK BLE API.
+evothings.nRF51_ble &#x3D; {};
+(function()
 {
 	// Internal functions.
 	var internal &#x3D; {};
 
-	/**
-	 * Stops any ongoing scan and disconnects any connected devices.
-	 * @public
-	 */
-	evothings.rfduinoble.close &#x3D; function()
+	/** Stops any ongoing scan and disconnects all devices. */
+	evothings.nRF51_ble.close &#x3D; function()
 	{
 		evothings.easyble.stopScan();
 		evothings.easyble.closeConnectedDevices();
 	};
 
-	/**
-	 * Called when you have connected to the board.
-	 * @callback evothings.rfduinoble.connectsuccess
-	 * @param {evothings.rfduinoble.RFduinoBLEDevice} device -
-	 * The connected BLE shield.
-	 */
-
-	/**
-	 * Connect to an RFduino board.
-	 * @param {evothings.rfduinoble.connectsuccess} success -
-	 * Success callback: success(device)
-	 * @param {function} fail - Error callback: fail(errorCode)
-	 * @public
-	 */
-	evothings.rfduinoble.connect &#x3D; function(deviceName, success, fail)
+	/** Connect to a BLE-shield.
+	* @param win - Success callback: win(device)
+	* @param fail - Error callback: fail(errorCode)
+	*/
+	evothings.nRF51_ble.connect &#x3D; function(deviceName, win, fail)
 	{
 		evothings.easyble.startScan(
 			function(device)
 			{
 				console.log(&#x27;found device: &#x27; + device.name);
-				if (device.name &#x3D;&#x3D; deviceName)
+				if (device.hasName(deviceName))
 				{
 					evothings.easyble.stopScan();
-					console.log(&#x27;connectToDevice&#x27;);
-					internal.connectToDevice(device, success, fail);
+					internal.connectToDevice(device, win, fail);
 				}
 			},
 			function(errorCode)
@@ -92,17 +89,14 @@ evothings.rfduinoble &#x3D; {};
 			});
 	};
 
-	/**
-	 * Connect to the device.
-	 * @private
-	 */
-	internal.connectToDevice &#x3D; function(device, success, fail)
+	internal.connectToDevice &#x3D; function(device, win, fail)
 	{
 		device.connect(
 			function(device)
 			{
+				console.log(&#x27;connected!&#x27;);
 				// Get services info.
-				internal.getServices(device, success, fail);
+				internal.getServices(device, win, fail);
 			},
 			function(errorCode)
 			{
@@ -110,18 +104,14 @@ evothings.rfduinoble &#x3D; {};
 			});
 	};
 
-	/**
-	 * Read all services from the device.
-	 * @private
-	 */
-	internal.getServices &#x3D; function(device, success, fail)
+	internal.getServices &#x3D; function(device, win, fail)
 	{
 		device.readServices(
 			null, // null means read info for all services
 			function(device)
 			{
 				internal.addMethodsToDeviceObject(device);
-				success(device);
+				win(device);
 			},
 			function(errorCode)
 			{
@@ -129,29 +119,12 @@ evothings.rfduinoble &#x3D; {};
 			});
 	};
 
-	/**
-	 * Add instance methods to the device object.
-	 * @private
-	 */
 	internal.addMethodsToDeviceObject &#x3D; function(device)
 	{
-		/**
-		 * Object that holds info about an RFduino device.
-		 * @namespace evothings.rfduinoble.RFduinoBLEDevice
-		 */
-
-		/**
-		 * @function writeDataArray
-		 * @description Write data to an RFduino.
-		 * @param {Uint8Array} uint8array - The data to be written.
-		 * @memberof evothings.rfduinoble.RFduinoBLEDevice
-		 * @instance
-		 * @public
-		 */
 		device.writeDataArray &#x3D; function(uint8array)
 		{
 			device.writeCharacteristic(
-				&#x27;00002222-0000-1000-8000-00805f9b34fb&#x27;,
+				&#x27;6e524635-312d-444b-206c-656420202020&#x27;,
 				uint8array,
 				function()
 				{
@@ -161,6 +134,30 @@ evothings.rfduinoble &#x3D; {};
 				{
 					console.log(&#x27;writeCharacteristic error: &#x27; + errorCode);
 				});
+		};
+
+		device.setNotification &#x3D; function(callback)
+		{
+			console.log(&#x27;setNotification&#x27;);
+
+			// Enable notification support (required on Android)
+			device.writeDescriptor(
+				&#x27;6e524635-312d-444b-2062-7574746f6e20&#x27;,
+				&#x27;00002902-0000-1000-8000-00805f9b34fb&#x27;,
+				new Uint8Array([1,0]),
+				function() {
+					console.log(&#x27;writeDescriptor success&#x27;);
+				}, function(errorCode) {
+					console.log(&#x27;writeDescriptor error: &#x27; + errorCode);
+				});
+
+			device.enableNotification(
+				&#x27;6e524635-312d-444b-2062-7574746f6e20&#x27;,
+				callback,
+				function(errorCode)
+				{
+					console.log(&#x27;enableNotification error: &#x27; + errorCode);
+			});
 		};
 	};
 })();
@@ -174,7 +171,7 @@ evothings.rfduinoble &#x3D; {};
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 10, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on March 10, 2016.
       </p>
     </div>
   </footer>

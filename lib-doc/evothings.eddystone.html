@@ -26,7 +26,7 @@
           <header class="page-header">
             <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-static">static</span></div>
             <h1><small><a href="evothings.html">evothings</a>.<wbr></small><span class="symbol-name">eddystone</span></h1>
-            <p class="source-link">Source: <a href="eddystone_eddystone.js.html#source-line-22">eddystone/<wbr>eddystone.<wbr>js:22</a></p>
+            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_eddystone_eddystone.js.html#source-line-22">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>eddystone/<wbr>eddystone.<wbr>js:22</a></p>
             <div class="symbol-description">
               <p>Library for Eddystone beacons.</p>
               <p>It is safe practise to call function <a href="evothings.html#.scriptsLoaded">evothings.scriptsLoaded</a> to ensure dependent libraries are loaded before calling functions in this library.</p>
@@ -40,6 +40,13 @@
               <div class="summary-content">
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="evothings.eddystone.html#.calculateAccuracy">calculateAccuracy(txPower, rssi)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
                     <dt><a href="evothings.eddystone.html#.startScan">startScan(scanCallback, failCallback)</a></dt>
                     <dd>
                     </dd>
@@ -51,8 +58,6 @@
                     <dd>
                     </dd>
                   </dl>
-                </div>
-                <div class="summary-column">
                 </div>
               </div>
             </div>
@@ -87,18 +92,89 @@
             <h2>Methods</h2>
             <section>
               <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
-              <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(scanCallback, failCallback)</span></span></h3>
-              <p>Starts scanning for Eddystone devices.</p>
-              <p>Found devices and errors will be reported to the supplied callbacks.</p>
-              <p>Will keep scanning indefinitely until you call stopScan().</p>
-              To conserve energy, call stopScan() as soon as you've found the device you're looking for.
-              <p>Calling this function while scanning is in progress will fail.</p>
-              <section>
-                <h4>
+              <h3 id=".calculateAccuracy"><span class="symbol-name">calculateAccuracy</span><span class="signature"><span class="signature-params">(txPower, rssi)</span></span></h3>
+              <p>Calculate the accuracy (distance in meters) of the beacon.</p>
+              <p>
+                <p>The beacon distance calculation uses txPower at 1 meters, but the Eddystone protocol reports the value at 0 meters. 41dBm is the signal loss that occurs over 1 meter, this value is subtracted by default from the reported txPower. You can
+                  tune the calculation by adding or subtracting to param txPower.
+                  <p></p>
+                  <p>
+                    <p>Note that the returned distance value is not accurate, and that it fluctuates over time. Sampling/filtering over time is recommended to obtain a stable value.
+                      <p></p>
+                      <section>
+                        <h4>
             Example
         </h4>
-                <div>
-                  <pre class="prettyprint"><code>evothings.eddystone.startScan(
+                        <div>
+                          <pre class="prettyprint"><code>// Note that beacon.txPower and beacon.rssi many be undefined,
+  // in which case calculateAccuracy returns null. This happens
+  // before txPower and rssi have been reported by the beacon.
+  var distance &#x3D; evothings.eddystone.calculateAccuracy(
+      beacon.txPower, beacon.rssi);</code></pre>
+                        </div>
+                      </section>
+                      <section>
+                        <h4>Parameters</h4>
+                        <table class="jsdoc-details-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Type</th>
+                              <th>Optional</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>txPower</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>The txPower of the beacon.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>rssi</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>The RSSI of the beacon, subtract or add to this value to tune the dBm strength. 41dBm is subtracted from this value in the distance algorithm used by calculateAccuracy.</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </section>
+                      <dl class="dl-compact">
+                        <dt>Returns</dt>
+                        <dd>
+                          <p>Distance in meters, or null if unable to compute distance (occurs for example when txPower or rssi is undefined).</p>
+                        </dd>
+                      </dl>
+                      <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+                      <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(scanCallback, failCallback)</span></span></h3>
+                      <p>Starts scanning for Eddystone devices.</p>
+                      <p>Found devices and errors will be reported to the supplied callbacks.</p>
+                      <p>Will keep scanning indefinitely until you call stopScan().</p>
+                      <p>To conserve energy, call stopScan() as soon as you've found the device you're looking for.</p>
+                      <p>Calling startScan() while scanning is in progress will produce an error.</p>
+                      <section>
+                        <h4>
+            Example
+        </h4>
+                        <div>
+                          <pre class="prettyprint"><code>evothings.eddystone.startScan(
     function(beacon)
     {
       console.log(&#x27;Found beacon: &#x27; + beacon.url);
@@ -107,66 +183,66 @@
     {
       console.log(&#x27;Scan error: &#x27; + error);
     });</code></pre>
-                </div>
-              </section>
-              <section>
-                <h4>Parameters</h4>
-                <table class="jsdoc-details-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Optional</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p>scanCallback</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.eddystone.html#.scanCallback">evothings.eddystone.scanCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Success function called when a beacon is found.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>failCallback</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.eddystone.html#.failCallback">evothings.eddystone.failCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Error callback: fail(error).</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-              <dl class="dl-compact">
-              </dl>
-              <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
-              <h3 id=".stopScan"><span class="symbol-name">stopScan</span><span class="signature"><span class="signature-params">()</span></span></h3>
-              <p>Stop scanning for Eddystone devices.</p>
-              <section>
-                <h4>
+                        </div>
+                      </section>
+                      <section>
+                        <h4>Parameters</h4>
+                        <table class="jsdoc-details-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Type</th>
+                              <th>Optional</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>scanCallback</p>
+                              </td>
+                              <td>
+                                <p><a href="evothings.eddystone.html#.scanCallback">evothings.eddystone.scanCallback</a></p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Success function called when a beacon is found.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>failCallback</p>
+                              </td>
+                              <td>
+                                <p><a href="evothings.eddystone.html#.failCallback">evothings.eddystone.failCallback</a></p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Error callback: fail(error).</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </section>
+                      <dl class="dl-compact">
+                      </dl>
+                      <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+                      <h3 id=".stopScan"><span class="symbol-name">stopScan</span><span class="signature"><span class="signature-params">()</span></span></h3>
+                      <p>Stop scanning for Eddystone devices.</p>
+                      <section>
+                        <h4>
             Example
         </h4>
-                <div>
-                  <pre class="prettyprint"><code>evothings.eddystone.stopScan();</code></pre>
-                </div>
-              </section>
-              <dl class="dl-compact">
-              </dl>
+                        <div>
+                          <pre class="prettyprint"><code>evothings.eddystone.stopScan();</code></pre>
+                        </div>
+                      </section>
+                      <dl class="dl-compact">
+                      </dl>
             </section>
             <h2>Abstract types</h2>
             <section>
@@ -383,7 +459,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 10, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on March 10, 2016.
       </p>
     </div>
   </footer>

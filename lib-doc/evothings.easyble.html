@@ -26,7 +26,7 @@
           <header class="page-header">
             <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-static">static</span></div>
             <h1><small><a href="evothings.html">evothings</a>.<wbr></small><span class="symbol-name">easyble</span></h1>
-            <p class="source-link">Source: <a href="easyble_easyble.js.html#source-line-15">easyble/<wbr>easyble.<wbr>js:15</a></p>
+            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_easyble_easyble.js.html#source-line-15">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>easyble/<wbr>easyble.<wbr>js:15</a></p>
             <div class="symbol-description">
               <p>Library for making BLE programming easier.</p>
               <p>It is safe practise to call function <a href="evothings.html#.scriptsLoaded">evothings.scriptsLoaded</a> to ensure dependent libraries are loaded before calling functions in this library.</p>
@@ -112,32 +112,35 @@
               <div class="summary-content">
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="evothings.easyble.html#.AdvertisementData">AdvertisementData</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="evothings.easyble.html#.connectCallback">connectCallback(device)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.easyble.html#.dataCallback">dataCallback(data)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.html#.emptyCallback">emptyCallback()</a></dt>
-                    <dd>
-                    </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="evothings.easyble.html#.emptyCallback">emptyCallback()</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="evothings.easyble.html#.failCallback">failCallback(errorString)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.easyble.html#.rssiCallback">rssiCallback(rssi)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.html#.scanCallback">scanCallback(device)</a></dt>
-                    <dd>
-                    </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="evothings.easyble.html#.scanCallback">scanCallback(device)</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="evothings.easyble.html#.servicesCallback">servicesCallback(device)</a></dt>
                     <dd>
                     </dd>
@@ -328,6 +331,111 @@
             </section>
             <h2>Abstract types</h2>
             <section>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".AdvertisementData"><span class="symbol-name">AdvertisementData</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Information extracted from a scanRecord. Some or all of the fields may be undefined. This varies between BLE devices. Depending on OS version and BLE device, additional fields, not documented here, may be present.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>kCBAdvDataLocalName</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The device's name. Use this field rather than device.name, since on iOS the device name is cached and changes are not reflected in device.name.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>kCBAdvDataTxPowerLevel</p>
+                      </td>
+                      <td>
+                        <p>number</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Transmission power level as advertised by the device.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>kCBAdvDataIsConnectable</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>True if the device accepts connections. False if it doesn't.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>kCBAdvDataServiceUUIDs</p>
+                      </td>
+                      <td>
+                        <p>array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Array of strings, the UUIDs of services advertised by the device. Formatted according to RFC 4122, all lowercase.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>kCBAdvDataServiceData</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Dictionary of strings to strings. The keys are service UUIDs. The values are base-64-encoded binary data.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>kCBAdvDataManufacturerData</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Base-64-encoded binary data. This field is used by BLE devices to advertise custom data that don't fit into any of the other fields.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
               <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
               <h3 id=".connectCallback"><span class="symbol-name">connectCallback</span><span class="signature"><span class="signature-params">(device)</span></span></h3>
               <p>Called when successfully connected to a device.</p>
@@ -547,7 +655,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 10, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on March 10, 2016.
       </p>
     </div>
   </footer>

@@ -4,7 +4,7 @@
 <head>
   <meta name="generator" content="JSDoc 3.4.0">
   <meta charset="utf-8">
-  <title>Source: nordic-nRF51822-ble/nordic-nRF51822-ble.js</title>
+  <title>Source: evothings-libraries/libs/evothings/rfduinoble/rfduinoble.js</title>
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
@@ -26,22 +26,23 @@
         </div>
         <div id="jsdoc-main" role="main">
           <header class="page-header">
-            <h1>Source: nordic-nRF51822-ble/nordic-nRF51822-ble.js</h1>
+            <h1>Source: evothings-libraries/libs/evothings/rfduinoble/rfduinoble.js</h1>
           </header>
           <article>
-            <pre class="prettyprint linenums"><code>// File: nordic-ble.js
+            <pre class="prettyprint linenums"><code>// File: rfduinoble.js
 
 // Load dependent library EasyBLE.
-evothings.loadScript(&#x27;libs/evothings/easyble/easyble.js&#x27;);
+evothings.loadScript(&#x27;libs/evothings/easyble/easyble.js&#x27;)
 
 /**
  * @namespace
- * @description &amp;lt;p&gt;Functions for communicating with a Nordic BLE device.&amp;lt;/p&gt;
+ * @author Patrik D.
+ * @description &amp;lt;p&gt;Functions for communicating with an RFduino board.&amp;lt;/p&gt;
  * &amp;lt;p&gt;It is safe practise to call function {@link evothings.scriptsLoaded}
  * to ensure dependent libraries are loaded before calling functions
  * in this library.&amp;lt;/p&gt;
  */
-evothings.nordicble &#x3D; {};
+evothings.rfduinoble &#x3D; {};
 
 ;(function()
 {
@@ -52,40 +53,27 @@ evothings.nordicble &#x3D; {};
 	 * Stops any ongoing scan and disconnects any connected devices.
 	 * @public
 	 */
-	evothings.nordicble.close &#x3D; function()
+	evothings.rfduinoble.close &#x3D; function()
 	{
 		evothings.easyble.stopScan();
 		evothings.easyble.closeConnectedDevices();
 	};
 
 	/**
-	 * Called when you have connected to a Nordic board.
-	 * @callback evothings.nordicble.connectsuccess
-	 * @param {evothings.nordicble.ArduinoBLEDevice} device -
+	 * Called when you have connected to the board.
+	 * @callback evothings.rfduinoble.connectsuccess
+	 * @param {evothings.rfduinoble.RFduinoBLEDevice} device -
 	 * The connected BLE shield.
 	 */
 
 	/**
-	 * Connect to the Nordic board.
-	 * @param {evothings.nordicble.connectsuccess} success -
+	 * Connect to an RFduino board.
+	 * @param {evothings.rfduinoble.connectsuccess} success -
 	 * Success callback: success(device)
 	 * @param {function} fail - Error callback: fail(errorCode)
-	 * @example
-	 * evothings.nordicble.connect(
-	 *   &#x27;LedButtonDemo&#x27;, // BLE name
-	 *   function(device)
-	 *   {
-	 *     console.log(&#x27;connected!&#x27;);
-	 *     device.writeDataArray(new Uint8Array([1]));
-	 *     evothings.nordicble.close();
-	 *   },
-	 *   function(errorCode)
-	 *   {
-	 *     console.log(&#x27;Error: &#x27; + errorCode);
-	 *   });
 	 * @public
 	 */
-	evothings.nordicble.connect &#x3D; function(deviceName, success, fail)
+	evothings.rfduinoble.connect &#x3D; function(deviceName, success, fail)
 	{
 		evothings.easyble.startScan(
 			function(device)
@@ -94,6 +82,7 @@ evothings.nordicble &#x3D; {};
 				if (device.name &#x3D;&#x3D; deviceName)
 				{
 					evothings.easyble.stopScan();
+					console.log(&#x27;connectToDevice&#x27;);
 					internal.connectToDevice(device, success, fail);
 				}
 			},
@@ -112,7 +101,6 @@ evothings.nordicble &#x3D; {};
 		device.connect(
 			function(device)
 			{
-				console.log(&#x27;connected!&#x27;);
 				// Get services info.
 				internal.getServices(device, success, fail);
 			},
@@ -148,22 +136,22 @@ evothings.nordicble &#x3D; {};
 	internal.addMethodsToDeviceObject &#x3D; function(device)
 	{
 		/**
-		 * Object that holds info about a Nordic device.
-		 * @namespace evothings.nordicble.NordicBLEDevice
+		 * Object that holds info about an RFduino device.
+		 * @namespace evothings.rfduinoble.RFduinoBLEDevice
 		 */
 
 		/**
 		 * @function writeDataArray
-		 * @description Write data to a Nordic board.
+		 * @description Write data to an RFduino.
 		 * @param {Uint8Array} uint8array - The data to be written.
-		 * @memberof evothings.nordicble.NordicBLEDevice
+		 * @memberof evothings.rfduinoble.RFduinoBLEDevice
 		 * @instance
 		 * @public
 		 */
 		device.writeDataArray &#x3D; function(uint8array)
 		{
 			device.writeCharacteristic(
-				&#x27;00001525-1212-efde-1523-785feabcd123&#x27;,
+				&#x27;00002222-0000-1000-8000-00805f9b34fb&#x27;,
 				uint8array,
 				function()
 				{
@@ -172,39 +160,6 @@ evothings.nordicble &#x3D; {};
 				function(errorCode)
 				{
 					console.log(&#x27;writeCharacteristic error: &#x27; + errorCode);
-				});
-		};
-
-		/**
-		 * @function setNotification
-		 * @description Set a notification callback.
-		 * @param {Uint8Array} uint8array - The data to be written.
-		 * @memberof evothings.nordicble.NordicBLEDevice
-		 * @instance
-		 * @public
-		 */
-		device.setNotification &#x3D; function(callback)
-		{
-			// Debug logging.
-			//console.log(&#x27;setNotification&#x27;);
-
-			// Must write this descriptor value to enable enableNotification().
-			// Yes, it&#x27;s weird.
-			// Without it, enableNotification() fails silently;
-			// we never get the data we should be getting.
-			device.writeDescriptor(&#x27;00001524-1212-efde-1523-785feabcd123&#x27;,
-				&#x27;00002902-0000-1000-8000-00805f9b34fb&#x27;,
-				new Uint8Array([1,0]),
-				function() {
-					console.log(&#x27;writeDescriptor success&#x27;);
-				}, function(errorCode) {
-					console.log(&#x27;writeDescriptor error: &#x27; + errorCode);
-				});
-
-			device.enableNotification(&#x27;00001524-1212-efde-1523-785feabcd123&#x27;,
-				callback,
-				function(errorCode) {
-					console.log(&#x27;enableNotification error: &#x27; + errorCode);
 				});
 		};
 	};
@@ -219,7 +174,7 @@ evothings.nordicble &#x3D; {};
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on February 10, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on March 10, 2016.
       </p>
     </div>
   </footer>
