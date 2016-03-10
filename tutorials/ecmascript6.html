@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: ecmascript6.html
+Description: Evothings Getting Started documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>ECMAScript 6</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+
+<div class="evo-content-box">
+
+<h1>ECMAScript 6</h1>
+
+<p>Support for ECMAScript 6 is new in Evothings Studio 2.1.0, currently available as an early release for testers and enthusiasts. <a href="https://evothings.com/download/">Download Evothings Studio 2.1.0-alpha</a>.</p>
+
+<h2>Next generation of JavaScript</h2>
+
+<p>ECMAScript 6, also called ECMAScript 2015 or simply ES6, is the next generation JavaScript.</p>
+
+<p>To learn what is new in ES6, read more here:</p>
+
+<ul>
+<li><a href="https://github.com/lukehoban/es6features" target="_blank">Overview of new features in ES6</li>
+<li><a href="http://es6-features.org/" target="_blank">Overview and comparison between ES6 and ES5</a> (ES5 is the currently widely supported JavaScript standard).</li>
+<li>If you want to take a deep dive into the language, have a look at the <a href="http://www.ecma-international.org/ecma-262/6.0/" target="_blank">ECMAScript 2015 language specification</a>.</li>
+</ul>
+
+<h2>Support for ES6 in Evothings Studio</h2>
+
+<p>Currently, the Web View components used in hybrid apps (such as Cordova apps) do not support ES6 out of the box. The solution is to translate ES6 to ES5. In Evothings Studio, this is done when clicking the Run button (this is new in Evothings Studio 2.1.0).</p>
+
+<p>When clicking Run in the Workbench, the app is built and ECMAScript 6 code is translated to regular JavaScript code (ECMAScript 5).</p>
+
+<h2>Application file structure</h2>
+
+<p>There are two main folders in apps that use ES6. The folder <strong><code>app</code></strong> contains the source code for your app (ES6). Folder <strong><code>www</code></strong> is the output folder that contains the generated code (ES5).</p>
+
+<p>Here is an overview of the file layout for an app:</p>
+
+<pre>my-app
+  app
+    index.html
+    app.js (ES6)
+    libs (JS libraries)
+    ui (CSS and images)
+  www
+    index.html
+    app.js (ES5)
+    libs
+    ui
+  evothings.json
+  app-icon.png</pre>
+
+<p>Folders app and www are identical except that .js files are translated. Folders <code>libs</code> and <code>ui</code>, are just examples, you are free to use any file layout in the <code>app</code> folder.</p>
+
+<h2>Adding a project to Evothings Workbench</h2>
+
+<p>When you want to add an existing project to Evothings Workbench, just drag the folder containing the evothings.json file to the Workbench windows. Or drag the evothings.json file.</p>
+
+<p>This is useful if have removed the app from the Workbench window, or if you get an app from e colleague or friend.</p>
+
+<p>To share the source code of your app with someone else, zip the files and add an instruction to drag the unzipped folder into the Workbench window.</p>
+
+<h2>ES6 is not allowed in HTML files</h2>
+
+<p><strong>Note that any JavaScript code embedded in index.html, or other HTML files, is not translated to ES6!</strong> Only external .js files are translated.</p>
+
+<h2>Error messages</h2>
+
+<p><strong>Any runtime error messages shown in the Tools window in the Workbench will refer to line numbers in the generated code in folder <code>www</code>!</strong> It is easy to be confused by this when debugging apps.</p>
+
+<p>Any build error messages are displayed in the Workbench, when clicking Run. These refer to the ES6 files in folder <code>app</code>.</p>
+
+<h2>Settings file</h2>
+
+<p>Settings for the build system are in file <code>evothings.json</code>.</p>
+
+<p>Overview of settings:</p>
+<ul>
+	<li><strong>app-dir:</strong> Application directory.</li>
+	<li><strong>www-dir:</strong> Build output directory.</li>
+	<li><strong>index-file:</strong> Main HTML file in application directory. This file will be loaded in Evothings Viewer when clicking Run in the Workbench.</li>
+	<li><strong>dont-build:</strong> Array of subdirectories in the application directory that should not be processed, these directories are copied verbatim to the output directory. This setting is optional, but is very useful when using 3:rd party libraries that should not be translated.</li>
+	<li><strong>app-uuid:</strong> UUID for the app.</li>
+	<li><strong>app-icon:</strong> App icon file name.</li>
+</ul>
+
+<p>Sample evothings.json file:</p>
+
+<pre>{
+  "app-dir": "app",
+  "www-dir": "www",
+  "index-file": "index.html",
+  "dont-build": ["libs", "ui"],
+  "app-uuid" :"fe860e6e-d35e-4bd0-831a-7703cc2f8d01",
+  "app-icon" :"app-icon.png"
+}</pre>
+
+
+<h2>Use ES6 with Cordova apps</h2>
+
+<p>When building a native app with Cordova, you can use ES6 while developing the app in Evothings Workbench and Evothings Viewer. When ready to deploy the app, build it with Cordova.</p>
+
+<p>The file structure of a Cordova app matches the file structure of the Evothings project, so you can have the files for both Cordova and Evothings in one folder.</p>
+
+<p>Here is sample layout for an Evothings/Cordova app:</p>
+
+<pre>my-app
+  app (application source code)
+  www (generated code, Cordova application folder)
+  hooks (Cordova hooks)
+  plugins (Cordova plugins)
+  platform (Cordova native builds)
+  config.xml (Cordova config file)
+  evothings.json (Evothings config file)
+  app-icon.png (Evothings application icon)</pre>
+
+<p>The compatible file layout makes it easy to develop Cordova apps using Evothings Studio.</p>
+
+<h2>Get started in 5 minutes</h2>
+
+<p><a href="https://evothings.com/download/">Download Evothings Studio 2.1.0-alpha</a> and get started within minutes. It is fun and easy!</p>
+<p>Ask questions and discuss IoT app development on Gitter:
+<a href="https://gitter.im/evothings/evothings" target="_blank">gitter.im/evothings/evothings</a></p>
+</div><!-- evo-content-box -->
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
