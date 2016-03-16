@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: faq.html
+Description: Evothings FAQ documentation.
+Author: Göran Krampe
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Evothings FAQ</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+
+<div class="evo-box evo-content-index">
+	<script src="../js/include-evothings-logo.js"></script>
+	<a href="#introduction">Introduction</a><br/>
+	<a href="#connection-problem">Why can't my app connect to my server?</a><br/>
+</div>
+
+<div id="introduction" class="evo-box">
+	<h1>Frequently Asked Questions</h1>
+
+	<p>This page contains a series of questions and their answers that our users tend to bump into more often than others.</p>
+
+</div>
+
+<div id="connnection-problem" class="evo-box">
+	<h2>Why can't my app connect to my server?</h2>
+	<p>Evothings applications running in the viewer are served over HTTPS from our proxy servers in the cloud. This means any connections made from the application <strong>must</strong> be secure. Your application <strong>must</strong> use HTTPS or WSS (Secure Web Sockets) with the server presenting <strong>proper</strong> (not self signed) certificates.</p>
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
