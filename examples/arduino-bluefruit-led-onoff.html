@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-led-onoff-wifi.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2013-2014 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Arduino Bluefruit LED On/Off Example</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<h1>Arduino Bluefruit LED On/Off BLE</h1>
+
+	<p><b>Control The Arduino From An App Using BLE. </b>This example shows you how to make an app that controls an Arduino board and lights up an LED.</p>
+	<p>Communication with the Arduino is made using Bluetooth Low Energy (BLE) through <strong>Adafruit's Bluefruit LE UART Friend</strong> board.</p>
+
+	<img class="img-example-screenshot" src="images/arduino-bluefruit-led-onoff-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<h2>Source code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/evothings-examples/tree/2.1.0-alpha/examples/arduino-bluefruit-led-onoff">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/2.1.0-alpha/examples/arduino-bluefruit-led-onoff/app/index.html">index.html</a> is the entry point of the app.
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/2.1.0-alpha/examples/arduino-bluefruit-led-onoff/arduino/Bluefruit_LE_LED_on_off.ino">Bluefruit_LE_LED_on_off.ino</a> contains the Arduino BLE server code that listens for commands from the app.</p>
+</div>
+
+<div class="evo-box">
+	<h2>What you need</h2>
+
+	<p>This example runs in Evothings Viewer on Android or iOS.</p>
+
+	<p>You need to run the example in Evothings Viewer. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble.</p>
+
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. In addition Android 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart Evothings Viewer.</p>
+
+	<p>For the Arduino setup, you need:</p>
+	<ul>
+		<li>LED</li>
+		<li>A <strong>220Ω</strong> resistor</li>
+		<li>Bluefruit LE UART Friend board</li>
+		<li>Install Adafruit's library in the Arduino IDE library folder. You can download it from <a href="https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend/software">Adafruit's website</a>.</li>
+	</ul>
+
+	<p>Here is the sketch:</p>
+	<img class="img-example-arduino-sketch" src="images/arduino-bluefruit-led-onoff-sketch.png"/>
+
+	<p>The LED is connected to pin 5.<br />The Bluefruit board is connected as follows (default configuration):</p>
+	<ul>
+		<li><strong>CTS</strong> on <strong>pin 11</strong></li>
+		<li><strong>TXO</strong> on <strong>pin 10</strong></li>
+		<li><strong>RXI</strong> on <strong>pin 9</strong></li>
+		<li><strong>VIN</strong> on <strong>5V</strong></li>
+		<li><strong>GND</strong> on <strong>GND</strong></li>
+	</ul>
+	<p>The <strong>MOD</strong> and <strong>RTS</strong> pins are not used in this example.</p>
+</div>
+
+<div class="evo-box">
+	<h2>How to get up and running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Wire up the Arduino board.</li>
+		<li>Open <strong>Bluefruit_LE_LED_on_off.ino</strong> in the Arduino development tool.</li>
+		<li>Upload the program to the Arduino.</li>
+		<li>Run Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run Evothings Viewer on an iOS or Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example <strong>Arduino Bluefruit LE UART Friend LED On/Off</strong> from the Workbench window.</li>
+		<li>Follow on-screen instructions in the app.</li>
+		<li>If everything works, you should now be able to turn the LED on and off using the buttons in the app. If it does not work, check your wiring and that the right pins are used (remember <strong>pin 5</strong> is used for output).</li>
+		<li>Now you can proceed with making your own sketch designs and add more buttons to the app.</li>
+	</ul>
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
