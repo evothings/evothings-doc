@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: mbed-custom-gatt-webbluetooth.html
+Description: ARM mbed example for the Nordic nRF51 DK board.
+Copyright (c) 2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>mbed Custom GATT Web Bluetooth</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+
+	<h1>mbed Custom GATT Web Bluetooth</h1>
+
+	<p>
+		This example shows you how to use Web Bluetooth to communicate with an mbed program to toggles a LED on the <a href="https://www.nordicsemi.com/eng/Products/nRF51-DK">Nordic Semiconductor nRF51 DK</a> using a mobile application. Note that this app should work with any mbed compatible BLE hardware.
+	</p>
+
+	<img class="img-example-screenshot" src="images/mbed-custom-gatt-webbluetooth-screenshot.png"/>
+
+</div>
+
+<div class="evo-box">
+
+	<h2>Source code</h2>
+
+	<p>The mbed source code for this example is found at the <a href="http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/">mbed.org web site</a>. There you will also find a tutorial for the mbed program.</p>
+
+	<p>The source code for the mobile application is provided with the Evothings Studio download. You can browse the HTML/JS code online at the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/mbed-custom-gatt-webbluetooth">Evothings GitHub repository</a>.</p>
+
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/mbed-custom-gatt-webbluetooth/app/index.html">index.html</a> contains the HTML markup and the file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/mbed-custom-gatt-webbluetooth/app/app.js">app.js</a> contains the application logic. Note that the code is written in ECMAScript 6.</p>
+
+</div>
+
+<div class="evo-box">
+
+	<h2>What you need</h2>
+
+	<p>This example runs in Evothings Viewer on Android or iOS.</p>
+
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android, version 4.3 or later is needed.</p>
+
+	<p>You need the <a href="https://www.nordicsemi.com/eng/Products/nRF51-DK">Nordic Semiconductor nRF51 DK</a> or a another mbed compatible device (we have tested this example with the nRF51).</p>
+
+</div>
+
+<div class="evo-box">
+
+	<h2>Building the mbed program</h2>
+
+	<p>Source code and information about the mbed program is available at the <a href="http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/">mbed.org web site</a>.</p>
+
+	<p>Summary of how to build and install the mbed program:</p>
+	<ul>
+		<li>Log in to the online mbed IDE at: <a href="http://mbed.org">mbed.org</a> (sign up if you don't have an account).</li>
+		<li>Go to the <a href="https://developer.mbed.org/platforms/Nordic-nRF51-DK/">Nordic nRF51 platform page</a>.</li>
+		<li>Click "Add to your mbed Compiler".</li>
+		<li>Go to the <a href="http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/">page for the example program</a>.</li>
+		<li>Click "Import this program", this will open the mbed online compiler/IDE.</li>
+		<li>When you have finished importing the program, click the "Compile" button in the mbed IDE.</li>
+		<li>You will now be prompted to download the compiled program.</li>
+		<li>Next step is to install the downloaded program on the nRF51 board.</li>
+		<li>Install the <a href="https://www.segger.com/jlink-software.html">Segger J-Link drivers</a>.</li>
+		<li>Connect the Nordic board to your computer using USB - it should mount as a drive.</li>
+		<li>Drag the compiled program file to the Nordic board - your program now runs on the board.</li>
+		<li>You may see messages saying that the device was not disconnected properly, that is because it automatically unmounts and mounts again. You should not have to worry about any such messages. If you experience problems try to unplug the board and plug in again to mount and restart the program.</li>
+	</ul>
+
+	<p>Also check out the <a href="https://www.youtube.com/watch?v=L5TcmFFD0iw">mbed quick start video</a> on YouTube.</p>
+
+	<p>Related information is available in this <a href="https://evothings.com/how-to-turn-a-nordic-semiconductor-nrf51-dk-into-a-discoverable-beacon-using-mbed/">tutorial for Nordic Semiconductor nRF51 DK</a>.</p>
+</div>
+
+<div class="evo-box">
+	<h2>How to run the mobile app</h2>
+
+	<p>Follow these steps to run the mobile app for this example:</p>
+	<ul>
+		<li>Run Evothings Workbench on your desktop/laptop computer.</li>
+		<li>Run Evothings Viewer on an iOS or Android mobile device and connect to the Workbench.</li>
+		<li>Launch the example "mbed Custom GATT WebBluetooth" from the Workbench window.</li>
+		<li>Follow on-screen instructions in the app. Note that the device name in the text field must match the name set in the mbed program. Otherwise the app won't be able to find the board.</li>
+		<li>Tap connect, and when connected use Toggle LED to turn on and off the LED.</li>
+	</ul>
+</div>
+
+<div class="evo-box">
+	<h2>Learn more about Web Bluetooth an ECMAScript 6</h2>
+
+	<p>The tutorial <a href="https://evothings.com/evothings-studio-with-support-for-web-bluetooth-and-ecmascript-6/">Evothings Studio 2.1 alpha with support for Web Bluetooth and ECMAScript 6</a> provides further details about Web Bluetooth.</p>
+
+	<p>Read more about ECMAScript 6 on the <a href="https://evothings.com/doc/tutorials/ecmascript6.html">ECMAScript 6 documentation page</a>.</p>
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
