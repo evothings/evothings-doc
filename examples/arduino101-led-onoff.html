@@ -22,28 +22,54 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-box">
 	<h1>Arduino/Genuino 101 LED On/Off BLE</h1>
 
-	<p>TODO</p>
+	<p><b>Control the LED on port 13 over a Bluetooth Low Energy connection.</b></p> This example shows how to make an app that can turn on and off the LED attached to port 13 on the Arduino/Genuino 101 development board.
 
-	<img class="img-example-screenshot" src="images/arduino-led-onoff-ble-screenshot.png"/>
+	<img class="img-example-screenshot" src="images/arduino101-ble-screenshot.png"/>
+
 </div>
 
 <div class="evo-box">
 	<h2>Source code</h2>
 
-	<p>TODO</p>
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/evothings-examples/tree/master/examples/arduino101-led-onoff">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino101-led-onoff/app/index.html">index.html</a> contains the entire mobile application.
+
+	<p>The example make use of the example sketch <a href="https://github.com/01org/corelibs-arduino101/blob/master/libraries/CurieBLE/examples/LED/LED.ino">LED.ino</a> from the CurieBLE library.</p>
 
 </div>
 
 <div class="evo-box">
 	<h2>What you need</h2>
 
-	<p>TODO</p>
+	<p>This example runs in Evothings Viewer on Android or iOS.</p>
+
+	<p>You need to run the example in Evothings Viewer. Alternatively, you can make a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble. Read more in the documentation of the <a href="../studio/evothings-viewer.html">Evothings Viewer</a>.</p>
+
+	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. In addition Android 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart Evothings Viewer and/or reset Bluetooth on the device.</p>
+
+	<p>
+	You also need an <a href="https://www.arduino.cc/en/Main/ArduinoBoard101">Arduino/Genuino 101</a> board.
+	</p>
 </div>
 
 <div class="evo-box">
 	<h2>How to get up and running</h2>
 
-	<p>TODO</p>
+	<p>
+	There is a longer article covering this example available at <a href="https://www.hackster.io/inmyorbit/build-your-own-app-that-connects-to-arduino-genuino-101-e55dfe">Hackster.io</a>.
+	</p>
+
+		<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Compile and upload the <i>File -> Examples -> CurieBLE -> LED</i> example to the board.</li>
+		<li>Check the back of your card and note the four last characters on the square sticker containing a QR-code and a character string (see image below). These will be used in order to identify your board among other BLE devices.</li>
+		<li>Open the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino101-led-onoff/app/index.html#L98">index.html</a> and replace the four last characters in the string <i>GENUINO 101-1DD5</i> with the characters noted in previous step.</li>
+		<li>Now you should be able to connect to your board and turn on and of the LED over a BLE connection.</li>
+	</ul>
+
+	<img class="img-example-arduino-sketch" src="images/arduino101-back.jpg"/>
 </div>
 
 <script src="../js/include-page-footer.js"></script>
