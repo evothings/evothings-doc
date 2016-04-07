@@ -52,6 +52,20 @@ Copyright (c) 2016 Evothings AB
 	<p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android version 4.3 or later is needed. Please note that BLE support on Android is still not fully mature. As a result, you may experience difficulties running this example. If the app stops working, restart Evothings Viewer and/or reset Bluetooth on the device.</p>
 
 	<p>You also need a <a href="https://www.microbit.co.uk">Microbit</a> device.</p>
+	
+	<h3>Pairing up</h3>
+
+  <p>Here are some things you need to know about how to connect your micro:bit. First of all, a micro:bit is meant for operations in schools and other environments that need to be safe, and where it's possible that there are a lot of micro:bits transmitting at the same time. As a precaution, a micro:bit will therefore whitelist any paired devices, so any device without a bond won’t be able to connect. Period.  Also note that when a device has no bonds, it won’t even bother advertising. Once it has created one or more bonds to other devices, it will advertise anonymously as "BBC micro:bit". It also means that encryption is required at all times.</p>
+
+<ul>
+<li>Pairing app for <a href="https://play.google.com/store/apps/details?id=com.samsung.microbit">Android</a></li><br />
+<li>Pairing app for <a href="https://itunes.apple.com/gb/app/micro-bit/id1092687276?mt=8">iOS</a></li>
+</ul>
+
+<p>The actual pairing can be carried out using the "offical" micro:bit mobile app, graciously provided by Samsung. Pairing is only permitted in a special pairing mode, which you enter by holding down both buttons on each side of the LED screen (called A & B), and pressing reset with your other fingers, or nose. The 5x5 LED screen will say "PAIRING MODE" and show a pattern, which is copied by hand to the pairing view inside the micro:bit app on Android or iOS. Follow the rest of the on-screen instructions to pair up your micro:bit and your phone.</p>
+<p>Micro:bit now advertises as BBC micro:bit[xxxxx], where xxxxx is a friendly name.</p>
+
+<i>Note; You can of course make your own firmware using ARM's mbed framework which has less tight security in place. This and other tools for embedded development can be found on <a href="https://www.microbit.co.uk">BBCs official site for the Micro:bit</a></i>.
 </div>
 
 <div class="evo-box">
@@ -59,6 +73,7 @@ Copyright (c) 2016 Evothings AB
 
 	<p>Follow these steps to get started with this example:</p>
 	<ul>
+    <li>First make sure your micro:bit is paired according to the instructions above.</li>
 		<li>Launch the Evothings Workbench on your desktop/laptop computer.</li>
 		<li>Launch Evothings Viewer on an Android mobile device and connect to the Workbench.</li>
 		<li>Run the example "Microbit Sensors" from the Workbench window.</li>
