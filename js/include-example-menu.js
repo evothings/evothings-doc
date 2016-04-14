@@ -27,6 +27,7 @@ document.write(
 	+	'<a href="../examples/arduino-led-onoff-ble.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;BLE</a><br/>'
 	+	'<a href="../examples/arduino-ble.html">Arduino&nbsp;BLE</a><br/>'
 	+	'<a href="../examples/arduino-scriptable-tcp.html">Arduino&nbsp;Scriptable&nbsp;TCP</a><br/>'
+	+	'<a href="../examples/arduino101-led-onoff.html">Arduino&nbsp;101&nbsp;LED&nbsp;On/Off&nbsp;BLE</a><br/>'
 
 	+	'<a href="../examples/redbearlab-simplecontrol.html">RedBearLab&nbsp;Simple&nbsp;Control</a><br/>'
 	+	'<a href="../examples/redbearlab-simplechat.html">RedBearLab&nbsp;Simple&nbsp;Chat</a><br/>'
@@ -37,5 +38,6 @@ document.write(
 	+	'<a href="../examples/lightbluebean-basic.html">LightBlue&nbsp;Bean&nbsp;Basic</a><br/>'
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino&nbsp;Led&nbsp;On/Off</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno&nbsp;Hello&nbsp;World</a><br/>'
+	+	'<a href="../examples/rpi3-system-information.html">RPi&nbsp;3&nbsp;-&nbsp;System&nbsp;Information</a><br/>'
 
 	+ '</div>')
