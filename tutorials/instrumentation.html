@@ -206,6 +206,37 @@ A great way to get questions answered is our gitter forum, which can be found he
 <a href="https://gitter.im/evothings/evothings" target="_blank">gitter.im/evothings/evothings</a></p>
 </div><!-- evo-content-box -->
 
+
+<script>
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+var utmz = readCookie('__utmz'); //using a cookie reading function
+var vals = (function() {
+        var pairs = utmz.split('.').slice(4).join('.').split('|');
+        var ga = {};
+        for (var i = 0; i < pairs.length; i++) {
+            var temp = pairs[i].split('=');
+                ga[temp[0]] = temp[1];
+        }
+        return ga;
+    })();
+
+var res = vals();
+console.log('---------------- cookie results ---------------------')
+console.dir(res)
+
+</script>
+
 <script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->
 </div><!-- evo-page -->
