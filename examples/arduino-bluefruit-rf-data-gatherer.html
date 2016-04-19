@@ -4,49 +4,1494 @@
 File: arduino-bluefruit-rf-data-gatherer.html
 Description: Example documentation.
 Author: Alexis Lindgren
-Copyright (c) 2016 Evothings AB
+Copyright (c) 2013-2014 Evothings AB
 -->
 <head>
-<meta charset="utf-8">
-<script src="../js/include-head.js"></script>
-<title>Arduino Bluefruit RF Data Gatherer</title>
+    <meta charset="utf-8">
+    <script src="../js/include-head.js"></script>
+    <title>Arduino Bluefruit RF Data Gatherer Example</title>
+    <link rel="stylesheet" href="../css/evo-doc.css">
+    <style>
+    html, body {
+		width: 100%;
+	}
+
+	.code {
+		font-size: 14px;
+		font-family: "Courier New", Courier, monospace;
+		border: solid 1px black;
+		margin: 3px;
+		padding: 5px;
+	}
+
+	#chip {
+		width: 150px;
+		position: relative;
+		float: left;
+		margin-right: 5px;
+	}
+
+	#rf {
+		display: inline-block;
+	}
+
+	#rf img {
+		width: 50%;
+		float: left;
+	}
+
+	.schematic {
+		width: 70%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+    </style>
 </head>
 
 <body>
 
 <div class="evo-page">
-<script src="../js/include-page-header.js"></script>
-<div class="evo-content">
-<script src="../js/include-example-menu.js"></script>
+    <script src="../js/include-page-header.js"></script>
+    <div class="evo-content">
+        <script src="../js/include-example-menu.js"></script>
 
-<div class="evo-box">
-	<h1>Arduino Bluefruit RF Data Gatherer</h1>
+        <div class="evo-box">
+            <h1>Arduino Bluefruit RF Data Gatherer</h1>
 
-	<p><b>Gather Data from The Arduino Bluefruit Using BLE.</b> TODO: Write documentation. Change screenshot.</p>
+            <h2>Introduction</h2>
 
-	<img class="img-example-screenshot" src="images/arduino-bluefruit-led-onoff-screenshot.png"/>
-</div>
+            <img id="chip" src="images/arduino-bluefruit-rf-data-gatherer/Bluefruit_LE_UART.png"/>
 
-<div class="evo-box">
-	<h2>Source code</h2>
+            <p>In this project you will learn how to use <strong>Adafruit's Bluefruit LE UART Friend</strong>, a
+                <strong>Bluetooth Low Energy</strong> chip and <strong>Evothings Workbench</strong> to send data back
+                and forth between an <strong>Arduino Uno</strong> and your <strong>Smartphone</strong>. The
+                Arduino itself will gather data from other Arduinos, linked together by <strong>433 MHz
+                    transmitter-receiver modules</strong>, which have the advantage of being very cheap. In this
+                tutorial, we will use <strong>photocells</strong> to measure the luminosity in different rooms and
+                detect if the lights are on or off, but you can use any type of sensor, for example humidity or
+                temperature sensors. The code I will share with you is made so that you can easily alter it to suit your
+                own projects.</p>
 
-	<p>TODO: Write documentation</p>
-</div>
+            <p>The "mother" Arduino, the one gathering the data, will send request to each of the transmitter Arduinos,
+                one at a time. Upon reception, the receiver Arduino will measure the luminosity and send back the data.
+                This ensures that the data doesn't get mixed up, because we are using the same frequency (433 MHz) for
+                every Arduino.</p>
 
-<div class="evo-box">
-	<h2>What you need</h2>
+            <p>I will use 3 transmitter Arduinos, but you can use as many as you want !</p>
+        </div>
 
-	<p>TODO: Write documentation</p>
-</div>
+        <div class="evo-box">
+            <h2>Source code</h2>
 
-<div class="evo-box">
-	<h2>How to get up and running</h2>
+            <p>You can browse the source code for this example at the
+                <a href="https://github.com/evothings/evothings-examples/tree/2.1.0-alpha/examples/arduino-bluefruit-rf-data-gatherer">
+                    Evothings GitHub repository</a></p>
 
-	<p>TODO: Write documentation</p>
-</div>
+            <p>The file
+                <a href="https://github.com/evothings/evothings-examples/blob/2.1.0-alpha/examples/arduino-bluefruit-rf-data-gatherer/app/index.html">index.html</a>
+                is the entry point of the app.
 
-<script src="../js/include-page-footer.js"></script>
-</div><!-- evo-page-content -->
+            <p>The files
+                <a href="https://github.com/evothings/evothings-examples/blob/2.1.0-alpha/examples/arduino-bluefruit-rf-data-gatherer/arduino/transmitter/Transmitter.ino">Transmitter.ino</a>
+                and
+                <a href="https://github.com/evothings/evothings-examples/blob/2.1.0-alpha/examples/arduino-bluefruit-rf-data-gatherer/arduino/receiver/Receiver.ino">Receiver.ino</a>
+                contain the Arduino codes that gather data and listen for commands from the app.</p>
+        </div>
+
+        <div class="evo-box">
+            <h2>What you will need</h2>
+
+            <p>This example runs in Evothings Viewer on Android or iOS.</p>
+
+            <p>You need to run the example in Evothings Viewer. Alternatively, you can make a Cordova application if you
+                wish to distribute the app. You then need to include the Cordova plugin com.evothings.ble.</p>
+
+            <p>An iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. In
+                addition Android 4.3 or later is needed. Please note that BLE support on Android is still not fully
+                mature. As a result, you may experience difficulties running this example. If the app stops working,
+                restart Evothings Viewer.</p>
+
+            For this project you will need the following:
+            <ul>
+                <li>A Bluetooth Low Energy chip, for example Adafruit's Bluefruit LE UART Friend which I will be using
+                    here
+                </li>
+                <li>At least 2 Arduinos</li>
+                <li>A pair of 433 MHz RF transmitter and receiver per Arduino (so at least 2 transmitters and 2
+                    receivers)
+                </li>
+                <li>A sensor, as I said I will be using photocells but you can use any compatible type of sensor</li>
+                <li>Wires</li>
+            </ul>
+
+            <i>Optional:</i>
+            <ul>
+                <li>If you are using photocells, you will need a 10k Ω resistor. In some cases you may need to use a 1k
+                    Ω resistor, I will explain this later on
+                </li>
+                <li>A LED and a 220 Ω resistor per transmitter Arduino (they will be connected to the "mother" Arduino
+                    and will light up when the corresponding light is on
+                </li>
+            </ul>
+        </div>
+
+        <div class="evo-box">
+            <h2>Part 1: Soldering</h2>
+
+            <p>The first thing you need to do is to add an antenna on the transmitter and receiver modules. A 30 cm long
+                wire will do the trick. Simply solder it in the hole marked as <strong>ANT</strong>. You will need to
+                coil the one on the receiver for better reception, just wrap it around a pen.</p>
+
+            <div id="rf">
+                <img src="images/arduino-bluefruit-rf-data-gatherer/Transmitter.png"/>
+                <img src="images/arduino-bluefruit-rf-data-gatherer/Receiver.png"/>
+            </div>
+        </div>
+
+        <div class="evo-box">
+            <h2>Part 2: Arduino transmitter module</h2>
+
+            <p>We will start by making the transmitters. They are all built and coded in the same way, the only
+                difference is the identification number we will add in the code. Let's start by wiring it up.</p>
+
+            <p>I used <strong>pin 2</strong> on the Arduino for the <strong>receiver</strong>'s data pin and <strong>pin
+                3</strong> for the <strong>transmitter</strong>'s data pin. The receiver has 2 identical data pins, you
+                only need to use one. The photocell is connected to <strong>pin A0</strong> on the Arduino. However, you
+                need to use a resistor connected to one of the photocell's pins. Most of the time, a <strong>10k Ω
+                    resistor</strong> is enough, but if you plan to use it in a bright room, you may need to replace it
+                with a <strong>1k Ω resistor</strong>, as it will probably saturate.</p>
+
+            <p>Here is a sketch showing the wiring:</p>
+
+            <img class="schematic" src="images/arduino-bluefruit-rf-data-gatherer/Transmitter_bb.png"/>
+
+            <p>Now let's move on to the code. We will use a library called <strong>RadioHead</strong> to send and
+                received message with the RF transmitters/receivers. The one you need is the one called
+                <strong>RH_ASK</strong>, which stands for <b>R</b>adio<b>H</b>ead <b>A</b>mplitude <b>S</b>hift <b>K</b>eying.
+                You can find it on <a href="http://www.airspayce.com/mikem/arduino/RadioHead/">this website</a>. You
+                will also need the <strong>SPI</strong> (<b>S</b>erial <b>P</b>eripheral <b>I</b>nterface) library which
+                is used for communication between two microcontrollers. It is not used in the code but needed to compile
+                it.</p>
+
+            <div class="code">
+                #include&nbsp;&lt;RH_ASK.h&gt;&nbsp;<span
+                    style="color: #434F54;">// Radiohead library for RF modules</span><br/>
+                #include&nbsp;&lt;<span style="color: #D35400;"><b>SPI</b></span>.h&gt; <span style="color: #434F54;">// Not actually used but needed to compile</span>
+            </div>
+
+            <p>The next step is to create the RH_ASK object that we will name <strong>driver</strong>. If you don't
+                specify any parameters, it will be created with its default settings which are:</p>
+
+            <ul>
+                <li>Speed = 2000bps</li>
+                <li>RX pin = 11 (<b>R</b>eceive)</li>
+                <li>TX pin = 12 (<b>T</b>ransmit)</li>
+                <li>Ptt pin = 10 (<b>P</b>ush <b>t</b>o <b>t</b>alk)</li>
+            </ul>
+
+            <p>As I am using pins 2 and 3, I will specify those parameters. The kind of RF modules we are using don't
+                have the Ptt function, so you can ignore it, unless you connect something to pin 10, in which case you
+                need to set the Ptt pin to an unused pin (or -1) as it will cause some disturbance otherwise.</p>
+
+            <div class="code">
+                RH_ASK&nbsp;driver(2000,&nbsp;2,&nbsp;3);&nbsp;<span style="color: #434F54;">// Setting RX pin (receiver) to 2 and TX pin (transmitter) to 3</span>
+            </div>
+
+            <p>Here are the global variables used in the code:<br/>
+                The <strong>room</strong> variable is the Arduino's identification number. You need to increment it for
+                every transmitter Arduino you use.<br/>
+                The <strong>startRequest</strong> variable consists of the letter "a" followed by the identification
+                number. The transmitter Arduino will compare the request it receives from the "mother" Arduino to this
+                string. If they match, it will then send back the data read from the sensor.<br/>
+                The <strong>photocellPin</strong> variable is the pin on which the photocell is connected.<br/>
+                The <strong>photocellReading</strong> variable stores the value read from the photocell.
+            </p>
+
+            <div class="code">
+                <span style="color: #00979C;">const</span> <span style="color: #00979C;">int</span> room = 0; <span
+                    style="color: #434F54;">// Identification number</span><br/>
+                <span style="color: #00979C;">String</span> startRequest = <span style="color: #006699;">"a"</span>
+                + <span
+                    style="color: #00979C;">String</span>(room); <span style="color: #434F54;">// Request string sent by the "mother" Arduino</span><br/><br/>
+
+                <span style="color: #00979C;">const</span> <span style="color: #00979C;">int</span> photocellPin =
+                A0; <span
+                    style="color: #434F54;">// Photocell pin</span><br/>
+                <span style="color: #00979C;">int</span> photocellReading; <span style="color: #434F54;">// Variable for storing photocell reading</span>
+            </div>
+
+            <p>The <strong>setup</strong> part is pretty straightforward. You need to set the photocell pin to <strong>INPUT</strong>
+                mode and, if you want to, start the <strong>Serial</strong> communication for debugging.</p>
+
+            <div class="code">
+                <span style="color: #00979C;">void</span> <span style="color: #5E6D03;">setup</span>()<br/>
+                {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;">pinMode</span>(photocellPin, <span
+                    style="color: #00979C;">INPUT</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">begin</span>(9600);
+                <span style="color: #434F54;">// For debugging</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (!driver.init()) <span
+                    style="color: #434F54;">// If the RF modules failed to initialise</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(<span
+                    style="color: #006699;">"init failed"</span>);<br/>
+                }
+            </div>
+
+            <p>In the <strong>loop</strong> part we will write the code that handles the reception of requests and the
+                transmission of the data. We begin by creating a 2 byte long buffer which will store the received
+                request. The <strong>uint8_t</strong> format is the same as a <strong>byte</strong>, and means <i>unsigned
+                    integer of length 8 bits</i>. We also need to specify its length in the <strong>buflen</strong>
+                variable.</p>
+
+            <div class="code">
+                <span style="color: #00979C;">void</span> <span style="color: #5E6D03;">loop</span>()<br/>
+                {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;uint8_t&nbsp;buf[2];&nbsp;<span style="color: #434F54;">// Buffer used for storing received request, its size is set to 2 bytes as the request is: "a" + String(room) (eg. a0)</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;uint8_t&nbsp;buflen&nbsp;=&nbsp;sizeof(buf);
+            </div>
+
+            <p>Once the RF receiver receives a message of size <strong>buflen</strong>, it stores it in
+                <strong>buf</strong>. As the format of the message is an array of bytes, we need to store it in a string
+                variable in order to compare it to the expected request. This is done by assigning the
+                <strong>buf</strong> variable, preceded by <strong>(char*)</strong>. Note that the * means that the
+                chars created will be pointers to the bytes, which does not used any additional storage.</p>
+            <p>When I tested this, I sometimes received the request followed by some weird characters which made the
+                comparison impossible. I will therefore keep only the first two characters of the message by using the
+                string function <strong>substring</strong>.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (driver.recv(buf, &amp;buflen)) <span
+                    style="color: #434F54;">// Upon reception of a request</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">String</span> request =
+                (<span
+                    style="color: #00979C;">char</span>*)buf; <span style="color: #434F54;">// Storing the request in a string for comparison</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request&nbsp;=&nbsp;request.<span
+                    style="color: #D35400;">substring</span>(0,
+                2); <span style="color: #434F54;">// Message received is sometimes followed by weird characters, keeping only the first two</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">print</span>(<span style="color: #006699;">"Got request: "</span>); <span
+                    style="color: #434F54;">// Printing out the received request for debugging</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(request);
+            </div>
+
+            <p>Now that we have our request stored in a string variable, we can compare it to the request we expected,
+                which is <strong>startRequest</strong> that we created in the beginning.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (request ==
+                startRequest) <span style="color: #434F54;">// If the request matches this Arduino's start request, measure data and send it</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span
+                    style="color: #006699;">"Start request received"</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span style="color: #006699;">""</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;">delay</span>(150);
+            </div>
+
+            <p>If the received request matches the <strong>startRequest</strong>, the Arduino has to send back some
+                data. So we start by reading this data, in this case from the photocell using the
+                <strong>analogRead</strong> function and store it in the <strong>photocellReading</strong> variable.
+                This gives us a value between 0 and 1023, but this is not practical for parsing as the length of the
+                value varies. We will therefore use the <strong>map</strong> function to map the value to a number
+                between 100 and 999, so that it is always 3 digits long.</p>
+
+            <div class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #434F54;">// Sending data</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(<span
+                        style="color: #006699;">"Sending data"</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(<span
+                        style="color: #006699;">""</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;photocellReading&nbsp;=&nbsp;<span
+                        style="color: #D35400;">analogRead</span>(photocellPin); <span style="color: #434F54;">// Measuring luminosity</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(<span
+                        style="color: #006699;">"Photocell reading: "</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                        style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(photocellReading);
+                <span style="color: #434F54;">// For debugging</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">// Mapping the data to a number between 100 and 999 so that it is always 3 digits long, which makes it easier to parse by the mother Arduino</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">int</span>
+                mapPhotocellReading = <span style="color: #D35400;">map</span>(photocellReading, 0, 1023, 100, 999);
+            </div>
+
+            <p>Once we have our data correctly mapped, we have to send it to the "mother" Arduino. To make sure that it
+                doesn't mix up the data, we will add the room's identification number to the beginning of the message we
+                will send. After that, we create a char array (1 byte longer than the message length) and copy our
+                message to it using the string function <strong>toCharArray</strong>.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">String</span>
+                str = room + <span style="color: #00979C;">String</span>(mapPhotocellReading); <span
+                    style="color: #434F54;">// Creating a string containing room number and reading so that the "mother" Arduino knows where it comes from</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">char</span>
+                data[5]; <span style="color: #434F54;">// Char array for storing response, needs to be 1 byte longer that the string length</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.<span
+                    style="color: #D35400;">toCharArray</span>(data, 5); <span style="color: #434F54;">// Copying string to char array</span>
+            </div>
+
+            <p>Now all that is left to do is to send the message. This is done by using the <strong>send</strong> method
+                of the <strong>driver</strong> object to a message in the <strong>uint8_t</strong> format. The <strong>waitPacketSent</strong>
+                method is used to make sure that the data is fully sent before executing the rest of the code</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver.<span
+                    style="color: #D35400;">send</span>((uint8_t *)data, strlen(data)); <span style="color: #434F54;">// Sending response</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;driver.waitPacketSent();&nbsp;<span
+                    style="color: #434F54;">// Waiting until response packet is fully sent</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(<span
+                    style="color: #006699;">"Data sent: "</span>); <span style="color: #434F54;">// For debugging</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(data);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(<span
+                    style="color: #006699;">""</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                }
+            </div>
+        </div>
+
+        <div class="evo-box">
+            <h2>Part 3: Arduino receiver module</h2>
+
+            <p>Let's move on to the hard part, the Arduino receiver module that I call the "mother" Arduino. Actually
+                it's not that hard, but you have to pay attention.</p>
+            <p>Like before we will start by wiring up the Arduino. Once again I used <strong>pin 2</strong> on the
+                Arduino for the <strong>receiver</strong>'s data pin and <strong>pin 3</strong> for the <strong>transmitter</strong>'s
+                data pin. The <strong>Bluefruit</strong> board is connected as follows (default configuration):</p>
+
+            <ul>
+                <li><b>CTS</b> on <b>pin 11</b></li>
+                <li><b>TXO</b> on <b>pin 10</b></li>
+                <li><b>RXI</b> on <b>pin 9</b></li>
+                <li><b>VIN</b> on <b>5V</b></li>
+                <li><b>GND</b> on <b>GND</b></li>
+            </ul>
+
+            <p>The <strong>MOD</strong>, <strong>RTS</strong> and <strong>DFU</strong> pins are not used in this
+                example. Note that for this example the Bluefruit board has to be set to <strong>CMD</strong> mode on
+                the small switch.</p>
+
+            <p>I connected 3 <strong>LED</strong>s with a <strong>220 Ω</strong> resistor for each one of them to pins
+                <strong>5</strong>, <strong>6</strong> and <strong>7</strong>. This is optional, but can be useful in
+                some cases.</p>
+
+            <p>Here is a sketch showing the wiring:</p>
+
+            <img class="schematic" src="images/arduino-bluefruit-rf-data-gatherer/Receiver_bb.png">
+
+            <p>Now that the wiring is done, we can start coding. You will need several libraries to make it work. The
+                <strong>Arduino.h</strong>, <strong>SPI.h</strong> and <strong>SoftwareSerial.h</strong> libraries are
+                already present in the Arduino IDE and <strong>RH_ASK.h</strong> is the one we used in the previous
+                code. The <strong>Adafruit_BLE.h</strong>, <strong>Adafruit_BluefruitLE_SPI.h</strong> and <strong>Adafruit_BluefruitLE_UART.h</strong>
+                libraries can be downloaded from <a
+                        href="https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend/software">Adafruit's
+                    website</a>. <strong>BluefruitConfig.h</strong> is a configuration file for the Bluefruit board.</p>
+
+            <div class="code">
+                #include&nbsp;&lt;Arduino.h&gt;<br/>
+                #include&nbsp;&lt;RH_ASK.h&gt;<br/>
+                #include&nbsp;&lt;<span style="color: #D35400;"><b>SPI</b></span>.h&gt;<br/>
+                #if&nbsp;not&nbsp;defined&nbsp;(_VARIANT_ARDUINO_DUE_X_)&nbsp;&amp;&amp;&nbsp;not&nbsp;defined&nbsp;(_VARIANT_ARDUINO_ZERO_)<br/>
+                #include&nbsp;&lt;<span style="color: #D35400;"><b>SoftwareSerial</b></span>.h&gt;<br/>
+                #endif<br/>
+                <br/>
+                #include&nbsp;<span style="color: #006699;">"Adafruit_BLE.h"</span><br/>
+                #include&nbsp;<span style="color: #006699;">"Adafruit_BluefruitLE_SPI.h"</span><br/>
+                #include&nbsp;<span style="color: #006699;">"Adafruit_BluefruitLE_UART.h"</span><br/>
+                <br/>
+                #include&nbsp;<span style="color: #006699;">"BluefruitConfig.h"</span>
+            </div>
+
+            <p>Here are the global variables used in this code:<br/>
+                The <strong>nbRooms</strong> variables defines the total number of rooms, make sure you change this one
+                if you use more or less than 3 transmitter Arduinos<br/>
+                The <strong>values</strong> variables is an array of length nbRooms which will be used to store the data
+                received from the transmitter Arduinos.<br/>
+                The <strong>LEDpin</strong> variable is an array containing the pin numbers for the LEDs.<br/>
+                The <strong>limit</strong> variable is an array that will store the limits for the luminosity at which
+                the lights are considered on or off. Note that I forgot to replace the <strong>3</strong> with the
+                <strong>nbRooms</strong> variable, which you should do.<br/>
+                The <strong>time</strong> and <strong>currentTime</strong> variables are used for storing values
+                obtained from the <strong>millis</strong> function.<br/>
+                The <strong>dataToSend</strong> variable is used for storing the data to be sent to the Smartphone<br/>
+                The <strong>requests</strong> variable is a char array containing the requests to send to the
+                transmitter Arduinos. Don't forget to change this if you are using a different number of
+                transmitters.<br/>
+                The <strong>*request</strong> variable is a pointer to the request to be sent to the transmitter
+                Arduino.<br/>
+                The booleans <strong>gotResponse</strong>, <strong>firstRequest</strong> and <strong>sending</strong>
+                will be explained later on.
+            </p>
+
+            <div class="code">
+                <span style="color: #00979C;">const</span> <span style="color: #00979C;">int</span> nbRooms = 3; <span
+                    style="color: #434F54;">// Total number of rooms</span><br/>
+                <br/>
+                <span style="color: #00979C;">int</span> values[nbRooms]; <span style="color: #434F54;">// Used for storing the data gathered from the the transmitters</span><br/>
+                <span style="color: #00979C;">int</span> LEDpin[] = {5, 6, 7}; <span style="color: #434F54;">// Pins used for the LEDs</span><br/>
+                <br/>
+                <span style="color: #00979C;">int</span> limit[3]; <span style="color: #434F54;">// Used for storing the luminosity limits at which the light is considered off</span><br/>
+                <br/>
+                <span style="color: #434F54;">//&nbsp;Used&nbsp;for&nbsp;storing&nbsp;the&nbsp;millis()&nbsp;values</span><br/>
+                <span style="color: #00979C;">unsigned</span> <span style="color: #00979C;">long</span> time;<br/>
+                <span style="color: #00979C;">unsigned</span> <span style="color: #00979C;">long</span>
+                currentTime;<br/>
+                <br/>
+                <span style="color: #00979C;">String</span> dataToSend; <span style="color: #434F54;">// Used for storing the data sent to the Smartphone</span><br/>
+                <br/>
+                <span style="color: #00979C;">char</span>* requests[] = {<span style="color: #006699;">"a0"</span>,
+                <span style="color: #006699;">"a1"</span>, <span style="color: #006699;">"a2"</span>}; <span
+                    style="color: #434F54;">// Used for storing the requests, don't forget to change it if you use more or less than 3 transmitter Arduinos</span><br/>
+                <br/>
+                <span style="color: #00979C;">char</span> *request; <span style="color: #434F54;">// Used for storing the request to be sent</span><br/>
+                <br/>
+                <span style="color: #D35400;">bool</span> gotResponse = <span style="color: #00979C;">false</span>;<br/>
+                <span style="color: #D35400;">bool</span> firstRequest = <span style="color: #00979C;">true</span>;<br/>
+                <span style="color: #D35400;">bool</span> bleIsConnected = <span
+                    style="color: #00979C;">false</span>;<br/>
+                <span style="color: #D35400;">bool</span> sending = <span style="color: #00979C;">true</span>; <span
+                    style="color: #434F54;">// For stopping the BLE broadcasting</span>
+            </div>
+
+            <p>In this part we create the necessary objects.<br/>Like before we create the <strong>RH_ASK</strong>
+                object named <strong>driver</strong>, but this time you need to set the <strong>Ptt</strong> pin to an
+                unused pin (or pin -1) because the default one is pin 10 which is already used by the Bluefruit
+                board.<br/>We then create the <strong>bluefruitSS</strong> and <strong>ble</strong> objects. The
+                parameters used for these objects are those specified in the <strong>BluefruitConfig.h</strong> file.
+            </p>
+
+            <div class="code">
+                RH_ASK&nbsp;driver(2000,&nbsp;2,&nbsp;3,&nbsp;8);&nbsp;<span style="color: #434F54;">// Setting RX pin (receiver) to 2, TX pin (transmitter) to 3 and PTT pin (not used) to an unused pin, as the default PTT pin (10) is used</span><br/>
+                <br/>
+                <span style="color: #434F54;">//&nbsp;Parameters&nbsp;for&nbsp;the&nbsp;SoftwareSerial&nbsp;and&nbsp;Adafruit_BluefruitLE_UART&nbsp;stored&nbsp;in&nbsp;BluefruitConfig&nbsp;file</span><br/>
+                <span style="color: #D35400;"><b>SoftwareSerial</b></span> bluefruitSS = <span
+                    style="color: #D35400;"><b>SoftwareSerial</b></span>(BLUEFRUIT_SWUART_TXD_PIN,
+                BLUEFRUIT_SWUART_RXD_PIN);<br/>
+                <br/>
+                <span style="color: #D35400;"><b>Adafruit_BluefruitLE_UART</b></span> ble(bluefruitSS,
+                BLUEFRUIT_UART_MODE_PIN, BLUEFRUIT_UART_CTS_PIN,&nbsp;BLUEFRUIT_UART_RTS_PIN);
+            </div>
+
+            <p>Next are some setting definitions. The first one specifies if you want the Bluefruit board to perform a
+                factory reset when it starts. The second one defines the minimum firmware version and the last one the
+                behaviour of the red LED on the board. I recommend leaving those settings untouched.</p>
+
+            <div class="code">
+                #define&nbsp;FACTORYRESET_ENABLE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/>
+                #define&nbsp;MINIMUM_FIRMWARE_VERSION&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #006699;">"0.6.6"</span><br/>
+                #define&nbsp;MODE_LED_BEHAVIOUR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #006699;">"MODE"</span>
+            </div>
+
+            <p>In the <strong>setup</strong> part we will start by setting the LED pins to <strong>OUTPUT</strong> mode.
+                We then set all the limits to 0 so that they are not <strong>null</strong>, which would prevent us from
+                making any comparison. They will be changed on the mobile app later on.</p>
+
+            <div class="code">
+                <span style="color: #00979C;">void</span> <span style="color: #5E6D03;">setup</span>(<span
+                    style="color: #00979C;">void</span>)<br/>
+                {<br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">for</span> (<span style="color: #00979C;">int</span> i = 0; i
+                &lt; sizeof(LEDpin); i++)<br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;">pinMode</span>(LEDpin[i], <span
+                    style="color: #00979C;">OUTPUT</span>); <span
+                    style="color: #434F54;">// Initialising LED pins</span><br/>
+                &nbsp;&nbsp;}<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">for</span> (<span style="color: #00979C;">int</span> i = 0; i
+                &lt; nbRooms; i++)<br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;limit[i]&nbsp;=&nbsp;0;&nbsp;<span style="color: #434F54;">// Initialising the limits at 0</span><br/>
+                &nbsp;&nbsp;}<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">begin</span>(9600); <span
+                    style="color: #434F54;">// For debugging</span><br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (!driver.init()) <span style="color: #434F54;">// If the RF modules failed to initialise</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span style="color: #006699;">"init failed"</span>);
+            </div>
+
+            <p>This part of the <strong>setup</strong> handles the Bluefruit board configuration. The <strong>setupBluefruit</strong>
+                function will be explained later on. The code following it changes the board's LED mode (if the firmware
+                version is at least 0.6.6) and then set the board to data mode, so that it can communicate with the
+                Smartphone.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;setupBluefruit();<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(F(<span style="color: #006699;">"******************************"</span>));<br/>
+                <br/>
+                &nbsp;&nbsp;<span
+                    style="color: #434F54;">// LED Activity command is only supported from 0.6.6</span><br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">if</span> ( ble.<span
+                    style="color: #D35400;">isVersionAtLeast</span>(MINIMUM_FIRMWARE_VERSION) )<br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">// Change Mode LED Activity</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(F(<span
+                    style="color: #006699;">"Change LED activity to "</span> MODE_LED_BEHAVIOUR));<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;ble.<span style="color: #D35400;">sendCommandCheckOK</span>(<span
+                    style="color: #006699;">"AT+HWModeLED="</span> MODE_LED_BEHAVIOUR);<br/>
+                &nbsp;&nbsp;}<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #434F54;">// Set module to DATA mode</span><br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>( F(<span
+                    style="color: #006699;">"Switching to DATA mode!"</span>) );<br/>
+                &nbsp;&nbsp;ble.<span style="color: #D35400;">setMode</span>(<span style="color: #006699;">BLUEFRUIT_MODE_DATA</span>);<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(F(<span style="color: #006699;">"******************************"</span>));<br/>
+                }
+            </div>
+
+            <p>In the <strong>loop</strong> part, we will handle the reception of the data from the transmitter
+                Arduinos, the transmission of this data to the Smartphone and the reception of the limits from the
+                Smartphone.<br/>The data gathering and transmission part is inside an if expression so that you can stop
+                the BLE broadcasting if you want to, which I didn't do.<br/>We will then loop through every room, set
+                the <strong>gotResponse</strong> to <strong>false</strong> and then send a request. At the same time we
+                start a timer by assigning a value to the <strong>time</strong> variable with the
+                <strong>millis</strong> function.
+            </p>
+
+            <div class="code">
+                <span style="color: #00979C;">void</span> <span style="color: #5E6D03;">loop</span>(<span
+                    style="color: #00979C;">void</span>)<br/>
+                {<br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (sending) <span style="color: #434F54;">// For stopping the BLE broadcasting</span><br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">for</span> (<span
+                    style="color: #00979C;">int</span> i = 0; i &lt; nbRooms; i++)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gotResponse&nbsp;=&nbsp;<span
+                    style="color: #00979C;">false</span>;<br/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">// Send request</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;=&nbsp;<span style="color: #D35400;">millis</span>();
+                <span style="color: #434F54;">// Starting timer</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sendRequest(i);&nbsp;<span style="color: #434F54;">// Send request to transmitter Arduino</span>
+            </div>
+
+            <p>While we haven't received any response from the transmitter Arduino, we store the millis value in the
+                <strong>currentTime</strong> variable in order to compare it to <strong>time</strong>. If the difference
+                exceeds 500 milliseconds, it means that the message was lost and that we need to send another request.
+                We also need to reset the <strong>time</strong> variable.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">// Receiving response</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">while</span> (!gotResponse) <span
+                    style="color: #434F54;">// While no response has been received</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentTime&nbsp;=&nbsp;<span style="color: #D35400;">millis</span>();<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (currentTime -
+                time &gt; 500) <span style="color: #434F54;">// If 0.5 seconds has passed without receiving any response, resend request</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time&nbsp;=&nbsp;<span
+                    style="color: #D35400;">millis</span>(); <span style="color: #434F54;">// Reset timer</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span style="color: #006699;">"No response after 0.5 second, resending request"</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sendRequest(i);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            </div>
+
+            <p>Once again we create a <strong>buffer</strong> to store the received data. Upon reception, we store the
+                message in a string variable and parse the <strong>room</strong> and <strong>data</strong> values. If
+                the room matches the expected one, we then set <strong>gotResponse</strong> to <strong>true</strong> and
+                store the data in the <strong>values</strong> array.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint8_t&nbsp;buf[4];&nbsp;<span style="color: #434F54;">// Buffer used for storing received data, its size is set to 3 bytes as the data is: String(room) + value (eg. 0555)</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint8_t&nbsp;buflen&nbsp;=&nbsp;sizeof(buf);<br/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span>
+                (driver.recv(buf, &amp;buflen)) <span style="color: #434F54;">// Upon reception of the data</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">String</span>
+                message = (<span style="color: #00979C;">char</span>*)buf; <span style="color: #434F54;">// Storing data in a string for parsing</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">int</span>
+                room = message.<span style="color: #D35400;">substring</span>(0, 1).<span
+                    style="color: #D35400;">toInt</span>(); <span
+                    style="color: #434F54;">// Parsing room number</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">int</span>
+                data = message.<span style="color: #D35400;">substring</span>(1).<span
+                    style="color: #D35400;">toInt</span>(); <span style="color: #434F54;">// Parsing data</span><br/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span>
+                (room == i) <span style="color: #434F54;">// If the data is from the correct room</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gotResponse&nbsp;=&nbsp;<span
+                    style="color: #00979C;">true</span>;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values[room]&nbsp;=&nbsp;data;&nbsp;<span
+                    style="color: #434F54;">// Storing the data</span>
+            </div>
+
+            <p>In this part we handle the lightning of the LEDs. This is optional.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">// Turning LEDs on and off</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #5E6D03;">if</span> (values[room] &gt; limit[room])<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;">digitalWrite</span>(LEDpin[i], <span
+                    style="color: #00979C;">HIGH</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">else</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;">digitalWrite</span>(LEDpin[i], <span
+                    style="color: #00979C;">LOW</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">// For debugging</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(<span
+                    style="color: #006699;">"Data for room "</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(room);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">print</span>(<span
+                    style="color: #006699;">" is "</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(data);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    style="color: #D35400;"><b>Serial</b></span>.<span style="color: #D35400;">println</span>(<span
+                    style="color: #006699;">""</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;">delay</span>(50);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+            </div>
+
+            <p>Once we have received and verified the data from every room, we can move on to the transmission of this
+                data to the Smartphone. The message starts with a "#" and ends with a "*" in order to parse it easily in
+                the Smartphone app. We also separate the values by a "/".</p>
+
+            <div class="code">
+                &nbsp;&nbsp;&nbsp;&nbsp;dataToSend&nbsp;=&nbsp;<span style="color: #006699;">"#"</span>; <span
+                    style="color: #434F54;">// Start data string with # for easyier parsing by the Smartphone app</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">for</span> (<span
+                    style="color: #00979C;">int</span> i = 0; i &lt; nbRooms; i++)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataToSend.<span style="color: #D35400;">concat</span>(<span
+                    style="color: #00979C;">String</span>(values[i]));<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (i &lt; nbRooms - 1)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataToSend.<span
+                    style="color: #D35400;">concat</span>(<span style="color: #006699;">"/"</span>); <span
+                    style="color: #434F54;">// Separate the values with a /</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;dataToSend.<span style="color: #D35400;">concat</span>(<span
+                    style="color: #006699;">"*"</span>); <span
+                    style="color: #434F54;">// End data string with *</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">print</span>(<span style="color: #006699;">"Sending: "</span>);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(dataToSend);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span style="color: #006699;">""</span>);<br/>
+                &nbsp;&nbsp;}
+            </div>
+
+            <p>The message is then stored in a <strong>char array</strong> and sent to the Smartphone whit the <strong>ble.print</strong>
+                method.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;<span style="color: #00979C;">char</span> n, inputs[BUFSIZE + 1]; <span
+                    style="color: #434F54;">// Used for storing data to be sent to Smartphone</span><br/>
+                <br/>
+                &nbsp;&nbsp;dataToSend.<span style="color: #D35400;">toCharArray</span>(inputs, BUFSIZE + 1); <span
+                    style="color: #434F54;">// Copying data string to buffer</span><br/>
+                &nbsp;&nbsp;ble.<span style="color: #D35400;">print</span>(inputs); <span style="color: #434F54;">// Sending data</span>
+            </div>
+
+            <p>Next comes the reception of the limits sent by the Smartphone. We start by creating a string variable
+                called <strong>values</strong> (not the same as the int array!) that will store the characters received
+                through the BLE connexion. Once we have read the #, i.e. the starting point of the message, we set the
+                <strong>recording</strong> variable to <strong>true</strong> which will enable the concatenation of the
+                following characters to the <strong>values</strong> variable, until the * is read. When the message is
+                complete, we parse and store the limits using the <strong>setLimits</strong> function that will be
+                explained later on.</p>
+
+            <div class="code">
+                &nbsp;&nbsp;<span style="color: #00979C;">String</span> values = <span style="color: #006699;">""</span>;
+                <span style="color: #434F54;">// Emptying data string</span><br/>
+                &nbsp;&nbsp;<br/>
+                &nbsp;&nbsp;<span style="color: #434F54;">// Reading data received from Smartphone</span><br/>
+                &nbsp;&nbsp;<span style="color: #D35400;">bool</span> recording = <span
+                    style="color: #00979C;">false</span>;<br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">while</span> ( ble.<span
+                    style="color: #D35400;">available</span>() ) <span style="color: #434F54;">// While there is data available from BLE</span><br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #00979C;">int</span> c = ble.<span style="color: #D35400;">read</span>();<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>((<span style="color: #00979C;">char</span>)c);<br/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (recording) <span
+                    style="color: #434F54;">// If we have read the #</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> ((<span
+                    style="color: #00979C;">char</span>)c != <span style="color: #006699;">'*'</span>)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values.<span
+                    style="color: #D35400;">concat</span>((<span style="color: #00979C;">char</span>)c); <span
+                    style="color: #434F54;">// As long as c is different from the end character *, add it to the data string</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">else</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(values);
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setLimits(values);<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recording&nbsp;=&nbsp;<span style="color: #00979C;">false</span>;
+                <span style="color: #434F54;">// Set the limits to the ones we just received</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values&nbsp;=&nbsp;<span
+                    style="color: #006699;">""</span>;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> ((<span
+                    style="color: #00979C;">char</span>)c == <span style="color: #006699;">'#'</span>) <span
+                    style="color: #434F54;">// Start recording upon reception of the start character #</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recording&nbsp;=&nbsp;<span
+                    style="color: #00979C;">true</span>;<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;}<br/>
+                }
+            </div>
+
+            <p>Here are the functions used in the code.<br/>The first one displays an error message and stops the
+                execution of the program.</p>
+
+            <div class="code">
+                <span style="color: #434F54;">//&nbsp;A&nbsp;small&nbsp;helper</span><br/>
+                <span style="color: #00979C;">void</span> error(<span style="color: #00979C;">const</span>
+                __FlashStringHelper * err)<br/>
+                {<br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(err);<br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">while</span> (1);<br/>
+                }
+            </div>
+
+            <p>This function configures the Bluefruit board when it starts. It also performs a factory reset if it has
+                been enabled.</p>
+
+            <div class="code">
+                <span style="color: #00979C;">void</span> setupBluefruit()<br/>
+                {<br/>
+                &nbsp;&nbsp;<span style="color: #434F54;">/* Initialise the module */</span><br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">print</span>(F(<span style="color: #006699;">"Initialising the Bluefruit LE module: "</span>));<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">if</span> ( !ble.<span style="color: #D35400;">begin</span>(VERBOSE_MODE)
+                )<br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;error(F(<span style="color: #006699;">"Couldn't find Bluefruit, make sure it's in Command mode &amp; check wiring?"</span>));<br/>
+                &nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>( F(<span style="color: #006699;">"OK!"</span>) );<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">if</span> ( FACTORYRESET_ENABLE )<br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #434F54;">/* Perform a factory reset to make sure everything is in a known state */</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(F(<span style="color: #006699;">"Performing a factory reset: "</span>));<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> ( ! ble.<span style="color: #D35400;">factoryReset</span>()
+                ) {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error(F(<span
+                    style="color: #006699;">"Couldn't factory reset"</span>));<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;}<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #434F54;">/* Disable command echo from Bluefruit */</span><br/>
+                &nbsp;&nbsp;ble.<span style="color: #D35400;">echo</span>(<span
+                    style="color: #00979C;">false</span>);<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span
+                    style="color: #006699;">"Requesting Bluefruit info:"</span>);<br/>
+                &nbsp;&nbsp;<span style="color: #434F54;">/* Print Bluefruit information */</span><br/>
+                &nbsp;&nbsp;ble.<span style="color: #D35400;">info</span>();<br/>
+                <br/>
+                &nbsp;&nbsp;ble.<span style="color: #D35400;">verbose</span>(<span style="color: #00979C;">false</span>);<br/>
+                }
+            </div>
+
+            <p>This functions is used to send requests to the transmitter Arduinos, with the room identification number
+                as parameter.</p>
+
+            <div class="code">
+                <span style="color: #434F54;">//&nbsp;Send&nbsp;a&nbsp;request&nbsp;to&nbsp;the&nbsp;corresponding&nbsp;room&nbsp;transmitter&nbsp;(i)</span><br/>
+                <span style="color: #00979C;">void</span> sendRequest(<span style="color: #00979C;">int</span> i)<br/>
+                {<br/>
+                &nbsp;&nbsp;request&nbsp;=&nbsp;requests[i];<br/>
+                &nbsp;&nbsp;driver.<span style="color: #D35400;">send</span>((uint8_t *)request, strlen(request));<br/>
+                &nbsp;&nbsp;driver.waitPacketSent();<br/>
+                <br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">print</span>(<span
+                    style="color: #006699;">"Request sent to room "</span>);<br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(i);<br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span
+                    style="color: #006699;">"Awaiting response"</span>);<br/>
+                &nbsp;&nbsp;<span style="color: #D35400;"><b>Serial</b></span>.<span
+                    style="color: #D35400;">println</span>(<span style="color: #006699;">""</span>);<br/>
+                }
+            </div>
+
+            <p>This functions parses the limit message received from the Smartphone and stores the limits in the
+                <strong>limit</strong> array.</p>
+
+            <div class="code">
+                <span style="color: #434F54;">//&nbsp;Store&nbsp;the&nbsp;limits</span><br/>
+                <span style="color: #00979C;">void</span> setLimits(<span style="color: #00979C;">String</span>
+                values)<br/>
+                {<br/>
+                &nbsp;&nbsp;<span style="color: #5E6D03;">for</span> (<span style="color: #00979C;">int</span> i = 0; i
+                &lt; nbRooms; i++)<br/>
+                &nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">if</span> (i &lt; nbRooms - 1)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit[i]&nbsp;=&nbsp;values.<span
+                    style="color: #D35400;">substring</span>(4 * i, 3 + 4 * i).<span
+                    style="color: #D35400;">toInt</span>(); <span
+                    style="color: #434F54;">// P&#228;rsing the limits</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #5E6D03;">else</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit[i]&nbsp;=&nbsp;values.<span
+                    style="color: #D35400;">substring</span>(4 * i).<span style="color: #D35400;">toInt</span>(); <span
+                    style="color: #434F54;">// Parsing the last limit</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;}<br/>
+                }
+            </div>
+        </div>
+
+        <div class="evo-box">
+            <h2>Part 4: The Smartphone app</h2>
+
+            <p>Last part of the project!<br/>As always we start with the libraries you will need. The
+                <strong>cordova.js</strong>, <strong>evothings.js</strong> and <strong>ui.js</strong> are automatically
+                included when you create a new project in the Evothings workbench. The <strong>jquery.js</strong>
+                libraries is not mandatory, you could modify the code so that it wouldn't need it, but it makes things
+                easier.<br/>For the BLE communication we will use <strong>easyble.js</strong>, which is built on top of
+                the Cordova ble plugin (<strong>com.evothings.ble</strong>, which you need to include if you want to
+                build the app) and it also requires the <strong>util.js</strong> library.<br/>In order to define the
+                limits, we will use a slider. I used the <strong>rangeSlider.js</strong> library, downloadable <a
+                        href="https://github.com/Stryzhevskyi/rangeSlider">here</a>, to make it look nicer.</p>
+
+            <div class="code">
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;cordova.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span><br/>
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span
+                    style="color: #BA2121">&quot;libs/jquery/jquery.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span><br/>
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;libs/evothings/evothings.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span><br/>
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;libs/evothings/util/util.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span><br/>
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span
+                    style="color: #BA2121">&quot;libs/evothings/ui/ui.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span><br/>
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;libs/evothings/easyble/easyble.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span><br/>
+                <span style="color: #008000; font-weight: bold">&lt;script </span><span
+                    style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;libs/rangeSlider/rangeSlider.js&quot;</span><span
+                    style="color: #008000; font-weight: bold">&gt;&lt;/script&gt;</span>
+            </div>
+
+            <p>We will then create some objects. The first one, <strong>app</strong>, will contain our app's functions
+                and variables. The second one, <strong>BluefruitUART</strong>, will contain the Bluefruit object once we
+                have found it after the scan. The <strong>BLEDevice</strong> object will hold some information needed to
+                communicate with the Bluefruit board.</p>
+
+            <div class="code">
+                <span style="color: #008000; font-weight: bold">var</span> app <span style="color: #666666">=</span> {};
+                <span style="color: #408080; font-style: italic">// Object holding the functions and variables</span><br/>
+                <br/>
+                <span style="color: #008000; font-weight: bold">var</span> BluefruitUART <span
+                    style="color: #666666">=</span> {}; <span style="color: #408080; font-style: italic">// Object holding the BLE device</span><br/>
+                <br/>
+                <span style="color: #008000; font-weight: bold">var</span> BLEDevice <span
+                    style="color: #666666">=</span> {}; <span style="color: #408080; font-style: italic">// Object holding Bluefruit BLE device information</span>
+            </div>
+
+            <p>Next we fill the <strong>BLEDevice</strong> object with the information. The <strong>name</strong>
+                property contains the string that is broadcast by the Bluefruit chip and can be used to identify it. The
+                <strong>services</strong>, <strong>writeCharacteristicUUID</strong> and
+                <strong>readCharacteristicUUID</strong> properties contains UUIDs that are specific to the Bluefruit
+                chip. The first one is used to read the services from the chip and get access to them, the second one to
+                send data to the chip and the third one to receive data.</p>
+
+            <div class="code">
+                BLEDevice.name <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Adafruit Bluefruit LE&#39;</span>;
+                <span style="color: #408080; font-style: italic">// Bluefruit name</span><br/>
+                BLEDevice.services <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;6e400001-b5a3-f393-e0a9-e50e24dcca9e&#39;</span>];
+                <span style="color: #408080; font-style: italic">// Bluefruit services UUID</span><br/>
+                BLEDevice.writeCharacteristicUUID <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;6e400002-b5a3-f393-e0a9-e50e24dcca9e&#39;</span>;
+                <span style="color: #408080; font-style: italic">// Bluefruit writeCharacteristic UUID</span><br/>
+                BLEDevice.readCharacteristicUUID <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;6e400003-b5a3-f393-e0a9-e50e24dcca9e&#39;</span>;
+                <span style="color: #408080; font-style: italic">// Bluefruit readCharacteristic UUID</span>
+            </div>
+
+            <p>We are now filling the app object with the code's global variables. The <strong>values</strong> property
+                will store the values received from the "mother" Arduino and <strong>message</strong> will store the raw
+                data. <strong>nbRooms</strong> contains the total number of rooms and <strong>msgLength</strong> the
+                length of the message that will be received.</p>
+
+            <div class="code">
+                app.values <span style="color: #666666">=</span> []; <span style="color: #408080; font-style: italic">// For storing received values</span><br/>
+                app.message <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;&quot;</span>;
+                <span style="color: #408080; font-style: italic">// For storing received data</span><br/>
+                app.nbRooms <span style="color: #666666">=</span> <span style="color: #666666">3</span>; <span
+                    style="color: #408080; font-style: italic">// Total number of rooms</span><br/>
+                app.msgLength <span style="color: #666666">=</span> <span style="color: #666666">4</span> <span
+                    style="color: #666666">*</span> app.nbRooms <span style="color: #666666">+</span> <span
+                    style="color: #666666">1</span>; <span style="color: #408080; font-style: italic">// Length of message received from transmitter Arduino</span>
+            </div>
+
+            <p>The <strong>main</strong> function is called once the device is ready. It adds event listeners to the
+                <strong>Connect</strong> and <strong>Disconnect</strong> buttons. The first one connects to the
+                Bluefruit chip, reads its services, enables the notifications and then sends the limits to the "mother"
+                Arduino.</p>
+
+            <pre class="code"><span style="color: #008000; font-weight: bold">function</span> main() { <span
+                    style="color: #408080; font-style: italic">// Main function called when the device is ready</span>
+
+    <span style="color: #008000; font-weight: bold">var</span> connect <span style="color: #666666">=</span> <span
+                        style="color: #008000">document</span>.getElementById(<span
+                        style="color: #BA2121">&#39;connect&#39;</span>);
+    connect.addEventListener(<span style="color: #BA2121">&#39;click&#39;</span>, <span
+                        style="color: #008000; font-weight: bold">function</span>()
+        {
+            connect.innerHTML <span style="color: #666666">=</span> <span
+                        style="color: #BA2121">&#39;Connecting&#39;</span>;
+            app.connectToBluefruit(<span style="color: #008000; font-weight: bold">function</span>() <span
+                        style="color: #408080; font-style: italic">// Connect to Bluefruit device</span>
+                {
+                    app.readServices(<span style="color: #008000; font-weight: bold">function</span>() <span
+                        style="color: #408080; font-style: italic">// Read services from Bluefruit device</span>
+                        {
+                            app.enableNotifications(app.sendLimits); <span style="color: #408080; font-style: italic">// Enable notifications from Bluefruit device and send stored limits</span>
+                            $(<span style="color: #BA2121">&#39;#connect&#39;</span>).hide();
+                            $(<span style="color: #BA2121">&#39;#disconnect&#39;</span>).show();
+                            connect.innerHTML <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Connect&#39;</span>;
+                        }
+                    );
+                }
+            );
+        }
+    );
+
+    <span style="color: #008000; font-weight: bold">var</span> disconnect <span style="color: #666666">=</span> <span
+                        style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&#39;disconnect&#39;</span>);
+    disconnect.addEventListener(<span style="color: #BA2121">&#39;click&#39;</span>, <span
+                        style="color: #008000; font-weight: bold">function</span>()
+        {
+            app.disconnect(); <span
+                        style="color: #408080; font-style: italic">// Disconnect from Bluefruit device</span>
+            $(<span style="color: #BA2121">&#39;#roomList&#39;</span>).empty();
+            $(<span style="color: #BA2121">&#39;#disconnect&#39;</span>).hide();
+            $(<span style="color: #BA2121">&#39;#connect&#39;</span>).show();
+        }
+    );
+}</pre>
+
+            <p>Once the device is ready, the <strong>main</strong> function is called.</p>
+
+            <pre class="code"><span style="color: #008000">document</span>.addEventListener(<span
+                    style="color: #BA2121">&#39;deviceready&#39;</span>, main, <span
+                    style="color: #008000; font-weight: bold">false</span>); <span
+                    style="color: #408080; font-style: italic">// Wait for the device to be ready before executing code</span></pre>
+
+            <p>We are now moving on to the functions. The first one, <strong>connectToBluefruit</strong> scans for BLE
+                devices and stops once it finds the one with the one with the correct name. It then stores the device in
+                the <strong>BluefruitUART</strong> object and uses one of its methods to connect to it. Once the
+                connection is established, it calls another function passed as a parameter, which is <strong>readServices</strong>.
+            </p>
+
+            <pre class="code">app.connectToBluefruit <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>(callback) <span
+                    style="color: #408080; font-style: italic">// Connect to Bluefruit device</span>
+{
+    evothings.easyble.startScan <span style="color: #408080; font-style: italic">// Start scanning</span>
+    (
+        <span style="color: #008000; font-weight: bold">function</span>(device)
+        {
+            <span style="color: #008000; font-weight: bold">if</span> (device.name <span
+                        style="color: #666666">==</span> BLEDevice.name) <span
+                        style="color: #408080; font-style: italic">// If device name correspond to Bluefruit device name</span>
+            {
+                evothings.easyble.stopScan(); <span style="color: #408080; font-style: italic">// Stop the scan</span>
+                BluefruitUART <span style="color: #666666">=</span> device; <span
+                        style="color: #408080; font-style: italic">// Store the Bluefruit device</span>
+
+                console.log(<span style="color: #BA2121">&#39;Adafruit Bluefruit LE UART found !&#39;</span>);
+
+                BluefruitUART.connect <span
+                        style="color: #408080; font-style: italic">// Connect to Bluefruit device</span>
+                (
+                    <span style="color: #008000; font-weight: bold">function</span>(device)
+                    {
+                        console.log(<span style="color: #BA2121">&#39;Connected to BLE device &#39;</span> <span
+                        style="color: #666666">+</span> BluefruitUART.name);
+                        callback();
+                    },
+                    <span style="color: #008000; font-weight: bold">function</span>(errorCode)
+                    {
+                        console.log(<span
+                        style="color: #BA2121">&#39;Failed to connect to BLE device: &#39;</span> <span
+                        style="color: #666666">+</span> errorCode);
+                    }
+                )
+            }
+        },
+        <span style="color: #008000; font-weight: bold">function</span>(errorString)
+        {
+            console.log(<span style="color: #BA2121">&#39;Error while scanning: &#39;</span> <span
+                        style="color: #666666">+</span> errorString);
+        }
+    );
+};</pre>
+
+            <p>The <strong>disconnect</strong> function uses the <strong>close</strong> method of
+                <strong>BluefruitUART</strong> object to disconnect from the Bluefruit device.</p>
+
+            <pre class="code">app.disconnect <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>() <span
+                    style="color: #408080; font-style: italic">// Disconnect from Bluefruit device</span>
+{
+    BluefruitUART.close();
+    console.log(<span style="color: #BA2121">&#39;Disconnected from BLE device &#39;</span> <span
+                        style="color: #666666">+</span> BluefruitUART.name);
+};</pre>
+
+            <p>The <strong>readServices</strong> function reads the services from the BLE device once the connection has
+                been established. It uses the <strong>services UUID</strong> we specified earlier.</p>
+
+            <pre class="code">app.readServices <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>(callback) <span
+                    style="color: #408080; font-style: italic">// Read services from Bluefruit device</span>
+{
+    BluefruitUART.readServices
+    (
+        BLEDevice.services,
+        <span style="color: #008000; font-weight: bold">function</span>(device)
+        {
+            console.log(<span style="color: #BA2121">&#39;BLE services available for device &#39;</span> <span
+                        style="color: #666666">+</span> BluefruitUART.name);
+            callback();
+        },
+        <span style="color: #008000; font-weight: bold">function</span>(errorString)
+        {
+            console.log(<span style="color: #BA2121">&#39;BLE services error: &#39;</span> <span style="color: #666666">+</span> errorString);
+        }
+    )
+};</pre>
+
+            <p>The <strong>sendMessage</strong> function sends data to the Bluefruit chip. It uses the <strong>writeCharacteristic
+                UUID</strong> we specified earlier.</p>
+
+            <pre class="code">app.sendMessage <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>(message) <span
+                    style="color: #408080; font-style: italic">// Send a message to Bluefruit device</span>
+{
+    <span style="color: #008000; font-weight: bold">var</span> data <span style="color: #666666">=</span> evothings.ble.toUtf8(message);
+    BluefruitUART.writeCharacteristic
+    (
+        BLEDevice.writeCharacteristicUUID,
+        data,
+        <span style="color: #008000; font-weight: bold">function</span>()
+        {
+            console.log(<span style="color: #BA2121">&#39;Sent: &#39;</span> <span style="color: #666666">+</span> message);
+        },
+        <span style="color: #008000; font-weight: bold">function</span>(errorString)
+        {
+            console.log(<span style="color: #BA2121">&#39;BLE writeCharacteristic error: &#39;</span> <span
+                        style="color: #666666">+</span> errorString);
+        }
+    )
+};</pre>
+
+            <p>The <strong>enableNotifications</strong> function is used to receive data from the Bluefruit chip to the
+                Smartphone. The first thing to do is to write the descriptor in order to be able to enable notifications
+                when it changes. The <strong>writeDescriptor</strong> method of the <strong>BluefruitUART</strong>
+                object takes several parameters. The first one is the <strong>readCharacteristicUUID</strong> that we
+                specified earlier. The second one is the <strong>descriptor UUID</strong>, which is the same for every
+                BLE device. The third one is the container for the data that will be read from the Bluefruit chip.<br/>Once
+                the descriptor is written, we need to enable the notifications that will call a function each time the
+                data read from the descriptor changes. This is done using the <strong>enableNotification</strong> method
+                of the <strong>BluefruitUART</strong> object, which needs the <strong>readCharacteristicUUID</strong>.
+                Then comes the function that is called when the data changes. It parses the message and saves the
+                values. The parsing can seem a bit tricky and complex, but I wanted to take precautions to make sure
+                that no data is lost.<br/>Once the values are saved, the <strong>fillRoomList</strong> function is
+                called, which calls the <strong>setupSlider</strong> function that we will cover next.</p>
+
+            <pre class="code">app.enableNotifications <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>() <span
+                    style="color: #408080; font-style: italic">// Enable notifications for Bluefruit device</span>
+{
+    BluefruitUART.writeDescriptor <span style="color: #408080; font-style: italic">// Write descriptor for Bluefruit device</span>
+    (
+        BLEDevice.readCharacteristicUUID,
+        <span style="color: #BA2121">&#39;00002902-0000-1000-8000-00805f9b34fb&#39;</span>, <span
+                        style="color: #408080; font-style: italic">// Same for every BLE device</span>
+        <span style="color: #008000; font-weight: bold">new</span> Uint8Array([<span style="color: #666666">1</span>]),
+        <span style="color: #008000; font-weight: bold">function</span>()
+        {
+            console.log(<span style="color: #BA2121">&#39;BLE descriptor written.&#39;</span>);
+        },
+        <span style="color: #008000; font-weight: bold">function</span>(errorString)
+        {
+            console.log(<span style="color: #BA2121">&#39;BLE writeDescriptor error: &#39;</span> <span
+                        style="color: #666666">+</span> errorString);
+        }
+    );
+
+    BluefruitUART.enableNotification <span style="color: #408080; font-style: italic">// Enable notifications for Bluefruit device</span>
+    (
+        BLEDevice.readCharacteristicUUID,
+        <span style="color: #008000; font-weight: bold">function</span>(data)
+        {
+            <span style="color: #008000; font-weight: bold">var</span> message <span style="color: #666666">=</span> evothings.ble.fromUtf8(data); <span
+                        style="color: #408080; font-style: italic">// Message received from transmitter Arduino</span>
+
+            <span style="color: #408080; font-style: italic">/*</span>
+<span style="color: #408080; font-style: italic">             This part handles the parsing of the received message (message). It will then be stored in (app.message).</span>
+<span style="color: #408080; font-style: italic">             Due to the way Bluetooth works, the message will sometimes be sent in two parts, therefore I wrote a code that</span>
+<span style="color: #408080; font-style: italic">             will concatenate the two parts if it happens.</span>
+<span style="color: #408080; font-style: italic">             */</span>
+
+            <span style="color: #408080; font-style: italic">// If for some reason the stored message is longer than the max length (app.msgLength), empty it</span>
+            <span style="color: #008000; font-weight: bold">if</span> (app.message.length <span style="color: #666666">&gt;</span> app.msgLength)
+            {
+                app.message <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;&quot;</span>;
+            }
+
+            <span style="color: #408080; font-style: italic">// If both the message and the stored message are shorter than expected</span>
+            <span style="color: #008000; font-weight: bold">if</span> (app.message.length <span style="color: #666666">&lt;</span> app.msgLength <span
+                        style="color: #666666">&amp;&amp;</span> message.length <span style="color: #666666">&lt;</span> app.msgLength)
+            {
+                <span style="color: #408080; font-style: italic">/*</span>
+<span style="color: #408080; font-style: italic">                 If the received message contains a &#39;#&#39; (message.indexOf(&#39;#&#39;) != -1), it means that it is the first part</span>
+<span style="color: #408080; font-style: italic">                 of the message, so the stored message has to be empty (app.message.length == 0).</span>
+<span style="color: #408080; font-style: italic">                 If the received message contains a &#39;*&#39; (message.indexOf(&#39;*&#39;) != -1), it means that it is the second part</span>
+<span style="color: #408080; font-style: italic">                 of the message, so the stored message can&#39;t be empty (app.message.length &gt; 0).</span>
+<span style="color: #408080; font-style: italic">                 */</span>
+                <span style="color: #008000; font-weight: bold">if</span> ((message.indexOf(<span
+                        style="color: #BA2121">&#39;#&#39;</span>) <span style="color: #666666">!=</span> <span
+                        style="color: #666666">-1</span> <span style="color: #666666">&amp;&amp;</span> app.message.length <span
+                        style="color: #666666">==</span> <span style="color: #666666">0</span>) <span
+                        style="color: #666666">||</span> (message.indexOf(<span
+                        style="color: #BA2121">&#39;*&#39;</span>) <span style="color: #666666">!=</span> <span
+                        style="color: #666666">-1</span> <span style="color: #666666">&amp;&amp;</span> app.message.length <span
+                        style="color: #666666">&gt;</span> <span style="color: #666666">0</span>))
+                {
+                    app.message <span style="color: #666666">=</span> app.message.concat(message); <span
+                        style="color: #408080; font-style: italic">// Concatenate the received message to the stored message</span>
+                }
+            }
+
+            <span style="color: #408080; font-style: italic">/*</span>
+<span style="color: #408080; font-style: italic">             If the received message is as long as it should be (message.length == app.msgLength), it starts with a &#39;#&#39;</span>
+<span style="color: #408080; font-style: italic">             (message.indexOf(&#39;#&#39;) == 0) and ends with a &#39;*&#39; (message.indexOf(&#39;*&#39;) == app.msgLength - 1), then it is</span>
+<span style="color: #408080; font-style: italic">             complete and can be stored in (app.message)</span>
+<span style="color: #408080; font-style: italic">             */</span>
+            <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (message.length <span
+                        style="color: #666666">==</span> app.msgLength <span style="color: #666666">&amp;&amp;</span> message.indexOf(<span
+                        style="color: #BA2121">&#39;#&#39;</span>) <span style="color: #666666">==</span> <span
+                        style="color: #666666">0</span> <span
+                        style="color: #666666">&amp;&amp;</span> message.indexOf(<span style="color: #BA2121">&#39;*&#39;</span>) <span
+                        style="color: #666666">==</span> app.msgLength <span style="color: #666666">-</span> <span
+                        style="color: #666666">1</span>)
+            {
+                app.message <span style="color: #666666">=</span> message;
+            }
+
+            <span style="color: #408080; font-style: italic">/*</span>
+<span style="color: #408080; font-style: italic">             If the stored message is as long as it should be (app.message.length == app.msgLength), it starts with a &#39;#&#39;</span>
+<span style="color: #408080; font-style: italic">             (app.message.indexOf(&#39;#&#39;) == 0) and ends with a &#39;*&#39; (app.message.indexOf(&#39;*&#39;) == app.msgLength - 1),</span>
+<span style="color: #408080; font-style: italic">             then it is complete</span>
+<span style="color: #408080; font-style: italic">             */</span>
+            <span style="color: #008000; font-weight: bold">if</span> (app.message.length <span style="color: #666666">==</span> app.msgLength <span
+                        style="color: #666666">&amp;&amp;</span> app.message.indexOf(<span style="color: #BA2121">&#39;#&#39;</span>) <span
+                        style="color: #666666">==</span> <span style="color: #666666">0</span> <span
+                        style="color: #666666">&amp;&amp;</span> app.message.indexOf(<span style="color: #BA2121">&#39;*&#39;</span>) <span
+                        style="color: #666666">==</span> app.msgLength <span style="color: #666666">-</span> <span
+                        style="color: #666666">1</span>)
+            {
+                <span style="color: #008000; font-weight: bold">var</span> end <span style="color: #666666">=</span> app.message.indexOf(<span
+                        style="color: #BA2121">&#39;*&#39;</span>); <span style="color: #408080; font-style: italic">// Get the position of the last char</span>
+                <span style="color: #408080; font-style: italic">// Create an array (split(&quot;/&quot;)) from the message and store the values in (app.values)</span>
+                app.values <span style="color: #666666">=</span> app.message.substring(<span
+                        style="color: #666666">1</span>, end).split(<span style="color: #BA2121">&quot;/&quot;</span>);
+                app.message <span style="color: #666666">=</span> <span
+                        style="color: #BA2121">&quot;&quot;</span>; <span style="color: #408080; font-style: italic">// Empty the message</span>
+
+                console.log(<span style="color: #BA2121">&#39;--------------------------------------&#39;</span>);
+                console.log(<span style="color: #BA2121">&quot;Data for room:&quot;</span>);
+                <span style="color: #008000; font-weight: bold">for</span> (<span
+                        style="color: #008000; font-weight: bold">var</span> i <span
+                        style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span
+                        style="color: #666666">&lt;</span> app.values.length; i<span style="color: #666666">++</span>)
+                {
+                    app.values[i] <span style="color: #666666">=</span> <span style="color: #008000">parseInt</span>(app.values[i]); <span
+                        style="color: #408080; font-style: italic">// Convert the values from string to int</span>
+                    console.log(<span style="color: #BA2121">&quot;   * &quot;</span> <span
+                        style="color: #666666">+</span> i <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&quot; is &quot;</span> <span style="color: #666666">+</span> app.values[i]);
+                }
+            }
+
+            app.fillRoomList(app.setupSlider); <span style="color: #408080; font-style: italic">// Fill the list with the values that were stored and then configure the slider</span>
+        },
+        <span style="color: #008000; font-weight: bold">function</span>(errorString)
+        {
+            console.log(<span style="color: #BA2121">&#39;BLE enableNotification error: &#39;</span> <span
+                        style="color: #666666">+</span> errorString);
+        }
+    );</pre>
+
+            <p>The <strong>setupSlider</strong> function configures the sliders. When a slider is moved, the limit
+                changes and is stored in <strong>localStorage</strong> by the function triggered by the
+                <strong>onSlide</strong> event. The limits are then sent to the "mother" Arduino using the <strong>sendLimits</strong>
+                function.</p>
+
+            <pre class="code">    app.setupSlider <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>() <span
+                    style="color: #408080; font-style: italic">// Slide bar configuration</span>
+    {
+        <span style="color: #008000; font-weight: bold">var</span> slider <span style="color: #666666">=</span> <span
+                        style="color: #008000">document</span>.querySelectorAll(<span style="color: #BA2121">&#39;input[type=&quot;range&quot;]&#39;</span>);
+        rangeSlider.create(slider, {
+            polyfill<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">true</span>,     <span
+                        style="color: #408080; font-style: italic">// Boolean, if true, custom markup will be created</span>
+            rangeClass<span style="color: #666666">:</span> <span style="color: #BA2121">&#39;rangeSlider&#39;</span>,
+            disabledClass<span style="color: #666666">:</span> <span style="color: #BA2121">&#39;rangeSlider--disabled&#39;</span>,
+            fillClass<span style="color: #666666">:</span> <span
+                        style="color: #BA2121">&#39;rangeSlider__fill&#39;</span>,
+            bufferClass<span style="color: #666666">:</span> <span
+                        style="color: #BA2121">&#39;rangeSlider__buffer&#39;</span>,
+            handleClass<span style="color: #666666">:</span> <span
+                        style="color: #BA2121">&#39;rangeSlider__handle&#39;</span>,
+            startEvent<span style="color: #666666">:</span> [<span
+                        style="color: #BA2121">&#39;mousedown&#39;</span>, <span style="color: #BA2121">&#39;touchstart&#39;</span>, <span
+                        style="color: #BA2121">&#39;pointerdown&#39;</span>],
+            moveEvent<span style="color: #666666">:</span> [<span
+                        style="color: #BA2121">&#39;mousemove&#39;</span>, <span style="color: #BA2121">&#39;touchmove&#39;</span>, <span
+                        style="color: #BA2121">&#39;pointermove&#39;</span>],
+            endEvent<span style="color: #666666">:</span> [<span style="color: #BA2121">&#39;mouseup&#39;</span>, <span
+                        style="color: #BA2121">&#39;touchend&#39;</span>, <span style="color: #BA2121">&#39;pointerup&#39;</span>],
+            min<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">null</span>,          <span
+                        style="color: #408080; font-style: italic">// Number , 0</span>
+            max<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">null</span>,          <span
+                        style="color: #408080; font-style: italic">// Number, 100</span>
+            step<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">null</span>,         <span
+                        style="color: #408080; font-style: italic">// Number, 1</span>
+            value<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">null</span>,        <span
+                        style="color: #408080; font-style: italic">// Number, center of slider</span>
+            buffer<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">null</span>,       <span
+                        style="color: #408080; font-style: italic">// Number, in percent, 0 by default</span>
+            borderRadius<span style="color: #666666">:</span> <span style="color: #666666">10</span>,    <span
+                        style="color: #408080; font-style: italic">// Number, if you use buffer + border-radius in css for looks good,</span>
+            onInit<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span> () {
+                console.info(<span style="color: #BA2121">&#39;onInit&#39;</span>)
+            },
+            onSlideStart<span style="color: #666666">:</span> <span
+                        style="color: #008000; font-weight: bold">function</span> (position, value) {
+            },
+            onSlide<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span> (position) { <span
+                        style="color: #408080; font-style: italic">// When the slide bar is moved</span>
+                <span style="color: #008000; font-weight: bold">for</span> (<span
+                        style="color: #008000; font-weight: bold">var</span> i <span
+                        style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span
+                        style="color: #666666">&lt;</span> app.values.length; i<span style="color: #666666">++</span>)
+                {
+                    <span style="color: #008000; font-weight: bold">var</span> slideBarValue <span
+                        style="color: #666666">=</span> <span
+                        style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&quot;slideBar&quot;</span> <span
+                        style="color: #666666">+</span> i).value;
+                    <span style="color: #008000; font-weight: bold">if</span> (slideBarValue <span
+                        style="color: #666666">==</span> position) <span style="color: #408080; font-style: italic">// If the value corresponds to the position of one of the slideBars</span>
+                    {
+                        localStorage.setItem(<span style="color: #BA2121">&#39;limit&#39;</span> <span
+                        style="color: #666666">+</span> i, position); <span style="color: #408080; font-style: italic">// Store new limit</span>
+                    }
+                }
+
+                app.sendLimits(); <span style="color: #408080; font-style: italic">// Send limits to the transmitter Arduino (for lighting up the LEDs)</span>
+            },
+            onSlideEnd<span style="color: #666666">:</span> <span
+                        style="color: #008000; font-weight: bold">function</span> (position, value) {
+            }
+        });
+    };</pre>
+
+            <p>As you probably remember, the <strong>fillRoomList</strong> function is called once the data has been
+                parsed from the message received from the "mother" Arduino. It displays the state of the light and a
+                slider for every room. An HTML element is created and appended to the <strong>roomList</strong>
+                list.<br/>Note that the slider value represents the limit and the buffer the value read by the sensor.
+                The buffer is expressed as a percentage, hence the division by 10.</p>
+
+            <pre class="code">    app.fillRoomList <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>(callback) <span
+                    style="color: #408080; font-style: italic">// Fill the list</span>
+    {
+        <span style="color: #008000; font-weight: bold">var</span> roomList <span
+                        style="color: #666666">=</span> $(<span style="color: #BA2121">&#39;#roomList&#39;</span>);
+        roomList.empty(); <span style="color: #408080; font-style: italic">// Empty the list</span>
+        <span style="color: #008000; font-weight: bold">if</span> (app.values.length) <span
+                        style="color: #408080; font-style: italic">// If there are some values</span>
+        {
+            <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">var</span> i <span
+                        style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span
+                        style="color: #666666">&lt;</span> app.values.length; i<span
+                        style="color: #666666">++</span>) <span style="color: #408080; font-style: italic">// For each room</span>
+            {
+                <span style="color: #008000; font-weight: bold">if</span> (localStorage.getItem(<span
+                        style="color: #BA2121">&#39;limit&#39;</span> <span style="color: #666666">+</span> i) <span
+                        style="color: #666666">===</span> <span
+                        style="color: #008000; font-weight: bold">null</span>) <span
+                        style="color: #408080; font-style: italic">// If the limit hasn&#39;t been set yet, set to 100 (lowest)</span>
+                {
+                    localStorage.setItem(<span style="color: #BA2121">&#39;limit&#39;</span> <span
+                        style="color: #666666">+</span> i, <span style="color: #666666">100</span>);
+                }
+
+                <span style="color: #008000; font-weight: bold">var</span> limit <span style="color: #666666">=</span> localStorage.getItem(<span
+                        style="color: #BA2121">&#39;limit&#39;</span> <span style="color: #666666">+</span> i); <span
+                        style="color: #408080; font-style: italic">// Limit for the room</span>
+                <span style="color: #008000; font-weight: bold">var</span> state; <span
+                        style="color: #408080; font-style: italic">// State of the light</span>
+                <span style="color: #008000; font-weight: bold">if</span> (app.values[i] <span style="color: #666666">&gt;</span> limit)
+                {
+                    state <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;on&#39;</span>;
+                }
+                <span style="color: #008000; font-weight: bold">else</span>
+                {
+                    state <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;off&#39;</span>;
+                }
+
+                <span style="color: #008000; font-weight: bold">var</span> element <span style="color: #666666">=</span> $( <span
+                        style="color: #408080; font-style: italic">// Element to be added in the list</span>
+                    <span style="color: #BA2121">&#39;&lt;li&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;h1&gt;Room &#39;</span> <span
+                        style="color: #666666">+</span> i <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39;&lt;/h1&gt;&lt;br /&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39;Light is &lt;strong&gt;&#39;</span> <span
+                        style="color: #666666">+</span> state <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39;&lt;/strong&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;div class=&quot;slideBar&quot;&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;Slide the bar to change the limit&lt;br /&gt;&lt;br /&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;input&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39; id=&quot;slideBar&#39;</span> <span style="color: #666666">+</span> i <span
+                        style="color: #666666">+</span> <span style="color: #BA2121">&#39;&quot;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39; type=&quot;range&quot;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39; min=&quot;100&quot;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39; max=&quot;999&quot;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39; value=&quot;&#39;</span> <span style="color: #666666">+</span> limit <span
+                        style="color: #666666">+</span> <span style="color: #BA2121">&#39;&quot;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39; data-buffer=&quot;&#39;</span> <span
+                        style="color: #666666">+</span> app.values[i]<span style="color: #666666">/10</span> <span
+                        style="color: #666666">+</span> <span style="color: #BA2121">&#39;&quot;&#39;</span>
+                    <span style="color: #666666">+</span> <span
+                        style="color: #BA2121">&#39;data-rangeSlider&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;br /&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;/div&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;/li&gt;&#39;</span>
+                    <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;&lt;br /&gt;&#39;</span>
+                );
+
+                roomList.append(element); <span style="color: #408080; font-style: italic">// Append the element</span>
+            }
+        }
+        callback(); <span style="color: #408080; font-style: italic">// Configure the slider once all the element are added to the list</span>
+    };</pre>
+
+            <p>The <strong>sendLimits</strong> function creates a message starting with a #, containing the limits
+                separated by a / and ending with a * and sends it to the "mother" Arduino.</p>
+
+            <pre class="code">    app.sendLimits <span style="color: #666666">=</span> <span
+                    style="color: #008000; font-weight: bold">function</span>() <span
+                    style="color: #408080; font-style: italic">// Send the limits to the transmitter Arduino</span>
+    {
+        <span style="color: #008000; font-weight: bold">var</span> message <span style="color: #666666">=</span> <span
+                        style="color: #BA2121">&#39;#&#39;</span>; <span style="color: #408080; font-style: italic">// Start the message with a &#39;#&#39;</span>
+        <span style="color: #008000; font-weight: bold">for</span> (<span
+                        style="color: #008000; font-weight: bold">var</span> i <span
+                        style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span
+                        style="color: #666666">&lt;</span> app.values.length; i<span style="color: #666666">++</span>)
+        {
+            message <span style="color: #666666">=</span> message.concat(localStorage.getItem(<span
+                        style="color: #BA2121">&#39;limit&#39;</span> <span style="color: #666666">+</span> i));
+            <span style="color: #008000; font-weight: bold">if</span> (i <span style="color: #666666">&lt;</span> app.values.length <span
+                        style="color: #666666">-</span> <span style="color: #666666">1</span>)
+            {
+                message <span style="color: #666666">=</span> message.concat(<span
+                        style="color: #BA2121">&#39;/&#39;</span>); <span style="color: #408080; font-style: italic">// Separate the values with a &#39;/&#39;</span>
+            }
+        }
+        message <span style="color: #666666">=</span> message.concat(<span
+                        style="color: #BA2121">&#39;*&#39;</span>); <span style="color: #408080; font-style: italic">// End the message with a &#39;*&#39;</span>
+        app.sendMessage(message); <span style="color: #408080; font-style: italic">// Send the message</span>
+    }
+};</pre>
+        </div>
+
+        <div class="evo-box">
+            <h2>Part 5: Running the app</h2>
+
+            <p>Congratulations, you have now finished this project! All that remains is to plug in the Arduinos and
+                start the app on your mobile device. If everything is working, you should see a list of all the rooms,
+                containing the state of the light and a slider. Move the slider to change the limit and you will see the
+                LEDs turning on or off on the "mother" Arduino.</p>
+
+            <div class="component"></div>
+        </div>
+
+        <script src="../js/include-page-footer.js"></script>
+    </div><!-- evo-page-content -->
 </div><!-- evo-page -->
 
 </body>
