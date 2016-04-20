@@ -1006,7 +1006,8 @@ Copyright (c) 2013-2014 Evothings AB
                     app.readServices(<span style="color: #008000; font-weight: bold">function</span>() <span
                         style="color: #408080; font-style: italic">// Read services from Bluefruit device</span>
                         {
-                            app.enableNotifications(app.sendLimits); <span style="color: #408080; font-style: italic">// Enable notifications from Bluefruit device and send stored limits</span>
+                            <span style="color: #408080; font-style: italic">// Enable notifications from Bluefruit device and send stored limits</span>
+                            app.enableNotifications(app.sendLimits);
                             $(<span style="color: #BA2121">&#39;#connect&#39;</span>).hide();
                             $(<span style="color: #BA2121">&#39;#disconnect&#39;</span>).show();
                             connect.innerHTML <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Connect&#39;</span>;
@@ -1036,7 +1037,7 @@ Copyright (c) 2013-2014 Evothings AB
             <pre class="code"><span style="color: #008000">document</span>.addEventListener(<span
                     style="color: #BA2121">&#39;deviceready&#39;</span>, main, <span
                     style="color: #008000; font-weight: bold">false</span>); <span
-                    style="color: #408080; font-style: italic">// Wait for the device to be ready before executing code</span></pre>
+                    style="color: #408080; font-style: italic">// Waiting for the device to be ready</span></pre>
 
             <p>We are now moving on to the functions. The first one, <strong>connectToBluefruit</strong> scans for BLE
                 devices and stops once it finds the one with the one with the correct name. It then stores the device in
@@ -1191,12 +1192,14 @@ Copyright (c) 2013-2014 Evothings AB
                         style="color: #408080; font-style: italic">// Message received from transmitter Arduino</span>
 
             <span style="color: #408080; font-style: italic">/*</span>
-<span style="color: #408080; font-style: italic">             This part handles the parsing of the received message (message). It will then be stored in (app.message).</span>
-<span style="color: #408080; font-style: italic">             Due to the way Bluetooth works, the message will sometimes be sent in two parts, therefore I wrote a code that</span>
-<span style="color: #408080; font-style: italic">             will concatenate the two parts if it happens.</span>
+<span style="color: #408080; font-style: italic">             This part handles the parsing of the received message (message). It will then be</span>
+<span style="color: #408080; font-style: italic">             stored in (app.message). Due to the way Bluetooth works, the message will sometimes</span>
+<span style="color: #408080; font-style: italic">             be sent in two parts, therefore I wrote a code that will concatenate the two parts</span>
+<span style="color: #408080; font-style: italic">             if this happens.</span>
 <span style="color: #408080; font-style: italic">             */</span>
 
-            <span style="color: #408080; font-style: italic">// If for some reason the stored message is longer than the max length (app.msgLength), empty it</span>
+            <span style="color: #408080; font-style: italic">// If for some reason the stored message is longer than the max length</span>
+            <span style="color: #408080; font-style: italic">// (app.msgLength), empty it</span>
             <span style="color: #008000; font-weight: bold">if</span> (app.message.length <span style="color: #666666">&gt;</span> app.msgLength)
             {
                 app.message <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;&quot;</span>;
@@ -1207,35 +1210,38 @@ Copyright (c) 2013-2014 Evothings AB
                         style="color: #666666">&amp;&amp;</span> message.length <span style="color: #666666">&lt;</span> app.msgLength)
             {
                 <span style="color: #408080; font-style: italic">/*</span>
-<span style="color: #408080; font-style: italic">                 If the received message contains a &#39;#&#39; (message.indexOf(&#39;#&#39;) != -1), it means that it is the first part</span>
-<span style="color: #408080; font-style: italic">                 of the message, so the stored message has to be empty (app.message.length == 0).</span>
-<span style="color: #408080; font-style: italic">                 If the received message contains a &#39;*&#39; (message.indexOf(&#39;*&#39;) != -1), it means that it is the second part</span>
-<span style="color: #408080; font-style: italic">                 of the message, so the stored message can&#39;t be empty (app.message.length &gt; 0).</span>
+<span style="color: #408080; font-style: italic">                 If the received message contains a &#39;#&#39; (message.indexOf(&#39;#&#39;) != -1), it means</span>
+<span style="color: #408080; font-style: italic">                 that it is the first part of the message, so the stored message has to be empty</span>
+<span style="color: #408080; font-style: italic">                       (app.message.length == 0)</span>
+<span style="color: #408080; font-style: italic">                 If the received message contains a &#39;*&#39; (message.indexOf(&#39;*&#39;) != -1), it means</span>
+<span style="color: #408080; font-style: italic">                 that it is the second part of the message, so the stored message can&#39;t be empty</span>
+<span style="color: #408080; font-style: italic">                       (app.message.length &gt; 0)</span>
 <span style="color: #408080; font-style: italic">                 */</span>
                 <span style="color: #008000; font-weight: bold">if</span> ((message.indexOf(<span
                         style="color: #BA2121">&#39;#&#39;</span>) <span style="color: #666666">!=</span> <span
                         style="color: #666666">-1</span> <span style="color: #666666">&amp;&amp;</span> app.message.length <span
                         style="color: #666666">==</span> <span style="color: #666666">0</span>) <span
-                        style="color: #666666">||</span> (message.indexOf(<span
+                        style="color: #666666">||</span> <br/>                    (message.indexOf(<span
                         style="color: #BA2121">&#39;*&#39;</span>) <span style="color: #666666">!=</span> <span
                         style="color: #666666">-1</span> <span style="color: #666666">&amp;&amp;</span> app.message.length <span
                         style="color: #666666">&gt;</span> <span style="color: #666666">0</span>))
                 {
-                    app.message <span style="color: #666666">=</span> app.message.concat(message); <span
-                        style="color: #408080; font-style: italic">// Concatenate the received message to the stored message</span>
+                    <span style="color: #408080; font-style: italic">// Concatenate the received message to the stored message</span>
+                    app.message <span style="color: #666666">=</span> app.message.concat(message);
                 }
             }
 
             <span style="color: #408080; font-style: italic">/*</span>
-<span style="color: #408080; font-style: italic">             If the received message is as long as it should be (message.length == app.msgLength), it starts with a &#39;#&#39;</span>
-<span style="color: #408080; font-style: italic">             (message.indexOf(&#39;#&#39;) == 0) and ends with a &#39;*&#39; (message.indexOf(&#39;*&#39;) == app.msgLength - 1), then it is</span>
-<span style="color: #408080; font-style: italic">             complete and can be stored in (app.message)</span>
+<span style="color: #408080; font-style: italic">             If the received message is as long as it should be (message.length == app.msgLength),</span>
+<span style="color: #408080; font-style: italic">             it starts with a &#39;#&#39; (message.indexOf(&#39;#&#39;) == 0) and ends with a &#39;*&#39;</span>
+<span style="color: #408080; font-style: italic">             (message.indexOf(&#39;*&#39;) == app.msgLength - 1), then it is complete and can be stored</span>
+<span style="color: #408080; font-style: italic">             in (app.message)</span>
 <span style="color: #408080; font-style: italic">             */</span>
             <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span> (message.length <span
                         style="color: #666666">==</span> app.msgLength <span style="color: #666666">&amp;&amp;</span> message.indexOf(<span
                         style="color: #BA2121">&#39;#&#39;</span>) <span style="color: #666666">==</span> <span
                         style="color: #666666">0</span> <span
-                        style="color: #666666">&amp;&amp;</span> message.indexOf(<span style="color: #BA2121">&#39;*&#39;</span>) <span
+                        style="color: #666666">&amp;&amp;</span><br/>                     message.indexOf(<span style="color: #BA2121">&#39;*&#39;</span>) <span
                         style="color: #666666">==</span> app.msgLength <span style="color: #666666">-</span> <span
                         style="color: #666666">1</span>)
             {
@@ -1243,14 +1249,14 @@ Copyright (c) 2013-2014 Evothings AB
             }
 
             <span style="color: #408080; font-style: italic">/*</span>
-<span style="color: #408080; font-style: italic">             If the stored message is as long as it should be (app.message.length == app.msgLength), it starts with a &#39;#&#39;</span>
-<span style="color: #408080; font-style: italic">             (app.message.indexOf(&#39;#&#39;) == 0) and ends with a &#39;*&#39; (app.message.indexOf(&#39;*&#39;) == app.msgLength - 1),</span>
-<span style="color: #408080; font-style: italic">             then it is complete</span>
+<span style="color: #408080; font-style: italic">             If the stored message is as long as it should be (app.message.length == app.msgLength),</span>
+<span style="color: #408080; font-style: italic">             it starts with a &#39;#&#39; (app.message.indexOf(&#39;#&#39;) == 0) and ends with a &#39;*&#39;</span>
+<span style="color: #408080; font-style: italic">             (app.message.indexOf(&#39;*&#39;) == app.msgLength - 1), then it is complete</span>
 <span style="color: #408080; font-style: italic">             */</span>
             <span style="color: #008000; font-weight: bold">if</span> (app.message.length <span style="color: #666666">==</span> app.msgLength <span
                         style="color: #666666">&amp;&amp;</span> app.message.indexOf(<span style="color: #BA2121">&#39;#&#39;</span>) <span
                         style="color: #666666">==</span> <span style="color: #666666">0</span> <span
-                        style="color: #666666">&amp;&amp;</span> app.message.indexOf(<span style="color: #BA2121">&#39;*&#39;</span>) <span
+                        style="color: #666666">&amp;&amp;</span><br/>                app.message.indexOf(<span style="color: #BA2121">&#39;*&#39;</span>) <span
                         style="color: #666666">==</span> app.msgLength <span style="color: #666666">-</span> <span
                         style="color: #666666">1</span>)
             {
@@ -1277,7 +1283,8 @@ Copyright (c) 2013-2014 Evothings AB
                 }
             }
 
-            app.fillRoomList(app.setupSlider); <span style="color: #408080; font-style: italic">// Fill the list with the values that were stored and then configure the slider</span>
+            <span style="color: #408080; font-style: italic">// Fill the list with the values that were stored and then configure the slider</span>
+            app.fillRoomList(app.setupSlider);
         },
         <span style="color: #008000; font-weight: bold">function</span>(errorString)
         {
@@ -1326,8 +1333,8 @@ Copyright (c) 2013-2014 Evothings AB
                         style="color: #408080; font-style: italic">// Number, center of slider</span>
             buffer<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">null</span>,       <span
                         style="color: #408080; font-style: italic">// Number, in percent, 0 by default</span>
-            borderRadius<span style="color: #666666">:</span> <span style="color: #666666">10</span>,    <span
-                        style="color: #408080; font-style: italic">// Number, if you use buffer + border-radius in css for looks good,</span>
+            borderRadius<span style="color: #666666">:</span> <span style="color: #666666">10</span>,   <span
+                        style="color: #408080; font-style: italic">// Number, if you use buffer + border-radius in css for looks good</span>
             onInit<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span> () {
                 console.info(<span style="color: #BA2121">&#39;onInit&#39;</span>)
             },
@@ -1345,8 +1352,9 @@ Copyright (c) 2013-2014 Evothings AB
                         style="color: #666666">=</span> <span
                         style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&quot;slideBar&quot;</span> <span
                         style="color: #666666">+</span> i).value;
+                    <span style="color: #408080; font-style: italic">// If the value corresponds to the position of one of the slideBars</span>
                     <span style="color: #008000; font-weight: bold">if</span> (slideBarValue <span
-                        style="color: #666666">==</span> position) <span style="color: #408080; font-style: italic">// If the value corresponds to the position of one of the slideBars</span>
+                        style="color: #666666">==</span> position)
                     {
                         localStorage.setItem(<span style="color: #BA2121">&#39;limit&#39;</span> <span
                         style="color: #666666">+</span> i, position); <span style="color: #408080; font-style: italic">// Store new limit</span>
@@ -1382,11 +1390,11 @@ Copyright (c) 2013-2014 Evothings AB
                         style="color: #666666">&lt;</span> app.values.length; i<span
                         style="color: #666666">++</span>) <span style="color: #408080; font-style: italic">// For each room</span>
             {
+                <span style="color: #408080; font-style: italic">// If the limit hasn&#39;t been set yet, set to 100 (lowest)</span>
                 <span style="color: #008000; font-weight: bold">if</span> (localStorage.getItem(<span
                         style="color: #BA2121">&#39;limit&#39;</span> <span style="color: #666666">+</span> i) <span
                         style="color: #666666">===</span> <span
-                        style="color: #008000; font-weight: bold">null</span>) <span
-                        style="color: #408080; font-style: italic">// If the limit hasn&#39;t been set yet, set to 100 (lowest)</span>
+                        style="color: #008000; font-weight: bold">null</span>)
                 {
                     localStorage.setItem(<span style="color: #BA2121">&#39;limit&#39;</span> <span
                         style="color: #666666">+</span> i, <span style="color: #666666">100</span>);
