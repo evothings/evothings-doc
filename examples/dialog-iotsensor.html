@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: dialog-iotsensor.html
+Description: Documentation for the Dialog Semiconductor IoT Sensor example app.
+Author: Nick Bezembinder, Erwin Roeters
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Dialog Semiconductor IoT Sensor</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<!-- Always use the Evothings app icon, do not use the "any browser icon". -->
+	<h1>Dialog Semiconductor IoT Sensor</h1>
+	
+	<p><b>Control your Dialog IoT Sensor using JavaScript</b>. This application demonstrates the functionality of the <a href="http://www.dialog-semiconductor.com/iotsensor" target="_blank">DA14583 IoT Sensor</a>. The Dialog IoT Sensor provides the means to gather and process sensor data among six different sensors.</p>
+	
+	<p>The data is gathered by the DA14583, processed and transferred over Bluetooth Low Energy to the application running on the smartphone.</p>
+	
+	<p>Using the ‘Scan’ button the application scans for Bluetooth devices in the area. Once a device is found, the name and RSSI value of the device and a connect button is shown. After a certain period the app stops scanning to save the phone’s battery. </p>
+	
+	<p>Once the phone is connected to the sensor a list of available sensors is shown. Clicking one of the sensors opens a graphical view as seen below. Data is automatically updated every time new sensor data is available.</p>
+	
+	<p>Via the settings menu the sensor can be configured. The settings menu is split up in three parts: sensor configuration, calibration and sensor fusion settings. Changes in the settings are automatically stored in the sensor and can also be stored in flash memory. A ‘Reset to default’ button restores all settings of the sensor to default.</p>
+	
+	<p>This example uses a high-level JavaScript library for communicating with the Dialog IoT Sensor. See the <a href="https://evothings.com/?p=2418" target="_blank">IoT Sensor Starter Guide</a> to build your own app using the library!</p>
+	
+	<!-- Insert application screen shot here-->
+	<img class="img-example-screenshot" src="images/dialog-iotsensor-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<!-- Explain application structure here, comment on main files and link to them -->
+	<h2>Source code</h2>
+
+	<p>You can browse the source code for this example at the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-iotsensor" target="_blank">Evothings GitHub repository</a>.</p>
+	
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-iotsensor/app/index.html" target="_blank">index.html</a> is the main HTML file of the app. You can find custom CSS in <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-iotsensor/app/app.css" target="_blank">app.css</a></p>
+	
+	<p>In the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-iotsensor/app/js" target="_blank">js folder</a> you will find all JavaScript code required for the app.</p>
+	
+	<p>The directory <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-iotsensor/DA14583" target="_blank">DA14583</a> contains the binaries for the Dialog IoT Sensor. You can also find these files on <a href="http://support.dialog-semiconductor.com/" target="_blank">Dialog’s customer support site</a>. <b><i>You must use the SFL firmware for this app to function!</i></b></p>
+</p>
+	
+</div>
+
+<div class="evo-box">
+	<!-- Explain what the user needs in terms of hardware as well as softare in order to run the example -->
+	<h2>What you need</h2>
+
+	<p>This example works with an Dialog IoT Sensor. Visit <a href="http://www.dialog-semiconductor.com/iotsensor" target="_blank">dialog-semiconductor.com</a> for further details.</p>
+
+	<p>You can order your own IoT Sensor via <a href="http://www.digikey.nl/product-detail/en/dialog-semiconductor-gmbh/DA14583IOTSENSDNGL/1564-1024-ND/5887065" target="_blank">Digi-Key</a>. For other distributors, visit the <a href="http://www.dialog-semiconductor.com/bluetooth-smart/buy" target="_blank">website</a>.</p>
+	
+	<p>Using <a href="http://www.dialog-semiconductor.com/bluetooth-smart/development-tools" target="_blank">Dialog’s SmartSnippets Bluetooth software platform</a> you can store the image file to flash memory of the device. The SmartSnippets software can be found on <a href="http://support.dialog-semiconductor.com/" target="_blank">Dialog’s customer support site</a> (registration required).</p>
+
+	<p>Run the app in Evothings Viewer on Android or iOS.</p>
+	
+	<p>An iOS device (7+) or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android, version 4.3 or later is needed.</p>
+
+	
+</div>
+
+<div class="evo-box">
+	<!-- Explain briefly how to get up and running -->
+	<h2>How to get up and running</h2>
+	
+	<p>
+	Follow these steps to get started with this example:
+		<ul>
+			<li>Turn on the Dialog IoT Sensor (make sure to use the SFL firmware). Make sure the blue LED is blinking (advertising mode).</li>
+			<li>Run Evothings Workbench on your desktop/laptop.</li>
+			<li>Run Evothings Viewer on a mobile device and connect to the workbench</li>
+			<li>Launch the example “Dialog Semiconductor IoT Sensor” from the Workbench window in the ‘EXAMPLE’ tab by pressing ‘RUN’</li>
+			<li>The app automatically starts scanning for IoT Sensor’s in the area. Click ‘CONNECT’ next to the IoT Sensor SFL to connect to the sensor.</li>
+			<li>Click one of the sensors to read the data of the sensor and display the data graphically.</li>
+			<li>Use the ‘SETTINGS’ button to fully control your Dialog IoT Sensor. You can reset, change or store the settings in the flash memory of the IoT Sensor.</li>
+		</ul>
+	</p>
+
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>

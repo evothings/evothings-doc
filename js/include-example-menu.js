@@ -39,5 +39,8 @@ document.write(
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino&nbsp;Led&nbsp;On/Off</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno&nbsp;Hello&nbsp;World</a><br/>'
 	+	'<a href="../examples/rpi3-system-information.html">RPi&nbsp;3&nbsp;-&nbsp;System&nbsp;Information</a><br/>'
+	+	'<a href="../examples/dialog-blinky.html">Dialog&nbsp;-&nbsp;Blinky</a><br/>'
+	+	'<a href="../examples/dialog-iotsensor.html">Dialog&nbsp;-&nbsp;IoT Sensor</a><br/>'
+	+	'<a href="../examples/dialog-beacons.html">Dialog&nbsp;-&nbsp;Beacons</a><br/>'
 
 	+ '</div>')
