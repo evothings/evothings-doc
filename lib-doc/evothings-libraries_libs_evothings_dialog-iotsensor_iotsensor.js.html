@@ -1,0 +1,702 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: evothings-libraries/libs/evothings/dialog-iotsensor/iotsensor.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: evothings-libraries/libs/evothings/dialog-iotsensor/iotsensor.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// File: iotsensor.js
+
+&quot;use strict&quot;; 
+
+// Load Dialog IoT Sensor library components.
+evothings.loadScripts(
+[
+	&#x27;libs/evothings/easyble/easyble.js&#x27;,
+	&#x27;libs/evothings/dialog-iotsensor/iotsensor-ble.js&#x27;, // Abstract object for BLE IoT sensors
+	&#x27;libs/evothings/dialog-iotsensor/iotsensor-sfl.js&#x27;, // Specific object for SFL
+	&#x27;libs/evothings/dialog-iotsensor/iotsensor-raw.js&#x27;, // Specific object for RAW
+	&#x27;libs/evothings/dialog-iotsensor/iotsensor-settings.js&#x27; // Abstract object for BLE IoT sensor settings
+]);
+
+/**
+ * @namespace
+ * @description Top-level object that holds generic functions and sub-modules.
+ * @public
+ */
+evothings.iotsensor &#x3D; {};
+
+/**
+ * Constant identifying the IoT Sensor SFL project.
+ * @public
+ */
+evothings.iotsensor.SFL &#x3D; &#x27;IoT-DK-SFL&#x27;;
+
+/**
+ * Constant identifying the IoT Sensor RAW project.
+ * @public
+ */
+evothings.iotsensor.RAW &#x3D; &#x27;IoT-DK-RAW&#x27;;
+
+/**
+ * Public. Create an IoT Sensor instance.
+ * @param {string} type String with type of sensor. &amp;lt;br /&gt;
+ * Use constants {@link evothings.iotsensor.SFL} and {@link evothings.iotsensor.RAW}.
+ * @returns {@link evothings.iotsensor.instance} or null
+ * if an object of the requested type cannot be created.
+ * @example
+ * // Create a new IoT Sensor SFL instance
+ * var iotsensor &#x3D; evothings.iotsensor.createInstance(evothings.iotsensor.SFL);
+ * @public
+ */
+evothings.iotsensor.createInstance &#x3D; function(type)
+{
+ 	switch(type)
+ 	{
+ 		case evothings.iotsensor.SFL:
+ 			var factory &#x3D; evothings.iotsensor.ble.SFL;
+ 			break;
+ 		case evothings.iotsensor.RAW:
+ 			var factory &#x3D; evothings.iotsensor.ble.RAW;
+ 			break;
+ 		default:
+ 			return null;
+ 	}
+
+ 	// Create abstract instance.
+	var instance &#x3D; evothings.iotsensor.createGenericInstance();
+
+ 	// Add specific implementation
+	return factory.addInstanceMethods(instance);
+}
+
+/**
+ * Create an object with functions common to all IoT Sensor models.
+ * This object specifies the public interface for IoT Sensor instances.
+ * @private
+ */
+evothings.iotsensor.createGenericInstance &#x3D; function()
+{
+	/**
+	 * @namespace
+	 * @alias evothings.iotsensor.instance
+	 * @description Abstract IoTSensor instance object that defines a common interface.
+	 * @public
+	 */
+	var instance &#x3D; {}
+
+	/**
+	 * @description Internal. Default error handler function.
+	 * @instance
+	 * @private
+	 */
+	instance.errorFun &#x3D; function(error)
+	{
+		console.log(evothings.iotsensor.currentTime() + &#x27; IoT Sensor error: &#x27; + error);
+	}
+
+	/**
+	 * @description Internal. Default status handler function.
+	 * @instance
+	 * @private
+	 */
+	instance.statusFun &#x3D; function(status)
+	{
+		console.log(evothings.iotsensor.currentTime() + &#x27; IoT Sensor status: &#x27; + status);
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the accelerometer notification callback. This function is called everytime new data is available. &amp;lt;br /&gt;
+	 * Data is returned in g (x, y, z)
+	 * @param {function} callbackFun - Callback called with accelerometer data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.accelerometerCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Accelerometer data: &#x27; 
+	 * 					+ data.x + &#x27;g &#x27;
+	 * 					+ data.y + &#x27;g &#x27;
+	 * 					+ data.z + &#x27;g&#x27;);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.accelerometerCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the gyroscope notification callback. This function is called everytime new data is available. &amp;lt;br /&gt;
+	 * Data is returned in degrees per second (x, y, z)
+	 * @param {function} callbackFun - Callback called with gyroscope data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.gyroscopeCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Gyroscope data: &#x27; 
+	 * 					+ data.x + &#x27;degrees per second &#x27;
+	 * 					+ data.y + &#x27;degrees per second &#x27;
+	 * 					+ data.z + &#x27;degrees per second&#x27;);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.gyroscopeCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the magnetometer notification callback. This function is called everytime new data is available.&amp;lt;br /&gt;
+	 * Data is returned in micro Tesla (x, y, z)
+	 * @param {function} callbackFun - Callback called with magnetometer data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.magnetometerCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Magnetometer data: &#x27; 
+	 * 					+ data.x + &#x27;µT &#x27;
+	 * 					+ data.y + &#x27;µT &#x27;
+	 * 					+ data.z + &#x27;µT&#x27;);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.magnetometerCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the barometer notification callback. This function is called everytime new data is available. &amp;lt;br /&gt;
+	 * Data is returned in Pascal (whole number)
+	 * @param {function} callbackFun - Callback called with barometer data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.barometerCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Barometer data: &#x27; + data + &#x27;Pa&#x27;);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.barometerCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the temperature notification callback. This function is called everytime new data is available.&amp;lt;br /&gt;
+	 * Data is returned in degrees Celcius (2 decimals)
+	 * @param {function} callbackFun - Callback called with temperature data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.temperatureCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Temperature data: &#x27; + data + &#x27;°C&#x27;);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.temperatureCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the humidity notification callback. This function is called everytime new data is available. &amp;lt;br /&gt;
+	 * Data is returned in % (whole number)
+	 * @param {function} callbackFun - Callback called with humidity data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.humidityCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Humidity data: &#x27; + data + &#x27;%&#x27;);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.humidityCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;SFL only&amp;lt;/strong&gt; &amp;lt;br /&gt; Set the sensor fusion notification callback. This function is called everytime new data is available. &amp;lt;br /&gt;
+	 * Data is returned in 4 axis (w, x, y, z)
+	 * @param {function} callbackFun - Callback called with sensor fusion data: callbackFun(data).
+	 * @instance
+	 * @example
+	 * iotsensor.sflCallback(
+	 * 	function(data)
+	 * 	{
+	 * 		console.log(&#x27;Sensor fusion data: &#x27; 
+	 * 					+ data.w + &#x27; &#x27;
+	 * 					+ data.x + &#x27; &#x27;
+	 * 					+ data.y + &#x27; &#x27;
+	 * 					+ data.z);
+	 * 	}
+	 * );
+	 * @public
+	 */
+	instance.sflCallback &#x3D; function(callbackFun)
+	{
+		return instance;
+	}
+
+	/**
+	 * @description Set the error handler function. &amp;lt;br /&gt;
+	 * If no errorCallback is set, the default handler will be called:
+	 * &amp;lt;pre&gt;console.log(evothings.iotsensor.currentTime() + &#x27; IoT Sensor error: &#x27; + error);&amp;lt;/pre&gt;
+	 * @param {function} errorFun - Callback called with error: errorFun(error)
+	 * @instance
+	 * @public
+	 */
+	instance.errorCallback &#x3D; function(errorFun)
+	{
+		instance.errorFun &#x3D; errorFun;
+		return instance;
+	}
+
+	/**
+	 * @description Set the status handler function. &amp;lt;br /&gt;
+	 * If no statusCallback is set, the default handler will be called:
+	 * &amp;lt;pre&gt;console.log(evothings.iotsensor.currentTime() + &#x27; IoT Sensor status: &#x27; + status);&amp;lt;/pre&gt;
+	 * @param {function} statusFun - Callback called with status: statusFun(status);
+	 * @instance
+	 * @public
+	 */
+	instance.statusCallback &#x3D; function(statusFun)
+	{
+		instance.statusFun &#x3D; statusFun;
+		return instance;
+	}
+
+	/**
+	 * @description Call the error handler function.
+	 * @instance
+	 * @private
+	 */
+	instance.callErrorCallback &#x3D; function(error)
+	{
+		instance.errorFun &amp;amp;&amp;amp; instance.errorFun(error);
+	}
+
+	/**
+	 * @description Call the status handler function.
+	 * @instance
+	 * @private
+	 */
+	instance.callStatusCallback &#x3D; function(status)
+	{
+		instance.statusFun &amp;amp;&amp;amp; instance.statusFun(status);
+	}
+
+	/**
+	 * @description Return the device model
+	 * @returns {string}
+	 * @instance
+	 * @example
+	 * var model &#x3D; iotsensor.getDeviceModel();
+	 * console.log(&#x27;Device model &#x27; + model);
+	 * @public
+	 */
+	instance.getDeviceModel &#x3D; function()
+	{
+		return instance.deviceModel;
+	}	
+
+	/**
+	 * @description Return the firmware version on the device
+	 * @returns {string}
+	 * @instance
+	 * @example
+	 * var version &#x3D; iotsensor.getFirmwareString();
+	 * console.log(&#x27;Firmware version: &#x27; + version);
+	 * @public
+	 */
+	instance.getFirmwareString &#x3D; function()
+	{
+		return instance.firmwareString;
+	}
+
+	/**
+	 * @description Checks if the accelerometer is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if accelerometer is available
+	 * if(iotsensor.isAccelerometerAvailable())
+	 * {
+	 * 	iotsensor.accelerometerOn();
+	 * }
+	 * @public
+	 */
+	instance.isAccelerometerAvailable &#x3D; function()
+	{
+		return (instance.ACCELEROMETER.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}
+
+	/**
+	 * @description Checks if the gyroscope is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if gyroscope is available
+	 * if(iotsensor.isGyroscopeAvailable())
+	 * {
+	 * 	iotsensor.gyroscopeOn();
+	 * }
+	 * @public
+	 */
+	instance.isGyroscopeAvailable &#x3D; function()
+	{
+		return (instance.GYROSCOPE.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}
+
+	/**
+	 * @description Checks if the magnetometer is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if magnetometer is available
+	 * if(iotsensor.isMagnetometerAvailable())
+	 * {
+	 * 	iotsensor.magnetometerOn();
+	 * }
+	 * @public
+	 */
+	instance.isMagnetometerAvailable &#x3D; function()
+	{
+		return (instance.MAGNETOMETER.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}
+
+	/**
+	 * @description Checks if the barometer is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if barometer is available
+	 * if(iotsensor.isBarometerAvailable())
+	 * {
+	 * 	iotsensor.barometerOn();
+	 * }
+	 * @public
+	 */
+	instance.isBarometerAvailable &#x3D; function()
+	{
+		return (instance.BAROMETER.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}
+
+	/**
+	 * @description Checks if the humidity sensor is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if humidity sensor is available
+	 * if(iotsensor.isHumidityAvailable())
+	 * {
+	 * 	iotsensor.humidityOn();
+	 * }
+	 * @public
+	 */
+	instance.isHumidityAvailable &#x3D; function()
+	{
+		return (instance.HUMIDITY.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}	
+
+	/**
+	 * @description Checks if the temperature sensor is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if temperature sensor is available
+	 * if(iotsensor.isTemperatureAvailable())
+	 * {
+	 * 	iotsensor.temperatureOn();
+	 * }
+	 * @public
+	 */
+	instance.isTemperatureAvailable &#x3D; function()
+	{
+		return (instance.TEMPERATURE.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}
+
+	/**
+	 * @description Checks if Sensor Fusion is available.
+	 * @return {boolean}
+	 * @instance
+	 * @example
+	 * // Check if sensor fusion is available
+	 * if(iotsensor.isSflAvailable())
+	 * {
+	 * 	iotsensor.sflOn();
+	 * }
+	 * @public
+	 */
+	instance.isSflAvailable &#x3D; function()
+	{
+		return (instance.SFL.AVAILABLE &#x3D;&#x3D;&#x3D; 1 ? true : false);
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on accelerometer notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on the sensor&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.accelerometerOn();
+	 * @public
+	 */
+	instance.accelerometerOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off accelerometer notification.
+	 * @instance
+	 * @example
+	 * iotsensor.accelerometerOff();
+	 * @public
+	 */
+	instance.accelerometerOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on gyroscope notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on the sensor&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.gyroscopeOn();
+	 * @public
+	 */
+	instance.gyroscopeOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off gyroscope notification.
+	 * @instance
+	 * @example
+	 * iotsensor.gyroscopeOff();
+	 * @public
+	 */
+	instance.gyroscopeOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on magnetometer notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on the sensor&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.magnetometerOn();
+	 * @public
+	 */
+	instance.magnetometerOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off magnetometer notification.
+	 * @instance
+	 * @example
+	 * iotsensor.magnetometerOff();
+	 * @public
+	 */
+	instance.magnetometerOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on barometer notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on the sensor&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.barometerOn();
+	 * @public
+	 */
+	instance.barometerOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off barometer notification.
+	 * @instance
+	 * @example
+	 * iotsensor.barometerOff();
+	 * @public
+	 */
+	instance.barometerOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on temperature notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on the sensor&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.temperatureOn();
+	 * @public
+	 */
+	instance.temperatureOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off temperature notification.
+	 * @instance
+	 * @example
+	 * iotsensor.temperatureOff();
+	 * @public
+	 */
+	instance.temperatureOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on humimdity notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on the sensor&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.humidityOn();
+	 * @public
+	 */
+	instance.humidityOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off humidity notification.
+	 * @instance
+	 * @example
+	 * iotsensor.humidityOff();
+	 * @public
+	 */
+	instance.humidityOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;SFL only&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn on sensor fusion notification.
+	 * &amp;lt;pre&gt;Make sure the callback function is set before turning on sensor fusion&amp;lt;/pre&gt;
+	 * @instance
+	 * @example
+	 * iotsensor.sflOn();
+	 * @public
+	 */
+	instance.sflOn &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;SFL only&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off sensor fusion notification.
+	 * @instance
+	 * @example
+	 * iotsensor.sflOff();
+	 * @public
+	 */
+	instance.sflOff &#x3D; function()
+	{
+		return instance;
+	}
+
+	/**
+	 * @description &amp;lt;strong&gt;RAW and SFL&amp;lt;/strong&gt; &amp;lt;br /&gt; Turn off all sensors.
+	 * @instance
+	 * @example
+	 * iotsensor.disableAllSensors();
+	 * @public
+	 */
+	 instance.disableAllSensors &#x3D; function()
+	 {
+	 	return instance;
+	 }
+
+	return instance;
+}
+
+/**
+ * @description Returns current time using new Date() in a readable string
+ * @returns {string} - Current time in hh:MM:SS.sss format
+ * @example
+ * var time &#x3D; evothings.iotsensor.currentTime();
+ * console.log(&#x27;Current time: &#x27; + time);
+ * @public
+ */
+evothings.iotsensor.currentTime &#x3D; function()
+{
+	var date &#x3D; new Date();
+	return ((&#x27;0&#x27; + date.getHours()).slice(-2)
+				 + &#x27;:&#x27; + (&#x27;0&#x27; + date.getMinutes()).slice(-2)
+				 + &#x27;:&#x27; + (&#x27;0&#x27; + date.getSeconds()).slice(-2)
+				 + &#x27;.&#x27; + (&#x27;00&#x27; + date.getMilliseconds()).slice(-3));
+}
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on April 28, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

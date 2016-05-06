@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: dialog-blinky.html
+Description: Documentation for the Dialog Semiconductor Blinky example app.
+Author: Nick Bezembinder, Erwin Roeters
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Dialog Semiconductor Blinky</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<!-- Always use the Evothings app icon, do not use the "any browser icon". -->
+	<h1>Dialog Semiconductor Blinky</h1>
+
+	<p><b>Control your DA1458x DK</b>. The application demonstrates the functionality of the DA1458x Development Kit. It is a simple application which demonstrates basic initialization of the DA1458x and LED blinking. A user can control the LED on the Development Kit (DK) via the application on his smartphone.</p>
+	
+	<p>A Bluetooth Low Energy connection is set up between the DK and the smartphone. The user interface on the smartphone consists of a button to turn the LED on or off, and a slider to control the blinking speed of the LED. A push button can be added to the DK as an extra component. Pressing the button changes the background colour on the mobile device to demonstrate the connection is bidirectional. </p>
+	
+	<p>The overflow button in the upper-right corner allows the user to open a settings menu in which the Bluetooth scantime can be set. The app automatically stops scanning for Bluetooth devices after a certain time to save the phone’s battery.</p>
+
+
+	<!-- Insert application screen shot here-->
+	<img class="img-example-screenshot" src="images/dialog-blinky-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<!-- Explain application structure here, comment on main files and link to them -->
+	<h2>Source code</h2>
+
+	<p>You can browse the source code for this example at the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-blinky" target="_blank">Evothings GitHub repository</a>.</p>
+	
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-blinky/app/index.html" target="_blank">index.html</a> is the main HTML file of the app. You can find custom CSS in <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-blinky/app/app.css" target="_blank">app.css</a></p>
+	
+	<p>In file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-blinky/app/app.js" target="_blank">app.js</a> you will find the JavaScript code for the app.</p>
+	
+	<p>The directory DA1458x contains the binaries for the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-blinky/DA1458x" target="_blank">DA14580/1/3</a>. These files contain the generated firmware needed to blink the LED and add the GPIO button functionality.</p>
+	
+</div>
+
+<div class="evo-box">
+	<!-- Explain what the user needs in terms of hardware as well as softare in order to run the example -->
+	<h2>What you need</h2>
+
+	<p>This example works with the DA1458x Development Kit. Visit <a href="http://www.dialog-semiconductor.com/bluetooth-smart/development-tools" target="_blank">dialog-semiconductor.com</a> for further details.</p>
+	
+	<p>Using <a href="http://www.dialog-semiconductor.com/bluetooth-smart/development-tools" target="_blank">Dialog’s SmartSnippets Bluetooth software platform</a> you can store the image file to flash memory of the device. The SmartSnippets software can be found on <a href="http://support.dialog-semiconductor.com/" target="_blank">Dialog’s customer support site</a> (registration required).</p>
+	
+	<p>Run the app in Evothings Viewer on Android or iOS.</p>
+	
+	<p>Optionally, you can include a GPIO push button for more functionality. For this example, a GPIO push button from <a href="https://www.modmypi.com/download/37-piece-sensor-description.pdf" target="_blank">Elektor’s Aruidno 37 Sensor Kit</a> is used. The PCB mounted push button has a built in 10k Ohm resistor connected between the center pin and the ‘S’ pin and can be used as a pull up or pull down resistor. The push button connects the two outer pins (‘S’ and ground). The ‘S’ pin is connected to pin P1_1 on the DK, and the ground pin to one of the available ground pins on the DK. See the user manual on <a href="http://support.dialog-semiconductor.com/" target="_blank">Dialog’s customer support site</a> (registration required) for more information.</p>
+
+	<p>For example, the push button on the DA14580 Development Kit is connected as follows:</p>
+ 
+	<img src="images/dialog-da1458x-dk.png" alt="Dialog Semiconductor DA1458x Development Kit" />
+ 
+	<p>An iOS device (7+) or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android, version 4.3 or later is needed.</p>
+
+	
+</div>
+
+<div class="evo-box">
+	<!-- Explain briefly how to get up and running -->
+	<h2>How to get up and running</h2>
+
+	<p>
+		Follow these steps to get started with this example:
+		<ul>
+			<li>Turn on the DA1458x Development Kit (make sure to use the correct firmware).</li>
+			<li>Run Evothings Workbench on your desktop/laptop.</li>
+			<li>Run Evothings Viewer on a mobile device and connect to the workbench.</li>
+			<li>Launch the example “Dialog Semiconductor Blinky” from the Workbench window in the ‘EXAMPLE’ tab by pressing ‘RUN’.</li>
+			<li>In the app, ‘SCAN’ and ‘CONNECT’ to your development kit and blink away!</li>
+			<li>EXTRA – If you have a GPIO push button connected, the background color of the application will randomly change if you press the button.</li>
+	</p>
+	
+</div>
+
+<div class="evo-box">
+	<h2>Hackster.io</h2>
+	
+	<p>Read more about this example and how to build your own firmware for the DA1458x Development Kit on <a href="https://www.hackster.io/nbezembinder1/dialog-da1458x-led-control-2d0b84" target="_blank">Hackster.io</a>.</p>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>

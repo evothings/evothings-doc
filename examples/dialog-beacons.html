@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: dialog-beacons.html
+Description: Documentation for the Dialog Semiconductor Beacons example app.
+Author: Nick Bezembinder, Erwin Roeters
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Dialog Semiconductor Beacons</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<!-- Always use the Evothings app icon, do not use the "any browser icon". -->
+	<h1>Dialog Semiconductor Beacons</h1>
+
+	<p><b>Multiple beacon formats ranging</b>. This application provides a quick demonstration of the DA1458x. Using the beacon software the Bluetooth device is able to advertise in three different formats: Eddystone, iBeacon and AltBeacon. The app detects both iBeacon and Eddystone format. Once the mobile device gets close to the beacon the app displays an image, depending on the beacon, and some detailed information.</p>
+	
+	<p>Using the overflow button in the upper-right corner it is possible to change the RSSI threshold and offset. These values are used to determine the required signal strength of the beacon before the data is displayed on the screen.</p>
+		
+	<p>
+		Dialog's battery-powered Bluetooth Smart beacon is built on the DA14580 Bluetooth Smart chip and takes advantage of the chip's world's lowest power consumption and size. The PCB dimensions measure only 16.9 x 23.7 x 1.0 mm and battery lifetime based on 70 mAh battery with 5 sec advertising is 730 days! 
+	</p>
+	
+	<p>
+		For more information, see the reference design on <a href="http://support.dialog-semiconductor.com/connectivity/reference-design/beacon-battery-powered" target="_blank">Dialog's customer support site</a> (registration required).
+	</p>
+	
+	<p>Interested in developing your own iBeacon and Eddystone applications using Evothings Studio? See the <a href="https://evothings.com/quick-guide-to-writing-mobile-ibeacon-applications-in-javascript/" target="_blank">iBeacon</a> and <a href="https://evothings.com/detecting-eddystone-beacons-in-javascript-made-easy/">Eddystone</a> guides. </p>
+	
+	<!-- Insert application screen shot here-->
+	<img class="img-example-screenshot" src="images/dialog-beacons-screenshot.png"/>
+</div>
+
+<div class="evo-box">
+	<!-- Explain application structure here, comment on main files and link to them -->
+	<h2>Source code</h2>
+	
+	<p>You can browse the source code for this example at the <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-beacons" target="_blank">Evothings GitHub repository</a>.</p>
+	
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-beacons/app/index.html" target="_blank">index.html</a> is the main HTML file of the app. You can find custom CSS in <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-beacons/app/app.css" target="_blank">app.css</a></p>
+	
+	<p>In file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-beacons/app/app-eddystone.js" target="_blank">app-eddystone.js</a> and <a href="https://github.com/evothings/evothings-examples/blob/master/examples/dialog-beacons/app/app-ibeacon.js" target="_blank">app-ibeacon.js</a> you will find the JavaScript code for the app. Each JavaScript source file is required for a full demo, but can be used separately if necessary.</p>
+	
+	<p>The directory <a href="https://github.com/evothings/evothings-examples/tree/master/examples/dialog-beacons/DA14580" target="_blank">DA14580</a> contains the binaries for the DA14580. These files contain the generated firmware needed to advertise multiple beacon formats. Each binary advertise different beacon data. This data is used by the app to distinguish different beacons. </p>
+</div>
+
+<div class="evo-box">
+	<!-- Explain what the user needs in terms of hardware as well as softare in order to run the example -->
+	<h2>What you need</h2>
+	
+	<p>This example works with a <a href="http://www.dialog-semiconductor.com/products/connectivity/bluetooth-smart/smartbond-da14580" target="_blank">DA14580</a>. Visit dialog-semiconductor.com for further details.</p>
+
+	<p>Using <a href="http://www.dialog-semiconductor.com/bluetooth-smart/development-tools" target="_blank">Dialog’s SmartSnippets Bluetooth software platform</a> you can store the image file to flash memory of the device. The SmartSnippets software can be found on <a href="http://support.dialog-semiconductor.com/" target="_blank">Dialog’s customer support site</a> (registration required). </p>
+	
+	<p>Run the app in Evothings Viewer on Android or iOS.</p>
+	
+	<p>An iOS device (7+) or an Android device with support for Bluetooth 4.0 (which includes BLE) is required. For Android, version 4.3 or later is needed.</p>
+
+	
+</div>
+
+<div class="evo-box">
+	<!-- Explain briefly how to get up and running -->
+	<h2>How to get up and running</h2>
+	<p>
+		Follow these steps to get started with this example:
+		<ul>
+			<li>Turn on the DA14580 (make sure to use the correct firmware).</li>
+			<li>Run Evothings Workbench on your desktop/laptop.</li>
+			<li>Run Evothings Viewer on a mobile device and connect to the workbench.</li>
+			<li>Launch the example “Dialog Semiconductor Beacons” from the Workbench window in the ‘EXAMPLE’ tab by pressing ‘RUN’.</li>
+			<li>In the app, press ‘START EDDYSTONE’ and ‘START IBEACON’ to start scanning for iBeacon and Eddystone beacons. Move in range of a beacon and a picture will appear!</li>
+			<li>EXTRA – Press ‘EDDYSTONE DATA’ or ‘IBEACON DATA’ to see more about the nearby beacons.</li>
+		</ul>
+	</p>
+
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
