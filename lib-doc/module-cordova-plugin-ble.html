@@ -35,6 +35,22 @@
           </header>
           <section id="summary">
             <div class="summary-callout">
+              <h2 class="summary-callout-heading">Namespace</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-cordova-plugin-ble.peripheral.html">peripheral</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
               <h2 class="summary-callout-heading">Properties</h2>
               <div class="summary-content">
                 <div class="summary-column">
@@ -114,7 +130,7 @@
                     <dt><a href="module-cordova-plugin-ble.html#.services">services(deviceHandle, win, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="module-cordova-plugin-ble.html#.startScan">startScan(win, fail)</a></dt>
+                    <dt><a href="module-cordova-plugin-ble.html#.startScan">startScan(uuids, success, fail)</a></dt>
                     <dd>
                     </dd>
                   </dl>
@@ -133,6 +149,9 @@
                     <dt><a href="module-cordova-plugin-ble.html#.writeCharacteristic">writeCharacteristic(deviceHandle, characteristicHandle, data, win, fail)</a></dt>
                     <dd>
                     </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#.writeCharacteristicWithoutResponse">writeCharacteristicWithoutResponse(deviceHandle, characteristicHandle, data, win, fail)</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="module-cordova-plugin-ble.html#.writeDescriptor">writeDescriptor(deviceHandle, descriptorHandle, data, win, fail)</a></dt>
                     <dd>
                     </dd>
@@ -145,7 +164,13 @@
               <div class="summary-content">
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="module-cordova-plugin-ble.html#~AdvertiseData">AdvertiseData</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="module-cordova-plugin-ble.html#~AdvertisementData">AdvertisementData</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~AdvertiseSettings">AdvertiseSettings</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="module-cordova-plugin-ble.html#~Characteristic">Characteristic</a></dt>
@@ -158,6 +183,9 @@
                     <dd>
                     </dd>
                     <dt><a href="module-cordova-plugin-ble.html#~ConnectInfo">ConnectInfo</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~connectionStateChangeCallback">connectionStateChangeCallback(deviceHandle, connected)</a></dt>
                     <dd>
                     </dd>
                   </dl>
@@ -179,11 +207,26 @@
                     <dt><a href="module-cordova-plugin-ble.html#~emptyCallback">emptyCallback()</a></dt>
                     <dd>
                     </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~failCallback">failCallback(errorString)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~GattCharacteristic">GattCharacteristic</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~GattDescriptor">GattDescriptor</a></dt>
+                    <dd>
+                    </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
-                    <dt><a href="module-cordova-plugin-ble.html#~failCallback">failCallback(errorString)</a></dt>
+                    <dt><a href="module-cordova-plugin-ble.html#~GattService">GattService</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~GattSettings">GattSettings</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~readRequestCallback">readRequestCallback(deviceHandle, requestId)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="module-cordova-plugin-ble.html#~rssiCallback">rssiCallback(rssi)</a></dt>
@@ -198,12 +241,19 @@
                     <dt><a href="module-cordova-plugin-ble.html#~serviceCallback">serviceCallback(services)</a></dt>
                     <dd>
                     </dd>
+                    <dt><a href="module-cordova-plugin-ble.html#~writeRequestCallback">writeRequestCallback(deviceHandle, requestId, data)</a></dt>
+                    <dd>
+                    </dd>
                   </dl>
                 </div>
               </div>
             </div>
           </section>
           <section>
+            <h2>Namespace</h2>
+            <section id='members-links'>
+              <h3><a href="module-cordova-plugin-ble.peripheral.html">peripheral</a></h3>
+            </section>
             <h2>Properties</h2>
             <section>
               <div class="symbol-detail-labels"><span class="label label-readonly">read-only</span>&nbsp;<span class="label label-static">static</span></div>
@@ -275,6 +325,62 @@
                       </td>
                       <td>
                         <p>STATE_DISCONNECTING</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>STATE_DISCONNECTED</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>0</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>STATE_CONNECTING</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>1</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>STATE_CONNECTED</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>2</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>STATE_DISCONNECTING</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>3</p>
                       </td>
                     </tr>
                   </tbody>
@@ -409,6 +515,118 @@
                         <p>PERMISSION_WRITE_SIGNED_MITM</p>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_READ</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>1</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_READ_ENCRYPTED</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>2</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_READ_ENCRYPTED_MITM</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>4</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_WRITE</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>16</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_WRITE_ENCRYPTED</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>32</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_WRITE_ENCRYPTED_MITM</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>64</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_WRITE_SIGNED</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>128</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PERMISSION_WRITE_SIGNED_MITM</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>256</p>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </section>
@@ -541,6 +759,118 @@
                         <p>PROPERTY_EXTENDED_PROPS</p>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_BROADCAST</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>1</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_READ</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>2</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_WRITE_NO_RESPONSE</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>4</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_WRITE</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>8</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_NOTIFY</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>16</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_INDICATE</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>32</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_SIGNED_WRITE</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>64</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>PROPERTY_EXTENDED_PROPS</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>128</p>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </section>
@@ -587,6 +917,34 @@
                       </td>
                       <td>
                         <p>SERVICE_TYPE_SECONDARY</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>SERVICE_TYPE_PRIMARY</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>0</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>SERVICE_TYPE_SECONDARY</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>1</p>
                       </td>
                     </tr>
                   </tbody>
@@ -649,6 +1007,48 @@
                       </td>
                       <td>
                         <p>WRITE_TYPE_SIGNED</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>WRITE_TYPE_NO_RESPONSE</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>1</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>WRITE_TYPE_DEFAULT</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>2</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>WRITE_TYPE_SIGNED</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>4</p>
                       </td>
                     </tr>
                   </tbody>
@@ -1662,27 +2062,42 @@
                     <dl class="dl-compact">
                     </dl>
                     <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(win, fail)</span></span></h3>
-                    <p>Starts scanning for devices.</p>
-                    <p>Found devices and errors will be reported to the supplied callbacks.</p>
-                    <p>Will keep scanning indefinitely until you call stopScan().</p>
-                    To conserve energy, call stopScan() as soon as you've found the device you're looking for.
-                    <p>Calling this function while scanning is in progress has no effect?</p>
+                    <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(uuids, success, fail)</span></span></h3>
+                    <p>Start scanning for devices.</p>
+                    <p>An array of service UUID strings may be given (optional parameter). One or more service UUIDs must be specified for iOS background scanning to work.</p>
+                    <p>Found devices and errors are reported to the supplied callback functions.</p>
+                    <p>Will keep scanning until you call stopScan().</p>
+                    <p>To conserve energy, call stopScan() as soon as you've found the device you're looking for.</p>
+                    <p>Call stopScan() before calling startScan() again.</p>
                     <section>
                       <h4>
             Example
         </h4>
                       <div>
-                        <pre class="prettyprint"><code>evothings.ble.startScan(
-	function(device)
-	{
-		console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
-	},
-	function(errorCode)
-	{
-		console.log(&#x27;BLE startScan error: &#x27; + errorCode);
-	}
-);</code></pre>
+                        <pre class="prettyprint"><code>// Scan for all services.
+  evothings.ble.startScan(
+      function(device)
+      {
+          console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
+      },
+      function(errorCode)
+      {
+          console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+      }
+  );
+
+  // Scan for specific service (Eddystone Service UUID).
+  evothings.ble.startScan(
+      [&#x27;0000FEAA-0000-1000-8000-00805F9B34FB&#x27;],
+      function(device)
+      {
+          console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
+      },
+      function(errorCode)
+      {
+          console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+      }
+  );</code></pre>
                       </div>
                     </section>
                     <section>
@@ -1699,7 +2114,23 @@
                         <tbody>
                           <tr>
                             <td>
-                              <p>win</p>
+                              <p>uuids</p>
+                            </td>
+                            <td>
+                              <p>array</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>Array with service UUID strings (optional). On iOS multiple UUIDs are scanned for using logical OR operator, any UUID that matches any of the UUIDs adverticed by the device will count as a match. On Android, multiple UUIDs
+                                are scanned for using AND logic, the device must advertise all of the given UUIDs to produce a match. (The matching logic will be unified in future versions of the plugin.) When providing one service UUID, behaviour is
+                                the same on Android and iOS. Learning out this parameter or setting it to null, will scan for all devices, regardless of advertised services.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>success</p>
                             </td>
                             <td>
                               <p>scanCallback</p>
@@ -1708,6 +2139,7 @@
                               <p>&nbsp;</p>
                             </td>
                             <td>
+                              <p>Success callback, called repeatedly for each found device.</p>
                             </td>
                           </tr>
                           <tr>
@@ -1721,6 +2153,7 @@
                               <p>&nbsp;</p>
                             </td>
                             <td>
+                              <p>Error callback.</p>
                             </td>
                           </tr>
                         </tbody>
@@ -1830,6 +2263,7 @@
                       <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
                       <h3 id=".writeCharacteristic"><span class="symbol-name">writeCharacteristic</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, data, win, fail)</span></span></h3>
                       <p>Write a characteristic's value to the remote device.</p>
+                      <p>Writes with response, the remote device sends back a confirmation message. This is safe but slower than writing without response.</p>
                       <section>
                         <h4>
             Example
@@ -1903,6 +2337,7 @@
                                 <p>&nbsp;</p>
                               </td>
                               <td>
+                                <p>Called when the remote device has confirmed the write.</p>
                               </td>
                             </tr>
                             <tr>
@@ -1916,6 +2351,100 @@
                                 <p>&nbsp;</p>
                               </td>
                               <td>
+                                <p>Called if the operation fails.</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </section>
+                      <dl class="dl-compact">
+                      </dl>
+                      <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                      <h3 id=".writeCharacteristicWithoutResponse"><span class="symbol-name">writeCharacteristicWithoutResponse</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, data, win, fail)</span></span></h3>
+                      <p>Write a characteristic's value without response.</p>
+                      <p>Experimental, implemented on Android.</p>
+                      <p>Asks the remote device to NOT send a confirmation message. This may be used for increased data throughput.</p>
+                      <p>A separate safety protocol will be required to ensure data integrity. Design of such protocols is beyond the scope of this document.</p>
+                      <section>
+                        <h4>Parameters</h4>
+                        <table class="jsdoc-details-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Type</th>
+                              <th>Optional</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>deviceHandle</p>
+                              </td>
+                              <td>
+                                <p>number</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>A handle from connectCallback.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>characteristicHandle</p>
+                              </td>
+                              <td>
+                                <p>number</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>A handle from characteristicCallback.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>data</p>
+                              </td>
+                              <td>
+                                <p>ArrayBufferView</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>The value to be written.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>win</p>
+                              </td>
+                              <td>
+                                <p>emptyCallback</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Called when the data has been sent.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>fail</p>
+                              </td>
+                              <td>
+                                <p>failCallback</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Called if the operation fails.</p>
                               </td>
                             </tr>
                           </tbody>
@@ -2022,6 +2551,100 @@
             </section>
             <h2>Abstract types</h2>
             <section>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~AdvertiseData"><span class="symbol-name">AdvertiseData</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Describes BLE advertisement data.</p>
+              <p>Data size is limited to 31 bytes. Each property set consumes some bytes. If too much data is added, startAdvertise will fail with &quot;ADVERTISE_FAILED_DATA_TOO_LARGE&quot; or something similar.</p>
+              <p>All properties are optional. UUIDs must be formatted according to RFC 4122, all lowercase. Normally, UUIDs take up 16 bytes. However, UUIDs that use the Bluetooth Base format can be compressed to 4 or 2 bytes. The Bluetooth Base UUID is
+                &quot;00000000-0000-1000-8000-00805f9b34fb&quot;. For 2 bytes, use this format, where &quot;x&quot; is any hexadecimal digit: &quot;0000xxxx-0000-1000-8000-00805f9b34fb&quot;. For 4 bytes, use this format: &quot;xxxxxxxx-0000-1000-8000-00805f9b34fb&quot;.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>includeDeviceName</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>If true, the device's Bluetooth name is added to the advertisement. The name is set by the user in the device's Settings. The name cannot be changed by the app. The default is false.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>includeTxPowerLevel</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>If true, the txPowerLevel found in AdvertiseSettings is added to the advertisement. The default is false.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>serviceUUIDs</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Array of strings. Each string is the UUID of a service that should be available in the device's GattServer.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>serviceData</p>
+                      </td>
+                      <td>
+                        <p>Object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Map of string to string. Each key is a service UUID. The value is base64-encoded data associated with the service.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>manufacturerData</p>
+                      </td>
+                      <td>
+                        <p>Object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Map of int to string. Each key is a manufacturer ID. Manufacturer IDs are assigned by the <a href="http://www.bluetooth.com/">Bluetooth Special Interest Group</a>. The value is base64-encoded data associated with the manufacturer.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
               <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
               <h3 id="~AdvertisementData"><span class="symbol-name">AdvertisementData</span><small class="property-type">
             &nbsp;Object</small></h3>
@@ -2134,6 +2757,112 @@
                       </td>
                       <td>
                         <p>Base-64-encoded binary data. This field is used by BLE devices to advertise custom data that don't fit into any of the other fields.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~AdvertiseSettings"><span class="symbol-name">AdvertiseSettings</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Describes a BLE advertisement.</p>
+              <p>All the properties are optional, except broadcastData.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>advertiseMode</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>ADVERTISE_MODE_LOW_POWER, ADVERTISE_MODE_BALANCED, or ADVERTISE_MODE_LOW_LATENCY. The default is ADVERTISE_MODE_LOW_POWER.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>connectable</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Advertise as connectable or not. Has no bearing on whether the device is actually connectable. The default is true if there is a GattServer running, false if there isn't.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>timeoutMillis</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Advertising time limit. May not exceed 180000 milliseconds. A value of 0 will disable the time limit. The default is 0.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>txPowerLevel</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>ADVERTISE_TX_POWER_ULTRA_LOW, ADVERTISE_TX_POWER_LOW, ADVERTISE_TX_POWER_MEDIUM or ADVERTISE_TX_POWER_HIGH. The default is ADVERTISE_TX_POWER_MEDIUM.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>broadcastData</p>
+                      </td>
+                      <td>
+                        <p>AdvertiseData</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The data which will be broadcast. Passive scanners will see this data.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>scanResponseData</p>
+                      </td>
+                      <td>
+                        <p>AdvertiseData</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The data with which the device will respond to active scans. Should be an extension to the broadcastData; should not contain the same data.</p>
                       </td>
                     </tr>
                   </tbody>
@@ -2338,6 +3067,54 @@
                       </td>
                       <td>
                         <p>One of the <a href="module-cordova-plugin-ble.html#.connectionState">module:cordova-plugin-ble.connectionState</a> keys.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~connectionStateChangeCallback"><span class="symbol-name">connectionStateChangeCallback</span><span class="signature"><span class="signature-params">(deviceHandle, connected)</span></span></h3>
+              <p>This function is a part of GattSettings and is called when a remote device connects to, or disconnects from, your server.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>deviceHandle</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Will be used in other callbacks.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>connected</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>If true, the device just connected, and the handle is now valid for use in close() and other functions. If false, it just disconnected, and the handle is now invalid for use in close() and other functions.</p>
                       </td>
                     </tr>
                   </tbody>
@@ -2555,7 +3332,8 @@
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>Object containing some of the data from the scanRecord. Available natively on iOS. Available on Android by parsing the scanRecord, which is implemented in the library <a href="https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings/easyble">easyble.js</a>.</p>
+                        <p>Object containing some of the data from the scanRecord. Available natively on iOS. Available on Android by parsing the scanRecord, which is implemented in the library EasyBLE:
+                          <a href="https://github.com/evothings/evothings-libraries/blob/master/libs/evothings/easyble/easyble.js">https://github.com/evothings/evothings-libraries/blob/master/libs/evothings/easyble/easyble.js</a>.</p>
                       </td>
                     </tr>
                   </tbody>
@@ -2594,6 +3372,367 @@
                       </td>
                       <td>
                         <p>A human-readable string that describes the error that occurred.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~GattCharacteristic"><span class="symbol-name">GattCharacteristic</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Describes a GATT characteristic.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>handle</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Optional. Used in notify(). If set, must be unique among all other GattCharacteristic handles.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>uuid</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Formatted according to RFC 4122, all lowercase.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>permissions</p>
+                      </td>
+                      <td>
+                        <p><a href="module-cordova-plugin-ble.html#.permission">module:cordova-plugin-ble.permission</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Bitmask of zero or more permission flags.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>properties</p>
+                      </td>
+                      <td>
+                        <p>property</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Bitmask of zero or more property flags.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>writeType</p>
+                      </td>
+                      <td>
+                        <p>writeType</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>onReadRequest</p>
+                      </td>
+                      <td>
+                        <p>readRequestCallback</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>onWriteRequest</p>
+                      </td>
+                      <td>
+                        <p>writeRequestCallback</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>descriptors</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Optional. An array of GattDescriptor objects.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~GattDescriptor"><span class="symbol-name">GattDescriptor</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Describes a GATT descriptor.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>uuid</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Formatted according to RFC 4122, all lowercase.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>permissions</p>
+                      </td>
+                      <td>
+                        <p><a href="module-cordova-plugin-ble.html#.permission">module:cordova-plugin-ble.permission</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Bitmask of zero or more permission flags.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>onReadRequest</p>
+                      </td>
+                      <td>
+                        <p>readRequestCallback</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>onWriteRequest</p>
+                      </td>
+                      <td>
+                        <p>writeRequestCallback</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~GattService"><span class="symbol-name">GattService</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Describes a GATT service.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>uuid</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Formatted according to RFC 4122, all lowercase.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>type</p>
+                      </td>
+                      <td>
+                        <p>serviceType</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>characteristics</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of GattCharacteristic objects.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~GattSettings"><span class="symbol-name">GattSettings</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Describes a GATT server.</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>services</p>
+                      </td>
+                      <td>
+                        <p>Array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>An array of GattService objects.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>onConnectionStateChange</p>
+                      </td>
+                      <td>
+                        <p>connectionStateChangeCallback</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~readRequestCallback"><span class="symbol-name">readRequestCallback</span><span class="signature"><span class="signature-params">(deviceHandle, requestId)</span></span></h3>
+              <p>Called when a remote device asks to read a characteristic or descriptor. You must call sendResponse() to complete the request.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>deviceHandle</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>requestId</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
                       </td>
                     </tr>
                   </tbody>
@@ -2762,6 +3901,65 @@
               </section>
               <dl class="dl-compact">
               </dl>
+              <div class="symbol-detail-labels"><span class="label label-inner">inner</span></div>
+              <h3 id="~writeRequestCallback"><span class="symbol-name">writeRequestCallback</span><span class="signature"><span class="signature-params">(deviceHandle, requestId, data)</span></span></h3>
+              <p>Called when a remote device asks to write a characteristic or descriptor. You must call sendResponse() to complete the request.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>deviceHandle</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>requestId</p>
+                      </td>
+                      <td>
+                        <p>int</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>data</p>
+                      </td>
+                      <td>
+                        <p>ArrayBuffer</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
             </section>
           </section>
         </div>
@@ -2772,7 +3970,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on March 10, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
       </p>
     </div>
   </footer>

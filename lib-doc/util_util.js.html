@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: util/util.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: util/util.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// File: util.js
+
+evothings &#x3D; window.evothings || {};
+
+/**
+ * @namespace
+ * @author Aaron Ardiri
+ * @author Fredrik Eldh
+ * @description Utilities for byte arrays.
+ */
+evothings.util &#x3D; {};
+
+;(function()
+{
+	/**
+	 * Interpret byte buffer as little endian 8 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.littleEndianToInt8 &#x3D; function(data, offset)
+	{
+		var x &#x3D; evothings.util.littleEndianToUint8(data, offset)
+		if (x &amp;amp; 0x80) x &#x3D; x - 256
+		return x
+	}
+
+	/**
+	 * Interpret byte buffer as unsigned little endian 8 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.littleEndianToUint8 &#x3D; function(data, offset)
+	{
+		return data[offset]
+	}
+
+	/**
+	 * Interpret byte buffer as little endian 16 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.littleEndianToInt16 &#x3D; function(data, offset)
+	{
+		return (evothings.util.littleEndianToInt8(data, offset + 1) &amp;lt;&amp;lt; 8) +
+			evothings.util.littleEndianToUint8(data, offset)
+	}
+
+	/**
+	 * Interpret byte buffer as unsigned little endian 16 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.littleEndianToUint16 &#x3D; function(data, offset)
+	{
+		return (evothings.util.littleEndianToUint8(data, offset + 1) &amp;lt;&amp;lt; 8) +
+			evothings.util.littleEndianToUint8(data, offset)
+	}
+
+	/**
+	 * Interpret byte buffer as unsigned little endian 32 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.littleEndianToUint32 &#x3D; function(data, offset)
+	{
+		return (evothings.util.littleEndianToUint8(data, offset + 3) &amp;lt;&amp;lt; 24) +
+			(evothings.util.littleEndianToUint8(data, offset + 2) &amp;lt;&amp;lt; 16) +
+			(evothings.util.littleEndianToUint8(data, offset + 1) &amp;lt;&amp;lt; 8) +
+			evothings.util.littleEndianToUint8(data, offset)
+	}
+
+
+	/**
+	 * Interpret byte buffer as signed big endian 16 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.bigEndianToInt16 &#x3D; function(data, offset)
+	{
+		return (evothings.util.littleEndianToInt8(data, offset) &amp;lt;&amp;lt; 8) +
+			evothings.util.littleEndianToUint8(data, offset + 1)
+	}
+
+	/**
+	 * Interpret byte buffer as unsigned big endian 16 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.bigEndianToUint16 &#x3D; function(data, offset)
+	{
+		return (evothings.util.littleEndianToUint8(data, offset) &amp;lt;&amp;lt; 8) +
+			evothings.util.littleEndianToUint8(data, offset + 1)
+	}
+
+	/**
+	 * Interpret byte buffer as unsigned big endian 32 bit integer.
+	 * Returns converted number.
+	 * @param {ArrayBuffer} data - Input buffer.
+	 * @param {number} offset - Start of data.
+	 * @return Converted number.
+	 * @public
+	 */
+	evothings.util.bigEndianToUint32 &#x3D; function(data, offset)
+	{
+		return (evothings.util.littleEndianToUint8(data, offset) &amp;lt;&amp;lt; 24) +
+			(evothings.util.littleEndianToUint8(data, offset + 1) &amp;lt;&amp;lt; 16) +
+			(evothings.util.littleEndianToUint8(data, offset + 2) &amp;lt;&amp;lt; 8) +
+			evothings.util.littleEndianToUint8(data, offset + 3)
+	}
+
+	/**
+	 * Converts a single Base64 character to a 6-bit integer.
+	 * @private
+	 */
+	function b64ToUint6(nChr) {
+		return nChr &gt; 64 &amp;amp;&amp;amp; nChr &amp;lt; 91 ?
+				nChr - 65
+			: nChr &gt; 96 &amp;amp;&amp;amp; nChr &amp;lt; 123 ?
+				nChr - 71
+			: nChr &gt; 47 &amp;amp;&amp;amp; nChr &amp;lt; 58 ?
+				nChr + 4
+			: nChr &#x3D;&#x3D;&#x3D; 43 ?
+				62
+			: nChr &#x3D;&#x3D;&#x3D; 47 ?
+				63
+			:
+				0;
+	}
+
+	/**
+	 * Decodes a Base64 string. Returns a Uint8Array.
+	 * nBlocksSize is optional.
+	 * @param {String} sBase64
+	 * @param {int} nBlocksSize
+	 * @return {Uint8Array}
+	 * @public
+	 */
+	evothings.util.base64DecToArr &#x3D; function(sBase64, nBlocksSize) {
+		var sB64Enc &#x3D; sBase64.replace(/[^A-Za-z0-9\+\/]/g, &quot;&quot;);
+		var nInLen &#x3D; sB64Enc.length;
+		var nOutLen &#x3D; nBlocksSize ?
+			Math.ceil((nInLen * 3 + 1 &gt;&gt; 2) / nBlocksSize) * nBlocksSize
+			: nInLen * 3 + 1 &gt;&gt; 2;
+		var taBytes &#x3D; new Uint8Array(nOutLen);
+
+		for (var nMod3, nMod4, nUint24 &#x3D; 0, nOutIdx &#x3D; 0, nInIdx &#x3D; 0; nInIdx &amp;lt; nInLen; nInIdx++) {
+			nMod4 &#x3D; nInIdx &amp;amp; 3;
+			nUint24 |&#x3D; b64ToUint6(sB64Enc.charCodeAt(nInIdx)) &amp;lt;&amp;lt; 18 - 6 * nMod4;
+			if (nMod4 &#x3D;&#x3D;&#x3D; 3 || nInLen - nInIdx &#x3D;&#x3D;&#x3D; 1) {
+				for (nMod3 &#x3D; 0; nMod3 &amp;lt; 3 &amp;amp;&amp;amp; nOutIdx &amp;lt; nOutLen; nMod3++, nOutIdx++) {
+					taBytes[nOutIdx] &#x3D; nUint24 &gt;&gt;&gt; (16 &gt;&gt;&gt; nMod3 &amp;amp; 24) &amp;amp; 255;
+				}
+				nUint24 &#x3D; 0;
+			}
+		}
+
+		return taBytes;
+	}
+
+	/**
+	 * Returns the integer i in hexadecimal string form,
+	 * with leading zeroes, such that
+	 * the resulting string is at least byteCount*2 characters long.
+	 * @param {int} i
+	 * @param {int} byteCount
+	 * @public
+	 */
+	evothings.util.toHexString &#x3D; function(i, byteCount) {
+		var string &#x3D; (new Number(i)).toString(16);
+		while(string.length &amp;lt; byteCount*2) {
+			string &#x3D; &#x27;0&#x27;+string;
+		}
+		return string;
+	}
+
+	/**
+	 * Takes a ArrayBuffer or TypedArray and returns its hexadecimal representation.
+	 * No spaces or linebreaks.
+	 * @param data
+	 * @public
+	 */
+	evothings.util.typedArrayToHexString &#x3D; function(data) {
+		// view data as a Uint8Array, unless it already is one.
+		if(data.buffer) {
+			if(!(data instanceof Uint8Array))
+				data &#x3D; new Uint8Array(data.buffer);
+		} else if(data instanceof ArrayBuffer) {
+			data &#x3D; new Uint8Array(data);
+		} else {
+			throw &quot;not an ArrayBuffer or TypedArray.&quot;;
+		}
+		var str &#x3D; &#x27;&#x27;;
+		for(var i&#x3D;0; i&amp;lt;data.length; i++) {
+			str +&#x3D; evothings.util.toHexString(data[i], 1);
+		}
+		return str;
+	}
+})();
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
