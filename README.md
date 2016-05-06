@@ -12,11 +12,12 @@ JSDoc is used to build documentation for JavaScript libraries. Here are instruct
 
 Library source files used are found in repository [evothings-libraries](https://github.com/evothings/evothings-libraries).
 
-The 'evothings-libraries' repo must be in a sibling folder of this repo for the build script to work. Like this:
+The 'evothings-libraries' and the 'cordova-ble' repos must be siblings to this repo for the build script to work. Like this:
 
     parent-folder
         evothings-doc
         evothings-libraries
+        cordova-ble
 
 Build using npm (Node Package Manager):
 
