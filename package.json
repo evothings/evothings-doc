@@ -3,11 +3,10 @@
   "version": "2.0.0",
   "description": "Build Evothings documentation (build libraries documentation)",
   "main": "build.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "jsdoc": "^3.4.0",
-    "jsdoc-baseline": "^0.0.1-dev"
+    "jsdoc-baseline": "https://github.com/hegemonic/baseline/tarball/master"
   },
   "scripts": {
     "start": "node jsdoc-gen.js",
