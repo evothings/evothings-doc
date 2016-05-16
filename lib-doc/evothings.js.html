@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: evothings.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: evothings.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// File: evothings.js
+//
+// Here we define common function such as async script loading and OS detection.
+
+;(function()
+{
+	window.evothings &#x3D; window.evothings || {};
+
+	/**
+	 * @namespace
+	 * @description &amp;lt;p&gt;Functions for loading scripts asynchronously,
+	 * detecting platform, and other common application functionality.&amp;lt;/p&gt;
+	 * @alias evothings
+	 * @public
+	 */
+	var evothings &#x3D; window.evothings;
+
+	/* ------------------ Script loading ------------------ */
+
+	var mScriptLoadingCounter &#x3D; 0;
+	var mLoadedScripts &#x3D; {};
+	var mScriptsLoadedCallbacks &#x3D; [];
+
+	/**
+	 * Make sure to catch any DOMContentLoaded events occurring before
+	 * asynchronous loading of scripts. Those scripts, like ui.js, should check
+	 * this variable before listening for the event.
+	 */
+	evothings.gotDOMContentLoaded &#x3D; false;
+
+	window.addEventListener(&#x27;DOMContentLoaded&#x27;, function(e)
+	{
+		evothings.gotDOMContentLoaded &#x3D; true;
+	})
+
+	/**
+	 * Load a script.
+	 * @param {string} url - URL or path to the script. Relative paths are
+	 * relative to the HTML file that initiated script loading.
+	 * @param {function} successCallback - Optional parameterless function that
+	 * will be called when the script has loaded.
+	 * @param {function} errorCallback - Optional function that will be called
+	 * if loading the script fails, takes an error object as parameter.
+	 * @public
+	 */
+	evothings.loadScript &#x3D; function(url, successCallback, errorCallback)
+	{
+		// If script is already loaded call callback directly and return.
+		if (mLoadedScripts[url] &#x3D;&#x3D; &#x27;loadingcomplete&#x27;)
+		{
+			successCallback &amp;amp;&amp;amp; successCallback();
+			return;
+		}
+
+		// Add script to dictionary of loaded scripts.
+		mLoadedScripts[url] &#x3D; &#x27;loadingstarted&#x27;;
+		++mScriptLoadingCounter;
+
+		// Create script tag.
+		var script &#x3D; document.createElement(&#x27;script&#x27;);
+		script.type &#x3D; &#x27;text/javascript&#x27;;
+		script.src &#x3D; url;
+
+		// Bind the onload event.
+		script.onload &#x3D; function()
+		{
+			// Mark as loaded.
+			mLoadedScripts[url] &#x3D; &#x27;loadingcomplete&#x27;;
+			--mScriptLoadingCounter;
+
+			// Call success callback if given.
+			successCallback &amp;amp;&amp;amp; successCallback();
+
+			// Call scripts loaded callbacks if this was the last script loaded.
+			if (0 &#x3D;&#x3D; mScriptLoadingCounter)
+			{
+				for (var i &#x3D; 0; i &amp;lt; mScriptsLoadedCallbacks.length; ++i)
+				{
+					var loadedCallback &#x3D; mScriptsLoadedCallbacks[i];
+					loadedCallback &amp;amp;&amp;amp; loadedCallback();
+				}
+
+				// Clear callbacks - should we do this???
+				mScriptsLoadedCallbacks &#x3D; [];
+			}
+		};
+
+		// onerror fires for things like malformed URLs and 404&#x27;s.
+		// If this function is called, the matching onload will not be called and
+		// scriptsLoaded will not fire.
+		script.onerror &#x3D; function(error)
+		{
+			errorCallback &amp;amp;&amp;amp; errorCallback(error);
+		};
+
+		// Attaching the script tag to the document starts loading the script.
+		document.head.appendChild(script);
+	};
+
+	/**
+	 * Load array of scripts.
+	 * @param {array} array - Array of URL or path name stringa.
+	 * Relative paths are relative to the HTML file that initiated
+	 * script loading.
+	 * @param {function} loadedCallback - Optional parameterless
+	 * function called when all scripts in the array has loaded.
+	 * @public
+	 */
+	evothings.loadScripts &#x3D; function(array, loadedCallback)
+	{
+		var lib &#x3D; array.shift();
+		if (!lib)
+		{
+			// Array is empty and all scripts are loaded.
+			loadedCallback &amp;amp;&amp;amp; loadedCallback();
+		}
+		else
+		{
+			// Load next script.
+			evothings.loadScript(lib, function() {
+				evothings.loadScripts(array, loadedCallback);
+			});
+		}
+	};
+
+	/**
+	 * Experimental.
+	 * Mark a script as loaded. This is useful if a script is designed
+	 * to be included both in HTML and in JavaScript.
+	 * @param {string} pathOrURL - URL or path to the script. Relative paths are
+	 * relative to the HTML file that initiated script loading.
+	 * @public
+	 */
+	evothings.markScriptAsLoaded &#x3D; function(pathOrURL)
+	{
+		mLoadedScripts[url] &#x3D; &#x27;loadingcomplete&#x27;;
+	};
+
+	/**
+	 * &amp;lt;p&gt;Add a callback that will be called when all scripts are loaded.&amp;lt;/p&gt;
+	 * &amp;lt;p&gt;&amp;lt;strong&gt;It is good practise to always use this function when
+	 * loading script asynchronously or using a library that does so.&amp;lt;/strong&gt;&amp;lt;/p&gt;
+	 * @param  {function} callback - Parameterless function that will
+	 * be called when all scripts have finished loading.
+	 * @public
+	 */
+	evothings.scriptsLoaded &#x3D; function(callback)
+	{
+		// If scripts are already loaded call the callback directly,
+		// else add the callback to the callbacks array.
+		if (0 !&#x3D; Object.keys(mLoadedScripts).length &amp;amp;&amp;amp;
+			0 &#x3D;&#x3D; mScriptLoadingCounter)
+		{
+			callback &amp;amp;&amp;amp; callback();
+		}
+		else
+		{
+			mScriptsLoadedCallbacks.push(callback);
+		}
+	};
+
+	/* ------------------ Debugging ------------------ */
+
+	/**
+	 * Print a JavaScript object (dictionary). For debugging.
+	 *
+	 * @param {Object} obj - Object to print.
+	 * @param {function} printFun - print function (optional - defaults to
+	 * console.log if not given).
+	 *
+	 * @example
+	 * var obj &#x3D; { company: &#x27;Evothings&#x27;, field: &#x27;IoT&#x27; };
+	 * evothings.printObject(obj);
+	 * evothings.printObject(obj, console.log);
+	 *
+	 * @public
+	 */
+	evothings.printObject &#x3D; function(obj, printFun)
+	{
+		printFun &#x3D; printFun || console.log;
+		function print(obj, level)
+		{
+			var indent &#x3D; new Array(level + 1).join(&#x27;  &#x27;);
+			for (var prop in obj)
+			{
+				if (obj.hasOwnProperty(prop))
+				{
+					var value &#x3D; obj[prop];
+					if (typeof value &#x3D;&#x3D; &#x27;object&#x27;)
+					{
+						printFun(indent + prop + &#x27;:&#x27;);
+						print(value, level + 1);
+					}
+					else
+					{
+						printFun(indent + prop + &#x27;: &#x27; + value);
+					}
+				}
+			}
+		}
+		print(obj, 0);
+	};
+
+	/* ------------------ Platform check ------------------ */
+
+	/**
+	 * @namespace
+	 * @description Namespace for platform check functions.
+	 */
+	evothings.os &#x3D; {};
+
+	/**
+	 * Returns true if current platform is iOS, false if not.
+	 * @return {boolean} true if platform is iOS, false if not.
+	 * @public
+	 */
+	evothings.os.isIOS &#x3D; function()
+	{
+		return /iP(hone|ad|od)/.test(navigator.userAgent);
+	};
+
+	/**
+	 * Returns true if current platform is iOS 7, false if not.
+	 * @return {boolean} true if platform is iOS 7, false if not.
+	 * @public
+	 */
+	evothings.os.isIOS7 &#x3D; function()
+	{
+		return /iP(hone|ad|od).*OS 7/.test(navigator.userAgent);
+	};
+
+	/**
+	 * Returns true if current platform is Android, false if not.
+	 * @return {boolean} true if platform is Android, false if not.
+	 * @public
+	 */
+	evothings.os.isAndroid &#x3D; function()
+	{
+		return /Android|android/.test(navigator.userAgent);
+	};
+
+	/**
+	 * Returns true if current platform is Windows Phone, false if not.
+	 * @return {boolean} true if platform is Windows Phone, false if not.
+	 * @public
+	 */
+	evothings.os.isWP &#x3D; function()
+	{
+		return /Windows Phone/.test(navigator.userAgent);
+	};
+})();
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

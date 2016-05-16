@@ -21,14 +21,16 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-content-box">
 
 <h1>Instrumentation</h1>
-
+</p>
+<img src="images/image11.png">
+<p>
 <p>NOTE: The Instrumentation features are new in Evothings Studio 2.1.0, currently available as an early release for testers and enthusiasts - <a href="https://evothings.com/download/#alpha">download Evothings Studio 2.1.0-alpha</a>.</p>
 
 <p>What we’re rolling out as part of this alpha release is two new features that we hope will make your debugging simpler and your development quicker; instrumentation and file injections.</p>
 
 <h2>Where is it?</h2>
 
-<p>To access both features, you now need to open a new tool window, by clicking on the ‘Viewers:’ text in the lower right corner of Evothings studio. You will need at least version 1.3.0 of the Evothings Viewer App and a stable internet cnnection to fully utilize all new features!</p>
+<p>To access both features, you now need to open a new tool window, by clicking on the ‘Viewers’ button at the far right in the toolbar of Evothings studio. You will also need at least version 1.3.0 of the Evothings Viewer App and a stable internet cnnection to fully utilize all new features!</p>
 
 <p>The window will list all connected viewers and the make of the phone they’re running on. Feel free to click around exploring what you can do!</p>
 
@@ -40,11 +42,11 @@ The tricky part of developing mobile apps is that your code by definition runs o
 What we’re rolling out as part of this alpha release is two new features that we hope will make your debugging simpler and your development quicker; instrumentation and file injections.</p>
 
 <p>
-To access both features, you now need to open a new tool window, by clicking on the ‘Viewers:’ text in the lower right corner of Evothings studio.
+To access both features, you now need to open a new tool window, by clicking on the ‘Viewers’ button.
 </p>
-
-<img src="images/image06.png">
-
+<p>
+<img src="images/Selection_021.png">
+</p>
 <p>
 The window will list all connected viewers and the make of the phone they’re running on.
 </p>
@@ -86,6 +88,17 @@ Then you can enter the Viewers tools window, open the ‘Inject File(s)’ menu 
 We envision that this feature might be useful if you are using a web app on a phone to deliver OTA (over The Air) updates for devices over BLE, and if you already have a mechanism for getting updates to the devices from the phone.
 </p>
 <p>
+<h2>Automatic File Synchronization</h2>
+You can also make the studio do automatic file synchronization in the same way that the viewer reloads app, the difference being that only files in a specific directory are sent and the app on the viewer does not reload, so you're able to write cusotm logic to take care of the uploaded files for your own purposes.
+</p>
+<p>
+You work with this feature by adding a folder somwhere under your project directiry named '_filesync'. You must then make sure that the project is run (loaded) on your mobile phone viewers. After that, any changed file under that _filesync directory will be send to the phone is the same manner as described above, so you can register listeners for file transfers for non-js files (or make sure that any javaScript files sent are able to call any custom registration functions of your themselves.
+</p>
+<p>
+A special case is when you are developing a ES6 project, where you have a source and a build directory. Currently you must place the _filesync directory under the folder named 'app' in your project directory. We aim in the future to make this placement more flexible.
+</p>
+<p>
+<h2>Inspection of live data</h2>
 OK, that’s all fine and good, but how about better debugging tools? By selecting the ‘Start Instrumentation’ button, the logic required for our next feature will be injected into the unsuspecting phone.
 </p>
 <img src="images/image10.png">
@@ -97,7 +110,7 @@ Included in this release are three modules.
 </p>
 <p>
 
-Cordova - A sample instrumentation module which can be used as a starter kit for your own, custom instrumentation. It shows how to build a small hierarchy that can be selected and subscribed to. Check the file ‘hyper/injectables/cordova-instrumentation.js’ in the Evothings studio installation directory for more details.
+<b>Cordova</b> - A sample instrumentation module which can be used as a starter kit for your own, custom instrumentation. It shows how to build a small hierarchy that can be selected and subscribed to. Check the file ‘hyper/injectables/cordova-instrumentation.js’ in the Evothings studio installation directory for more details.
 
 </p>
 <p>
@@ -108,11 +121,11 @@ Cordova exposes two subscribable services; accelerometer and compass. Selecting 
 All subscription of module services data streams sends any changes every 300 ms and will stop after 10 minutes, after which you will have to restart it. By clicking on the output of a subscription you immediately unsubscribe from it.
 </p>
 <p>
-Bluetooth - This module is a simple Bluetooth scanner which let you see which BLE devices your phone can see. If a device have exposed service characteristics, these can be further drilled into.
+<b>Bluetooth</b> - This module is a simple Bluetooth scanner which let you see which BLE devices your phone can see. If a device have exposed service characteristics, these can be further drilled into.
 </p>
 <img src="images/image01.png">
 <p>
-Watches - Sometimes you need to watch for property changes in your app, but not as a graph. The watch does this for you, and essentially monitors a named property of an object and send any changes to the studio.
+<b>Watches</b> - Sometimes you need to watch for property changes in your app, but not as a graph. The watch does this for you, and essentially monitors a named property of an object and send any changes to the studio.
 </p>
 <p>
 You can add watches to your app by having instrumentation loaded and then execute;
@@ -192,6 +205,37 @@ A great way to get questions answered is our gitter forum, which can be found he
 <p>Ask questions and discuss IoT app development on Gitter:
 <a href="https://gitter.im/evothings/evothings" target="_blank">gitter.im/evothings/evothings</a></p>
 </div><!-- evo-content-box -->
+
+
+<script>
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+var utmz = readCookie('__utmz'); //using a cookie reading function
+var vals = (function() {
+        var pairs = utmz.split('.').slice(4).join('.').split('|');
+        var ga = {};
+        for (var i = 0; i < pairs.length; i++) {
+            var temp = pairs[i].split('=');
+                ga[temp[0]] = temp[1];
+        }
+        return ga;
+    })();
+
+var res = vals;
+console.log('---------------- cookie results ---------------------')
+console.dir(res)
+
+</script>
 
 <script src="../js/include-page-footer.js"></script>
 </div><!-- evo-page-content -->

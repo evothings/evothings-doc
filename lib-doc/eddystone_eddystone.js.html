@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Source: eddystone/eddystone.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: eddystone/eddystone.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// File: eddystone.js
+
+// This library scans for Eddystone beacons and translates their
+// advertisements into user-friendly variables.
+// The protocol specification is available at:
+// https://github.com/google/eddystone
+
+;(function() {
+
+// prerequisites
+evothings.loadScripts([
+	&#x27;libs/evothings/easyble/easyble.js&#x27;,
+])
+
+/**
+ * @namespace
+ * @description &amp;lt;p&gt;Library for Eddystone beacons.&amp;lt;/p&gt;
+ * &amp;lt;p&gt;It is safe practise to call function {@link evothings.scriptsLoaded}
+ * to ensure dependent libraries are loaded before calling functions
+ * in this library.&amp;lt;/p&gt;
+ */
+evothings.eddystone &#x3D; {};
+
+// constants
+var BLUETOOTH_BASE_UUID &#x3D; &#x27;-0000-1000-8000-00805f9b34fb&#x27;;
+
+// false when scanning is off. true when on.
+var isScanning &#x3D; false;
+
+/**
+ * @description Starts scanning for Eddystone devices.
+ * &amp;lt;p&gt;Found devices and errors will be reported to the supplied callbacks.&amp;lt;/p&gt;
+ * &amp;lt;p&gt;Will keep scanning indefinitely until you call stopScan().&amp;lt;/p&gt;
+ * &amp;lt;p&gt;To conserve energy, call stopScan() as soon as you&#x27;ve found the device
+ * you&#x27;re looking for.&amp;lt;/p&gt;
+ * &amp;lt;p&gt;Calling startScan() while scanning is in progress will produce an error.&amp;lt;/p&gt;
+ *
+ * @param {evothings.eddystone.scanCallback} - Success function called
+ * when a beacon is found.
+ * @param {evothings.eddystone.failCallback} - Error callback: fail(error).
+ *
+ * @public
+ *
+ * @example
+ *   evothings.eddystone.startScan(
+ *     function(beacon)
+ *     {
+ *       console.log(&#x27;Found beacon: &#x27; + beacon.url);
+ *     },
+ *     function(error)
+ *     {
+ *       console.log(&#x27;Scan error: &#x27; + error);
+ *     });
+ */
+evothings.eddystone.startScan &#x3D; function(scanCallback, failCallback)
+{
+	// Internal callback variable names.
+	var win &#x3D; scanCallback;
+	var fail &#x3D; failCallback;
+
+	// If scanning is already in progress, fail.
+	if(isScanning)
+	{
+		fail(&quot;Scanning already in progress!&quot;);
+		return;
+	}
+
+	isScanning &#x3D; true;
+
+	// The device object given in this callback is reused by easyble.
+	// Therefore we can store data in it and expect to have the data still be there
+	// on the next callback with the same device.
+	evothings.easyble.startScan(
+		function(device)
+		{
+			// A device might be an Eddystone if it has advertisementData...
+			var ad &#x3D; device.advertisementData;
+			if(!ad) return;
+			// With serviceData...
+			var sd &#x3D; ad.kCBAdvDataServiceData;
+			if(!sd) return;
+			// And the 0xFEAA service.
+			var base64data &#x3D; sd[&#x27;0000feaa&#x27;+BLUETOOTH_BASE_UUID];
+			if(!base64data) return;
+			var byteArray &#x3D; evothings.util.base64DecToArr(base64data);
+
+			// If the data matches one of the Eddystone frame formats,
+			// we can forward it to the user.
+			if(parseFrameUID(device, byteArray, win, fail)) return;
+			if(parseFrameURL(device, byteArray, win, fail)) return;
+			if(parseFrameTLM(device, byteArray, win, fail)) return;
+		},
+		function(error)
+		{
+			fail(error);
+		});
+}
+
+/**
+ * @description This function is a parameter to startScan() and
+ * is called when a beacons is discovered/updated.
+ * @callback evothings.eddystone.scanCallback
+ * @param {evothings.eddystone.EddystoneDevice} beacon - Beacon
+ * found during scanning.
+ */
+
+/**
+ * @description This function is called when an operation fails.
+ * @callback evothings.eddystone.failCallback
+ * @param {string} errorString - A human-readable string that
+ * describes the error that occurred.
+ */
+
+/**
+ * @description Object representing a BLE device. Inherits from
+ * {@link evothings.easyble.EasyBLEDevice}.
+ * Which properties are available depends on which packets types broadcasted
+ * by the beacon. Properties may be undefined. Typically properties are populated
+ * as scanning processes.
+ * @typedef {Object} evothings.eddystone.EddystoneDevice
+ * @property {string} url - An Internet URL.
+ * @property {number} txPower - A signed integer, the signal strength in decibels,
+ * factory-measured at a range of 0 meters.
+ * @property {Uint8Array} nid - 10-byte namespace ID.
+ * @property {Uint8Array} bid - 6-byte beacon ID.
+ * @property {number} voltage - Device&#x27;s battery voltage, in millivolts,
+ * or 0 (zero) if device is not battery-powered.
+ * @property {number} temperature - Device&#x27;s ambient temperature in 256:ths of
+ * degrees Celcius, or 0x8000 if device has no thermometer.
+ * @property {number} adv_cnt - Count of advertisement frames sent since device&#x27;s startup.
+ * @property {number} dsec_cnt - Time since device&#x27;s startup, in deci-seconds
+ * (10 units equals 1 second).
+*/
+
+/**
+ * @description Stop scanning for Eddystone devices.
+ * @public
+ * @example
+ *   evothings.eddystone.stopScan();
+ */
+evothings.eddystone.stopScan &#x3D; function()
+{
+	evothings.easyble.stopScan();
+	isScanning &#x3D; false;
+}
+
+/**
+ * @description Calculate the accuracy (distance in meters) of the beacon.
+ * &amp;lt;p&gt;The beacon distance calculation uses txPower at 1 meters, but the
+ * Eddystone protocol reports the value at 0 meters. 41dBm is the signal
+ * loss that occurs over 1 meter, this value is subtracted by default
+ * from the reported txPower. You can tune the calculation by adding
+ * or subtracting to param txPower.&amp;lt;p&gt;
+ * &amp;lt;p&gt;Note that the returned distance value is not accurate, and that
+ * it fluctuates over time. Sampling/filtering over time is recommended
+ * to obtain a stable value.&amp;lt;p&gt;
+ * @public
+ * @param txPower The txPower of the beacon.
+ * @param rssi The RSSI of the beacon, subtract or add to this value to
+ * tune the dBm strength. 41dBm is subtracted from this value in the
+ * distance algorithm used by calculateAccuracy.
+ * @return Distance in meters, or null if unable to compute distance
+ * (occurs for example when txPower or rssi is undefined).
+ * @example
+ *   // Note that beacon.txPower and beacon.rssi many be undefined,
+ *   // in which case calculateAccuracy returns null. This happens
+ *   // before txPower and rssi have been reported by the beacon.
+ *   var distance &#x3D; evothings.eddystone.calculateAccuracy(
+ *       beacon.txPower, beacon.rssi);
+ */
+evothings.eddystone.calculateAccuracy &#x3D; function(txPower, rssi)
+{
+	if (!rssi || rssi &gt;&#x3D; 0 || !txPower)
+	{
+		return null
+	}
+
+	// Algorithm
+	// http://developer.radiusnetworks.com/2014/12/04/fundamentals-of-beacon-ranging.html
+	// http://stackoverflow.com/questions/21338031/radius-networks-ibeacon-ranging-fluctuation
+
+	// The beacon distance formula uses txPower at 1 meters, but the Eddystone
+	// protocol reports the value at 0 meters. 41dBm is the signal loss that
+	// occurs over 1 meter, so we subtract that from the reported txPower.
+	var ratio &#x3D; rssi * 1.0 / (txPower - 41)
+	if (ratio &amp;lt; 1.0)
+	{
+		return Math.pow(ratio, 10)
+	}
+	else
+	{
+		var accuracy &#x3D; (0.89976) * Math.pow(ratio, 7.7095) + 0.111
+		return accuracy
+	}
+}
+
+// Return true on frame type recognition, false otherwise.
+function parseFrameUID(device, data, win, fail)
+{
+	if(data[0] !&#x3D; 0x00) return false;
+
+	// The UID frame has 18 bytes + 2 bytes reserved for future use
+	// https://github.com/google/eddystone/tree/master/eddystone-uid
+	// Check that we got at least 18 bytes.
+	if(data.byteLength &amp;lt; 18)
+	{
+		fail(&quot;UID frame: invalid byteLength: &quot;+data.byteLength);
+		return true;
+	}
+
+	device.txPower &#x3D; evothings.util.littleEndianToInt8(data, 1);
+	device.nid &#x3D; data.subarray(2, 12);  // Namespace ID.
+	device.bid &#x3D; data.subarray(12, 18); // Beacon ID.
+
+	win(device);
+
+	return true;
+}
+
+function parseFrameURL(device, data, win, fail)
+{
+	if(data[0] !&#x3D; 0x10) return false;
+
+	if(data.byteLength &amp;lt; 4)
+	{
+		fail(&quot;URL frame: invalid byteLength: &quot;+data.byteLength);
+		return true;
+	}
+
+	device.txPower &#x3D; evothings.util.littleEndianToInt8(data, 1);
+
+	// URL scheme prefix
+	var url;
+	switch(data[2]) {
+		case 0: url &#x3D; &#x27;http://www.&#x27;; break;
+		case 1: url &#x3D; &#x27;https://www.&#x27;; break;
+		case 2: url &#x3D; &#x27;http://&#x27;; break;
+		case 3: url &#x3D; &#x27;https://&#x27;; break;
+		default: fail(&quot;URL frame: invalid prefix: &quot;+data[2]); return true;
+	}
+
+	// Process each byte in sequence.
+	var i &#x3D; 3;
+	while(i &amp;lt; data.byteLength)
+	{
+		var c &#x3D; data[i];
+		// A byte is either a top-domain shortcut, or a printable ascii character.
+		if(c &amp;lt; 14)
+		{
+			switch(c)
+			{
+				case 0: url +&#x3D; &#x27;.com/&#x27;; break;
+				case 1: url +&#x3D; &#x27;.org/&#x27;; break;
+				case 2: url +&#x3D; &#x27;.edu/&#x27;; break;
+				case 3: url +&#x3D; &#x27;.net/&#x27;; break;
+				case 4: url +&#x3D; &#x27;.info/&#x27;; break;
+				case 5: url +&#x3D; &#x27;.biz/&#x27;; break;
+				case 6: url +&#x3D; &#x27;.gov/&#x27;; break;
+				case 7: url +&#x3D; &#x27;.com&#x27;; break;
+				case 8: url +&#x3D; &#x27;.org&#x27;; break;
+				case 9: url +&#x3D; &#x27;.edu&#x27;; break;
+				case 10: url +&#x3D; &#x27;.net&#x27;; break;
+				case 11: url +&#x3D; &#x27;.info&#x27;; break;
+				case 12: url +&#x3D; &#x27;.biz&#x27;; break;
+				case 13: url +&#x3D; &#x27;.gov&#x27;; break;
+			}
+		}
+		else if(c &amp;lt; 32 || c &gt;&#x3D; 127)
+		{
+			// Unprintables are not allowed.
+			fail(&quot;URL frame: invalid character: &quot;+data[2]);
+			return true;
+		}
+		else
+		{
+			url +&#x3D; String.fromCharCode(c);
+		}
+
+		i +&#x3D; 1;
+	}
+
+	// Set URL field of the device.
+	device.url &#x3D; url;
+
+	win(device);
+
+	return true;
+}
+
+function parseFrameTLM(device, data, win, fail)
+{
+	if(data[0] !&#x3D; 0x20) return false;
+
+	if(data[1] !&#x3D; 0x00)
+	{
+		fail(&quot;TLM frame: unknown version: &quot;+data[1]);
+
+		return true;
+	}
+
+	if(data.byteLength !&#x3D; 14)
+	{
+		fail(&quot;TLM frame: invalid byteLength: &quot;+data.byteLength);
+
+		return true;
+	}
+
+	device.voltage &#x3D; evothings.util.bigEndianToUint16(data, 2);
+
+	var temp &#x3D; evothings.util.bigEndianToUint16(data, 4);
+	if(temp &#x3D;&#x3D; 0x8000)
+	{
+		device.temperature &#x3D; 0x8000;
+	}
+	else
+	{
+		device.temperature &#x3D; evothings.util.bigEndianToInt16(data, 4) / 256.0;
+	}
+
+	device.adv_cnt &#x3D; evothings.util.bigEndianToUint32(data, 6);
+	device.dsec_cnt &#x3D; evothings.util.bigEndianToUint32(data, 10);
+
+	win(device);
+
+	return true;
+}
+
+})();
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

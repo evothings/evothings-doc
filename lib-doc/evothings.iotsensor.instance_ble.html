@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.4.0">
+  <meta charset="utf-8">
+  <title>Namespace: instance_ble</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small><a href="evothings.html">evothings</a>.<wbr><a href="evothings.iotsensor.html">iotsensor</a>.<wbr></small><span class="symbol-name">instance_ble</span></h1>
+            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_dialog-iotsensor_iotsensor-ble.js.html#source-line-129">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>dialog-iotsensor/<wbr>iotsensor-ble.<wbr>js:129</a></p>
+            <div class="symbol-description">
+              <p>Abstract IoT Sensor instance object. This object specifies the interface common to BLE IoT Sensors</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.iotsensor.instance_ble.html#connectToClosestSensor">connectToClosestSensor(scanTime, callbackFun, disconnectFun)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.iotsensor.instance_ble.html#connectToDevice">connectToDevice(device, callbackFun, disconnectFun)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.iotsensor.instance_ble.html#disableAllSensors">disableAllSensors()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.iotsensor.instance_ble.html#disconnectDevice">disconnectDevice()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.iotsensor.instance_ble.html#isIoTSensor">isIoTSensor(device)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.iotsensor.instance_ble.html#startScanningForDevices">startScanningForDevices(callbackFun)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.iotsensor.instance_ble.html#stopScanningForDevices">stopScanningForDevices()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>Methods</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="connectToClosestSensor"><span class="symbol-name">connectToClosestSensor</span><span class="signature"><span class="signature-params">(scanTime, callbackFun, disconnectFun)</span></span></h3>
+              <p>Connect to nearest IoT Sensor device.</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>iotsensor.connectToClosestSensor(
+	3000, // Scan for 3000 ms
+	function()
+	{
+		// Connected and device is ready
+	},
+	function(error)
+	{
+		console.log(&#x27;Disconnect error &#x27; + error);
+	}
+);</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>scanTime</p>
+                      </td>
+                      <td>
+                        <p>integer</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Time (in ms) to scan for nearby IoT Sensors (optional, default 2 seconds)</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callbackFun</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Callback called when connected and device is initalized</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>disconnectFun</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Callback called when connection is lost (optional)</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="connectToDevice"><span class="symbol-name">connectToDevice</span><span class="signature"><span class="signature-params">(device, callbackFun, disconnectFun)</span></span></h3>
+              <p>Connect to an IoT Sensor device</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>iotsensor.connectToDevice(
+	device,
+	function()
+	{
+		// Connected and device is ready
+	},
+	function(error)
+	{
+		console.log(&#x27;Disconnect error &#x27; + error);
+	}
+);</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>device</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.easyble.EasyBLEDevice.html">evothings.easyble.EasyBLEDevice</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>A evothings.easyble.device object</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callbackFun</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Callback called when connected and device is initialized</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>disconnectFun</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Callback called when connection is lost (optional)</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="disableAllSensors"><span class="symbol-name">disableAllSensors</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>RAW and SFL. Implementation of <a href="evothings.iotsensor.instance.html#disableAllSensors">evothings.iotsensor.instance#disableAllSensors</a></p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>iotsensor.disableAllSensors();</code></pre>
+                </div>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="disconnectDevice"><span class="symbol-name">disconnectDevice</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Disconnect from the connect device</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>iotsensor.disconnectDevice();</code></pre>
+                </div>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="isIoTSensor"><span class="symbol-name">isIoTSensor</span><span class="signature"><span class="signature-params">(device)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Determine if a BLE device is a IoT Sensor.
+                <br /> Checks the general case using the advertised name.
+                <br /> Specific implementation is added for SFL and RAW.</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>if(iotsensor.isIoTSensor(device))
+{
+	// connect to device
+}</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>device</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.easyble.EasyBLEDevice.html">evothings.easyble.EasyBLEDevice</a></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>easyble device object</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="startScanningForDevices"><span class="symbol-name">startScanningForDevices</span><span class="signature"><span class="signature-params">(callbackFun)</span></span></h3>
+              <p>Start a manual scan for physical devices.
+                <br /> This process can be automated by using <a href="evothings.iotsensor.instance_ble.html#connectToClosestSensor">connectToClosestSensor(scanTime, callbackFun, disconnectFun)</a>
+                <br /> The device (<a href="https://evothings.com/doc/lib-doc/evothings.easyble.EasyBLEDevice.html">evothings.easyble.EasyBLEDevice</a>) that is found is passed to callbackFun and can be used to inspect device fields to determine properties
+                such as RSSI, name etc.
+                <br /> You can call <a href="evothings.iotsensor.instance_ble.html#isIoTSensor">isIoTSensor(device)</a> to determine if this is an IoT sensor. To connect, call <a href="evothings.iotsensor.instance_ble.html#connectToDevice">connectToDevice(device, callbackFun, disconnectFun)</a>.</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>iotsensor.startScanningForDevices(
+	function(device)
+	{
+		console.log(&#x27;Device found: &#x27; + device.name + &#x27; RSSI: &#x27; + device.rssi);
+		if(iotsensor.isIoTSensor(device))
+		{
+			// We have an IoT Sensor, let&#x27;s connect!
+			iotsensor.connectToDevice(
+				device,
+				function()
+				{
+					// Connected and device is ready
+				},
+				function(error)
+				{
+					console.log(&#x27;Disconnect error &#x27; + error);
+				}
+			);
+		}
+	}
+);</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callbackFun</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Callback called with found device: callbackFun(device).</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="stopScanningForDevices"><span class="symbol-name">stopScanningForDevices</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Stop scanning for physical devices and call <a href="evothings.iotsensor.instance.html#statusCallback">statusCallback</a> with <a href="evothings.iotsensor.ble.status.html">IOTSENSOR_NOT_FOUND</a> message.</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>iotsensor.stopScanningForDevices();</code></pre>
+                </div>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

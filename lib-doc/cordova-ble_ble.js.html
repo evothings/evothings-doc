@@ -43,29 +43,68 @@ var exec &#x3D; cordova.require(&#x27;cordova/exec&#x27;);
  * under the global name &amp;lt;code&gt;evothings.ble&amp;lt;/code&gt;
  */
 
-/** Starts scanning for devices.
-* &amp;lt;p&gt;Found devices and errors will be reported to the supplied callbacks.&amp;lt;/p&gt;
-* &amp;lt;p&gt;Will keep scanning indefinitely until you call stopScan().&amp;lt;/p&gt;
-* To conserve energy, call stopScan() as soon as you&#x27;ve found the device you&#x27;re looking for.
-* &amp;lt;p&gt;Calling this function while scanning is in progress has no effect?&amp;lt;/p&gt;
-*
-* @param {scanCallback} win
-* @param {failCallback} fail
-*
-* @example
-evothings.ble.startScan(
-	function(device)
+/********** BLE Central API **********/
+
+/**
+ * Start scanning for devices.
+ * &amp;lt;p&gt;An array of service UUID strings may be given (optional parameter).
+ * One or more service UUIDs must be specified for iOS background scanning to work.&amp;lt;/p&gt;
+ * &amp;lt;p&gt;Found devices and errors are reported to the supplied callback functions.&amp;lt;/p&gt;
+ * &amp;lt;p&gt;Will keep scanning until you call stopScan().&amp;lt;/p&gt;
+ * &amp;lt;p&gt;To conserve energy, call stopScan() as soon as you&#x27;ve found the device
+ * you&#x27;re looking for.&amp;lt;/p&gt;
+ * &amp;lt;p&gt;Call stopScan() before calling startScan() again.&amp;lt;/p&gt;
+ *
+ * @param {array} uuids - Array with service UUID strings (optional).
+ * On iOS multiple UUIDs are scanned for using logical OR operator,
+ * any UUID that matches any of the UUIDs adverticed by the device
+ * will count as a match. On Android, multiple UUIDs are scanned for
+ * using AND logic, the device must advertise all of the given UUIDs
+ * to produce a match. (The matching logic will be unified in future
+ * versions of the plugin.) When providing one service UUID, behaviour
+ * is the same on Android and iOS. Learning out this parameter or
+ * setting it to null, will scan for all devices, regardless of
+ * advertised services.
+ * @param {scanCallback} success - Success callback, called repeatedly
+ * for each found device.
+ * @param {failCallback} fail - Error callback.
+ *
+ * @example
+ *   // Scan for all services.
+ *   evothings.ble.startScan(
+ *       function(device)
+ *       {
+ *           console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
+ *       },
+ *       function(errorCode)
+ *       {
+ *           console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+ *       }
+ *   );
+ *
+ *   // Scan for specific service (Eddystone Service UUID).
+ *   evothings.ble.startScan(
+ *       [&#x27;0000FEAA-0000-1000-8000-00805F9B34FB&#x27;],
+ *       function(device)
+ *       {
+ *           console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
+ *       },
+ *       function(errorCode)
+ *       {
+ *           console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+ *       }
+ *   );
+ */
+exports.startScan &#x3D; function(uuids, success, fail) {
+	if (&#x27;function&#x27; &#x3D;&#x3D; typeof uuids)
 	{
-		console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
-	},
-	function(errorCode)
-	{
-		console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+		// No Service UUIDs specified.
+		exec(uuids, success, &#x27;BLE&#x27;, &#x27;startScan&#x27;, []);
 	}
-);
-*/
-exports.startScan &#x3D; function(win, fail) {
-	exec(win, fail, &#x27;BLE&#x27;, &#x27;startScan&#x27;, []);
+	else
+	{
+		exec(success, fail, &#x27;BLE&#x27;, &#x27;startScan&#x27;, [uuids]);
+	}
 };
 
 /** This function is a parameter to startScan() and is called when a new device is discovered.
@@ -75,13 +114,17 @@ exports.startScan &#x3D; function(win, fail) {
 
 /** Info about a BLE device.
 * @typedef {Object} DeviceInfo
-//* @property {string} address - Has the form xx:xx:xx:xx:xx:xx, where x are hexadecimal characters.
-* @property {string} address - Uniquely identifies the device. Pass this to connect().
+* @property {string} address - Uniquely identifies the device.
+* Pass this to connect().
 * The form of the address depends on the host platform.
 * @property {number} rssi - A negative integer, the signal strength in decibels.
 * @property {string} name - The device&#x27;s name, or nil.
-* @property {string} scanRecord - Base64-encoded binary data. Its meaning is device-specific. Not available on iOS.
-* @property {AdvertisementData} advertisementData - Object containing some of the data from the scanRecord. Available natively on iOS. Available on Android by parsing the scanRecord, which is implemented in the library {@link https://github.com/evothings/evothings-examples/tree/master/resources/libs/evothings/easyble|easyble.js}.
+* @property {string} scanRecord - Base64-encoded binary data.
+* Its meaning is device-specific. Not available on iOS.
+* @property {AdvertisementData} advertisementData - Object containing some
+* of the data from the scanRecord. Available natively on iOS. Available on
+* Android by parsing the scanRecord, which is implemented in the library EasyBLE:
+* {@link https://github.com/evothings/evothings-libraries/blob/master/libs/evothings/easyble/easyble.js}.
 */
 
 /** Information extracted from a scanRecord. Some or all of the fields may be undefined. This varies between BLE devices.
@@ -160,15 +203,14 @@ exports.connectionState &#x3D; {
 	/** STATE_DISCONNECTING */
 	3: &#x27;STATE_DISCONNECTING&#x27;,
 
-	// TODO: Add these in the next release of the BLE plugin.
-	// /** 0 */
-	// &#x27;STATE_DISCONNECTED&#x27;: 0,
-	// /** 1 */
-	// &#x27;STATE_CONNECTING&#x27;: 1,
-	// /** 2 */
-	// &#x27;STATE_CONNECTED&#x27;: 2,
-	// /** 3 */
-	// &#x27;STATE_DISCONNECTING&#x27;: 3,
+	/** 0 */
+	&#x27;STATE_DISCONNECTED&#x27;: 0,
+	/** 1 */
+	&#x27;STATE_CONNECTING&#x27;: 1,
+	/** 2 */
+	&#x27;STATE_CONNECTED&#x27;: 2,
+	/** 3 */
+	&#x27;STATE_DISCONNECTING&#x27;: 3,
 };
 
 /** Close the connection to a remote device.
@@ -259,11 +301,10 @@ exports.serviceType &#x3D; {
 	/** SERVICE_TYPE_SECONDARY */
 	1: &#x27;SERVICE_TYPE_SECONDARY&#x27;,
 
-	// TODO: Add these in the next release of the BLE plugin.
-	// /** 0 */
-	// &#x27;SERVICE_TYPE_PRIMARY&#x27;: 0,
-	// /** 1 */
-	// &#x27;SERVICE_TYPE_SECONDARY&#x27;: 1,
+	/** 0 */
+	&#x27;SERVICE_TYPE_PRIMARY&#x27;: 0,
+	/** 1 */
+	&#x27;SERVICE_TYPE_SECONDARY&#x27;: 1,
 };
 
 /** Fetch information about a service&#x27;s characteristics.
@@ -329,23 +370,22 @@ exports.permission &#x3D; {
 	/** PERMISSION_WRITE_SIGNED_MITM */
 	256: &#x27;PERMISSION_WRITE_SIGNED_MITM&#x27;,
 
-	// TODO: Add these in the next release of the BLE plugin.
-	// /** 1 */
-	// &#x27;PERMISSION_READ&#x27;: 1,
-	// /** 2 */
-	// &#x27;PERMISSION_READ_ENCRYPTED&#x27;: 2,
-	// /** 4 */
-	// &#x27;PERMISSION_READ_ENCRYPTED_MITM&#x27;: 4,
-	// /** 16 */
-	// &#x27;PERMISSION_WRITE&#x27;: 16,
-	// /** 32 */
-	// &#x27;PERMISSION_WRITE_ENCRYPTED&#x27;: 32,
-	// /** 64 */
-	// &#x27;PERMISSION_WRITE_ENCRYPTED_MITM&#x27;: 64,
-	// /** 128 */
-	// &#x27;PERMISSION_WRITE_SIGNED&#x27;: 128,
-	// /** 256 */
-	// &#x27;PERMISSION_WRITE_SIGNED_MITM&#x27;: 256,
+	/** 1 */
+	&#x27;PERMISSION_READ&#x27;: 1,
+	/** 2 */
+	&#x27;PERMISSION_READ_ENCRYPTED&#x27;: 2,
+	/** 4 */
+	&#x27;PERMISSION_READ_ENCRYPTED_MITM&#x27;: 4,
+	/** 16 */
+	&#x27;PERMISSION_WRITE&#x27;: 16,
+	/** 32 */
+	&#x27;PERMISSION_WRITE_ENCRYPTED&#x27;: 32,
+	/** 64 */
+	&#x27;PERMISSION_WRITE_ENCRYPTED_MITM&#x27;: 64,
+	/** 128 */
+	&#x27;PERMISSION_WRITE_SIGNED&#x27;: 128,
+	/** 256 */
+	&#x27;PERMISSION_WRITE_SIGNED_MITM&#x27;: 256,
 };
 
 /** A map describing possible property flags.
@@ -371,23 +411,22 @@ exports.property &#x3D; {
 	/** PROPERTY_EXTENDED_PROPS */
 	128: &#x27;PROPERTY_EXTENDED_PROPS&#x27;,
 
-	// TODO: Add these in the next release of the BLE plugin.
-	// /** 1 */
-	// &#x27;PROPERTY_BROADCAST&#x27;: 1,
-	// /** 2 */
-	// &#x27;PROPERTY_READ&#x27;: 2,
-	// /** 4 */
-	// &#x27;PROPERTY_WRITE_NO_RESPONSE&#x27;: 4,
-	// /** 8 */
-	// &#x27;PROPERTY_WRITE&#x27;: 8,
-	// /** 16 */
-	// &#x27;PROPERTY_NOTIFY&#x27;: 16,
-	// /** 32 */
-	// &#x27;PROPERTY_INDICATE&#x27;: 32,
-	// /** 64 */
-	// &#x27;PROPERTY_SIGNED_WRITE&#x27;: 4,
-	// /** 128 */
-	// &#x27;PROPERTY_EXTENDED_PROPS&#x27;: 128,
+	/** 1 */
+	&#x27;PROPERTY_BROADCAST&#x27;: 1,
+	/** 2 */
+	&#x27;PROPERTY_READ&#x27;: 2,
+	/** 4 */
+	&#x27;PROPERTY_WRITE_NO_RESPONSE&#x27;: 4,
+	/** 8 */
+	&#x27;PROPERTY_WRITE&#x27;: 8,
+	/** 16 */
+	&#x27;PROPERTY_NOTIFY&#x27;: 16,
+	/** 32 */
+	&#x27;PROPERTY_INDICATE&#x27;: 32,
+	/** 64 */
+	&#x27;PROPERTY_SIGNED_WRITE&#x27;: 4,
+	/** 128 */
+	&#x27;PROPERTY_EXTENDED_PROPS&#x27;: 128,
 };
 
 /** A map describing possible write types.
@@ -403,13 +442,12 @@ exports.writeType &#x3D; {
 	/** WRITE_TYPE_SIGNED */
 	4: &#x27;WRITE_TYPE_SIGNED&#x27;,
 
-	// TODO: Add these in the next release of the BLE plugin.
-	// /** 1 */
-	// &#x27;WRITE_TYPE_NO_RESPONSE&#x27;: 1,
-	// /** 2 */
-	// &#x27;WRITE_TYPE_DEFAULT&#x27;: 2,
-	// /** 4 */
-	// &#x27;WRITE_TYPE_SIGNED&#x27;: 4,
+	/** 1 */
+	&#x27;WRITE_TYPE_NO_RESPONSE&#x27;: 1,
+	/** 2 */
+	&#x27;WRITE_TYPE_DEFAULT&#x27;: 2,
+	/** 4 */
+	&#x27;WRITE_TYPE_SIGNED&#x27;: 4,
 };
 
 /** Fetch information about a characteristic&#x27;s descriptors.
@@ -449,10 +487,6 @@ exports.descriptors &#x3D; function(deviceHandle, characteristicHandle, win, fai
 * @property {string} uuid - Formatted according to RFC 4122, all lowercase.
 * @property {module:cordova-plugin-ble.permission} permissions - Bitmask of zero or more permission flags.
 */
-
-// TODO: What is read* ?
-// read*: fetch and return value in one op.
-// values should be cached on the JS side, if at all.
 
 /**
 * @callback dataCallback
@@ -510,15 +544,39 @@ without specifying and additional information.
 */
 
 /** Write a characteristic&#x27;s value to the remote device.
+*
+* Writes with response, the remote device sends back a confirmation message.
+* This is safe but slower than writing without response.
+*
 * @param {number} deviceHandle - A handle from {@link connectCallback}.
 * @param {number} characteristicHandle - A handle from {@link characteristicCallback}.
 * @param {ArrayBufferView} data - The value to be written.
-* @param {emptyCallback} win
-* @param {failCallback} fail
+* @param {emptyCallback} win - Called when the remote device has confirmed the write.
+* @param {failCallback} fail - Called if the operation fails.
 * @example TODO: Add example.
 */
 exports.writeCharacteristic &#x3D; function(deviceHandle, characteristicHandle, data, win, fail) {
 	exec(win, fail, &#x27;BLE&#x27;, &#x27;writeCharacteristic&#x27;, [deviceHandle, characteristicHandle, data.buffer]);
+};
+
+/** Write a characteristic&#x27;s value without response.
+*
+* Experimental, implemented on Android.
+*
+* Asks the remote device to NOT send a confirmation message.
+* This may be used for increased data throughput.
+*
+* A separate safety protocol will be required to ensure data integrity.
+* Design of such protocols is beyond the scope of this document.
+*
+* @param {number} deviceHandle - A handle from {@link connectCallback}.
+* @param {number} characteristicHandle - A handle from {@link characteristicCallback}.
+* @param {ArrayBufferView} data - The value to be written.
+* @param {emptyCallback} win - Called when the data has been sent.
+* @param {failCallback} fail - Called if the operation fails.
+*/
+exports.writeCharacteristicWithoutResponse &#x3D; function(deviceHandle, characteristicHandle, data, win, fail) {
+	exec(win, fail, &#x27;BLE&#x27;, &#x27;writeCharacteristicWithoutResponse&#x27;, [deviceHandle, characteristicHandle, data.buffer]);
 };
 
 /** Write a descriptor&#x27;s value to a remote device.
@@ -731,6 +789,255 @@ exports.readAllServiceData &#x3D; function(deviceHandle, win, fail)
 			fail(errorCode);
 		});
 };
+
+
+/********** BLE Peripheral API **********/
+
+/**
+ * BLE Peripheral API. Experimental, supported only on Android.
+ * @namespace
+ */
+exports.peripheral &#x3D; {}
+
+// Internal. Returns a function that will handle GATT server callbacks.
+function gattServerCallbackHandler(winFunc, settings) {
+	// collect read/write callbacks and add handles, so the native side can tell us which one to call.
+	var readCallbacks &#x3D; {};
+	var writeCallbacks &#x3D; {};
+	var nextHandle &#x3D; 1;
+
+	function handleCallback(object, name, callbacks) {
+		if(!object[name]) {
+			throw name+&quot; missing!&quot;;
+		}
+		callbacks[nextHandle] &#x3D; object[name];
+		object[name+&quot;Handle&quot;] &#x3D; nextHandle;
+		nextHandle +&#x3D; 1;
+	}
+
+	function handleReadWrite(object) {
+		/* // primitive version
+		if(!object.readRequestCallback) {
+			throw &quot;readRequestCallback missing!&quot;);
+		}
+		readCallbacks[nextHandle] &#x3D; object.readRequestCallback;
+		*/
+		handleCallback(object, &quot;onReadRequest&quot;, readCallbacks);
+		handleCallback(object, &quot;onWriteRequest&quot;, writeCallbacks);
+	}
+
+	for(var i&#x3D;0; i&amp;lt;settings.services.length; i++) {
+		var service &#x3D; settings.services[i];
+		for(var j&#x3D;0; j&amp;lt;service.characteristics.length; j++) {
+			var characteristic &#x3D; service.characteristics[j];
+			handleReadWrite(characteristic);
+			for(var k&#x3D;0; k&amp;lt;characteristic.descriptors.length; k++) {
+				var descriptor &#x3D; characteristic.descriptors[k];
+				handleReadWrite(descriptor);
+			}
+		}
+	}
+
+	settings.nextHandle &#x3D; nextHandle;
+
+	return function(args) {
+		// primitive version
+		/*if(args.name &#x3D;&#x3D; &quot;win&quot;) {
+			winFunc();
+			return;
+		}*/
+		var funcs &#x3D; {
+			win: winFunc,
+			connection: function() {
+				settings.onConnectionStateChange(args.deviceHandle, args.connected);
+			},
+			write: function() {
+				writeCallbacks[args.callbackHandle](args.deviceHandle, args.requestId, args.data);
+			},
+			read: function() {
+				readCallbacks[args.callbackHandle](args.deviceHandle, args.requestId);
+			},
+		};
+		funcs[args.name]();
+	};
+}
+
+/** Starts the GATT server.
+* There can be only one server. If this function is called while the server is still running, the call will fail.
+* Once this function succeeds, the server may be stopped by calling stopGattServer.
+*
+* @param {GattSettings} settings
+* @param {emptyCallback} win
+* @param {failCallback} fail
+*/
+exports.peripheral.startGattServer &#x3D; function(settings, win, fail) {
+	exec(gattServerCallbackHandler(win, settings), fail, &#x27;BLE&#x27;, &#x27;startGattServer&#x27;, [settings]);
+};
+
+// GattSettings
+/** Describes a GATT server.
+* @typedef {Object} GattSettings
+* @property {Array} services - An array of GattService objects.
+* @property {connectionStateChangeCallback} onConnectionStateChange
+*/
+
+/** Describes a GATT service.
+* @typedef {Object} GattService
+* @property {string} uuid - Formatted according to RFC 4122, all lowercase.
+* @property {serviceType} type
+* @property {Array} characteristics - An array of GattCharacteristic objects.
+*/
+
+/** Describes a GATT characteristic.
+* @typedef {Object} GattCharacteristic
+* @property {int} handle - Optional. Used in notify(). If set, must be unique among all other GattCharacteristic handles.
+* @property {string} uuid - Formatted according to RFC 4122, all lowercase.
+* @property {module:cordova-plugin-ble.permission} permissions - Bitmask of zero or more permission flags.
+* @property {property} properties - Bitmask of zero or more property flags.
+* @property {writeType} writeType
+* @property {readRequestCallback} onReadRequest
+* @property {writeRequestCallback} onWriteRequest
+* @property {Array} descriptors - Optional. An array of GattDescriptor objects.
+*/
+
+/** Describes a GATT descriptor.
+* @typedef {Object} GattDescriptor
+* @property {string} uuid - Formatted according to RFC 4122, all lowercase.
+* @property {module:cordova-plugin-ble.permission} permissions - Bitmask of zero or more permission flags.
+* @property {readRequestCallback} onReadRequest
+* @property {writeRequestCallback} onWriteRequest
+*/
+
+
+// GattServer callbacks
+/** This function is a part of GattSettings and is called when a remote device connects to, or disconnects from, your server.
+* @callback connectionStateChangeCallback
+* @param {int} deviceHandle - Will be used in other callbacks.
+* @param {boolean} connected - If true, the device just connected, and the handle is now valid for use in close() and other functions.
+* If false, it just disconnected, and the handle is now invalid for use in close() and other functions.
+*/
+
+/** Called when a remote device asks to read a characteristic or descriptor.
+* You must call sendResponse() to complete the request.
+* @callback readRequestCallback
+* @param {int} deviceHandle
+* @param {int} requestId
+*/
+
+/** Called when a remote device asks to write a characteristic or descriptor.
+* You must call sendResponse() to complete the request.
+* @callback writeRequestCallback
+* @param {int} deviceHandle
+* @param {int} requestId
+* @param {ArrayBuffer} data
+*/
+
+
+/** Stops the GATT server.
+* This stops any active advertisements and forcibly disconnects any clients.
+* There can be only one server. If startGattServer() returned success, you may call this function once.
+* Calling it more will result in failure.
+*
+* @param {emptyCallback} win
+* @param {failCallback} fail
+*/
+exports.peripheral.stopGattServer &#x3D; function(win, fail) {
+	exec(win, fail, &#x27;BLE&#x27;, &#x27;stopGattServer&#x27;, []);
+};
+
+/** Sends a response to a read or write request.
+* @param {int} deviceHandle - From a requestCallback.
+* @param {int} requestId - From the same requestCallback as deviceHandle.
+* @param {ArrayBufferView} data - Required for responses to read requests. May be set to null for write requests.
+* @param {emptyCallback} win
+* @param {failCallback} fail
+*/
+exports.peripheral.sendResponse &#x3D; function(deviceHandle, requestId, data, win, fail) {
+	exec(win, fail, &#x27;BLE&#x27;, &#x27;sendResponse&#x27;, [deviceHandle, requestId, data.buffer]);
+}
+
+/** Sends a notification to a remote device that a characteristic&#x27;s value has been updated.
+* @param {int} deviceHandle - From a connectionStateChangeCallback.
+* @param {int} characteristicHandle - GattCharacteristic.handle
+* @param {ArrayBufferView} data - The characteristic&#x27;s new value.
+* @param {emptyCallback} win
+* @param {failCallback} fail
+*/
+exports.peripheral.notify &#x3D; function(deviceHandle, characteristic, data, win, fail) {
+	exec(win, fail, &#x27;BLE&#x27;, &#x27;notify&#x27;, [deviceHandle, characteristic, data.buffer]);
+};
+
+/*	// never mind, just use close().
+// Closes a client handle, freeing the resources.
+exports.closeClient &#x3D; function(clientHandle, win, fail) {
+};
+*/
+
+
+/** Starts BLE advertise.
+* Fails if advertise is running. In that case, call stopAdvertise first.
+*
+* @param {AdvertiseSettings} settings
+* @param {emptyCallback} win
+* @param {failCallback} fail
+*/
+exports.peripheral.startAdvertise &#x3D; function(settings, win, fail) {
+	exec(win, fail, &#x27;BLE&#x27;, &#x27;startAdvertise&#x27;, [settings]);
+}
+
+/** Stops BLE advertise.
+*
+* @param {emptyCallback} win
+* @param {failCallback} fail
+*/
+exports.peripheral.stopAdvertise &#x3D; function(win, fail) {
+	exec(win, fail, &#x27;BLE&#x27;, &#x27;stopAdvertise&#x27;, []);
+}
+
+// AdvertiseSettings
+/** Describes a BLE advertisement.
+*
+* All the properties are optional, except broadcastData.
+*
+* @typedef {Object} AdvertiseSettings
+* @property {string} advertiseMode - ADVERTISE_MODE_LOW_POWER, ADVERTISE_MODE_BALANCED, or ADVERTISE_MODE_LOW_LATENCY.
+* The default is ADVERTISE_MODE_LOW_POWER.
+* @property {boolean} connectable - Advertise as connectable or not. Has no bearing on whether the device is actually connectable.
+* The default is true if there is a GattServer running, false if there isn&#x27;t.
+* @property {int} timeoutMillis - Advertising time limit. May not exceed 180000 milliseconds. A value of 0 will disable the time limit.
+* The default is 0.
+* @property {string} txPowerLevel - ADVERTISE_TX_POWER_ULTRA_LOW, ADVERTISE_TX_POWER_LOW, ADVERTISE_TX_POWER_MEDIUM or ADVERTISE_TX_POWER_HIGH.
+* The default is ADVERTISE_TX_POWER_MEDIUM.
+* @property {AdvertiseData} broadcastData - The data which will be broadcast. Passive scanners will see this data.
+* @property {AdvertiseData} scanResponseData - The data with which the device will respond to active scans.
+* Should be an extension to the broadcastData; should not contain the same data.
+*/
+
+/** Describes BLE advertisement data.
+*
+* Data size is limited to 31 bytes. Each property set consumes some bytes.
+* If too much data is added, startAdvertise will fail with &quot;ADVERTISE_FAILED_DATA_TOO_LARGE&quot; or something similar.
+*
+* All properties are optional.
+* UUIDs must be formatted according to RFC 4122, all lowercase.
+* Normally, UUIDs take up 16 bytes. However, UUIDs that use the Bluetooth Base format can be compressed to 4 or 2 bytes.
+* The Bluetooth Base UUID is &quot;00000000-0000-1000-8000-00805f9b34fb&quot;.
+* For 2 bytes, use this format, where &quot;x&quot; is any hexadecimal digit: &quot;0000xxxx-0000-1000-8000-00805f9b34fb&quot;.
+* For 4 bytes, use this format: &quot;xxxxxxxx-0000-1000-8000-00805f9b34fb&quot;.
+*
+* @typedef {Object} AdvertiseData
+* @property {boolean} includeDeviceName - If true, the device&#x27;s Bluetooth name is added to the advertisement.
+* The name is set by the user in the device&#x27;s Settings. The name cannot be changed by the app.
+* The default is false.
+* @property {boolean} includeTxPowerLevel - If true, the txPowerLevel found in AdvertiseSettings is added to the advertisement.
+* The default is false.
+* @property {Array} serviceUUIDs - Array of strings. Each string is the UUID of a service that should be available in the device&#x27;s GattServer.
+* @property {Object} serviceData - Map of string to string. Each key is a service UUID.
+* The value is base64-encoded data associated with the service.
+* @property {Object} manufacturerData - Map of int to string. Each key is a manufacturer ID.
+* Manufacturer IDs are assigned by the {@link http://www.bluetooth.com/|Bluetooth Special Interest Group}.
+* The value is base64-encoded data associated with the manufacturer.
+*/
 </code></pre>
           </article>
         </div>
@@ -741,7 +1048,7 @@ exports.readAllServiceData &#x3D; function(deviceHandle, win, fail)
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on March 10, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
       </p>
     </div>
   </footer>

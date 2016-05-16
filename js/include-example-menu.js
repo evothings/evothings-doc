@@ -34,9 +34,14 @@ document.write(
 
 	+	'<a href="../examples/mediatek-linkit.html">MediaTek&nbsp;Linkit&nbsp;ONE&nbsp;Position</a><br/>'
 	+	'<a href="../examples/mediatek-linkit-connect.html">MediaTek Linkit Connect 7681</a><br/>'
+	+	'<a href="../examples/mediatek-linkit-smart-7688-duo.html">MediaTek&nbsp;LinkIt&nbsp;Smart 7688 Duo</a><br/>'
 	+	'<a href="../examples/esp8266.html">ESP8266</a><br/>'
 	+	'<a href="../examples/lightbluebean-basic.html">LightBlue&nbsp;Bean&nbsp;Basic</a><br/>'
 	+	'<a href="../examples/rfduino-led-onoff.html">RFduino&nbsp;Led&nbsp;On/Off</a><br/>'
 	+	'<a href="../examples/bluno-helloworld.html">Bluno&nbsp;Hello&nbsp;World</a><br/>'
+	+	'<a href="../examples/rpi3-system-information.html">RPi&nbsp;3&nbsp;-&nbsp;System&nbsp;Information</a><br/>'
+	+	'<a href="../examples/dialog-blinky.html">Dialog&nbsp;-&nbsp;Blinky</a><br/>'
+	+	'<a href="../examples/dialog-iotsensor.html">Dialog&nbsp;-&nbsp;IoT Sensor</a><br/>'
+	+	'<a href="../examples/dialog-beacons.html">Dialog&nbsp;-&nbsp;Beacons</a><br/>'
 
 	+ '</div>')
