@@ -7,7 +7,7 @@
 		"include": ["../evothings-libraries/libs/evothings", "../cordova-ble/ble.js"],
 		"exclude": ["../evothings-libraries/libs/evothings/ui"],
 		"includePattern": ".+\\.js(doc)?$",
-		"excludePattern": "(^|\\/|\\\\)_"
+		"excludePattern": "(^|\\/|\\\\)_|\\.dist\\.js$"
 	},
 	"opts": {
 		"template": "./node_modules/jsdoc-baseline/",
