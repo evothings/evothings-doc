@@ -22,7 +22,9 @@ Copyright (c) 2013-2016 Evothings AB
 <div class="evo-box">
 	<h1>Arduino/Genuino 101 LED On/Off BLE</h1>
 
-	<p><b>Control the LED on port 13 over a Bluetooth Low Energy connection.</b></p> This example shows how to make an app that can turn on and off the LED attached to port 13 on the Arduino/Genuino 101 development board.
+	<p><b>Control the LED on port 13 over a Bluetooth Low Energy connection.</b></p>
+	
+	<p>This example shows how to make an app that can turn on and off the LED attached to port 13 on the Arduino/Genuino 101 development board (named Arduino 101 in USA only, Genuino 101 outside USA).</p>
 
 	<img class="img-example-screenshot" src="images/arduino101-ble-screenshot.png"/>
 
@@ -64,8 +66,10 @@ Copyright (c) 2013-2016 Evothings AB
 		<p>Follow these steps to get started with this example:</p>
 	<ul>
 		<li>Compile and upload the <i>File -> Examples -> CurieBLE -> LED</i> example to the board.</li>
-		<li>Check the back of your card and note the four last characters on the square sticker containing a QR-code and a character string (see image below). These will be used in order to identify your board among other BLE devices.</li>
-		<li>Open the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino101-led-onoff/app/index.html#L98">index.html</a> and replace the four last characters in the string <i>GENUINO 101-1DD5</i> with the characters noted in previous step.</li>
+		<li>The 101 should advertise the name "LED" when running the sketch (device name in advertisement data).</li>
+		<!--<li>Check the back of your card and note the four last characters on the square sticker containing a QR-code and a character string (see image below). These will be used in order to identify your board among other BLE devices.</li>
+		<li>Open the <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino101-led-onoff/app/index.html#L98">index.html</a> and replace the four last characters in the string <i>GENUINO 101-1DD5</i> with the characters noted in previous step.</li>-->
+		<li>File <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino101-led-onoff/app/index.html">index.html</a> in the mobile app is programmed to check for a device named "LED" and connect to it.</li>
 		<li>Now you should be able to connect to your board and turn on and of the LED over a BLE connection.</li>
 	</ul>
 
