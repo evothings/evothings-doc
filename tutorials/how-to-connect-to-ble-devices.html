@@ -9,6 +9,10 @@ Author: Mikael Kindborg
 <meta charset="utf-8">
 <script src="../js/include-head.js"></script>
 <title>How to connect to BLE devices</title>
+<style>
+code { background: #ffff99; font-weight: normal; }
+td { font-weight: bold; }
+</style>
 </head>
 
 <body>
@@ -24,7 +28,7 @@ Author: Mikael Kindborg
 And when changing your device name using CurieBLE in Arduino 101 , it takes a while staying connected before the new name is received on the iPhone. Very frustrating"
 -->
 
-<h2 style="color:red">DRAFT: Work in progress</h2>
+<h2 style="color:red;">DRAFT: Work in progress</h2>
 
 <h1>How to connect to BLE devices</h1>
 
@@ -42,7 +46,7 @@ Now you can write mobile apps in JavaScript that talk to Bluetooth Low Energy (B
 
 <p>Native support for Bluetooth Low Energy on Android and iOS is provided by the <a href="https://github.com/evothings/cordova-ble">Cordova BLE plugin</a>. This plugin is included with Evothings Viewer, which makes it quick to get started with development of a BLE application in JavaScript. When the app is ready for testing and deployment, the Cordova build system is used to build a custom app with the application code and the BLE plugin. This app can then be published on the app stores.</p>
 
-<p>In this guide we will use a high-level BLE library called <a href="https://evothings.com/doc/lib-doc/evothings.easyble.html">EasyBLE</a>, which encapsulates the Cordova plugin functions. This library is available as a single file named <a href="https://github.com/evothings/evothings-libraries/blob/master/libs/evothings/easyble/easyble.dist.js">easyble.dist.js</a> that you <a href="https://github.com/evothings/cordova-ble/blob/master/README.md#libraries">include in the index.html file</a> of your application. Code examples below use EasyBLE.</p>
+<p>In this guide we will use a high-level BLE library called <a href="https://evothings.com/doc/lib-doc/evothings.easyble.html">EasyBLE</a>, which encapsulates the Cordova plugin functions. This library is available as a single file named <a href="https://github.com/evothings/evothings-libraries/blob/master/libs/evothings/easyble/easyble.dist.js">easyble.dist.js</a> that you <a href="https://github.com/evothings/cordova-ble/blob/master/README.md#libraries">include in the <code>index.html</code> file</a> of your application. Code examples below use EasyBLE.</p>
 
 <p>To summarise, we use two pieces of software, the Cordova BLE plugin and the EasyBLE library.</p>
 
@@ -71,16 +75,16 @@ Now you can write mobile apps in JavaScript that talk to Bluetooth Low Energy (B
 
 <h2>An example of device UUIDs</h2>
 
-<p>As an example, we will use the TI SensorTag CC2650 and the Luxometer Service. The CC2650 has several sensors, each sensor has a service, each service has characteristics for turning a sensor on/off, setting the update interval, and for reading data.</p>
+<div class="evo-content-side-box-large">
+    <img src="http://www.ti.com/diagrams/med_tidc-cc2650stk-sensortag_1_main.gif"/>
+    <p>TI SimpleLink Multi-Standard CC2650 SensorTag</p>
+</div>
+
+<p>As an example, we will use the <a href="http://www.ti.com/tool/TIDC-CC2650STK-SENSORTAG" target="_blank">TI SensorTag CC2650</a> and the Luxometer Service. The CC2650 has several sensors, each sensor has a service, each service has characteristics for turning a sensor on/off, setting the update interval, and for reading data.</p>
 
 <p>Other BLE devices will have difference services and characteristics, but the general principle is the same.  Some devices have options to configure the device, others may not need any specific configuration. Some devices you primarily read data from (like a thermometer), others you primarily write data to (like remotely controlled machinery).</p>
 
-<p>The Luxometer of the TI SensorTag CC2650 has the following UUIDs:</p>
-
-<style>
-code { background: #ffff99; font-weight: normal; }
-td { font-weight: bold; }
-</style>
+<p style="clear:both;">The Luxometer of the TI SensorTag CC2650 has the following UUIDs:</p>
 
 <table>
 <tr><td>Luxometer service UUID:</td><td><code>f000aa70-0451-4000-b000-000000000000</code></td>
@@ -236,74 +240,293 @@ function readServicesError(error)
 
 <p>Characteristics are like commands or functions, they can be read to obtain data, or written to control some aspect of a device.</p>
 
-<p>Here is how to read the value of the Luxometer data characteristic of the TI SensorTag:</p>
+<p>For example, on the TI SensorTag, you turn a sensor on and off by writing to a characteristic. When the sensor is on, you can read data from another characteristic. Both characteristics are part of the same service.</p>
 
-<pre>var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+<p>Here is an example how to turn on and read the Luxometer of the TI SensorTag:</p>
+
+<pre>// UUID of Luxometer service.
+var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+
+// UUID of Luxometer config characteristic (write 1 to 
+// turn sensor ON, 0 to turn OFF).
+var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+
+// UUID of Luxometer data characteristic.
 var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
 
+// Turn Luxometer ON.
+device.writeCharacteristic(
+    LUXOMETER_SERVICE,
+    LUXOMETER_CONFIG,
+    new Uint8Array([1]),
+    turnOnLuxometerSuccess,
+    turnOnLuxometerError)
+
+// Now we can read data from the Luxometer.
 device.readCharacteristic(
     LUXOMETER_SERVICE,
     LUXOMETER_DATA,
     readLuxometerSuccess,
     readLuxometerError)
 
+function turnOnLuxometerSuccess()
+{
+    console.log('Luxometer is ON')
+    
+}
+function turnOnLuxometerError(error)
+{
+    console.log('Write Luxometer error: ' + error)
+}
+
 function readLuxometerSuccess(data)
 {
-    console.log('Luxometer value: ' + data)
-    
+    // Get raw sensor value (data buffer has little endian format).
+    var raw = new DataView(data).getUInt16(0, true)
+    console.log('Raw Luxometer value: ' + raw)
 }
 
 function readLuxometerError(error)
 {
     console.log('Read Luxometer error: ' + error)
 }
+</pre>
+
+<p>The data read from a device is in raw a byte format. Documentation from the device manufacturer contains information about how to calculate the actual value. As an example, here is how you calculate the Luxometer value in lux units:</p>
+
+<pre>// Calculate the light level from raw sensor data. 
+// Return light level in lux.
+function calculateLux(data)
+{
+    // Get 16 bit value from data buffer in little endian format.
+    var value = new DataView(data).getUInt16(0, true)
+
+    // Extraction of luxometer value, based on sfloatExp2ToDouble
+    // from BLEUtility.m in Texas Instruments TI BLE SensorTag
+    // iOS app source code.
+    var mantissa = value & 0x0FFF
+    var exponent = value >> 12
+    
+    var magnitude = Math.pow(2, exponent)
+    var output = (mantissa * magnitude)
+
+    var lux = output / 100.0
+
+    // Return result.
+    return lux
+}
+</pre>
 
 <h2>Using notifications to read data</h2>
 
-<p>TODO</p>
+<p>It is common that an application needs to continuously read data from a BLE device. Examples includereading  a sensor and send data to the cloud, or to use the accelerometer of a sensor device to control a game on the mobile phone.</p>
+
+<p>Notifications are an efficient way to read data continuously from a BLE device. The process is similar to reading data, the main difference is that the callback function will be called repeatedly until the notification is disabled.</p>
+
+<pre>var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
+
+// Turn Luxometer ON.
+device.writeCharacteristic(
+    LUXOMETER_SERVICE,
+    LUXOMETER_CONFIG,
+    new Uint8Array([1]),
+    turnOnLuxometerSuccess,
+    turnOnLuxometerError)
+
+// Enable notifications from the Luxometer.
+device.enableNotification(
+    LUXOMETER_SERVICE,
+    LUXOMETER_DATA,
+    readLuxometerSuccess,
+    readLuxometerError)
+
+// Called repeatedly until disableNotification is called.
+function readLuxometerSuccess(data)
+{
+    var lux = calculateLux(data)
+    console.log('Luxometer value: ' + lux)
+}
+</pre>
+
+<h2>Complete code example</h2>
+
+<p>Here is a complete code example. Note that file <code>cordova.js</code> is included with the BLE plugin, this file is not part of the application code, it is bundled with the plugin and with Evothings Viewer.</p>
+
+<p>Scripts in file <code>index.html</code>:</p>
+
+<pre>&lt;script src="cordova.js"&gt;&lt;/script&gt;
+&lt;script src="easyble.dist.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// UUIDs of services and characteristics.
+var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
+
+function findDevice()
+{
+    // Start scanning. Two callback functions are specified.
+    evothings.easyble.startScan(
+        deviceFound,
+        scanError)
+
+    // This function is called when a device is detected, here
+    // we check if we found the device we are looking for.
+    function deviceFound(device)
+    {
+        if (device.getName() == 'CC2650 SensorTag')
+        {
+            console.log('Found the TI SensorTag!')
+            
+            // Stop scanning.
+            evothings.easyble.stopScanning()
+        
+            // Connect.
+            connectToDevice(device)
+        }
+    }
+
+    // Function called when a scan error occurs.
+    function scanError(error)
+    {
+        console.log('Scan error: ' + error)
+    }
+}
+
+function connectToDevice(device)
+{
+    device.connect(connectSuccess, connectError)
+    
+    function connectSuccess(device)
+    {
+        console.log('Connected to device')
+    
+        // Read all services, characteristics and descriptors.
+        device.readServices(readServicesSuccess, readServicesError)
+    }
+
+    function readServicesSuccess(device)
+    {
+        console.log('Read services completed')
+    
+        // Enable notifications for Luxometer.
+        enableLuxometerNotifications(device)
+    }
+
+    function readServicesError(error)
+    {
+        console.log('Read services error: ' + error)
+    }
+
+    // Function called when a connect error or disconnect occurs.
+    function connectError(error)
+    {
+        if (error == evothings.easyble.error.DISCONNECTED)
+        {
+            console.log('Device disconnected')
+        }
+        else
+        {
+            console.log('Connect error: ' + error)
+        }
+    }
+}
+
+function enableLuxometerNotifications(device)
+{
+    // Turn Luxometer ON.
+    device.writeCharacteristic(
+        LUXOMETER_SERVICE,
+        LUXOMETER_CONFIG,
+        new Uint8Array([1]),
+        turnOnLuxometerSuccess,
+        turnOnLuxometerError)
+
+    // Enable notifications from the Luxometer.
+    device.enableNotification(
+        LUXOMETER_SERVICE,
+        LUXOMETER_DATA,
+        readLuxometerSuccess,
+        readLuxometerError)
+
+    // Called repeatedly until disableNotification is called.
+    function readLuxometerSuccess(data)
+    {
+        var lux = calculateLux(data)
+        console.log('Luxometer value: ' + lux)
+    }
+}
+
+// Calculate the light level from raw sensor data. 
+// Return light level in lux.
+function calculateLux(data)
+{
+    // Get 16 bit value from data buffer in little endian format.
+    var value = new DataView(data).getUInt16(0, true)
+
+    // Extraction of luxometer value, based on sfloatExp2ToDouble
+    // from BLEUtility.m in Texas Instruments TI BLE SensorTag
+    // iOS app source code.
+    var mantissa = value & 0x0FFF
+    var exponent = value >> 12
+    
+    var magnitude = Math.pow(2, exponent)
+    var output = (mantissa * magnitude)
+
+    var lux = output / 100.0
+
+    // Return result.
+    return lux
+}
+
+// Start scanning for devices when the plugin has loaded.
+document.addEventListener('deviceready', findDevice, false)
+&lt;/script&gt;
+</pre>
 
 <!--
 
-	/* Test of read
-	.then(() => {
-		log('Value written')
-		return accelerometerService.getCharacteristic(accelerometerDataUUID);
-	})
-	.then(characteristic => {
-		log('Accelerometer data characteristic: ' + characteristic.uuid);
-		// Read accelerometer every second.
-		var timer = setInterval(() => { readAccelerometer(characteristic) }, 1000);
-		// Keep going for 10 seconds
-		setTimeout(() => {
-			clearInterval(timer);
-			gattServer.disconnect();
-			log('Gatt server connected: ' + gattServer.connected);
-			},
-			10000)
-	})
+    /* Test of read
+    .then(() => {
+        log('Value written')
+        return accelerometerService.getCharacteristic(accelerometerDataUUID);
+    })
+    .then(characteristic => {
+        log('Accelerometer data characteristic: ' + characteristic.uuid);
+        // Read accelerometer every second.
+        var timer = setInterval(() => { readAccelerometer(characteristic) }, 1000);
+        // Keep going for 10 seconds
+        setTimeout(() => {
+            clearInterval(timer);
+            gattServer.disconnect();
+            log('Gatt server connected: ' + gattServer.connected);
+            },
+            10000)
+    })
 
 
 /* Called from commented out code below.
 function readAccelerometer(characteristic) {
-	characteristic.readValue().then(data => {
-		log('got accel data: ' + data)
-		var accelerometer = getAccelerometerValues(data);
-		log('x: ' + accelerometer.x);
-		log('y: ' + accelerometer.y);
-		log('z: ' + accelerometer.z);
-	})
+    characteristic.readValue().then(data => {
+        log('got accel data: ' + data)
+        var accelerometer = getAccelerometerValues(data);
+        log('x: ' + accelerometer.x);
+        log('y: ' + accelerometer.y);
+        log('z: ' + accelerometer.z);
+    })
 }
 */
 
 function getAccelerometerValues(data) {
-	var divisors = { x: 16.0, y: -16.0, z: 16.0 };
+    var divisors = { x: 16.0, y: -16.0, z: 16.0 };
 
-	// Calculate accelerometer values.
-	var ax = data.getInt8(0, true) / divisors.x;
-	var ay = data.getInt8(1, true) / divisors.y;
-	var az = data.getInt8(2, true) / divisors.z;
+    // Calculate accelerometer values.
+    var ax = data.getInt8(0, true) / divisors.x;
+    var ay = data.getInt8(1, true) / divisors.y;
+    var az = data.getInt8(2, true) / divisors.z;
 
-	return { x: ax, y: ay, z: az };
+    return { x: ax, y: ay, z: az };
 }
 
 -->
