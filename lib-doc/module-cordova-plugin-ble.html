@@ -99,10 +99,10 @@
                     <dt><a href="module-cordova-plugin-ble.html#.descriptors">descriptors(deviceHandle, characteristicHandle, win, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="module-cordova-plugin-ble.html#.disableNotification">disableNotification(deviceHandle, characteristicHandle, win, fail)</a></dt>
+                    <dt><a href="module-cordova-plugin-ble.html#.disableNotification">disableNotification(deviceHandle, characteristicHandle, win, fail, options)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="module-cordova-plugin-ble.html#.enableNotification">enableNotification(deviceHandle, characteristicHandle, win, fail)</a></dt>
+                    <dt><a href="module-cordova-plugin-ble.html#.enableNotification">enableNotification(deviceHandle, characteristicHandle, win, fail, options)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="module-cordova-plugin-ble.html#.fromUtf8">fromUtf8(a)</a></dt>
@@ -1381,14 +1381,15 @@
                   <dl class="dl-compact">
                   </dl>
                   <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                  <h3 id=".disableNotification"><span class="symbol-name">disableNotification</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, win, fail)</span></span></h3>
-                  <p>Disable notification of changes to a characteristic's value.</p>
+                  <h3 id=".disableNotification"><span class="symbol-name">disableNotification</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, win, fail, options)</span></span></h3>
+                  <p>Disable notification or indication of a characteristic's value.</p>
                   <section>
                     <h4>
             Example
         </h4>
                     <div>
-                      <pre class="prettyprint"><code>evothings.ble.disableNotification(
+                      <pre class="prettyprint"><code>// Example call:
+evothings.ble.disableNotification(
 	deviceHandle,
 	characteristic.handle,
 	function()
@@ -1398,7 +1399,11 @@
 	function(errorCode)
 	{
 		console.log(&#x27;BLE disableNotification error: &#x27; + errorCode);
-	});</code></pre>
+	});
+	
+// To disable automatic writing of the config descriptor 
+// supply this as last parameter to enableNotification:
+{ writeConfigDescriptor: false }</code></pre>
                     </div>
                   </section>
                   <section>
@@ -1452,6 +1457,239 @@
                             <p>&nbsp;</p>
                           </td>
                           <td>
+                            <p>Success callback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Error callback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>options</p>
+                          </td>
+                          <td>
+                            <p>object</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Android only: Optional object with options. Set field writeConfigDescriptor to false to disable automatic writing of notification or indication descriptor value. This is useful if full control of writing the config descriptor
+                              is needed.</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".enableNotification"><span class="symbol-name">enableNotification</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, win, fail, options)</span></span></h3>
+                  <p>Request notification or indication on changes to a characteristic's value. This is more efficient than polling the value using readCharacteristic(). This function automatically detects if the characteristic supports notification or indication.
+                    </p>
+                  <p>Android only: To disable this functionality and write the configuration descriptor yourself, supply an options object as last parameter, see example below.</p>
+                  <section>
+                    <h4>
+            Example
+        </h4>
+                    <div>
+                      <pre class="prettyprint"><code>// Example call:
+evothings.ble.enableNotification(
+	deviceHandle,
+	characteristic.handle,
+	function(data)
+	{
+		console.log(&#x27;BLE characteristic data: &#x27; + evothings.ble.fromUtf8(data));
+	},
+	function(errorCode)
+	{
+		console.log(&#x27;BLE enableNotification error: &#x27; + errorCode);
+	});
+	
+// To disable automatic writing of the config descriptor 
+// supply this as last parameter to enableNotification:
+{ writeConfigDescriptor: false }</code></pre>
+                    </div>
+                  </section>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>deviceHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from connectCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>characteristicHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from characteristicCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>dataCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Called every time the value changes.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Error callback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>options</p>
+                          </td>
+                          <td>
+                            <p>object</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Android only: Optional object with options. Set field writeConfigDescriptor to false to disable automatic writing of notification or indication descriptor value. This is useful if full control of writing the config descriptor
+                              is needed.</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".fromUtf8"><span class="symbol-name">fromUtf8</span><span class="signature"><span class="signature-params">(a)</span></span></h3>
+                  <p>Converts an ArrayBuffer containing UTF-8 data to a JavaScript String.</p>
+                  <section>
+                    <h4>Parameter</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>a</p>
+                          </td>
+                          <td>
+                            <p>ArrayBuffer</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                    <dt>Returns</dt>
+                    <dd>
+                      <p>string</p>
+                    </dd>
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".readAllServiceData"><span class="symbol-name">readAllServiceData</span><span class="signature"><span class="signature-params">(deviceHandle, win, fail)</span></span></h3>
+                  <p>Fetch information about a remote device's services, as well as its associated characteristics and descriptors.</p>
+                  <p>This function is an easy-to-use wrapper of the low-level functions ble.services(), ble.characteristics() and ble.descriptors().</p>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>deviceHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from connectCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>serviceCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Called with array of Service objects. Those Service objects each have an additional field &quot;characteristics&quot;, which is an array of Characteristic objects. Those Characteristic objects each have an additional field
+                              &quot;descriptors&quot;, which is an array of Descriptor objects.</p>
                           </td>
                         </tr>
                         <tr>
@@ -1473,16 +1711,14 @@
                   <dl class="dl-compact">
                   </dl>
                   <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                  <h3 id=".enableNotification"><span class="symbol-name">enableNotification</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, win, fail)</span></span></h3>
-                  <p>Request notification on changes to a characteristic's value. This is more efficient than polling the value using readCharacteristic().</p>
-                  <p>
-                    <p>To activate notifications, some (all?) devices require you to write a special value to a separate configuration characteristic, in addition to calling this function. Refer to your device's documentation.</p>
-                    <section>
-                      <h4>
+                  <h3 id=".readCharacteristic"><span class="symbol-name">readCharacteristic</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, win, fail)</span></span></h3>
+                  <p>Reads a characteristic's value from a remote device.</p>
+                  <section>
+                    <h4>
             Example
         </h4>
-                      <div>
-                        <pre class="prettyprint"><code>evothings.ble.enableNotification(
+                    <div>
+                      <pre class="prettyprint"><code>evothings.ble.readCharacteristic(
 	deviceHandle,
 	characteristic.handle,
 	function(data)
@@ -1491,10 +1727,501 @@
 	},
 	function(errorCode)
 	{
-		console.log(&#x27;BLE enableNotification error: &#x27; + errorCode);
+		console.log(&#x27;BLE readCharacteristic error: &#x27; + errorCode);
 	});</code></pre>
-                      </div>
-                    </section>
+                    </div>
+                  </section>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>deviceHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from connectCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>characteristicHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from characteristicCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>dataCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".readDescriptor"><span class="symbol-name">readDescriptor</span><span class="signature"><span class="signature-params">(deviceHandle, descriptorHandle, win, fail)</span></span></h3>
+                  <p>Reads a descriptor's value from a remote device.</p>
+                  <section>
+                    <h4>
+            Example
+        </h4>
+                    <div>
+                      <pre class="prettyprint"><code>evothings.ble.readDescriptor(
+	deviceHandle,
+	descriptor.handle,
+	function(data)
+	{
+		console.log(&#x27;BLE descriptor data: &#x27; + evothings.ble.fromUtf8(data));
+	},
+	function(errorCode)
+	{
+		console.log(&#x27;BLE readDescriptor error: &#x27; + errorCode);
+	});</code></pre>
+                    </div>
+                  </section>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>deviceHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from connectCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>descriptorHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from descriptorCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>dataCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".reset"><span class="symbol-name">reset</span><span class="signature"><span class="signature-params">(win, fail)</span></span></h3>
+                  <p>Resets the device's Bluetooth system. This is useful on some buggy devices where BLE functions stops responding until reset. Available on Android 4.3+. This function takes 3-5 seconds to reset BLE. On iOS this function stops any ongoing
+                    scan operation and disconnects all connected devices.</p>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>emptyCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".rssi"><span class="symbol-name">rssi</span><span class="signature"><span class="signature-params">(deviceHandle, win, fail)</span></span></h3>
+                  <p>Fetch the remote device's RSSI (signal strength).</p>
+                  <section>
+                    <h4>
+            Example
+        </h4>
+                    <div>
+                      <pre class="prettyprint"><code>evothings.ble.rssi(
+	deviceHandle,
+	function(rssi)
+	{
+		console.log(&#x27;BLE rssi: &#x27; + rssi);
+	},
+	function(errorCode)
+	{
+		console.log(&#x27;BLE rssi error: &#x27; + errorCode);
+	}
+);</code></pre>
+                    </div>
+                  </section>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>deviceHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from connectCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>rssiCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".services"><span class="symbol-name">services</span><span class="signature"><span class="signature-params">(deviceHandle, win, fail)</span></span></h3>
+                  <p>Fetch information about a remote device's services.</p>
+                  <section>
+                    <h4>
+            Example
+        </h4>
+                    <div>
+                      <pre class="prettyprint"><code>evothings.ble.services(
+	deviceHandle,
+	function(services)
+	{
+		for (var i &#x3D; 0; i &lt; services.length; i++)
+		{
+			var service &#x3D; services[i];
+			console.log(&#x27;BLE service: &#x27;);
+			console.log(&#x27;  &#x27; + service.handle);
+			console.log(&#x27;  &#x27; + service.uuid);
+			console.log(&#x27;  &#x27; + service.serviceType);
+		}
+	},
+	function(errorCode)
+	{
+		console.log(&#x27;BLE services error: &#x27; + errorCode);
+	});</code></pre>
+                    </div>
+                  </section>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>deviceHandle</p>
+                          </td>
+                          <td>
+                            <p>number</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>A handle from connectCallback.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>win</p>
+                          </td>
+                          <td>
+                            <p>serviceCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Called with array of Service objects.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(uuids, success, fail)</span></span></h3>
+                  <p>Start scanning for devices.</p>
+                  <p>An array of service UUID strings may be given (optional parameter). One or more service UUIDs must be specified for iOS background scanning to work.</p>
+                  <p>Found devices and errors are reported to the supplied callback functions.</p>
+                  <p>Will keep scanning until you call stopScan().</p>
+                  <p>To conserve energy, call stopScan() as soon as you've found the device you're looking for.</p>
+                  <p>Call stopScan() before calling startScan() again.</p>
+                  <section>
+                    <h4>
+            Example
+        </h4>
+                    <div>
+                      <pre class="prettyprint"><code>// Scan for all services.
+  evothings.ble.startScan(
+      function(device)
+      {
+          console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
+      },
+      function(errorCode)
+      {
+          console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+      }
+  );
+
+  // Scan for specific service (Eddystone Service UUID).
+  evothings.ble.startScan(
+      [&#x27;0000FEAA-0000-1000-8000-00805F9B34FB&#x27;],
+      function(device)
+      {
+          console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
+      },
+      function(errorCode)
+      {
+          console.log(&#x27;BLE startScan error: &#x27; + errorCode);
+      }
+  );</code></pre>
+                    </div>
+                  </section>
+                  <section>
+                    <h4>Parameters</h4>
+                    <table class="jsdoc-details-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Type</th>
+                          <th>Optional</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p>uuids</p>
+                          </td>
+                          <td>
+                            <p>array</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Array with service UUID strings (optional). On iOS multiple UUIDs are scanned for using logical OR operator, any UUID that matches any of the UUIDs adverticed by the device will count as a match. On Android, multiple UUIDs
+                              are scanned for using AND logic, the device must advertise all of the given UUIDs to produce a match. (The matching logic will be unified in future versions of the plugin.) When providing one service UUID, behaviour is the
+                              same on Android and iOS. Learning out this parameter or setting it to null, will scan for all devices, regardless of advertised services.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>success</p>
+                          </td>
+                          <td>
+                            <p>scanCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Success callback, called repeatedly for each found device.</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p>fail</p>
+                          </td>
+                          <td>
+                            <p>failCallback</p>
+                          </td>
+                          <td>
+                            <p>&nbsp;</p>
+                          </td>
+                          <td>
+                            <p>Error callback.</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".stopScan"><span class="symbol-name">stopScan</span><span class="signature"><span class="signature-params">()</span></span></h3>
+                  <p>Stops scanning for devices.</p>
+                  <section>
+                    <h4>
+            Example
+        </h4>
+                    <div>
+                      <pre class="prettyprint"><code>evothings.ble.stopScan();</code></pre>
+                    </div>
+                  </section>
+                  <dl class="dl-compact">
+                  </dl>
+                  <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                  <h3 id=".testCharConversion"><span class="symbol-name">testCharConversion</span><span class="signature"><span class="signature-params">(i, win)</span></span></h3>
+                  <p>i is an integer. It is converted to byte and put in an array[1]. The array is returned.</p>
+                  <p>
+                    <p>assert(string.charCodeAt(0) == i).</p>
                     <section>
                       <h4>Parameters</h4>
                       <table class="jsdoc-details-table">
@@ -1509,7 +2236,7 @@
                         <tbody>
                           <tr>
                             <td>
-                              <p>deviceHandle</p>
+                              <p>i</p>
                             </td>
                             <td>
                               <p>number</p>
@@ -1518,21 +2245,6 @@
                               <p>&nbsp;</p>
                             </td>
                             <td>
-                              <p>A handle from connectCallback.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>characteristicHandle</p>
-                            </td>
-                            <td>
-                              <p>number</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>A handle from characteristicCallback.</p>
                             </td>
                           </tr>
                           <tr>
@@ -1549,27 +2261,14 @@
                               <p>Called every time the value changes.</p>
                             </td>
                           </tr>
-                          <tr>
-                            <td>
-                              <p>fail</p>
-                            </td>
-                            <td>
-                              <p>failCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                            </td>
-                          </tr>
                         </tbody>
                       </table>
                     </section>
                     <dl class="dl-compact">
                     </dl>
                     <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".fromUtf8"><span class="symbol-name">fromUtf8</span><span class="signature"><span class="signature-params">(a)</span></span></h3>
-                    <p>Converts an ArrayBuffer containing UTF-8 data to a JavaScript String.</p>
+                    <h3 id=".toUtf8"><span class="symbol-name">toUtf8</span><span class="signature"><span class="signature-params">(s)</span></span></h3>
+                    <p>Converts a JavaScript String to an Uint8Array containing UTF-8 data.</p>
                     <section>
                       <h4>Parameter</h4>
                       <table class="jsdoc-details-table">
@@ -1584,10 +2283,10 @@
                         <tbody>
                           <tr>
                             <td>
-                              <p>a</p>
+                              <p>s</p>
                             </td>
                             <td>
-                              <p>ArrayBuffer</p>
+                              <p>string</p>
                             </td>
                             <td>
                               <p>&nbsp;</p>
@@ -1601,91 +2300,19 @@
                     <dl class="dl-compact">
                       <dt>Returns</dt>
                       <dd>
-                        <p>string</p>
+                        <p>Uint8Array</p>
                       </dd>
                     </dl>
                     <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".readAllServiceData"><span class="symbol-name">readAllServiceData</span><span class="signature"><span class="signature-params">(deviceHandle, win, fail)</span></span></h3>
-                    <p>Fetch information about a remote device's services, as well as its associated characteristics and descriptors.</p>
-                    <p>This function is an easy-to-use wrapper of the low-level functions ble.services(), ble.characteristics() and ble.descriptors().</p>
-                    <section>
-                      <h4>Parameters</h4>
-                      <table class="jsdoc-details-table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Optional</th>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <p>deviceHandle</p>
-                            </td>
-                            <td>
-                              <p>number</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>A handle from connectCallback.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>win</p>
-                            </td>
-                            <td>
-                              <p>serviceCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>Called with array of Service objects. Those Service objects each have an additional field &quot;characteristics&quot;, which is an array of Characteristic objects. Those Characteristic objects each have an additional field
-                                &quot;descriptors&quot;, which is an array of Descriptor objects.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>fail</p>
-                            </td>
-                            <td>
-                              <p>failCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                    <dl class="dl-compact">
-                    </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".readCharacteristic"><span class="symbol-name">readCharacteristic</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, win, fail)</span></span></h3>
-                    <p>Reads a characteristic's value from a remote device.</p>
+                    <h3 id=".writeCharacteristic"><span class="symbol-name">writeCharacteristic</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, data, win, fail)</span></span></h3>
+                    <p>Write a characteristic's value to the remote device.</p>
+                    <p>Writes with response, the remote device sends back a confirmation message. This is safe but slower than writing without response.</p>
                     <section>
                       <h4>
             Example
         </h4>
                       <div>
-                        <pre class="prettyprint"><code>evothings.ble.readCharacteristic(
-	deviceHandle,
-	characteristic.handle,
-	function(data)
-	{
-		console.log(&#x27;BLE characteristic data: &#x27; + evothings.ble.fromUtf8(data));
-	},
-	function(errorCode)
-	{
-		console.log(&#x27;BLE readCharacteristic error: &#x27; + errorCode);
-	});</code></pre>
+                        <pre class="prettyprint"><code>TODO: Add example.</code></pre>
                       </div>
                     </section>
                     <section>
@@ -1730,15 +2357,30 @@
                           </tr>
                           <tr>
                             <td>
-                              <p>win</p>
+                              <p>data</p>
                             </td>
                             <td>
-                              <p>dataCallback</p>
+                              <p>ArrayBufferView</p>
                             </td>
                             <td>
                               <p>&nbsp;</p>
                             </td>
                             <td>
+                              <p>The value to be written.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>win</p>
+                            </td>
+                            <td>
+                              <p>emptyCallback</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>Called when the remote device has confirmed the write.</p>
                             </td>
                           </tr>
                           <tr>
@@ -1752,6 +2394,7 @@
                               <p>&nbsp;</p>
                             </td>
                             <td>
+                              <p>Called if the operation fails.</p>
                             </td>
                           </tr>
                         </tbody>
@@ -1760,24 +2403,107 @@
                     <dl class="dl-compact">
                     </dl>
                     <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".readDescriptor"><span class="symbol-name">readDescriptor</span><span class="signature"><span class="signature-params">(deviceHandle, descriptorHandle, win, fail)</span></span></h3>
-                    <p>Reads a descriptor's value from a remote device.</p>
+                    <h3 id=".writeCharacteristicWithoutResponse"><span class="symbol-name">writeCharacteristicWithoutResponse</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, data, win, fail)</span></span></h3>
+                    <p>Write a characteristic's value without response.</p>
+                    <p>Experimental, implemented on Android.</p>
+                    <p>Asks the remote device to NOT send a confirmation message. This may be used for increased data throughput.</p>
+                    <p>A separate safety protocol will be required to ensure data integrity. Design of such protocols is beyond the scope of this document.</p>
+                    <section>
+                      <h4>Parameters</h4>
+                      <table class="jsdoc-details-table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Optional</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p>deviceHandle</p>
+                            </td>
+                            <td>
+                              <p>number</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>A handle from connectCallback.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>characteristicHandle</p>
+                            </td>
+                            <td>
+                              <p>number</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>A handle from characteristicCallback.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>data</p>
+                            </td>
+                            <td>
+                              <p>ArrayBufferView</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>The value to be written.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>win</p>
+                            </td>
+                            <td>
+                              <p>emptyCallback</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>Called when the data has been sent.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>fail</p>
+                            </td>
+                            <td>
+                              <p>failCallback</p>
+                            </td>
+                            <td>
+                              <p>&nbsp;</p>
+                            </td>
+                            <td>
+                              <p>Called if the operation fails.</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                    <dl class="dl-compact">
+                    </dl>
+                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+                    <h3 id=".writeDescriptor"><span class="symbol-name">writeDescriptor</span><span class="signature"><span class="signature-params">(deviceHandle, descriptorHandle, data, win, fail)</span></span></h3>
+                    <p>Write a descriptor's value to a remote device.</p>
                     <section>
                       <h4>
             Example
         </h4>
                       <div>
-                        <pre class="prettyprint"><code>evothings.ble.readDescriptor(
-	deviceHandle,
-	descriptor.handle,
-	function(data)
-	{
-		console.log(&#x27;BLE descriptor data: &#x27; + evothings.ble.fromUtf8(data));
-	},
-	function(errorCode)
-	{
-		console.log(&#x27;BLE readDescriptor error: &#x27; + errorCode);
-	});</code></pre>
+                        <pre class="prettyprint"><code>TODO: Add example.</code></pre>
                       </div>
                     </section>
                     <section>
@@ -1822,51 +2548,18 @@
                           </tr>
                           <tr>
                             <td>
-                              <p>win</p>
+                              <p>data</p>
                             </td>
                             <td>
-                              <p>dataCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>fail</p>
-                            </td>
-                            <td>
-                              <p>failCallback</p>
+                              <p>ArrayBufferView</p>
                             </td>
                             <td>
                               <p>&nbsp;</p>
                             </td>
                             <td>
+                              <p>The value to be written.</p>
                             </td>
                           </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                    <dl class="dl-compact">
-                    </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".reset"><span class="symbol-name">reset</span><span class="signature"><span class="signature-params">(win, fail)</span></span></h3>
-                    <p>Resets the device's Bluetooth system. This is useful on some buggy devices where BLE functions stops responding until reset. Available on Android 4.3+. This function takes 3-5 seconds to reset BLE. On iOS this function stops any ongoing
-                      scan operation and disconnects all connected devices.</p>
-                    <section>
-                      <h4>Parameters</h4>
-                      <table class="jsdoc-details-table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Optional</th>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
                           <tr>
                             <td>
                               <p>win</p>
@@ -1898,656 +2591,6 @@
                     </section>
                     <dl class="dl-compact">
                     </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".rssi"><span class="symbol-name">rssi</span><span class="signature"><span class="signature-params">(deviceHandle, win, fail)</span></span></h3>
-                    <p>Fetch the remote device's RSSI (signal strength).</p>
-                    <section>
-                      <h4>
-            Example
-        </h4>
-                      <div>
-                        <pre class="prettyprint"><code>evothings.ble.rssi(
-	deviceHandle,
-	function(rssi)
-	{
-		console.log(&#x27;BLE rssi: &#x27; + rssi);
-	},
-	function(errorCode)
-	{
-		console.log(&#x27;BLE rssi error: &#x27; + errorCode);
-	}
-);</code></pre>
-                      </div>
-                    </section>
-                    <section>
-                      <h4>Parameters</h4>
-                      <table class="jsdoc-details-table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Optional</th>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <p>deviceHandle</p>
-                            </td>
-                            <td>
-                              <p>number</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>A handle from connectCallback.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>win</p>
-                            </td>
-                            <td>
-                              <p>rssiCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>fail</p>
-                            </td>
-                            <td>
-                              <p>failCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                    <dl class="dl-compact">
-                    </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".services"><span class="symbol-name">services</span><span class="signature"><span class="signature-params">(deviceHandle, win, fail)</span></span></h3>
-                    <p>Fetch information about a remote device's services.</p>
-                    <section>
-                      <h4>
-            Example
-        </h4>
-                      <div>
-                        <pre class="prettyprint"><code>evothings.ble.services(
-	deviceHandle,
-	function(services)
-	{
-		for (var i &#x3D; 0; i &lt; services.length; i++)
-		{
-			var service &#x3D; services[i];
-			console.log(&#x27;BLE service: &#x27;);
-			console.log(&#x27;  &#x27; + service.handle);
-			console.log(&#x27;  &#x27; + service.uuid);
-			console.log(&#x27;  &#x27; + service.serviceType);
-		}
-	},
-	function(errorCode)
-	{
-		console.log(&#x27;BLE services error: &#x27; + errorCode);
-	});</code></pre>
-                      </div>
-                    </section>
-                    <section>
-                      <h4>Parameters</h4>
-                      <table class="jsdoc-details-table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Optional</th>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <p>deviceHandle</p>
-                            </td>
-                            <td>
-                              <p>number</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>A handle from connectCallback.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>win</p>
-                            </td>
-                            <td>
-                              <p>serviceCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>Called with array of Service objects.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>fail</p>
-                            </td>
-                            <td>
-                              <p>failCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                    <dl class="dl-compact">
-                    </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(uuids, success, fail)</span></span></h3>
-                    <p>Start scanning for devices.</p>
-                    <p>An array of service UUID strings may be given (optional parameter). One or more service UUIDs must be specified for iOS background scanning to work.</p>
-                    <p>Found devices and errors are reported to the supplied callback functions.</p>
-                    <p>Will keep scanning until you call stopScan().</p>
-                    <p>To conserve energy, call stopScan() as soon as you've found the device you're looking for.</p>
-                    <p>Call stopScan() before calling startScan() again.</p>
-                    <section>
-                      <h4>
-            Example
-        </h4>
-                      <div>
-                        <pre class="prettyprint"><code>// Scan for all services.
-  evothings.ble.startScan(
-      function(device)
-      {
-          console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
-      },
-      function(errorCode)
-      {
-          console.log(&#x27;BLE startScan error: &#x27; + errorCode);
-      }
-  );
-
-  // Scan for specific service (Eddystone Service UUID).
-  evothings.ble.startScan(
-      [&#x27;0000FEAA-0000-1000-8000-00805F9B34FB&#x27;],
-      function(device)
-      {
-          console.log(&#x27;BLE startScan found device named: &#x27; + device.name);
-      },
-      function(errorCode)
-      {
-          console.log(&#x27;BLE startScan error: &#x27; + errorCode);
-      }
-  );</code></pre>
-                      </div>
-                    </section>
-                    <section>
-                      <h4>Parameters</h4>
-                      <table class="jsdoc-details-table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Optional</th>
-                            <th>Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <p>uuids</p>
-                            </td>
-                            <td>
-                              <p>array</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>Array with service UUID strings (optional). On iOS multiple UUIDs are scanned for using logical OR operator, any UUID that matches any of the UUIDs adverticed by the device will count as a match. On Android, multiple UUIDs
-                                are scanned for using AND logic, the device must advertise all of the given UUIDs to produce a match. (The matching logic will be unified in future versions of the plugin.) When providing one service UUID, behaviour is
-                                the same on Android and iOS. Learning out this parameter or setting it to null, will scan for all devices, regardless of advertised services.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>success</p>
-                            </td>
-                            <td>
-                              <p>scanCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>Success callback, called repeatedly for each found device.</p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p>fail</p>
-                            </td>
-                            <td>
-                              <p>failCallback</p>
-                            </td>
-                            <td>
-                              <p>&nbsp;</p>
-                            </td>
-                            <td>
-                              <p>Error callback.</p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                    <dl class="dl-compact">
-                    </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".stopScan"><span class="symbol-name">stopScan</span><span class="signature"><span class="signature-params">()</span></span></h3>
-                    <p>Stops scanning for devices.</p>
-                    <section>
-                      <h4>
-            Example
-        </h4>
-                      <div>
-                        <pre class="prettyprint"><code>evothings.ble.stopScan();</code></pre>
-                      </div>
-                    </section>
-                    <dl class="dl-compact">
-                    </dl>
-                    <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                    <h3 id=".testCharConversion"><span class="symbol-name">testCharConversion</span><span class="signature"><span class="signature-params">(i, win)</span></span></h3>
-                    <p>i is an integer. It is converted to byte and put in an array[1]. The array is returned.</p>
-                    <p>
-                      <p>assert(string.charCodeAt(0) == i).</p>
-                      <section>
-                        <h4>Parameters</h4>
-                        <table class="jsdoc-details-table">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Type</th>
-                              <th>Optional</th>
-                              <th>Description</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <p>i</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>win</p>
-                              </td>
-                              <td>
-                                <p>dataCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>Called every time the value changes.</p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </section>
-                      <dl class="dl-compact">
-                      </dl>
-                      <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                      <h3 id=".toUtf8"><span class="symbol-name">toUtf8</span><span class="signature"><span class="signature-params">(s)</span></span></h3>
-                      <p>Converts a JavaScript String to an Uint8Array containing UTF-8 data.</p>
-                      <section>
-                        <h4>Parameter</h4>
-                        <table class="jsdoc-details-table">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Type</th>
-                              <th>Optional</th>
-                              <th>Description</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <p>s</p>
-                              </td>
-                              <td>
-                                <p>string</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </section>
-                      <dl class="dl-compact">
-                        <dt>Returns</dt>
-                        <dd>
-                          <p>Uint8Array</p>
-                        </dd>
-                      </dl>
-                      <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                      <h3 id=".writeCharacteristic"><span class="symbol-name">writeCharacteristic</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, data, win, fail)</span></span></h3>
-                      <p>Write a characteristic's value to the remote device.</p>
-                      <p>Writes with response, the remote device sends back a confirmation message. This is safe but slower than writing without response.</p>
-                      <section>
-                        <h4>
-            Example
-        </h4>
-                        <div>
-                          <pre class="prettyprint"><code>TODO: Add example.</code></pre>
-                        </div>
-                      </section>
-                      <section>
-                        <h4>Parameters</h4>
-                        <table class="jsdoc-details-table">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Type</th>
-                              <th>Optional</th>
-                              <th>Description</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <p>deviceHandle</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>A handle from connectCallback.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>characteristicHandle</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>A handle from characteristicCallback.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>data</p>
-                              </td>
-                              <td>
-                                <p>ArrayBufferView</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>The value to be written.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>win</p>
-                              </td>
-                              <td>
-                                <p>emptyCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>Called when the remote device has confirmed the write.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>fail</p>
-                              </td>
-                              <td>
-                                <p>failCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>Called if the operation fails.</p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </section>
-                      <dl class="dl-compact">
-                      </dl>
-                      <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                      <h3 id=".writeCharacteristicWithoutResponse"><span class="symbol-name">writeCharacteristicWithoutResponse</span><span class="signature"><span class="signature-params">(deviceHandle, characteristicHandle, data, win, fail)</span></span></h3>
-                      <p>Write a characteristic's value without response.</p>
-                      <p>Experimental, implemented on Android.</p>
-                      <p>Asks the remote device to NOT send a confirmation message. This may be used for increased data throughput.</p>
-                      <p>A separate safety protocol will be required to ensure data integrity. Design of such protocols is beyond the scope of this document.</p>
-                      <section>
-                        <h4>Parameters</h4>
-                        <table class="jsdoc-details-table">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Type</th>
-                              <th>Optional</th>
-                              <th>Description</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <p>deviceHandle</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>A handle from connectCallback.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>characteristicHandle</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>A handle from characteristicCallback.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>data</p>
-                              </td>
-                              <td>
-                                <p>ArrayBufferView</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>The value to be written.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>win</p>
-                              </td>
-                              <td>
-                                <p>emptyCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>Called when the data has been sent.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>fail</p>
-                              </td>
-                              <td>
-                                <p>failCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>Called if the operation fails.</p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </section>
-                      <dl class="dl-compact">
-                      </dl>
-                      <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
-                      <h3 id=".writeDescriptor"><span class="symbol-name">writeDescriptor</span><span class="signature"><span class="signature-params">(deviceHandle, descriptorHandle, data, win, fail)</span></span></h3>
-                      <p>Write a descriptor's value to a remote device.</p>
-                      <section>
-                        <h4>
-            Example
-        </h4>
-                        <div>
-                          <pre class="prettyprint"><code>TODO: Add example.</code></pre>
-                        </div>
-                      </section>
-                      <section>
-                        <h4>Parameters</h4>
-                        <table class="jsdoc-details-table">
-                          <thead>
-                            <tr>
-                              <th>Name</th>
-                              <th>Type</th>
-                              <th>Optional</th>
-                              <th>Description</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <p>deviceHandle</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>A handle from connectCallback.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>descriptorHandle</p>
-                              </td>
-                              <td>
-                                <p>number</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>A handle from descriptorCallback.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>data</p>
-                              </td>
-                              <td>
-                                <p>ArrayBufferView</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                                <p>The value to be written.</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>win</p>
-                              </td>
-                              <td>
-                                <p>emptyCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <p>fail</p>
-                              </td>
-                              <td>
-                                <p>failCallback</p>
-                              </td>
-                              <td>
-                                <p>&nbsp;</p>
-                              </td>
-                              <td>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </section>
-                      <dl class="dl-compact">
-                      </dl>
             </section>
             <h2>Abstract types</h2>
             <section>
@@ -3970,7 +4013,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on July 13, 2016.
       </p>
     </div>
   </footer>

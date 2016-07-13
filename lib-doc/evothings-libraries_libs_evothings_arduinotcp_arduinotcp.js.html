@@ -79,6 +79,18 @@ evothings.arduinotcp &#x3D; {}
 	var internal &#x3D; {}
 
 	/**
+	 * Internal string that holds data read from server.
+	 * @private
+	 */
+	internal.receiveBuffer &#x3D; &#x27;&#x27;
+	
+	/**
+	 * Internal flag that keeps track of the receive listener.
+	 * @private
+	 */
+	internal.receiveListnerAdded &#x3D; false
+
+	/**
 	 * Internal arrays for timeouts.
 	 * @private
 	 */
@@ -264,16 +276,45 @@ evothings.arduinotcp &#x3D; {}
 	{
 		evothings.arduinotcp.disconnect()
 
-		chrome.socket.create(&#x27;tcp&#x27;, {}, function(createInfo)
+		chrome.sockets.tcp.create(function(createInfo)
 		{
+		  // Save socket id.
 			internal.socketId &#x3D; createInfo.socketId
-			chrome.socket.connect(
+			
+			// Connect.
+			chrome.sockets.tcp.connect(
 				createInfo.socketId,
 				hostname,
 				port,
 				function(resultCode)
 				{
-					internal.connected &#x3D; (0 &#x3D;&#x3D;&#x3D; resultCode)
+				  if (resultCode &#x3D;&#x3D;&#x3D; 0)
+				  {
+				    // Connect success.
+				    
+				    // Set up receive listener (lazy initialisation).
+				    if (!internal.receiveListnerAdded)
+				    {
+				      internal.receiveListnerAdded &#x3D; true
+				      
+              chrome.sockets.tcp.onReceive.addListener(function(info) 
+              {
+                // Accumulate result.
+                internal.receiveBuffer +&#x3D; internal.bufferToString(info.data)
+              
+                // Process data.
+                internal.readNext()
+              })
+            }
+			    
+					  internal.connected &#x3D; true
+					}
+					else
+					{
+				    // Error.
+					  internal.connected &#x3D; false
+					}
+					
 					callback(internal.connected)
 				}
 			)
@@ -288,7 +329,7 @@ evothings.arduinotcp &#x3D; {}
 	{
 		if (internal.connected)
 		{
-			chrome.socket.disconnect(internal.socketId)
+			chrome.sockets.tcp.close(internal.socketId)
 			internal.connected &#x3D; false
 		}
 	}
@@ -328,12 +369,12 @@ evothings.arduinotcp &#x3D; {}
 	 */
 	internal.write &#x3D; function(socketId, string, callback)
 	{
-		chrome.socket.write(
+		chrome.sockets.tcp.send(
 			socketId,
 			internal.stringToBuffer(string),
-			function(writeInfo)
+			function(sendInfo)
 			{
-				callback(writeInfo.bytesWritten)
+				callback(sendInfo.bytesSent)
 			}
 		)
 	}
@@ -343,12 +384,6 @@ evothings.arduinotcp &#x3D; {}
 	 * @private
 	 */
 	internal.resultCallbackQueue &#x3D; []
-
-	/**
-	 * Data being read from the server.
-	 * @private
-	 */
-	internal.resultData &#x3D; &#x27;&#x27;
 
 	/**
 	 * Read result from server, calling the callback function
@@ -363,60 +398,50 @@ evothings.arduinotcp &#x3D; {}
 
 		// If this is the only callback there is no read operation
 		// in progress, so start reading.
-		if (internal.resultCallbackQueue.length &#x3D;&#x3D; 1)
-		{
-			internal.resultData &#x3D; &#x27;&#x27;
-			internal.readNext()
-		}
+		internal.readNext()
 	}
 
 	/**
-	 * Read data from server, when a result is read (reading up to next
-	 * newline char) the first function in the callback queue is called.
+	 * Parse data received from server, when a result is found (reading up to
+	 * next newline char) the first function in the callback queue is called.
+	 * This function may return if data has not yet arrived from the server.
+	 * In that case it will be called again.
 	 * @private
 	 */
 	internal.readNext &#x3D; function()
 	{
-		console.log(&#x27;internal.readNext: &#x27; + internal.resultData)
-		chrome.socket.read(
-			internal.socketId,
-			1,
-			function(readInfo)
-			{
-				if (1 &#x3D;&#x3D; readInfo.resultCode)
-				{
-					var data &#x3D; internal.bufferToString(readInfo.data)
-					if (data &#x3D;&#x3D; &#x27;\n&#x27;)
-					{
-						console.log(&#x27;  end of data: &#x27; + data)
-						// We have read all data, call next result callback with result.
-						var callback &#x3D; internal.resultCallbackQueue.shift()
-						callback(internal.resultData)
+    if (internal.resultCallbackQueue.length &#x3D;&#x3D;&#x3D; 0)
+		{
+		  // No callback in queue.
+			return
+		}
+		
+		console.log(&#x27;internal.readNext: &#x27; + internal.receiveBuffer)
+		
+		var data &#x3D; internal.receiveBuffer
+		
+		// Does in buffer contain a newline?
+		var pos &#x3D; data.indexOf(&#x27;\n&#x27;)
+		
+		if (pos &gt; -1)
+		{
+		  // Extract data up to newline.
+		  var result &#x3D; data.substr(0, pos)
+		  
+		  // Remove data from input buffer.
+		  internal.receiveBuffer &#x3D; internal.receiveBuffer.substring(pos + 1) 
+		  
+			// Call next callback in queue with the result.
+			var callback &#x3D; internal.resultCallbackQueue.shift()
+			callback(result)
 
-						// If there are callbacks waiting, continue reading
-						// the next result.
-						if (internal.resultCallbackQueue.length &gt; 0)
-						{
-							internal.resultData &#x3D; &#x27;&#x27;
-							internal.readNext()
-						}
-					}
-					else
-					{
-						console.log(&#x27;  got data: &#x27; + data)
-						// We got more data, continue to read.
-						internal.resultData +&#x3D; data
-						internal.readNext()
-					}
-				}
-				else
-				{
-					console.log(&#x27;  no data&#x27;)
-					// We did not get any data, read again.
-					internal.readNext()
-				}
-			}
-		)
+      // If there are callbacks waiting, continue reading
+      // the next result.
+      if (internal.resultCallbackQueue.length &gt; 0)
+      {
+        internal.readNext()
+      }
+		}
 	}
 
 	/**
@@ -462,7 +487,7 @@ evothings.arduinotcp &#x3D; {}
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on July 13, 2016.
       </p>
     </div>
   </footer>

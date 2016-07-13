@@ -26,10 +26,13 @@
           <header class="page-header">
             <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-static">static</span></div>
             <h1><small><a href="evothings.html">evothings</a>.<wbr></small><span class="symbol-name">easyble</span></h1>
-            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_easyble_easyble.js.html#source-line-15">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>easyble/<wbr>easyble.<wbr>js:15</a></p>
+            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_easyble_easyble.js.html#source-line-17">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>easyble/<wbr>easyble.<wbr>js:17</a></p>
             <div class="symbol-description">
               <p>Library for making BLE programming easier.</p>
-              <p>It is safe practise to call function <a href="evothings.html#.scriptsLoaded">evothings.scriptsLoaded</a> to ensure dependent libraries are loaded before calling functions in this library.</p>
+              <p>An all-in-one file with this library and helper libraries included is available in file <a href="" https://github.com/evothings/evothings-libraries/blob/master/libs/evothings/easyble/easyble.dist.js>easyble.dist.js</a>. Include this file
+                in index.html (recommended).</p>
+              <p>If you include <code>easyble.js</code> rather than <code>easyble.dist.js</code> it is safe practise to call function <a href="evothings.html#.scriptsLoaded">evothings.scriptsLoaded</a> to ensure dependent libraries are loaded before calling
+                functions in this library (in this case you also need to have the dependent library folders).</p>
             </div>
             <dl class="dl-compact">
             </dl>
@@ -97,7 +100,7 @@
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
-                    <dt><a href="evothings.easyble.html#.startScan">startScan(success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.html#.startScan">startScan(success, fail[, options])</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.easyble.html#.stopScan">stopScan()</a></dt>
@@ -121,14 +124,20 @@
                     <dt><a href="evothings.easyble.html#.dataCallback">dataCallback(data)</a></dt>
                     <dd>
                     </dd>
+                    <dt><a href="evothings.easyble.html#.emptyCallback">emptyCallback()</a></dt>
+                    <dd>
+                    </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
-                    <dt><a href="evothings.easyble.html#.emptyCallback">emptyCallback()</a></dt>
+                    <dt><a href="evothings.easyble.html#.failCallback">failCallback(errorString)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.html#.failCallback">failCallback(errorString)</a></dt>
+                    <dt><a href="evothings.easyble.html#.NotificationOptions">NotificationOptions</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.easyble.html#.ReadServicesOptions">ReadServicesOptions</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.easyble.html#.rssiCallback">rssiCallback(rssi)</a></dt>
@@ -139,6 +148,9 @@
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
                     <dt><a href="evothings.easyble.html#.scanCallback">scanCallback(device)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.easyble.html#.ScanOptions">ScanOptions</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.easyble.html#.servicesCallback">servicesCallback(device)</a></dt>
@@ -214,7 +226,7 @@
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
               <h3 id=".reportDeviceOnce"><span class="symbol-name">reportDeviceOnce</span><span class="signature"><span class="signature-params">(reportOnce)</span></span></h3>
-              <p>Set whether to report devices once or continuously during scan. The default is to report continously.</p>
+              <p><strong>Deprecated.</strong> Set whether to report devices once or continuously during scan. The default is to report continously.</p>
               <section>
                 <h4>Parameter</h4>
                 <table class="jsdoc-details-table">
@@ -245,6 +257,8 @@
                 </table>
               </section>
               <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd>Use the options parameter <a href="evothings.easyble.html#.ScanOptions">evothings.easyble.ScanOptions</a> in function <a href="evothings.easyble.html#.startScan">evothings.easyble.startScan</a>.</dd>
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
               <h3 id=".reset"><span class="symbol-name">reset</span><span class="signature"><span class="signature-params">()</span></span></h3>
@@ -252,22 +266,39 @@
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
-              <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(success, fail)</span></span></h3>
-              <p>Start scanning for devices.</p>
+              <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(success, fail[, options])</span></span></h3>
+              <p>Start scanning for devices. Note that the optional parameter serviceUUIDs has been deprecated. Please use the options parmameter
+                <a href="evothings.easyble.html#.ScanOptions">evothings.easyble.ScanOptions</a> instead to specify any specific service UUID to scan for.</p>
               <section>
                 <h4>
             Example
         </h4>
                 <div>
-                  <pre class="prettyprint"><code>evothings.easyble.startScan(
-    function(device)
-    {
-      console.log(&#x27;BLE Found device: &#x27; + device.name);
-    },
-    function(error)
-    {
-      console.log(&#x27;BLE Scan error: &#x27; + error);
-    });</code></pre>
+                  <pre class="prettyprint"><code>// Scan for all services.
+  evothings.easyble.startScan(
+      function(device)
+      {
+          console.log(&#x27;Found device named: &#x27; + device.name);
+      },
+      function(errorCode)
+      {
+          console.log(&#x27;startScan error: &#x27; + errorCode);
+      }
+  );
+
+  // Scan for specific service.
+  evothings.easyble.startScan(
+      function(device)
+      {
+          console.log(&#x27;Found device named: &#x27; + device.name);
+      },
+      function(errorCode)
+      {
+          console.log(&#x27;startScan error: &#x27; + errorCode);
+      },
+      // Eddystone service UUID specified in options.
+      { serviceUUIDs: [&#x27;0000FEAA-0000-1000-8000-00805F9B34FB&#x27;] }
+  );</code></pre>
                 </div>
               </section>
               <section>
@@ -308,6 +339,20 @@
                       </td>
                       <td>
                         <p>Error callback: fail(error).</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>options</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.easyble.html#.ScanOptions">evothings.easyble.ScanOptions</a></p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Object with scan options.</p>
                       </td>
                     </tr>
                   </tbody>
@@ -544,6 +589,78 @@
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".NotificationOptions"><span class="symbol-name">NotificationOptions</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Options object for functions
+                <a href="evothings.easyble.EasyBLEDevice.html#enableNotification">evothings.easyble.EasyBLEDevice#enableNotification</a> and <a href="evothings.easyble.EasyBLEDevice.html#disableNotification">evothings.easyble.EasyBLEDevice#disableNotification</a>.</p>
+              <section>
+                <h4>Property</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>writeConfigDescriptor</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Supported on Android, ignored on iOS. Set to false to disable automatic writing of notification or indication config descriptor value. This is useful in special cases when full control of writing the config descriptor is needed.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".ReadServicesOptions"><span class="symbol-name">ReadServicesOptions</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Options object for function
+                <a href="evothings.easyble.EasyBLEDevice.html#readServices">evothings.easyble.EasyBLEDevice#readServices</a></p>
+              <section>
+                <h4>Property</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>serviceUUIDs</p>
+                      </td>
+                      <td>
+                        <p>array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Array of service UUID strings.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
               <h3 id=".rssiCallback"><span class="symbol-name">rssiCallback</span><span class="signature"><span class="signature-params">(rssi)</span></span></h3>
               <p>Called with RSSI value.</p>
               <section>
@@ -612,6 +729,58 @@
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".ScanOptions"><span class="symbol-name">ScanOptions</span><small class="property-type">
+            &nbsp;Object</small></h3>
+              <p>Options for function {evothings.easyble.startScan}</p>
+              <section>
+                <h4>Properties</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>serviceUUIDs</p>
+                      </td>
+                      <td>
+                        <p>array</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>Array with strings of service UUIDs to scan for. When providing one service UUID, behaviour is the same on Android and iOS, when providing multiple UUIDs behaviour differs between platforms. On iOS multiple UUIDs are scanned for
+                          using logical OR operator, any UUID that matches any of the UUIDs adverticed by the device will count as a match. On Android, multiple UUIDs are scanned for using AND logic, the device must advertise all of the given UUIDs to
+                          produce a match. Leaving out this parameter or setting it to null will scan for all devices regardless of advertised services (default behaviour).
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>allowDuplicates</p>
+                      </td>
+                      <td>
+                        <p>boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>If true same device will be reported repeatedly during scanning, if false it will only be reported once. Default is true.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
               <h3 id=".servicesCallback"><span class="symbol-name">servicesCallback</span><span class="signature"><span class="signature-params">(device)</span></span></h3>
               <p>Called when services are successfully read.</p>
               <section>
@@ -655,7 +824,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on July 13, 2016.
       </p>
     </div>
   </footer>

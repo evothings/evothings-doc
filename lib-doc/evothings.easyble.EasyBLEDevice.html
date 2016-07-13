@@ -26,7 +26,7 @@
           <header class="page-header">
             <div class="symbol-detail-labels"><span class="label label-kind">namespace</span>&nbsp;<span class="label label-static">static</span></div>
             <h1><small><a href="evothings.html">evothings</a>.<wbr><a href="evothings.easyble.html">easyble</a>.<wbr></small><span class="symbol-name">EasyBLEDevice</span></h1>
-            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_easyble_easyble.js.html#source-line-455">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>easyble/<wbr>easyble.<wbr>js:455</a></p>
+            <p class="source-link">Source: <a href="evothings-libraries_libs_evothings_easyble_easyble.js.html#source-line-574">evothings-libraries/<wbr>libs/<wbr>evothings/<wbr>easyble/<wbr>easyble.<wbr>js:574</a></p>
             <div class="symbol-description">
               <p>This is the BLE DeviceInfo object obtained from the underlying Cordova plugin.</p>
             </div>
@@ -45,16 +45,19 @@
                     <dt><a href="evothings.easyble.EasyBLEDevice.html#connect">connect(success, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#disableNotification">disableNotification(characteristicUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#disableNotification">disableNotification(serviceUUID, serviceUUID, characteristicUUID, success, fail[, options])</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#disableServiceNotification">disableServiceNotification(serviceUUID, characteristicUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#disableServiceNotification">disableServiceNotification()</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#enableNotification">enableNotification(characteristicUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#enableNotification">enableNotification(serviceUUID, characteristicUUID, success, fail[, options])</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#enableServiceNotification">enableServiceNotification(serviceUUID, characteristicUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#enableServiceNotification">enableServiceNotification()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#getName">getName()</a></dt>
                     <dd>
                     </dd>
                   </dl>
@@ -64,38 +67,47 @@
                     <dt><a href="evothings.easyble.EasyBLEDevice.html#hasName">hasName(name)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readCharacteristic">readCharacteristic(characteristicUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#isConnected">isConnected()</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readDescriptor">readDescriptor(characteristicUUID, descriptorUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readCharacteristic">readCharacteristic(serviceUUID, characteristicUUID, success, fail)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readDescriptor">readDescriptor(serviceUUID, characteristicUUID, descriptorUUID, success, fail)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.easyble.EasyBLEDevice.html#readRSSI">readRSSI(success, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readServiceCharacteristic">readServiceCharacteristic(serviceUUID, characteristicUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readServiceCharacteristic">readServiceCharacteristic()</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readServiceDescriptor">readServiceDescriptor(serviceUUID, characteristicUUID, descriptorUUID, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readServiceDescriptor">readServiceDescriptor()</a></dt>
                     <dd>
                     </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readServices">readServices(serviceUUIDs, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#readServices">readServices(success, fail[, options])</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeCharacteristic">writeCharacteristic(characteristicUUID, value, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeCharacteristic">writeCharacteristic(serviceUUID, characteristicUUID, value, success, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeDescriptor">writeDescriptor(characteristicUUID, descriptorUUID, value, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeCharacteristicWithoutResponse">writeCharacteristicWithoutResponse(serviceUUID, characteristicUUID, value, success, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeServiceCharacteristic">writeServiceCharacteristic(serviceUUID, characteristicUUID, value, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeDescriptor">writeDescriptor(serviceUUID, characteristicUUID, descriptorUUID, value, success, fail)</a></dt>
                     <dd>
                     </dd>
-                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeServiceDescriptor">writeServiceDescriptor(serviceUUID, characteristicUUID, descriptorUUID, value, success, fail)</a></dt>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeServiceCharacteristic">writeServiceCharacteristic()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeServiceCharacteristicWithoutResponse">writeServiceCharacteristicWithoutResponse()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="evothings.easyble.EasyBLEDevice.html#writeServiceDescriptor">writeServiceDescriptor()</a></dt>
                     <dd>
                     </dd>
                   </dl>
@@ -130,12 +142,12 @@
                   <pre class="prettyprint"><code>device.connect(
     function(device)
     {
-      console.log(&#x27;BLE device connected.&#x27;);
+      console.log(&#x27;device connected.&#x27;);
       // Read services here.
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE connect error: &#x27; + errorCode);
+      console.log(&#x27;connect error: &#x27; + errorCode);
     });</code></pre>
                 </div>
               </section>
@@ -185,23 +197,26 @@
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="disableNotification"><span class="symbol-name">disableNotification</span><span class="signature"><span class="signature-params">(characteristicUUID, success, fail)</span></span></h3>
+              <h3 id="disableNotification"><span class="symbol-name">disableNotification</span><span class="signature"><span class="signature-params">(serviceUUID, serviceUUID, characteristicUUID, success, fail[, options])</span></span></h3>
               <p>Unsubscribe from characteristic updates to stop notifications.</p>
+              <p>On Android you can disable automatic write of notify/indicate and write the configuration descriptor yourself, supply an options object as last parameter, see example below.</p>
               <section>
                 <h4>
             Example
         </h4>
                 <div>
-                  <pre class="prettyprint"><code>device.disableNotification(
-   characteristicUUID,
-   function()
-   {
-     console.log(&#x27;BLE characteristic notification disabled&#x27;);
-   },
-   function(errorCode)
-   {
-     console.log(&#x27;BLE disableNotification error: &#x27; + errorCode);
-   });</code></pre>
+                  <pre class="prettyprint"><code>// Example call:
+device.disableNotification(
+  serviceUUID,
+  characteristicUUID,
+  function()
+  {
+    console.log(&#x27;characteristic notification disabled&#x27;);
+  },
+  function(errorCode)
+  {
+    console.log(&#x27;disableNotification error: &#x27; + errorCode);
+  });</code></pre>
                 </div>
               </section>
               <section>
@@ -218,84 +233,18 @@
                   <tbody>
                     <tr>
                       <td>
-                        <p>characteristicUUID</p>
+                        <p>serviceUUID</p>
+                      </td>
+                      <td>
+                        <p>string</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of characteristic to unsubscribe from.</p>
+                        <p>UUID of service that has the given characteristic (previous versions of this library allowed leaving out the service UUID, this is unsafe practice and has been deprecated, always specify the service UUID).</p>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <p>success</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.emptyCallback">evothings.easyble.emptyCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Success callback: success()</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>fail</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.failCallback">evothings.easyble.failCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Error callback: fail(error)</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-              <dl class="dl-compact">
-              </dl>
-              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="disableServiceNotification"><span class="symbol-name">disableServiceNotification</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, success, fail)</span></span></h3>
-              <p>Unsubscribe from characteristic updates for a specific service to stop notifications. This is useful when multiple services have characteristics with the same UUID.</p>
-              <section>
-                <h4>
-            Example
-        </h4>
-                <div>
-                  <pre class="prettyprint"><code>device.disableServiceNotification(
-   serviceUUID,
-   characteristicUUID,
-   function()
-   {
-     console.log(&#x27;BLE characteristic notification disabled&#x27;);
-   },
-   function(errorCode)
-   {
-     console.log(&#x27;BLE disableNotification error: &#x27; + errorCode);
-   });</code></pre>
-                </div>
-              </section>
-              <section>
-                <h4>Parameters</h4>
-                <table class="jsdoc-details-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Optional</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
                     <tr>
                       <td>
                         <p>serviceUUID</p>
@@ -352,110 +301,66 @@
                         <p>Error callback: fail(error)</p>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <p>options</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.easyble.html#.NotificationOptions">evothings.easyble.NotificationOptions</a></p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional settings.</p>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </section>
               <dl class="dl-compact">
               </dl>
+              <h3 id="disableServiceNotification"><span class="symbol-name">disableServiceNotification</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#disableNotification">evothings.easyble.EasyBLEDevice#disableNotification</a></p>
+              <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
+              </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="enableNotification"><span class="symbol-name">enableNotification</span><span class="signature"><span class="signature-params">(characteristicUUID, success, fail)</span></span></h3>
+              <h3 id="enableNotification"><span class="symbol-name">enableNotification</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, success, fail[, options])</span></span></h3>
               <p>Subscribe to value updates of a characteristic. The success function will be called repeatedly whenever there is new data available.</p>
+              <p>On Android you can disable automatic write of notify/indicate and write the configuration descriptor yourself, supply an options object as last parameter, see example below.</p>
               <section>
                 <h4>
             Example
         </h4>
                 <div>
-                  <pre class="prettyprint"><code>device.enableNotification(
-  characteristicUUID,
-  function(data)
-  {
-    console.log(&#x27;BLE characteristic data: &#x27; + evothings.ble.fromUtf8(data));
-  },
-  function(errorCode)
-  {
-    console.log(&#x27;BLE enableNotification error: &#x27; + errorCode);
-  });</code></pre>
-                </div>
-              </section>
-              <section>
-                <h4>Parameters</h4>
-                <table class="jsdoc-details-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Optional</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p>characteristicUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of characteristic to subscribe to.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>success</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.dataCallback">evothings.easyble.dataCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Success callback: success(data).
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>fail</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.failCallback">evothings.easyble.failCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Error callback: fail(error).</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-              <dl class="dl-compact">
-              </dl>
-              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="enableServiceNotification"><span class="symbol-name">enableServiceNotification</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, success, fail)</span></span></h3>
-              <p>Subscribe to value updates of a characteristic for a specific service. This is useful when multiple services have characteristics with the same UUID. The success function will be called repeatedly whenever there is new data available.</p>
-              <section>
-                <h4>
-            Example
-        </h4>
-                <div>
-                  <pre class="prettyprint"><code>device.enableServiceNotification(
+                  <pre class="prettyprint"><code>// Example call:
+device.enableNotification(
   serviceUUID,
   characteristicUUID,
   function(data)
   {
-    console.log(&#x27;BLE characteristic data: &#x27; + evothings.ble.fromUtf8(data));
+    console.log(&#x27;characteristic data: &#x27; + evothings.ble.fromUtf8(data));
   },
   function(errorCode)
   {
-    console.log(&#x27;BLE enableServiceNotification error: &#x27; + errorCode);
-  });</code></pre>
+    console.log(&#x27;enableNotification error: &#x27; + errorCode);
+  });
+
+// Turn off automatic writing of the config descriptor (for special cases):
+device.enableNotification(
+  serviceUUID,
+  characteristicUUID,
+  function(data)
+  {
+    console.log(&#x27;characteristic data: &#x27; + evothings.ble.fromUtf8(data));
+  },
+  function(errorCode)
+  {
+    console.log(&#x27;enableNotification error: &#x27; + errorCode);
+  },
+  { writeConfigDescriptor: false });</code></pre>
                 </div>
               </section>
               <section>
@@ -481,8 +386,7 @@
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>UUID of service that has the given characteristic.
-                        </p>
+                        <p>UUID of service that has the given characteristic (previous versions of this library allowed leaving out the service UUID, this is unsafe practice and has been deprecated, always specify the service UUID).</p>
                       </td>
                     </tr>
                     <tr>
@@ -528,14 +432,52 @@
                         <p>Error callback: fail(error).</p>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <p>options</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.easyble.html#.NotificationOptions">evothings.easyble.NotificationOptions</a></p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional settings.</p>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </section>
               <dl class="dl-compact">
               </dl>
+              <h3 id="enableServiceNotification"><span class="symbol-name">enableServiceNotification</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#enableNotification">evothings.easyble.EasyBLEDevice#enableNotification</a></p>
+              <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="getName"><span class="symbol-name">getName</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Get device name. If there is a device name present in advertisement data, this is returned. Otherwise the value of the device.name field is returned. Note that iOS caches the device.name field, but not the name in advertisement data. If
+                you change name of the device, it is more reliable to use the field in advertisement data (this name is set in the device firmware code).</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>var name &#x3D; device.getName();</code></pre>
+                </div>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>Name of the device.</p>
+                </dd>
+              </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
               <h3 id="hasName"><span class="symbol-name">hasName</span><span class="signature"><span class="signature-params">(name)</span></span></h3>
-              <p>Match device name.</p>
+              <p>Match device name. First checks the device name present in advertisement data, if not present checks device.name field.</p>
               <section>
                 <h4>
             Example
@@ -580,7 +522,24 @@
                 </dd>
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="readCharacteristic"><span class="symbol-name">readCharacteristic</span><span class="signature"><span class="signature-params">(characteristicUUID, success, fail)</span></span></h3>
+              <h3 id="isConnected"><span class="symbol-name">isConnected</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Check if device is connected.</p>
+              <section>
+                <h4>
+            Example
+        </h4>
+                <div>
+                  <pre class="prettyprint"><code>var connected &#x3D; device.isConnected();</code></pre>
+                </div>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>true if connected, false if not connected.</p>
+                </dd>
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
+              <h3 id="readCharacteristic"><span class="symbol-name">readCharacteristic</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, success, fail)</span></span></h3>
               <p>Read value of characteristic.</p>
               <section>
                 <h4>
@@ -588,14 +547,15 @@
         </h4>
                 <div>
                   <pre class="prettyprint"><code>device.readCharacteristic(
+    serviceUUID,
     characteristicUUID,
     function(data)
     {
-      console.log(&#x27;BLE characteristic data: &#x27; + evothings.ble.fromUtf8(data));
+      console.log(&#x27;characteristic data: &#x27; + evothings.ble.fromUtf8(data));
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE readCharacteristic error: &#x27; + errorCode);
+      console.log(&#x27;readCharacteristic error: &#x27; + errorCode);
     });</code></pre>
                 </div>
               </section>
@@ -611,6 +571,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td>
+                        <p>serviceUUID</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>UUID of service that has the given characteristic (previous versions of this library allowed leaving out the service UUID, this is unsafe practice and has been deprecated, always specify the service UUID).</p>
+                      </td>
+                    </tr>
                     <tr>
                       <td>
                         <p>characteristicUUID</p>
@@ -660,7 +634,7 @@
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="readDescriptor"><span class="symbol-name">readDescriptor</span><span class="signature"><span class="signature-params">(characteristicUUID, descriptorUUID, success, fail)</span></span></h3>
+              <h3 id="readDescriptor"><span class="symbol-name">readDescriptor</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, descriptorUUID, success, fail)</span></span></h3>
               <p>Read value of descriptor.</p>
               <section>
                 <h4>
@@ -668,15 +642,16 @@
         </h4>
                 <div>
                   <pre class="prettyprint"><code>device.readDescriptor(
+    serviceUUID,
     characteristicUUID,
     descriptorUUID,
     function(data)
     {
-      console.log(&#x27;BLE descriptor data: &#x27; + evothings.ble.fromUtf8(data));
+      console.log(&#x27;descriptor data: &#x27; + evothings.ble.fromUtf8(data));
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE readDescriptor error: &#x27; + errorCode);
+      console.log(&#x27;readDescriptor error: &#x27; + errorCode);
     });</code></pre>
                 </div>
               </section>
@@ -692,6 +667,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td>
+                        <p>serviceUUID</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>UUID of service that has the given characteristic (previous versions of this library allowed leaving out the service UUID, this is unsafe practice and has been deprecated, always specify the service UUID).</p>
+                      </td>
+                    </tr>
                     <tr>
                       <td>
                         <p>characteristicUUID</p>
@@ -802,233 +791,53 @@
               </section>
               <dl class="dl-compact">
               </dl>
-              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="readServiceCharacteristic"><span class="symbol-name">readServiceCharacteristic</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, success, fail)</span></span></h3>
-              <p>Read value of a characteristic for a specific service. This is useful when multiple services have characteristics with the same UUID.</p>
-              <section>
-                <h4>
-            Example
-        </h4>
-                <div>
-                  <pre class="prettyprint"><code>device.readServiceCharacteristic(
-    serviceUUID,
-    characteristicUUID,
-    function(data)
-    {
-      console.log(&#x27;BLE characteristic data: &#x27; + evothings.ble.fromUtf8(data));
-    },
-    function(errorCode)
-    {
-      console.log(&#x27;BLE readServiceCharacteristic error: &#x27; + errorCode);
-    });</code></pre>
-                </div>
-              </section>
-              <section>
-                <h4>Parameters</h4>
-                <table class="jsdoc-details-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Optional</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p>serviceUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of service for characteristic.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>characteristicUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of characteristic to read.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>success</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.dataCallback">evothings.easyble.dataCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Success callback: success(data).
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>fail</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.failCallback">evothings.easyble.failCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Error callback: fail(error).</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
+              <h3 id="readServiceCharacteristic"><span class="symbol-name">readServiceCharacteristic</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#readCharacteristic">evothings.easyble.EasyBLEDevice#readCharacteristic</a></p>
               <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
+              </dl>
+              <h3 id="readServiceDescriptor"><span class="symbol-name">readServiceDescriptor</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#readDescriptor">evothings.easyble.EasyBLEDevice#readDescriptor</a></p>
+              <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="readServiceDescriptor"><span class="symbol-name">readServiceDescriptor</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, descriptorUUID, success, fail)</span></span></h3>
-              <p>Read value of a descriptor for a specific service and characteristic. This is useful when multiple services and characteristics have descriptors with the same UUID.</p>
-              <section>
-                <h4>
-            Example
-        </h4>
-                <div>
-                  <pre class="prettyprint"><code>device.readServiceDescriptor(
-    serviceUUID,
-    characteristicUUID,
-    descriptorUUID,
-    function(data)
-    {
-      console.log(&#x27;BLE descriptor data: &#x27; + evothings.ble.fromUtf8(data));
-    },
-    function(errorCode)
-    {
-      console.log(&#x27;BLE readServiceDescriptor error: &#x27; + errorCode);
-    });</code></pre>
-                </div>
-              </section>
-              <section>
-                <h4>Parameters</h4>
-                <table class="jsdoc-details-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Optional</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p>serviceUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of service that has the characteristic.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>characteristicUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of characteristic for descriptor.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>descriptorUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of descriptor to read.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>success</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.dataCallback">evothings.easyble.dataCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Success callback: success(data).
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>fail</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.failCallback">evothings.easyble.failCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Error callback: fail(error).</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-              <dl class="dl-compact">
-              </dl>
-              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="readServices"><span class="symbol-name">readServices</span><span class="signature"><span class="signature-params">(serviceUUIDs, success, fail)</span></span></h3>
+              <h3 id="readServices"><span class="symbol-name">readServices</span><span class="signature"><span class="signature-params">(success, fail[, options])</span></span></h3>
               <p>Read services, characteristics and descriptors for the specified service UUIDs.
                 <strong>Services must be read be able to access characteristics and
-descriptors</strong>. Call this function before reading and writing characteristics/descriptors.
-              </p>
+descriptors</strong>. Call this function before reading and writing characteristics/descriptors. (This function took an array of service UUIDs as first parameter in previous versions of this library, that is still supported for backwards
+                compatibility but has ben deprecated.)</p>
               <section>
                 <h4>
             Example
         </h4>
                 <div>
-                  <pre class="prettyprint"><code>device.readServices(
-    null, // Read all services
+                  <pre class="prettyprint"><code>// Read all services
+  device.readServices(
     function(device)
     {
-      console.log(&#x27;BLE Services available.&#x27;);
+      console.log(&#x27;Services available.&#x27;);
       // Read/write/enable notifications here.
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE readServices error: &#x27; + errorCode);
-    });</code></pre>
+      console.log(&#x27;readServices error: &#x27; + errorCode);
+    });
+
+  // Read specific service
+  device.readServices(
+    function(device)
+    {
+      console.log(&#x27;Services available.&#x27;);
+      // Read/write/enable notifications here.
+    },
+    function(errorCode)
+    {
+      console.log(&#x27;readServices error: &#x27; + errorCode);
+    },
+    { serviceUUIDs: [&#x27;19b10000-e8f2-537e-4f6c-d104768a1214&#x27;] });</code></pre>
                 </div>
               </section>
               <section>
@@ -1043,20 +852,6 @@ descriptors</strong>. Call this function before reading and writing characterist
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <p>serviceUUIDs</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>array of UUID strings, if null all services are read (this can be time-consuming compared to reading selected services).</p>
-                      </td>
-                    </tr>
                     <tr>
                       <td>
                         <p>success</p>
@@ -1068,7 +863,7 @@ descriptors</strong>. Call this function before reading and writing characterist
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>Called when services are read: success(device).</p>
+                        <p>Called when services are read: success(device)</p>
                       </td>
                     </tr>
                     <tr>
@@ -1086,13 +881,27 @@ descriptors</strong>. Call this function before reading and writing characterist
                         </p>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <p>options</p>
+                      </td>
+                      <td>
+                        <p><a href="evothings.easyble.html#.ReadServicesOptions">evothings.easyble.ReadServicesOptions</a></p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional object with setting that allow specification of which services to read. If left out, all services and related characteristics and descriptors are read (this can be time-consuming compared to reading selected services).</p>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </section>
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="writeCharacteristic"><span class="symbol-name">writeCharacteristic</span><span class="signature"><span class="signature-params">(characteristicUUID, value, success, fail)</span></span></h3>
+              <h3 id="writeCharacteristic"><span class="symbol-name">writeCharacteristic</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, value, success, fail)</span></span></h3>
               <p>Write value of characteristic.</p>
               <section>
                 <h4>
@@ -1100,15 +909,16 @@ descriptors</strong>. Call this function before reading and writing characterist
         </h4>
                 <div>
                   <pre class="prettyprint"><code>device.writeCharacteristic(
+    serviceUUID,
     characteristicUUID,
     new Uint8Array([1]), // Write byte with value 1.
     function()
     {
-      console.log(&#x27;BLE characteristic written.&#x27;);
+      console.log(&#x27;characteristic written.&#x27;);
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE writeCharacteristic error: &#x27; + errorCode);
+      console.log(&#x27;writeCharacteristic error: &#x27; + errorCode);
     });</code></pre>
                 </div>
               </section>
@@ -1124,6 +934,20 @@ descriptors</strong>. Call this function before reading and writing characterist
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td>
+                        <p>serviceUUID</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>UUID of service that has the given characteristic (previous versions of this library allowed leaving out the service UUID, this is unsafe practice and has been deprecated, always specify the service UUID).</p>
+                      </td>
+                    </tr>
                     <tr>
                       <td>
                         <p>characteristicUUID</p>
@@ -1186,133 +1010,24 @@ descriptors</strong>. Call this function before reading and writing characterist
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="writeDescriptor"><span class="symbol-name">writeDescriptor</span><span class="signature"><span class="signature-params">(characteristicUUID, descriptorUUID, value, success, fail)</span></span></h3>
-              <p>Write value of descriptor.</p>
+              <h3 id="writeCharacteristicWithoutResponse"><span class="symbol-name">writeCharacteristicWithoutResponse</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, value, success, fail)</span></span></h3>
+              <p>Write value of a characteristic for a specific service without response. This faster but not as fail safe as writing with response. Asks the remote device to NOT send a confirmation message. Experimental, implemented on Android.</p>
               <section>
                 <h4>
             Example
         </h4>
                 <div>
-                  <pre class="prettyprint"><code>device.writeDescriptor(
-    characteristicUUID,
-    descriptorUUID,
-    new Uint8Array([1]), // Write byte with value 1.
-    function()
-    {
-      console.log(&#x27;BLE descriptor written.&#x27;);
-    },
-    function(errorCode)
-    {
-      console.log(&#x27;BLE writeDescriptor error: &#x27; + errorCode);
-    });</code></pre>
-                </div>
-              </section>
-              <section>
-                <h4>Parameters</h4>
-                <table class="jsdoc-details-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Optional</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p>characteristicUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of characteristic for descriptor.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>descriptorUUID</p>
-                      </td>
-                      <td>
-                        <p>string</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>UUID of descriptor to write to.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>value</p>
-                      </td>
-                      <td>
-                        <p>ArrayBufferView</p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Value to write.</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>success</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.emptyCallback">evothings.easyble.emptyCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Success callback: success().</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>fail</p>
-                      </td>
-                      <td>
-                        <p><a href="evothings.easyble.html#.failCallback">evothings.easyble.failCallback</a></p>
-                      </td>
-                      <td>
-                        <p>&nbsp;</p>
-                      </td>
-                      <td>
-                        <p>Error callback: fail(error).</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </section>
-              <dl class="dl-compact">
-              </dl>
-              <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="writeServiceCharacteristic"><span class="symbol-name">writeServiceCharacteristic</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, value, success, fail)</span></span></h3>
-              <p>Write value of a characteristic for a specific service. This is useful when multiple services have characteristics with the same UUID.</p>
-              <section>
-                <h4>
-            Example
-        </h4>
-                <div>
-                  <pre class="prettyprint"><code>device.writeServiceCharacteristic(
+                  <pre class="prettyprint"><code>device.writeCharacteristicWithoutResponse(
     serviceUUID,
     characteristicUUID,
     new Uint8Array([1]), // Write byte with value 1.
     function()
     {
-      console.log(&#x27;BLE characteristic written.&#x27;);
+      console.log(&#x27;data sent.&#x27;);
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE writeServiceCharacteristic error: &#x27; + errorCode);
+      console.log(&#x27;writeCharacteristicWithoutResponse error: &#x27; + errorCode);
     });</code></pre>
                 </div>
               </section>
@@ -1404,25 +1119,25 @@ descriptors</strong>. Call this function before reading and writing characterist
               <dl class="dl-compact">
               </dl>
               <div class="symbol-detail-labels"><span class="label label-public">public</span></div>
-              <h3 id="writeServiceDescriptor"><span class="symbol-name">writeServiceDescriptor</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, descriptorUUID, value, success, fail)</span></span></h3>
-              <p>Write value of a descriptor for a specific service and characteristic. This is useful when multiple services and characteristics have descriptors with the same UUID.</p>
+              <h3 id="writeDescriptor"><span class="symbol-name">writeDescriptor</span><span class="signature"><span class="signature-params">(serviceUUID, characteristicUUID, descriptorUUID, value, success, fail)</span></span></h3>
+              <p>Write value of descriptor.</p>
               <section>
                 <h4>
             Example
         </h4>
                 <div>
-                  <pre class="prettyprint"><code>device.writeServiceDescriptor(
+                  <pre class="prettyprint"><code>device.writeDescriptor(
     serviceUUID,
     characteristicUUID,
     descriptorUUID,
     new Uint8Array([1]), // Write byte with value 1.
     function()
     {
-      console.log(&#x27;BLE descriptor written.&#x27;);
+      console.log(&#x27;descriptor written.&#x27;);
     },
     function(errorCode)
     {
-      console.log(&#x27;BLE writeServiceDescriptor error: &#x27; + errorCode);
+      console.log(&#x27;writeDescriptor error: &#x27; + errorCode);
     });</code></pre>
                 </div>
               </section>
@@ -1449,7 +1164,7 @@ descriptors</strong>. Call this function before reading and writing characterist
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>UUID of service for characteristic.</p>
+                        <p>UUID of service that has the given characteristic (previous versions of this library allowed leaving out the service UUID, this is unsafe practice and has been deprecated, always specify the service UUID).</p>
                       </td>
                     </tr>
                     <tr>
@@ -1527,6 +1242,24 @@ descriptors</strong>. Call this function before reading and writing characterist
               </section>
               <dl class="dl-compact">
               </dl>
+              <h3 id="writeServiceCharacteristic"><span class="symbol-name">writeServiceCharacteristic</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#writeCharacteristic">evothings.easyble.EasyBLEDevice#writeCharacteristic</a></p>
+              <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
+              </dl>
+              <h3 id="writeServiceCharacteristicWithoutResponse"><span class="symbol-name">writeServiceCharacteristicWithoutResponse</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#writeCharacteristicWithoutResponse">evothings.easyble.EasyBLEDevice#writeCharacteristicWithoutResponse</a></p>
+              <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
+              </dl>
+              <h3 id="writeServiceDescriptor"><span class="symbol-name">writeServiceDescriptor</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p><strong>Deprecated</strong>. Use function <a href="evothings.easyble.EasyBLEDevice.html#writeDescriptor">evothings.easyble.EasyBLEDevice#writeDescriptor</a></p>
+              <dl class="dl-compact">
+                <dt>Deprecated</dt>
+                <dd></dd>
+              </dl>
             </section>
           </section>
         </div>
@@ -1537,7 +1270,7 @@ descriptors</strong>. Call this function before reading and writing characterist
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on May 6, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on July 13, 2016.
       </p>
     </div>
   </footer>
