@@ -28,8 +28,6 @@ td { font-weight: bold; }
 And when changing your device name using CurieBLE in Arduino 101 , it takes a while staying connected before the new name is received on the iPhone. Very frustrating"
 -->
 
-<h2 style="color:red;">DRAFT: Work in progress</h2>
-
 <h1>How to connect to BLE devices</h1>
 
 <!--
@@ -95,6 +93,16 @@ Now you can write mobile apps in JavaScript that talk to Bluetooth Low Energy (B
 
 <p>These UUIDs are used in the example code shown below. Use the UUIDs for the services and characteristics of the device yo are working with in your actual application code.</p>
 
+<h2>Debug printing in Evothings Studio</h2>
+
+<p>In the code examples below, console.log() is used to print debug data. To output log statements in Evothings Workbench, you can map console.log to hyper.log, as follows:<p>
+
+<pre>// Redirect console.log to Evothings Workbench.
+if (window.hyper && window.hyper.log) { console.log = hyper.log }
+</pre>
+
+<p>Log data is output in the Console Window in Evothings Workbench. Click the button named "Console" in the Workbench to open this window.</p>
+
 <h2>How to find a BLE device</h2>
 
 <h3>Scanning for name and service UUID</h3>
@@ -137,21 +145,24 @@ function scanError(error)
 function deviceFound(device)
 {
     // kCBAdvDataServiceUUIDs is an array of strings with service UUIDs.
-    if (device.kCBAdvDataServiceUUIDs.indexOf('f000aa70-0451-4000-b000-000000000000') > -1)
+    var advertisedServiceUUIDs = device.advertisementData.kCBAdvDataServiceUUIDs
+    if (advertisedServiceUUIDs.indexOf('0000aa10-0000-1000-8000-00805f9b34fb') > -1)
     {
         console.log('Found the TI SensorTag!')
     }
 }
 </pre>
 
-<p>You can also specify the service UUID in the options parameter to startScan:</p>
+<p>You can also specify the service UUID in the options parameter to startScan,
+this will instruct the native BLE system to report only devices that advertises
+the given service UUID:</p>
 
 <pre>// The callback function deviceFound will be called only for devices 
 // that advertise the given service UUID.
 evothings.easyble.startScan(
     deviceFound,
     scanError,
-    { serviceUUIDs: ['f000aa70-0451-4000-b000-000000000000'] })
+    { serviceUUIDs: ['0000aa10-0000-1000-8000-00805f9b34fb'] })
 
 function deviceFound(device)
 {
@@ -159,15 +170,32 @@ function deviceFound(device)
 }
 </pre>
 
-<h3>Using advertisement data for identification</h3>
+<h3>Let the user select which device to connect to</h3>
 
-<p>The <a href="https://evothings.com/doc/lib-doc/evothings.easyble.html#.AdvertisementData">advertisement data</a> is a block of bytes that is broadcasted by a BLE device when it is in advertisement mode.</p>
+<p>An  approach to selecting which device to connect to is to display a list of devices and their names in the application user interface, and let the user select a device. The list is dynamically constructed during scanning, and can be updated and sorted by distance or by RSSI value.</p>
+
+<h3>Using advertisement data for device identification</h3>
+
+<p>The advertised service UUIDs (kCBAdvDataServiceUUIDs) used above is part of the BLE advertisement data. This is a block of bytes that is broadcasted by a BLE device when it is in advertisement mode. Have a look at the <a href="https://evothings.com/doc/lib-doc/evothings.easyble.html#.AdvertisementData">advertisement data</a> documentation for a list of available fields (note that these fields may be undefined or empty, depending on the BLE device).</p>
 
 </p>It can happen that a device cannot be uniquely identified by its name and/or advertised service UUIDs. Depending on the device, there may be other data in the advertisement that can be used to identify it. Eddystone beacons, for example, broadcast ids and URLs as part of the advertisement data.</p>
 
-<h3>Let the user select which device to connect to</h3>
+<p>Here is how to output a printable representation of the advertisement data structure:<p>
 
-<p>Another approach to selecting which device to connect to is to display a list of devices and their names in the application user interface, and let the user select a device. The list is dynamically constructed during scanning, and can be updated and sorted by distance or by RSSI value.</p>
+<pre>function deviceFound(device)
+{
+    console.log('Found device: ' + device.getName())
+    console.log(JSON.stringify(device.advertisementData))
+}
+</pre>
+
+<p>Hint: You can also print the entire device structure:<p>
+
+<pre>function deviceFound(device)
+{
+    console.log(JSON.stringify(device))
+}
+</pre>
 
 <h2>Connect to a device</h2>
 
@@ -184,7 +212,7 @@ function deviceFound(device)
     if (device.getName() == 'CC2650 SensorTag')
     {
         // Stop scanning.
-        evothings.easyble.stopScanning()
+        evothings.easyble.stopScan()
         
         // Connect.
         device.connect(connectSuccess, connectError)
@@ -217,7 +245,7 @@ function connectError(error)
 <pre>
 function connectSuccess(device)
 {
-    console.log('Connected to device')
+    console.log('Connected to device, reading services...')
     
     // Read all services, characteristics and descriptors.
     device.readServices(readServicesSuccess, readServicesError)
@@ -235,6 +263,13 @@ function readServicesError(error)
     console.log('Read services error: ' + error)
 }
 </pre> 
+
+<p>When reading services, you can specify the services to read (this can improve the performance):</p>
+ 	
+<pre>device.readServices(
+    readServicesSuccess, 
+    readServicesError, 
+    { serviceUUIDs: ['f000aa70-0451-4000-b000-000000000000'] })</pre>
 
 <h2>Reading and writing characteristics</h2>
 
@@ -282,7 +317,7 @@ function turnOnLuxometerError(error)
 function readLuxometerSuccess(data)
 {
     // Get raw sensor value (data buffer has little endian format).
-    var raw = new DataView(data).getUInt16(0, true)
+    var raw = new DataView(data).getUint16(0, true)
     console.log('Raw Luxometer value: ' + raw)
 }
 
@@ -299,7 +334,7 @@ function readLuxometerError(error)
 function calculateLux(data)
 {
     // Get 16 bit value from data buffer in little endian format.
-    var value = new DataView(data).getUInt16(0, true)
+    var value = new DataView(data).getUint16(0, true)
 
     // Extraction of luxometer value, based on sfloatExp2ToDouble
     // from BLEUtility.m in Texas Instruments TI BLE SensorTag
@@ -323,19 +358,9 @@ function calculateLux(data)
 
 <p>Notifications are an efficient way to read data continuously from a BLE device. The process is similar to reading data, the main difference is that the callback function will be called repeatedly until the notification is disabled.</p>
 
-<pre>var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
-var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
-var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
+<p>Here is a code example of how to enable and handle notifications:</p>
 
-// Turn Luxometer ON.
-device.writeCharacteristic(
-    LUXOMETER_SERVICE,
-    LUXOMETER_CONFIG,
-    new Uint8Array([1]),
-    turnOnLuxometerSuccess,
-    turnOnLuxometerError)
-
-// Enable notifications from the Luxometer.
+<pre>// Enable notifications from the Luxometer.
 device.enableNotification(
     LUXOMETER_SERVICE,
     LUXOMETER_DATA,
@@ -366,6 +391,8 @@ var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
 
 function findDevice()
 {
+	console.log('Start scanning')
+	
     // Start scanning. Two callback functions are specified.
     evothings.easyble.startScan(
         deviceFound,
@@ -375,12 +402,14 @@ function findDevice()
     // we check if we found the device we are looking for.
     function deviceFound(device)
     {
+        console.log('Found device: ' + device.getName())
+            
         if (device.getName() == 'CC2650 SensorTag')
         {
             console.log('Found the TI SensorTag!')
             
             // Stop scanning.
-            evothings.easyble.stopScanning()
+            evothings.easyble.stopScan()
         
             // Connect.
             connectToDevice(device)
@@ -400,7 +429,7 @@ function connectToDevice(device)
     
     function connectSuccess(device)
     {
-        console.log('Connected to device')
+        console.log('Connected to device, reading services...')
     
         // Read all services, characteristics and descriptors.
         device.readServices(readServicesSuccess, readServicesError)
@@ -449,6 +478,16 @@ function enableLuxometerNotifications(device)
         LUXOMETER_DATA,
         readLuxometerSuccess,
         readLuxometerError)
+        
+	function turnOnLuxometerSuccess()
+	{
+		console.log('Luxometer is ON')
+	
+	}
+	function turnOnLuxometerError(error)
+	{
+		console.log('Write Luxometer error: ' + error)
+	}
 
     // Called repeatedly until disableNotification is called.
     function readLuxometerSuccess(data)
@@ -456,6 +495,11 @@ function enableLuxometerNotifications(device)
         var lux = calculateLux(data)
         console.log('Luxometer value: ' + lux)
     }
+    
+	function readLuxometerError(error)
+	{
+		console.log('Read Luxometer error: ' + error)
+	}
 }
 
 // Calculate the light level from raw sensor data. 
@@ -463,7 +507,7 @@ function enableLuxometerNotifications(device)
 function calculateLux(data)
 {
     // Get 16 bit value from data buffer in little endian format.
-    var value = new DataView(data).getUInt16(0, true)
+    var value = new DataView(data).getUint16(0, true)
 
     // Extraction of luxometer value, based on sfloatExp2ToDouble
     // from BLEUtility.m in Texas Instruments TI BLE SensorTag
