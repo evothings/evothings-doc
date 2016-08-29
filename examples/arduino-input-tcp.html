@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: arduino-input-tcp.html
+Description: Example documentation.
+Author: Mikael Kindborg
+Copyright (c) 2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Arduino Input TCP Example</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+	<h1>Arduino Input TCP</h1>
+
+	<p><b>Read Arduino Sensors From Your App.</b> This example shows how read data from an Arduino board, by communicating over the TCP networking protocol.</p>
+	<p>Communication with the Arduino is made using a WiFi shield or an Ethernet shield.</p>
+	<p>When using a WiFi shield, you communicate directly from your mobile device to the Arduino. Make sure you are on the same LAN for this to work.</p>
+	<p>When using am Ethernet shield, you communicate from your mobile device to a WiFi router, that in turn need to be able to connect to the IP-address of the Ethernet shield.</p>
+	<!-- TODO: Add screenshot. <img class="img-example-screenshot" src="images/arduino-led-onoff-tcp-screenshot.png"/>-->
+</div>
+
+<div class="evo-box">
+	<h2>Source code</h2>
+
+	<p>You can browse the source code for this example at the
+	<a href="https://github.com/evothings/evothings-examples/tree/master/examples/arduino-input-tcp">Evothings GitHub repository</a></p>
+
+	<p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino-input-tcp/app/index.html">index.html</a> is the entry point of the app. File <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino-input-tcp/app/libs/evothings/arduinotcp/arduinotcp.js">arduinotcp.js</a> contains functions for scripting the Arduino from JavaScript. You can set pin mode and set HIGH/LOW for pins.</p>
+	<p>The file <a href="https://github.com/evothings/evothings-examples/tree/master/examples/arduino-input-tcp/arduinowifi/arduinowifi">arduinowifi.ino</a> contains the Arduino WiFi server that listens for commands from the app.</p><p>The file <a href="https://github.com/evothings/evothings-examples/blob/master/examples/arduino-input-tcp/arduinoethernet/arduinoethernet/">arduinoethernet.ino</a> contains the Arduino Ethernet server that listens for commands from the app.</p>
+</div>
+
+<div class="evo-box">
+	<h2>What you need</h2>
+
+	<p>This example runs in Evothings Viewer on Android or iOS.</p>
+
+	<p>You need to run this example in Evothings Viewer. Alternatively, you can build a Cordova application if you wish to distribute the app. You then need to include the Cordova plugin org.chromium.sockets.tcp</p>
+
+	<p>For the Arduino setup, you need:</p>
+	<ul>
+		<li>WiFi shield or Ethernet shield</li>
+		<li>Some input device that produces analog input, e.g. a potentiometer</li>
+	</ul>
+</div>
+
+<div class="evo-box">
+	<h2>How to get up and running</h2>
+
+	<p>Follow these steps to get started with this example:</p>
+	<ul>
+		<li>Wire up the Arduino board. Connect e.g. a potentiometer to an input pin. Make a note of the input pin number.</li>
+		<li>Launch Evothings Workbench on your desktop/laptop computer.</li>
+		<li>In Evothings Studio, made a copy of the example app "Arduino Input TCP".</li>
+		<li>The app appears under "My Apps". Click the "CODE" button and open file <code>index.html</code> in a text editor.</li>
+		<li>In <code>index.html</code>, enter the pin number you used, see around line 81 in the code (set the variable <code>app.analogInputPin</code> to the pin you use).</li>
+		<li>Open arduinowifi.ino or arduinoethernet.ino (depending on the shield you use) in the Arduino development tool.</li>
+		<li>Enter the name and password for your WiFi network in arduinowifi.ino or configure your IP-address in arduinoethernet.ino.</li>
+		<li>Upload the program to the Arduino.</li>
+		<li>If using a WiFi shield, open the Serial Monitor Window and look for the IP address of the Arduino. (If the IP address is not displayed, check your WiFi network name and password.)</li>
+		<li>Launch Evothings Viewer on an iOS or Android mobile device and connect to the Workbench.</li>
+		<li>Run the example "Arduino Input TCP" from the Workbench window by clicking "RUN" on the app under "My Apps".</li>
+		<li>Enter the IP address of the Arduino in the app.</li>
+		<li>If everything works, you should now be able to see input from the potentiometer in the app. If it does not work, check your wiring and that the right pin number are used in the app.</li>
+		<li>Now you can proceed with making your own sketch designs and add more buttons to the app.</li>
+	</ul>
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
