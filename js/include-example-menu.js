@@ -25,6 +25,8 @@ document.write(
 	+	'<a href="../examples/nordic-nRF51-ble.html">Nordic&nbsp;nRF51&nbsp;BLE</a><br/>'
 
 	+	'<a href="../examples/arduino-led-onoff-tcp.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;TCP</a><br/>'
+
+	+	'<a href="../examples/arduino-input-tcp.html">Arduino&nbsp;Input&nbsp;TCP</a><br/>'
 	+	'<a href="../examples/arduino-led-onoff-ble.html">Arduino&nbsp;LED&nbsp;On/Off&nbsp;BLE</a><br/>'
 	+	'<a href="../examples/arduino-ble.html">Arduino&nbsp;BLE</a><br/>'
 	+	'<a href="../examples/arduino-scriptable-tcp.html">Arduino&nbsp;Scriptable&nbsp;TCP</a><br/>'
@@ -44,5 +46,6 @@ document.write(
 	+	'<a href="../examples/dialog-blinky.html">Dialog&nbsp;-&nbsp;Blinky</a><br/>'
 	+	'<a href="../examples/dialog-iotsensor.html">Dialog&nbsp;-&nbsp;IoT Sensor</a><br/>'
 	+	'<a href="../examples/dialog-beacons.html">Dialog&nbsp;-&nbsp;Beacons</a><br/>'
+	+	'<a href="../examples/template-basic-app.html">Basic&nbsp;Template&nbsp;App</a><br/>'
 
 	+ '</div>')
