@@ -36,7 +36,7 @@ How to connect to BLE devices from JavaScript
 Now you can write mobile apps in JavaScript that talk to Bluetooth Low Energy (BLE) devices.
 -->
 
-<p>This is guide shows you how to connect to Bluetooth Low Energy devices from JavaScript.</p>
+<p>This guide shows you how to connect to Bluetooth Low Energy devices from JavaScript.</p>
 
 <p>We take you through the steps to detect and connect to a BLE device. You can use this guide for basically any BLE device.</p>
 
@@ -133,7 +133,7 @@ function scanError(error)
 {
     console.log('Scan error: ' + error)
 }
-</pre> 
+</pre>
 
 <p>By comparison, here is how find the device by advertised service UUID:</p>
 
@@ -157,7 +157,7 @@ function deviceFound(device)
 this will instruct the native BLE system to report only devices that advertises
 the given service UUID:</p>
 
-<pre>// The callback function deviceFound will be called only for devices 
+<pre>// The callback function deviceFound will be called only for devices
 // that advertise the given service UUID.
 evothings.easyble.startScan(
     deviceFound,
@@ -213,7 +213,7 @@ function deviceFound(device)
     {
         // Stop scanning.
         evothings.easyble.stopScan()
-        
+
         // Connect.
         device.connect(connectSuccess, connectError)
     }
@@ -236,7 +236,7 @@ function connectError(error)
         console.log('Connect error: ' + error)
     }
 }
-</pre> 
+</pre>
 
 <h2>Read services and characteristics</h2>
 
@@ -246,7 +246,7 @@ function connectError(error)
 function connectSuccess(device)
 {
     console.log('Connected to device, reading services...')
-    
+
     // Read all services, characteristics and descriptors.
     device.readServices(readServicesSuccess, readServicesError)
 }
@@ -254,7 +254,7 @@ function connectSuccess(device)
 function readServicesSuccess(device)
 {
     console.log('Read services completed')
-    
+
     // We can now read/write to the device.
 }
 
@@ -262,13 +262,13 @@ function readServicesError(error)
 {
     console.log('Read services error: ' + error)
 }
-</pre> 
+</pre>
 
 <p>When reading services, you can specify the services to read (this can improve the performance):</p>
- 	
+
 <pre>device.readServices(
-    readServicesSuccess, 
-    readServicesError, 
+    readServicesSuccess,
+    readServicesError,
     { serviceUUIDs: ['f000aa70-0451-4000-b000-000000000000'] })</pre>
 
 <h2>Reading and writing characteristics</h2>
@@ -282,7 +282,7 @@ function readServicesError(error)
 <pre>// UUID of Luxometer service.
 var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
 
-// UUID of Luxometer config characteristic (write 1 to 
+// UUID of Luxometer config characteristic (write 1 to
 // turn sensor ON, 0 to turn OFF).
 var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
 
@@ -307,7 +307,7 @@ device.readCharacteristic(
 function turnOnLuxometerSuccess()
 {
     console.log('Luxometer is ON')
-    
+
 }
 function turnOnLuxometerError(error)
 {
@@ -329,7 +329,7 @@ function readLuxometerError(error)
 
 <p>The data read from a device is in raw a byte format. Documentation from the device manufacturer contains information about how to calculate the actual value. As an example, here is how you calculate the Luxometer value in lux units:</p>
 
-<pre>// Calculate the light level from raw sensor data. 
+<pre>// Calculate the light level from raw sensor data.
 // Return light level in lux.
 function calculateLux(data)
 {
@@ -341,7 +341,7 @@ function calculateLux(data)
     // iOS app source code.
     var mantissa = value & 0x0FFF
     var exponent = value >> 12
-    
+
     var magnitude = Math.pow(2, exponent)
     var output = (mantissa * magnitude)
 
@@ -354,7 +354,7 @@ function calculateLux(data)
 
 <h2>Using notifications to read data</h2>
 
-<p>It is common that an application needs to continuously read data from a BLE device. Examples includereading  a sensor and send data to the cloud, or to use the accelerometer of a sensor device to control a game on the mobile phone.</p>
+<p>It is common that an application needs to continuously read data from a BLE device. Examples include reading a sensor and send data to the cloud, or to use the accelerometer of a sensor device to control a game on the mobile phone.</p>
 
 <p>Notifications are an efficient way to read data continuously from a BLE device. The process is similar to reading data, the main difference is that the callback function will be called repeatedly until the notification is disabled.</p>
 
@@ -391,8 +391,8 @@ var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
 
 function findDevice()
 {
-	console.log('Start scanning')
-	
+    console.log('Start scanning')
+
     // Start scanning. Two callback functions are specified.
     evothings.easyble.startScan(
         deviceFound,
@@ -403,14 +403,14 @@ function findDevice()
     function deviceFound(device)
     {
         console.log('Found device: ' + device.getName())
-            
+
         if (device.getName() == 'CC2650 SensorTag')
         {
             console.log('Found the TI SensorTag!')
-            
+
             // Stop scanning.
             evothings.easyble.stopScan()
-        
+
             // Connect.
             connectToDevice(device)
         }
@@ -426,11 +426,11 @@ function findDevice()
 function connectToDevice(device)
 {
     device.connect(connectSuccess, connectError)
-    
+
     function connectSuccess(device)
     {
         console.log('Connected to device, reading services...')
-    
+
         // Read all services, characteristics and descriptors.
         device.readServices(readServicesSuccess, readServicesError)
     }
@@ -438,7 +438,7 @@ function connectToDevice(device)
     function readServicesSuccess(device)
     {
         console.log('Read services completed')
-    
+
         // Enable notifications for Luxometer.
         enableLuxometerNotifications(device)
     }
@@ -478,16 +478,16 @@ function enableLuxometerNotifications(device)
         LUXOMETER_DATA,
         readLuxometerSuccess,
         readLuxometerError)
-        
-	function turnOnLuxometerSuccess()
-	{
-		console.log('Luxometer is ON')
-	
-	}
-	function turnOnLuxometerError(error)
-	{
-		console.log('Write Luxometer error: ' + error)
-	}
+
+    function turnOnLuxometerSuccess()
+    {
+        console.log('Luxometer is ON')
+
+    }
+    function turnOnLuxometerError(error)
+    {
+        console.log('Write Luxometer error: ' + error)
+    }
 
     // Called repeatedly until disableNotification is called.
     function readLuxometerSuccess(data)
@@ -495,14 +495,14 @@ function enableLuxometerNotifications(device)
         var lux = calculateLux(data)
         console.log('Luxometer value: ' + lux)
     }
-    
-	function readLuxometerError(error)
-	{
-		console.log('Read Luxometer error: ' + error)
-	}
+
+    function readLuxometerError(error)
+    {
+        console.log('Read Luxometer error: ' + error)
+    }
 }
 
-// Calculate the light level from raw sensor data. 
+// Calculate the light level from raw sensor data.
 // Return light level in lux.
 function calculateLux(data)
 {
@@ -514,7 +514,7 @@ function calculateLux(data)
     // iOS app source code.
     var mantissa = value & 0x0FFF
     var exponent = value >> 12
-    
+
     var magnitude = Math.pow(2, exponent)
     var output = (mantissa * magnitude)
 
@@ -576,7 +576,7 @@ function getAccelerometerValues(data) {
 -->
 
 <!--
-    
+
 LOG: {"advertisementData":{"kCBAdvDataLocalName":"CC2650 SensorTag","kCBAdvDataServiceUUIDs":["0000aa10-0000-1000-8000-00805f9b34fb"],"kCBAdvDataTxPowerLevel":0,"kCBAdvDataIsConnectable":true},"rssi":-45,"name":"SensorTag 2.0","address":"9E40E6C5-1BBD-7B7C-026F-51CBDD5CF61E"}
 
 LOG: {"_handle":"9E40E6C5-1BBD-7B7C-026F-51CBDD5CF61E","address":"9E40E6C5-1BBD-7B7C-026F-51CBDD5CF61E","name":"CC2650 SensorTag","serviceUUIDs":["0000aa10-0000-1000-8000-00805f9b34fb"],"adData":{"rssi":-44,"txPower":null,"serviceData":{},"manufacturerData":null},"connected":false,"services":{}}
