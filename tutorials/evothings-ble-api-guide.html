@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: evothings-ble-api.html
+Description: Evothings BLE API Guide.
+Author: Mikael Kindborg
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Evothings BLE API Guide</title>
+<style>
+code { background: #ffff99; font-weight: normal; }
+td { font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+
+<div class="evo-content-box">
+
+<h1>Evothings BLE API Guide</h1>
+
+<!--
+Guide for connecting to BLE devices from JavaScript
+How to connect to BLE devices from JavaScript
+Now you can write mobile apps in JavaScript that talk to Bluetooth Low Energy (BLE) devices.
+-->
+
+<p>This guide shows you how to use the Evothings BLE API to connect to Bluetooth Low Energy devices from JavaScript.</p>
+
+<p>We take you through the steps to detect and connect to a BLE device. You can use this guide for basically any BLE device.</p>
+
+<h2>Software architecture</h2>
+
+<p>Native support for Bluetooth Low Energy on Android and iOS is provided by the <a href="https://github.com/evothings/cordova-ble">Cordova BLE plugin</a>. This plugin is included with Evothings Viewer, which makes it quick to get started with development of a BLE application in JavaScript. When the app is ready for testing and deployment, the Cordova build system is used to build a custom app with the application code and the BLE plugin. This app can then be published on the app stores.</p>
+
+<p>This guide uses the BLE plugin API available in plugin version 2.0.0 and laster, and Evothings Viewer version 1.5.0 and later.
+
+<h2>Steps to connect to a BLE device</h2>
+
+<p>The following are the steps needed to connect to a BLE device and start reading/writing data:</p>
+
+<ul>
+<li>Scan for the device</li>
+<li>Connect to the device</li>
+<li>Read and write characteristics</li>
+</ul>
+
+<p>A characteristic is like a command or function, it is a place you read or write to fetch data or control the device (turning on or off a LED or a motor, for example). Services are collections of characteristics, they group related commands/functions.</p>
+
+<p>What you need to know to program a BLE device are the UUIDs of the services and characteristics you wish to use. This information is typically found in the documentation from the device manufacturer. Use these UUIDs in the code when making calls to the BLE library functions. Below we show code examples of how to do this.</p>
+
+<h2>How to talk with a BLE device - services and characteristics</h2>
+
+<p>A BLE device exposes its communication interface through services and characteristics. A service can have one or more characteristics. Each characteristic can also have one or more descriptors (descriptors tend to be accessed less frequently by application code).</p>
+
+<p>For example, a BLE-enabled thermometer typically has a temperature service that has a characteristic that allows you to read the temperature.</p>
+
+<p>Each service and characteristic has a universally unique id (UUID). You use these ids when setting up the communication with the BLE device from JavaScript. The UUIDs are usually found in the device documentation provided by the manufacturer.</p>
+
+<h2>An example of device UUIDs</h2>
+
+<div class="evo-content-side-box-large">
+    <img src="http://www.ti.com/diagrams/med_tidc-cc2650stk-sensortag_1_main.gif"/>
+    <p>TI SimpleLink Multi-Standard CC2650 SensorTag</p>
+</div>
+
+<p>As an example, we will use the <a href="http://www.ti.com/tool/TIDC-CC2650STK-SENSORTAG" target="_blank">TI SensorTag CC2650</a> and the Luxometer Service. The CC2650 has several sensors, each sensor has a service, each service has characteristics for turning a sensor on/off, setting the update interval, and for reading data.</p>
+
+<p>Other BLE devices will have difference services and characteristics, but the general principle is the same.  Some devices have options to configure the device, others may not need any specific configuration. Some devices you primarily read data from (like a thermometer), others you primarily write data to (like remotely controlled machinery).</p>
+
+<p style="clear:both;">The Luxometer of the TI SensorTag CC2650 has the following UUIDs:</p>
+
+<table>
+<tr><td>Luxometer service UUID:</td><td><code>f000aa70-0451-4000-b000-000000000000</code></td>
+<tr><td>Sensor on/off characteristic UUID:</td><td><code>f000aa71-0451-4000-b000-000000000000</code></td>
+<tr><td>Sensor update interval characteristic:</td><td><code>f000aa73-0451-4000-b000-000000000000</code></td>
+<tr><td>Sensor data characteristic:</td><td><code>f000aa71-0451-4000-b000-000000000000</code></td>
+</table>
+
+<p>These UUIDs are used in the example code shown below. Use the UUIDs for the services and characteristics of the device yo are working with in your actual application code.</p>
+
+<h2>Debug printing in Evothings Studio</h2>
+
+<p>In the code examples below, console.log() is used to print debug data. To output log statements in Evothings Workbench, you can map console.log to hyper.log, as follows:<p>
+
+<pre>// Redirect console.log to Evothings Workbench.
+if (window.hyper && window.hyper.log) { console.log = hyper.log }
+</pre>
+
+<p>Log data is output in the Console Window in Evothings Workbench. Click the button named "Console" in the Workbench to open this window.</p>
+
+<h2>How to find a BLE device</h2>
+
+<h3>Scanning for name and service UUID</h3>
+
+<p>First step when communicating with any BLE device is to establish a connection to it, and to do that you first need to find the device. This step is called scanning. When scanning for devices, you will get all BLE devices within range. This means you must somehow find out which device is the one you wish to connect to.</p>
+
+<p>To determine the identity of a device using scanning, you can use several methods. Two useful ways are to use the name of the device and/or the advertised service UUIDs of the device.</p>
+
+<p>Here is how to find the TI SensorTag CC2650 by its name:</p>
+
+<pre>// Start scanning. Two callback functions are specified.
+evothings.ble.startScan(
+    onDeviceFound,
+    onScanError)
+
+// This function is called when a device is detected, here
+// we check if we found the device we are looking for.
+function onDeviceFound(device)
+{
+    if (device.advertisementData.kCBAdvDataLocalName == 'CC2650 SensorTag')
+    {
+        console.log('Found the TI SensorTag!')
+    }
+}
+
+// Function called when a scan error occurs.
+function onScanError(error)
+{
+    console.log('Scan error: ' + error)
+}
+</pre>
+
+<p>By comparison, here is how find the device by advertised service UUID:</p>
+
+<pre>evothings.ble.startScan(
+    onDeviceFound,
+    onScanError)
+
+// Here we check for a specific service UUID advertised by the device.
+function onDeviceFound(device)
+{
+    // kCBAdvDataServiceUUIDs is an array of strings with service UUIDs.
+    var advertisedServiceUUIDs = device.advertisementData.kCBAdvDataServiceUUIDs
+    if (advertisedServiceUUIDs.indexOf('0000aa10-0000-1000-8000-00805f9b34fb') > -1)
+    {
+        console.log('Found the TI SensorTag!')
+    }
+}
+</pre>
+
+<p>You can also specify the service UUID in the options parameter to startScan,
+this will instruct the native BLE system to report only devices that advertises
+the given service UUID:</p>
+
+<pre>// The callback function <code>onDeviceFound</code> will be called only for devices
+// that advertise the given service UUID.
+evothings.ble.startScan(
+    onDeviceFound,
+    onScanError,
+    { serviceUUIDs: ['0000aa10-0000-1000-8000-00805f9b34fb'] })
+
+function onDeviceFound(device)
+{
+    console.log('Found the TI SensorTag!')
+}
+</pre>
+
+<h3>Let the user select which device to connect to</h3>
+
+<p>An  approach to selecting which device to connect to is to display a list of devices and their names in the application user interface, and let the user select a device. The list is dynamically constructed during scanning, and can be updated and sorted by distance or by RSSI value.</p>
+
+<h3>Using advertisement data for device identification</h3>
+
+<p>The advertised service UUIDs (kCBAdvDataServiceUUIDs) used above is part of the BLE advertisement data. This is a block of bytes that is broadcasted by a BLE device when it is in advertisement mode. Have a look at the <a href="https://evothings.com/doc/lib-doc/evothings.ble.html#.AdvertisementData">advertisement data</a> documentation for a list of available fields (note that these fields may be undefined or empty, depending on the BLE device).</p>
+
+</p>It can happen that a device cannot be uniquely identified by its name and/or advertised service UUIDs. Depending on the device, there may be other data in the advertisement that can be used to identify it. Eddystone beacons, for example, broadcast ids and URLs as part of the advertisement data.</p>
+
+<p>Here is how to output a printable representation of the advertisement data structure:<p>
+
+<pre>function onDeviceFound(device)
+{
+    console.log('Found device:' + JSON.stringify(device.advertisementData))
+}
+</pre>
+
+<p>You can also print the entire device structure:<p>
+
+<pre>function onDeviceFound(device)
+{
+    console.log('Found device:' + JSON.stringify(device))
+}
+</pre>
+
+<h2>Connect to a device</h2>
+
+<p>When the device has been found, next step is to connect to it. Typically scanning is now stopped, and the connect function is called. Here is an example:</p>
+
+<pre>evothings.ble.startScan(
+    onDeviceFound,
+    onScanError)
+
+// This function is called when a device is detected, here
+// we check if we found the device we are looking for.
+function onDeviceFound(device)
+{
+    if (device.advertisementData.kCBAdvDataLocalName == 'CC2650 SensorTag')
+    {
+        // Stop scanning.
+        evothings.ble.stopScan()
+
+        // Connect.
+        evothings.ble.connectToDevice(
+            device,
+            onConnected,
+            onDisconnected,
+            onConnectError)
+    }
+}
+
+// Called when device is connected.
+function onConnected(device)
+{
+    console.log('Connected to device')
+}
+
+// Called if device disconnects.
+function onDisconnected(device)
+{
+    console.log('Disconnected from device')
+}
+
+// Called when a connect error occurs.
+function onConnectError(error)
+{
+    console.log('Connect error: ' + error)
+}
+</pre>
+
+By default, the function <code>evothings.ble.connectToDevice</code> reads all services, characteristics and descriptors from the device.
+
+<p>Optionally, you can specify the services to read (reading only the services you need can improve performance):</p>
+
+<pre>evothings.ble.connectToDevice(
+    device,
+    onConnected,
+    onDisconnected,
+    onConnectError)
+    { serviceUUIDs: ['f000aa70-0451-4000-b000-000000000000'] })</pre>
+
+<h2>Reading and writing characteristics</h2>
+
+<p>Characteristics are like commands or functions, they can be read to obtain data, or written to control some aspect of a device.</p>
+
+<p>For example, on the TI SensorTag, you turn a sensor on and off by writing to a characteristic. When the sensor is on, you can read data from another characteristic. Both characteristics are part of the same service.</p>
+
+<p>Use functions <code>evothings.ble.getService</code> and <code>evothings.ble.getCharacteristic</code> to get the characteristic you want to read and write. To read and write descriptors, use function <code>evothings.ble.getDescriptor</code> to get the descriptor to write/read.</p>
+
+<p>Here is an example how to turn on and read the Luxometer of the TI SensorTag:</p>
+
+<pre>// UUID of Luxometer service.
+var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+
+// UUID of Luxometer config characteristic (write 1 to turn sensor ON, 0 to turn OFF).
+var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+
+// UUID of Luxometer data characteristic.
+var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
+
+// Get Luxometer service and characteristics.
+var service = evothings.ble.getService(device, LUXOMETER_SERVICE)
+var configCharacteristic = evothings.ble.getCharacteristic(service, LUXOMETER_CONFIG)
+var dataCharacteristic = evothings.ble.getCharacteristic(service, LUXOMETER_DATA)
+
+// Turn Luxometer ON.
+evothings.ble.writeCharacteristic(
+    device,
+    configCharacteristic,
+    new Uint8Array([1]),
+    onLuxometerActivated,
+    onLuxometerActivatedError)
+
+function onLuxometerActivated()
+{
+    console.log('Luxometer is ON')
+
+    // Enable notifications from the Luxometer.
+    evothings.ble.readCharacteristic(
+        device,
+        dataCharacteristic,
+        onLuxometerRead,
+        onLuxometerReadError)
+}
+
+function onLuxometerActivatedError(error)
+{
+    console.log('Luxometer activate error: ' + error)
+}
+
+function onLuxometerRead(data)
+{
+    // Get raw sensor value (data buffer has little endian format).
+    var raw = new DataView(data).getUint16(0, true)
+    console.log('Raw Luxometer value: ' + raw)
+}
+
+function onLuxometerReadError(error)
+{
+    console.log('Read Luxometer error: ' + error)
+}
+</pre>
+
+<p>The data read from a device is in raw a byte format. Documentation from the device manufacturer contains information about how to calculate the actual value. As an example, here is how you calculate the Luxometer value in lux units:</p>
+
+<pre>// Calculate the light level from raw sensor data.
+// Return light level in lux.
+function calculateLux(data)
+{
+    // Get 16 bit value from data buffer in little endian format.
+    var value = new DataView(data).getUint16(0, true)
+
+    // Extraction of luxometer value, based on sfloatExp2ToDouble
+    // from BLEUtility.m in Texas Instruments TI BLE SensorTag
+    // iOS app source code.
+    var mantissa = value & 0x0FFF
+    var exponent = value >> 12
+
+    var magnitude = Math.pow(2, exponent)
+    var output = (mantissa * magnitude)
+
+    var lux = output / 100.0
+
+    // Return result.
+    return lux
+}
+</pre>
+
+<h2>Using notifications to read data</h2>
+
+<p>It is common that an application needs to continuously read data from a BLE device. Examples include reading a sensor and send data to the cloud, or to use the accelerometer of a sensor device to control a game on the mobile phone.</p>
+
+<p>Notifications are an efficient way to read data continuously from a BLE device. The process is similar to reading data, the main difference is that the callback function will be called repeatedly until the notification is disabled.</p>
+
+<p>Here is a code example of how to enable and handle notifications:</p>
+
+<pre>function onLuxometerActivated()
+{
+    console.log('Luxometer is ON')
+
+    // Enable notifications from the Luxometer.
+    evothings.ble.enableNotification(
+        device,
+        dataCharacteristic,
+        onLuxometerNotification,
+        onLuxometerNotificationError)
+}
+
+// Called repeatedly until disableNotification is called.
+function onLuxometerNotification(data)
+{
+    var lux = calculateLux(data)
+    console.log('Luxometer value: ' + lux)
+}
+
+function onLuxometerNotificationError(error)
+{
+    console.log('Luxometer notification error: ' + error)
+}
+</pre>
+
+<h2>Complete code example</h2>
+
+<p>Here is a complete code example. Note that file <code>cordova.js</code> is included with the BLE plugin, this file is not part of the application code, it is bundled with the plugin and with Evothings Viewer.</p>
+
+<p>Source code of file <code>index.html</code> (drag this file into Evothings Workbench and click RUN to launch in Evothings Viewer):</p>
+
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;meta name="viewport" content="width=device-width, user-scalable=no,
+    shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" /&gt;
+&lt;title&gt;BLE Plugin API Demo&lt;/title&gt;
+&lt;script&gt;
+// Redirect console.log when running from Evothings Workbench.
+if (window.hyper && window.hyper.log) { console.log = hyper.log }
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;BLE Plugin API Demo&lt;/h1&gt;
+&lt;p&gt;View output in the console log.&lt;/p&gt;
+
+&lt;script src="cordova.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// UUIDs of services and characteristics.
+var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
+
+function findDevice()
+{
+    console.log('Start scanning')
+
+    // Start scanning. Two callback functions are specified.
+    evothings.ble.startScan(
+        onDeviceFound,
+        onScanError)
+
+    // This function is called when a device is detected, here
+    // we check if we found the device we are looking for.
+    function onDeviceFound(device)
+    {
+        console.log('Found device: ' + device.advertisementData.kCBAdvDataLocalName)
+
+        if (device.advertisementData.kCBAdvDataLocalName == 'CC2650 SensorTag')
+        {
+            console.log('Found the TI SensorTag!')
+
+            // Stop scanning.
+            evothings.ble.stopScan()
+
+            // Connect.
+            connectToDevice(device)
+        }
+    }
+
+    // Function called when a scan error occurs.
+    function onScanError(error)
+    {
+        console.log('Scan error: ' + error)
+    }
+}
+
+function connectToDevice(device)
+{
+    evothings.ble.connectToDevice(
+        device,
+        onConnected,
+        onDisconnected,
+        onConnectError)
+
+    function onConnected(device)
+    {
+        console.log('Connected to device')
+
+        // Enable notifications for Luxometer.
+        enableLuxometerNotifications(device)
+    }
+
+    // Function called if the device disconnects.
+    function onDisconnected(error)
+    {
+        console.log('Device disconnected')
+    }
+
+    // Function called when a connect error occurs.
+    function onConnectError(error)
+    {
+        console.log('Connect error: ' + error)
+    }
+}
+
+function enableLuxometerNotifications(device)
+{
+    // UUID of Luxometer service.
+    var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+
+    // UUID of Luxometer config characteristic (write 1 to
+    // turn sensor ON, 0 to turn OFF).
+    var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+
+    // UUID of Luxometer data characteristic.
+    var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
+
+    // Get Luxometer service and characteristics.
+    var service = evothings.ble.getService(device, LUXOMETER_SERVICE)
+    var configCharacteristic = evothings.ble.getCharacteristic(service, LUXOMETER_CONFIG)
+    var dataCharacteristic = evothings.ble.getCharacteristic(service, LUXOMETER_DATA)
+
+    // Turn Luxometer ON.
+    evothings.ble.writeCharacteristic(
+        device,
+        configCharacteristic,
+        new Uint8Array([1]),
+        onLuxometerActivated,
+        onLuxometerActivatedError)
+
+    function onLuxometerActivated()
+    {
+        console.log('Luxometer is ON')
+
+        // Enable notifications from the Luxometer.
+        evothings.ble.enableNotification(
+            device,
+            dataCharacteristic,
+            onLuxometerNotification,
+            onLuxometerNotificationError)
+    }
+
+    function onLuxometerActivatedError(error)
+    {
+        console.log('Luxometer activate error: ' + error)
+    }
+
+    // Called repeatedly until disableNotification is called.
+    function onLuxometerNotification(data)
+    {
+        var lux = calculateLux(data)
+        console.log('Luxometer value: ' + lux)
+    }
+
+    function onLuxometerNotificationError(error)
+    {
+        console.log('Luxometer notification error: ' + error)
+    }
+}
+
+// Calculate the light level from raw sensor data.
+// Return light level in lux.
+function calculateLux(data)
+{
+    // Get 16 bit value from data buffer in little endian format.
+    var value = new DataView(data).getUint16(0, true)
+
+    // Extraction of luxometer value, based on sfloatExp2ToDouble
+    // from BLEUtility.m in Texas Instruments TI BLE SensorTag
+    // iOS app source code.
+    var mantissa = value & 0x0FFF
+    var exponent = value >> 12
+
+    var magnitude = Math.pow(2, exponent)
+    var output = (mantissa * magnitude)
+
+    var lux = output / 100.0
+
+    // Return result.
+    return lux
+}
+
+// Start scanning for devices when the plugin has loaded.
+document.addEventListener('deviceready', findDevice, false)
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<!--
+
+    /* Test of read
+    .then(() => {
+        log('Value written')
+        return accelerometerService.getCharacteristic(accelerometerDataUUID);
+    })
+    .then(characteristic => {
+        log('Accelerometer data characteristic: ' + characteristic.uuid);
+        // Read accelerometer every second.
+        var timer = setInterval(() => { readAccelerometer(characteristic) }, 1000);
+        // Keep going for 10 seconds
+        setTimeout(() => {
+            clearInterval(timer);
+            gattServer.disconnect();
+            log('Gatt server connected: ' + gattServer.connected);
+            },
+            10000)
+    })
+
+
+/* Called from commented out code below.
+function readAccelerometer(characteristic) {
+    characteristic.readValue().then(data => {
+        log('got accel data: ' + data)
+        var accelerometer = getAccelerometerValues(data);
+        log('x: ' + accelerometer.x);
+        log('y: ' + accelerometer.y);
+        log('z: ' + accelerometer.z);
+    })
+}
+*/
+
+function getAccelerometerValues(data) {
+    var divisors = { x: 16.0, y: -16.0, z: 16.0 };
+
+    // Calculate accelerometer values.
+    var ax = data.getInt8(0, true) / divisors.x;
+    var ay = data.getInt8(1, true) / divisors.y;
+    var az = data.getInt8(2, true) / divisors.z;
+
+    return { x: ax, y: ay, z: az };
+}
+
+-->
+
+<!--
+
+LOG: {"advertisementData":{"kCBAdvDataLocalName":"CC2650 SensorTag","kCBAdvDataServiceUUIDs":["0000aa10-0000-1000-8000-00805f9b34fb"],"kCBAdvDataTxPowerLevel":0,"kCBAdvDataIsConnectable":true},"rssi":-45,"name":"SensorTag 2.0","address":"9E40E6C5-1BBD-7B7C-026F-51CBDD5CF61E"}
+
+LOG: {"_handle":"9E40E6C5-1BBD-7B7C-026F-51CBDD5CF61E","address":"9E40E6C5-1BBD-7B7C-026F-51CBDD5CF61E","name":"CC2650 SensorTag","serviceUUIDs":["0000aa10-0000-1000-8000-00805f9b34fb"],"adData":{"rssi":-44,"txPower":null,"serviceData":{},"manufacturerData":null},"connected":false,"services":{}}
+-->
+
+<h2>Get started in 5 minutes</h2>
+
+<p><a href="https://evothings.com/download/">Download Evothings Studio</a> and get started within minutes. It is fun and easy!</p>
+
+<p>Ask questions and discuss IoT app development on Gitter:
+<a href="https://gitter.im/evothings/evothings" target="_blank">gitter.im/evothings/evothings</a></p>
+
+</div><!-- evo-content-box -->
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>
