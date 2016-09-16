@@ -11,8 +11,6 @@ document.write(
 	+	'<a href="../examples/ble-scan.html">BLE&nbsp;Scan</a><br/>'
 	+	'<a href="../examples/eddystone-scan.html">Eddystone&nbsp;Scan</a><br/>'
 	+	'<a href="../examples/ibeacon-scan.html">iBeacon&nbsp;Scan</a><br/>'
-	+	'<a href="../examples/estimote-beacons.html">Estimote&nbsp;Beacons</a><br/>'
-	+	'<a href="../examples/estimote-nearables.html">Estimote&nbsp;Nearables</a><br/>'
 	+	'<a href="../examples/ble-discovery.html">BLE&nbsp;Discovery</a><br/>'
 
 	+	'<a href="../examples/ble-ti-sensortag-accelerometer.html">TI&nbsp;SensorTag&nbsp;Accelerometer</a><br/>'
