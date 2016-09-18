@@ -391,9 +391,14 @@ if (window.hyper && window.hyper.log) { console.log = hyper.log }
 
 &lt;script src="cordova.js"&gt;&lt;/script&gt;
 &lt;script&gt;
-// UUIDs of services and characteristics.
+// UUID of Luxometer service.
 var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
+
+// UUID of Luxometer config characteristic (write 1 to turn sensor ON,
+// 0 to turn sensor OFF).
 var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
+
+// UUID of Luxometer data characteristic.
 var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
 
 function findDevice()
@@ -461,16 +466,6 @@ function connectToDevice(device)
 
 function enableLuxometerNotifications(device)
 {
-    // UUID of Luxometer service.
-    var LUXOMETER_SERVICE = 'f000aa70-0451-4000-b000-000000000000'
-
-    // UUID of Luxometer config characteristic (write 1 to
-    // turn sensor ON, 0 to turn OFF).
-    var LUXOMETER_CONFIG = 'f000aa72-0451-4000-b000-000000000000'
-
-    // UUID of Luxometer data characteristic.
-    var LUXOMETER_DATA = 'f000aa71-0451-4000-b000-000000000000'
-
     // Get Luxometer service and characteristics.
     var service = evothings.ble.getService(device, LUXOMETER_SERVICE)
     var configCharacteristic = evothings.ble.getCharacteristic(service, LUXOMETER_CONFIG)
