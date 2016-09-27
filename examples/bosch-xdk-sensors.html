@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<!--
+File: bosch-xdk-sensors.html
+Description: Bosch XDK Sensors documentation.
+Author: Göran Krampe
+Copyright (c) 2013-2016 Evothings AB
+-->
+<head>
+<meta charset="utf-8">
+<script src="../js/include-head.js"></script>
+<title>Bosch XDK Sensors</title>
+</head>
+
+<body>
+
+<div class="evo-page">
+<script src="../js/include-page-header.js"></script>
+<div class="evo-content">
+<script src="../js/include-example-menu.js"></script>
+
+<div class="evo-box">
+
+	<h1>Bosch XDK Sensors</h1>
+
+	<p>Sample application for the Bosch XDK device that shows raw numeric sensor data in real time. The data is gathered by the XDK device and transferred over Bluetooth Low Energy to the application running on the smartphone. The app displays the data in a simple numeric table.</p>
+	<p>The following three screenshots show how the app looks like initially, when it's connected, and when it's started showing sensor data.</p>
+
+	<img class="img-example-screenshot" src="images/bosch-sensors-screenshot1.png"/>
+  <img class="img-example-screenshot" src="images/bosch-sensors-screenshot2.png"/>
+  <img class="img-example-screenshot" src="images/bosch-sensors-screenshot3.png"/>
+</div>
+
+<div class="evo-box">
+
+	<h2>Source code</h2>
+
+	<p>
+		You can browse the source code for this example <a href="https://github.com/evothings/evothings-examples/tree/2.1/examples/bosch-xdk-sensors">at github</a>.
+	</p>
+
+	<p>
+		The file <a href="https://github.com/evothings/evothings-examples/blob/2.1/examples/bosch-xdk-sensors/index.html">index.html</a> contains the HTML markup of the app and the <a href="https://github.com/evothings/evothings-examples/blob/2.1/examples/bosch-xdk-sensors/app.js">app.js</a> contains the logic.
+	</p>
+
+</div>
+
+<div class="evo-box">
+
+	<h2>What you need</h2>
+
+	<p>This example runs in the Evothings Viewer on Android or iOS.</p>
+
+	<p>Yoyu need an iOS device or an Android device with support for Bluetooth 4.0 (which includes BLE). For Android version 4.3 or later is needed.</p>
+
+	<p>Obviously you need an <a href="http://xdk.bosch-connectivity.com">XDK device</a> from <a href="http://xdk.bosch-connectivity.com/buy-xdk">a retail distributor</a>.</p>
+	
+	<p>In order to be able to build and flash the device with the <a href="https://github.com/evothings/evothings-examples/blob/2.1/examples/bosch-xdk-sensors/xdk-firmware">device side code</a>, you also need to download and install the <a href="http://xdk.bosch-connectivity.com/software-downloads">XDK Workbench 1.6.0</a> which is available for Windows 7 and later (not Linux or OSX).</p>
+
+</div>
+
+<div class="evo-box">
+	<h2>How to get up and running</h2>
+
+	<p>Bosch has made available <a href="http://xdk.bosch-connectivity.com/guides">several guides</a> on how to install and get started with the Eclipse based XDK Workbench.</a> However, below you find the specific steps you need to just get the firmware built and flashed:</p>
+
+	<ul>
+		<li>Download and install the <a href="http://xdk.bosch-connectivity.com/software-downloads">XDK Workbench</a>. It needs to be version 1.6.0 or possibly newer. It's an easy installer. Then follow <b>guide below</b> to build and flash the firmware.</li>
+		<li>Run Evothings Studio on your computer and connect your Evothings Viewer on your phone to it.</li>
+		<li>Press Run on the <b>Bosch XDK Sensors</b> example in the Studio, either directly from the Examples tab or from your own copy under myApps.</li>
+		<li>Make sure the XDK is on and has power with the green light on (and you flashed it as described below).</li>
+		<li>Press Connect in the mobile app, and then eventually press Start after it has connected. You should be seeing numbers shown in the table as the <b>screenshots show above</b>.</li>
+	</ul>
+	
+	<h2>Build and flash firmware</h2>
+  <ol>
+  <li><p>Use the Copy button on the Bosch Sensors example in the Examples tab in Evothings Studio, to get your own copy of the code.</p></li>
+  <li><p>Fire up the XDK IDE and connect the XDK device using a USB cord. Turn it on. Hopefully it will be discovered (I failed first due to a faulty cord) and then you will get the green icon and the "Flash" and "Boot" buttons appear, something like this:</p>
+  <img class="img-example-large-screenshot" src="images/bosch-xdk-discovered.png"/></li>
+  <li><p>Then you select "New Project" from the IDE, and then under "C/C++", pick "Makefile Project with Existing Code":</p>
+  <img class="img-example-large-screenshot" src="images/bosch-makefile-project.png"/></li>
+  <li><p>Find the <b>xdk-firmware</b> directory and import the code.</p></li>
+  <li><p>Now you should be able to build and flash your XDK device, either using the "Flash" button or by first building, producing a .bin file under the debug directory, and then flashing that file. Log should show something similar to this:</p>
+  <img class="img-example-large-screenshot" src="images/bosch-flashed.png"/></li>
+  <li><p><b>Success!</b></p>
+  </ol>
+</div>
+
+<script src="../js/include-page-footer.js"></script>
+</div><!-- evo-page-content -->
+</div><!-- evo-page -->
+
+</body>
+</html>

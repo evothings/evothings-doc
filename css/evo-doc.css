@@ -287,6 +287,13 @@ a
 	border: 1px solid #000000;
 }
 
+.evo-content .img-example-large-screenshot
+{
+	width: 640px;
+	height: auto;
+	border: 1px solid #000000;
+}
+
 .evo-content .img-example-arduino-sketch
 {
 	width: 400px;
