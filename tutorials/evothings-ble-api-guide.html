@@ -33,13 +33,13 @@ Now you can write mobile apps in JavaScript that talk to Bluetooth Low Energy (B
 
 <p>This guide shows you how to use the Evothings BLE API to connect to Bluetooth Low Energy devices from JavaScript.</p>
 
+<p><strong>Please note that this guide applies to Evothings Viewer 1.5 or later, and the Cordova BLE plugin version 2.0.0 or later (included with Evothings Viewer).</strong></p>
+
 <p>We take you through the steps to detect and connect to a BLE device. You can use this guide for basically any BLE device.</p>
 
 <h2>Software architecture</h2>
 
 <p>Native support for Bluetooth Low Energy on Android and iOS is provided by the <a href="https://github.com/evothings/cordova-ble">Cordova BLE plugin</a>. This plugin is included with Evothings Viewer, which makes it quick to get started with development of a BLE application in JavaScript. When the app is ready for testing and deployment, the Cordova build system is used to build a custom app with the application code and the BLE plugin. This app can then be published on the app stores.</p>
-
-<p>This guide uses the BLE plugin API available in plugin version 2.0.0 and laster, and Evothings Viewer version 1.5.0 and later.
 
 <h2>Steps to connect to a BLE device</h2>
 
