@@ -50,15 +50,23 @@
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
+                    <dt><a href="evothings.eddystone.html#.startAdvertise">startAdvertise(namespace, instance, advertiseCallback, failCallback)</a></dt>
+                    <dd>
+                    </dd>
                     <dt><a href="evothings.eddystone.html#.startScan">startScan(scanCallback, failCallback)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="evothings.eddystone.html#.stopAdvertise">stopAdvertise(onSuccess, failCallback)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="evothings.eddystone.html#.stopScan">stopScan()</a></dt>
                     <dd>
                     </dd>
                   </dl>
-                </div>
-                <div class="summary-column">
                 </div>
               </div>
             </div>
@@ -215,6 +223,93 @@
                         </dd>
                       </dl>
                       <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+                      <h3 id=".startAdvertise"><span class="symbol-name">startAdvertise</span><span class="signature"><span class="signature-params">(namespace, instance, advertiseCallback, failCallback)</span></span></h3>
+                      <p>Start Advertising Eddystone Beacon.</p>
+                      <p>Namespace may only be 10 hex bytes</p>
+                      <p>Instance may only be 6 hex bytes</p>
+                      <p>Will keep advertising indefinitely until you call stopAdvertise().</p>
+                      <section>
+                        <h4>
+            Example
+        </h4>
+                        <div>
+                          <pre class="prettyprint"><code>evothings.eddystone.startAdvertise(&quot;0123456789ABCDEF0123&quot;, &quot;0123456789AB&quot;);</code></pre>
+                        </div>
+                      </section>
+                      <section>
+                        <h4>Parameters</h4>
+                        <table class="jsdoc-details-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Type</th>
+                              <th>Optional</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>namespace</p>
+                              </td>
+                              <td>
+                                <p>string</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Hex namespace string (10 bytes, 20 chars)</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>instance</p>
+                              </td>
+                              <td>
+                                <p>string</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Hex instance string (6 bytes, 12 chars)</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>advertiseCallback</p>
+                              </td>
+                              <td>
+                                <p>evothings.eddystone.advertiseCallback</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Success function called when advertising started</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>failCallback</p>
+                              </td>
+                              <td>
+                                <p><a href="evothings.eddystone.html#.failCallback">evothings.eddystone.failCallback</a></p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Error callback: fail(error).</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </section>
+                      <dl class="dl-compact">
+                      </dl>
+                      <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
                       <h3 id=".startScan"><span class="symbol-name">startScan</span><span class="signature"><span class="signature-params">(scanCallback, failCallback)</span></span></h3>
                       <p>Starts scanning for Eddystone devices.</p>
                       <p>Found devices and errors will be reported to the supplied callbacks.</p>
@@ -261,6 +356,62 @@
                               </td>
                               <td>
                                 <p>Success function called when a beacon is found.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <p>failCallback</p>
+                              </td>
+                              <td>
+                                <p><a href="evothings.eddystone.html#.failCallback">evothings.eddystone.failCallback</a></p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Error callback: fail(error).</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </section>
+                      <dl class="dl-compact">
+                      </dl>
+                      <div class="symbol-detail-labels"><span class="label label-public">public</span>&nbsp;<span class="label label-static">static</span></div>
+                      <h3 id=".stopAdvertise"><span class="symbol-name">stopAdvertise</span><span class="signature"><span class="signature-params">(onSuccess, failCallback)</span></span></h3>
+                      <p>Stop Advertising Eddystone Beacon.</p>
+                      <section>
+                        <h4>
+            Example
+        </h4>
+                        <div>
+                          <pre class="prettyprint"><code>evothings.eddystone.stopAdvertise();</code></pre>
+                        </div>
+                      </section>
+                      <section>
+                        <h4>Parameters</h4>
+                        <table class="jsdoc-details-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Type</th>
+                              <th>Optional</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>onSuccess</p>
+                              </td>
+                              <td>
+                                <p>function()</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Success function called when advertising stoppped</p>
                               </td>
                             </tr>
                             <tr>
@@ -511,7 +662,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on July 13, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on October 18, 2016.
       </p>
     </div>
   </footer>

@@ -54,6 +54,11 @@
 	evothings.easyble.error &#x3D; {};
 
 	/**
+	 * @description BLE device already connected.
+	 */
+	evothings.easyble.error.DEVICE_ALREADY_CONNECTED &#x3D; &#x27;EASYBLE_ERROR_DEVICE_ALREADY_CONNECTED&#x27;;
+
+	/**
 	 * @description BLE device was disconnected.
 	 */
 	evothings.easyble.error.DISCONNECTED &#x3D; &#x27;EASYBLE_ERROR_DISCONNECTED&#x27;;
@@ -75,8 +80,10 @@
 
 	/**
 	 * @private
+	 * This variable is set &quot;lazily&quot;, because when this script is loaded
+	 * the Base64 Cordova module may not be loaded yet.
 	 */
-	var base64 &#x3D; cordova.require(&#x27;cordova/base64&#x27;);
+	var base64;
 
 	/**
 	 * Set to true to report found devices only once,
@@ -398,6 +405,8 @@
 	 */
 	internal.ensureAdvertisementData &#x3D; function(device)
 	{
+		if (!base64) { base64 &#x3D; cordova.require(&#x27;cordova/base64&#x27;); }
+
 		// If device object already has advertisementData we
 		// do not need to parse the scanRecord.
 		if (device.advertisementData) { return; }
@@ -674,13 +683,17 @@
 			var deviceName &#x3D; device.advertisementData ?
 				device.advertisementData.kCBAdvDataLocalName : false;
 			if (deviceName) 
-			{ 
+			{
+				// TODO: This should be a comparison, but there has been
+				// instances of the kCBAdvDataLocalName field ending with 
+				// a non-printable character, using indexOf is a quick 
+				// fix for this.
 				return 0 &#x3D;&#x3D; deviceName.indexOf(name);
 			}
 			
 			// Otherwise check if device.name matches (cached by iOS,
 			// might not match if device name is updated).
-			return name &#x3D; device.name;
+			return name &#x3D;&#x3D; device.name;
 		};
 
 		/**
@@ -816,6 +829,15 @@
 			if (Array.isArray(arg1))
 			{
 				serviceUUIDs &#x3D; arg1;
+				success &#x3D; arg2;
+				fail &#x3D; arg3;
+				options &#x3D; arg4;
+			}
+			// Previously you could set first param to null to read all services.
+			// Here we handle this case for backwards compatibility.
+			else if (arg1 &#x3D;&#x3D;&#x3D; undefined || arg1 &#x3D;&#x3D;&#x3D; null)
+			{
+				serviceUUIDs &#x3D; null;
 				success &#x3D; arg2;
 				fail &#x3D; arg3;
 				options &#x3D; arg4;
@@ -1258,37 +1280,49 @@
 		// Check that device is not already connected.
 		if (device.__isConnected)
 		{
-			fail(&#x27;Device already connected&#x27;);
+			fail(evothings.easyble.error.DEVICE_ALREADY_CONNECTED);
 			return;
 		}
 		
-		evothings.ble.connect(device.address, function(connectInfo)
-		{
-			if (connectInfo.state &#x3D;&#x3D; 2) // connected
+		evothings.ble.connect(
+			device.address,
+			// Success callback.
+			function(connectInfo)
 			{
-				device.deviceHandle &#x3D; connectInfo.deviceHandle;
-				device.__uuidMap &#x3D; {};
-				device.__serviceMap &#x3D; {};
-				device.__isConnected &#x3D; true;
-				internal.connectedDevices[device.address] &#x3D; device;
+				// DEBUG LOG
+				console.log(&#x27;BLE connect state: &#x27; + connectInfo.state);
+			
+				if (connectInfo.state &#x3D;&#x3D; 2) // connected
+				{
+					device.deviceHandle &#x3D; connectInfo.deviceHandle;
+					device.__uuidMap &#x3D; {};
+					device.__serviceMap &#x3D; {};
+					device.__isConnected &#x3D; true;
+					internal.connectedDevices[device.address] &#x3D; device;
 
-				success(device);
-			}
-			else if (connectInfo.state &#x3D;&#x3D; 0) // disconnected
+					success(device);
+				}
+				else if (connectInfo.state &#x3D;&#x3D; 0) // disconnected
+				{
+					device.__isConnected &#x3D; false;
+					internal.connectedDevices[device.address] &#x3D; null;
+
+					// TODO: Perhaps this should be redesigned, as disconnect is
+					// more of a status change than an error? What do you think?
+					fail &amp;amp;&amp;amp; fail(evothings.easyble.error.DISCONNECTED);
+				}
+			},
+			// Error callback.
+			function(errorCode)
 			{
-				var theDevice &#x3D; internal.connectedDevices[device.address];
-				theDevice.__isConnected &#x3D; false;
+				// DEBUG LOG
+				console.log(&#x27;BLE connect error: &#x27; + errorCode);
+			
+				// Set isConnected to false on error.
+				device.__isConnected &#x3D; false;
 				internal.connectedDevices[device.address] &#x3D; null;
-
-				// TODO: Perhaps this should be redesigned, as disconnect is
-				// more of a status change than an error? What do you think?
-				fail &amp;amp;&amp;amp; fail(evothings.easyble.error.DISCONNECTED);
-			}
-		},
-		function(errorCode)
-		{
-			fail(errorCode);
-		});
+				fail(errorCode);
+			});
 	};
 	
 	/**
@@ -1350,6 +1384,13 @@
 					service.__characteristics.push(characteristic);
 					device.__uuidMap[characteristic.uuid] &#x3D; characteristic;
 					device.__serviceMap[service.uuid + &#x27;:&#x27; + characteristic.uuid] &#x3D; characteristic;
+
+					// DEBUG LOG
+					//console.log(&#x27;storing service:characteristic key: &#x27; + service.uuid + &#x27;:&#x27; + characteristic.uuid);
+					//if (!characteristic)
+					//{
+					//	console.log(&#x27;  --&gt; characteristic is null!&#x27;)
+					//}
 
 					// Read descriptors for characteristic.
 					evothings.ble.descriptors(
@@ -1610,6 +1651,14 @@
 	{
 		var key &#x3D; serviceUUID.toLowerCase() + &#x27;:&#x27; + characteristicUUID.toLowerCase();
 
+		// DEBUG LOG
+		//console.log(&#x27;internal.writeServiceCharacteristicWithoutResponse key: &#x27; + key)
+		//console.log(&#x27;internal.writeServiceCharacteristicWithoutResponse serviceMap:&#x27;)
+		for (var theKey in device.__serviceMap)
+		{
+			console.log(&#x27;  &#x27; + theKey);
+		}
+
 		var characteristic &#x3D; device.__serviceMap[key];
 		if (!characteristic)
 		{
@@ -1819,7 +1868,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on July 13, 2016.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.4.0 on October 18, 2016.
       </p>
     </div>
   </footer>
