@@ -21,6 +21,7 @@ Copyright (c) 2013-2015 Evothings AB
 <div class="evo-box evo-content-index">
 	<script src="../js/include-evothings-logo.js"></script>
 	<a href="#ReleaseNotes">Release Notes</a><br/>	
+	<a href="#EvothingsStudio220b6">EvothingsStudio 2.2.0-beta6</a><br/>
 	<a href="#EvothingsStudio210">EvothingsStudio 2.1.0</a><br/>
 	<a href="#EvothingsStudio210b2">EvothingsStudio 2.1.0-beta2</a><br/>
 	<a href="#EvothingsStudio210b1">EvothingsStudio 2.1.0-beta1</a><br/>
@@ -44,6 +45,41 @@ Copyright (c) 2013-2015 Evothings AB
 	<h1>Release Notes</h1>
 	<p>Learn what is new in each release of Evothings Studio.</p>
 </div>
+
+<div id="EvothingsStudio220b6" class="evo-box">
+	<h2>EvothingsStudio 2.2.0-beta6</h2>
+
+	<p>New in EvothingsStudio 2.2.0-beta6:</p>
+	<ul>
+		<li>Added a Build button that performs an automatic build of an Android apk for your app.</li>
+	  <li>Added a News tab that gives the user interesting news from the Evothings space and the Studio itself.</li>
+		<li>Added a setting to switch between HTTP and HTTPS for serving the app to Evothings Viewer.</li>
+		<li>Added a More button under MyApps to reduce clutter.</li>
+		<li>Renamed Code button to Files.</li>
+		<li>Renamed Edit button to Config.</li>
+		<li>Added a series of fields to the Config app dialog supporting the Cordova build including list of plugins.</li>
+		<li>Added a series of settings supporting the Cordova build when it comes to signing and author details etc.</li>
+		<li>Added a Copy button to MyApps so that you can copy your own app.</li>
+		<li>Added an Edit button to MyApps that launches VSCode or other editor for editing your apps.</li>
+		<li>Added a setting to change the editor command used for the Edit button.</li>
+		<li>Added rpm and AppImage formats for Linux, in addition to the deb format.</li>
+		<li>Added an additional NSIS based installer for Windows.</li>
+		<li>Added a 32 bit build for Windows since we have had some requests for it, but not for Linux or MacOS.</li>
+		<li>Upgraded Electron to version 1.2.6 and also upgraded various other components.</li>
+		<li>Added several new Libraries for easy inclusion; Onsen UI, Framework7, Smoothie Charts, Material Design Lite, Paho MQTTWS.</li>
+		<li>Various other bug fixes and cosmetic improvements.</li>
+		<li>Fixed issue with finding the correct user folder path trying to mitigate issues some users have experienced when running on Windows in a networked environment.
+		<li>Fixed issue with feedback menu link under Help to be non private so that it now actually works.</li>
+		<li>Fixed issue <a href="https://github.com/evothings/evothings-studio/issues/187">#187</a> where MyApps directory was not properly created.</li>
+		<li>Fixed issue <a href="https://github.com/evothings/evothings-studio/issues/186">#186</a> with copied apps accidentally having the same UUID, the Studio now detects and offers to fix it.</li>
+		<li>Fixed issue <a href="https://github.com/evothings/evothings-studio/issues/182">#182</a> where duplicate evothings.json files were accidentally created.</li>
+		<li>Fixed issue <a href="https://github.com/evothings/evothings-studio/issues/159">#159</a> so that we only use port 443 (HTTPS) to communicate with our cloud.</li>
+		<li>Various other bug fixes and cosmetic improvements.</li>
+	</ul>
+
+	<p>Download and follow on-screen instructions: <a href="https://evothings.com/download">evothings.com/download</a></p>
+</div>
+
 
 <div id="EvothingsStudio210" class="evo-box">
 	<h2>EvothingsStudio 2.1.0</h2>
