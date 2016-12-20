@@ -4,7 +4,7 @@ document.write(
 	+	'<script src="../js/include-evothings-logo.js"></script>'
 
 	+	'<a href="../examples/hello-world.html">Hello&nbsp;World</a><br/>'
-        +       '<a href="../examples/hello-ecmascript6.html">Hello&nbsp;ECMAScript6</a><br/>'
+  + '<a href="../examples/hello-ecmascript6.html">Hello&nbsp;ECMAScript6</a><br/>'
 	+	'<a href="../examples/cordova-accelerometer.html">Cordova&nbsp;Accelerometer</a><br/>'
 	+	'<a href="../examples/hue-lights.html">Philips&nbsp;Hue&nbsp;Demo</a><br/>'
 
@@ -49,6 +49,8 @@ document.write(
 	+	'<a href="../examples/dialog-blinky.html">Dialog&nbsp;-&nbsp;Blinky</a><br/>'
 	+	'<a href="../examples/dialog-iotsensor.html">Dialog&nbsp;-&nbsp;IoT Sensor</a><br/>'
 	+	'<a href="../examples/dialog-beacons.html">Dialog&nbsp;-&nbsp;Beacons</a><br/>'
+	+	'<a href="../examples/bluemix-mqtt-painter.html">Bluemix&nbsp;MQTT&nbsp;Painter</a><br/>'
+
 	+	'<a href="../examples/template-basic-app.html">Basic&nbsp;Template&nbsp;App</a><br/>'
 
 	+ '</div>')
