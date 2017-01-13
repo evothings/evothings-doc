@@ -20,7 +20,10 @@ Copyright (c) 2013-2015 Evothings AB
 
 <div class="evo-box evo-content-index">
 	<script src="../js/include-evothings-logo.js"></script>
-	<a href="#ReleaseNotes">Release Notes</a><br/>	
+	<a href="#ReleaseNotes">Release Notes</a><br/>
+	<a href="#EvothingsStudio220">EvothingsStudio 2.2.0</a><br/>
+	<a href="#EvothingsStudio220b8">EvothingsStudio 2.2.0-beta8</a><br/>
+	<a href="#EvothingsStudio220b7">EvothingsStudio 2.2.0-beta7</a><br/>
 	<a href="#EvothingsStudio220b6">EvothingsStudio 2.2.0-beta6</a><br/>
 	<a href="#EvothingsStudio210">EvothingsStudio 2.1.0</a><br/>
 	<a href="#EvothingsStudio210b2">EvothingsStudio 2.1.0-beta2</a><br/>
@@ -43,7 +46,46 @@ Copyright (c) 2013-2015 Evothings AB
 
 <div id="ReleaseNotes" class="evo-box">
 	<h1>Release Notes</h1>
-	<p>Learn what is new in each release of Evothings Studio.</p>
+	<p>Learn what is new in each release of Evothings Studio, or download it from <a href="https://evothings.com/download">evothings.com/download</a></p>
+</div>
+
+<div id="EvothingsStudio220" class="evo-box">
+	<h2>EvothingsStudio 2.2.0</h2>
+
+	<p>New in EvothingsStudio 2.2.0:</p>
+	<ul>
+		<li>Trivial fix to avoid confusing message about duplicate UUIDs when importing projects not having one.</li>
+		<li>Improved alert dialogs throughout to use Electron variant.</li>
+		<li>Tested and added Vagrant 1.9.x as a verified working version for build process.</li>
+		<li>Added setting to allow relaxed verification of VirtualBox and Vagrant versions.</li>
+		<li>Trivial fix to not switch to Build tab if build dialog dismissed.</li>
+	</ul>
+</div>
+
+<div id="EvothingsStudio220b8" class="evo-box">
+	<h2>EvothingsStudio 2.2.0-beta8</h2>
+
+	<p>New in EvothingsStudio 2.2.0-beta8:</p>
+	<ul>
+		<li>Upgraded to Electron 1.4.14.</li>
+		<li>Upgraded internally used components socket.io, mqtt, material-design-lite, glob, fs-extra, font-awesome, coffee-script and babel packages to latest available.</li>
+		<li>Upgraded electron packager and builder to latest available.</li>
+		<li>Fixed issue with build not propagating Version field properly into Cordova's config.xml.</li>
+		<li>Improved check for duplicate UUIDs to also verify against the Example list.</li>
+	</ul>
+</div>
+
+
+<div id="EvothingsStudio220b7" class="evo-box">
+	<h2>EvothingsStudio 2.2.0-beta7</h2>
+
+	<p>New in EvothingsStudio 2.2.0-beta7:</p>
+	<ul>
+		<li>Fixed fallback on global author fields from settings in case fields not filled in app config.</li>
+		<li>Fixed issue with failing to unpack examples containing 0 byte files.</li>
+		<li>Fixed label to properly convey that Cordova IDs can not contain digits.</li>
+		<li>Fixed issue with failing to detect end of build tasks.</li>
+	</ul>
 </div>
 
 <div id="EvothingsStudio220b6" class="evo-box">
@@ -76,8 +118,6 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>Fixed issue <a href="https://github.com/evothings/evothings-studio/issues/159">#159</a> so that we only use port 443 (HTTPS) to communicate with our cloud.</li>
 		<li>Various other bug fixes and cosmetic improvements.</li>
 	</ul>
-
-	<p>Download and follow on-screen instructions: <a href="https://evothings.com/download">evothings.com/download</a></p>
 </div>
 
 
@@ -106,8 +146,6 @@ Copyright (c) 2013-2015 Evothings AB
 		<li>About dialog now shows build timestamp and subscription license including limits associated with that license.</li>
 		<li>Various bug fixes and cosmetic improvements.</li>
 	</ul>
-
-	<p>Download and follow on-screen instructions: <a href="https://evothings.com/download">evothings.com/download</a></p>
 </div>
 
 
@@ -313,8 +351,6 @@ On iOS 9, to prevent application content from expanding the view when DOM elemen
 <div id="EvothingsStudio120" class="evo-box">
 	<h2>Evothings Studio 1.2.0</h2>
 
-	<p>Find all downloads for this version of Evothings Studio at: <a href="https://evothings.com/download">evothings.com/download</a></p>
-
 	<h3>Evothings Workbench</h3>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
@@ -364,8 +400,6 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 <div id="EvothingsStudio113" class="evo-box">
 	<h2>Evothings Studio 1.1.3</h2>
 
-	<p>Find all downloads for this version of Evothings Studio at: <a href="https://evothings.com/download">evothings.com/download</a></p>
-
 	<h3>Evothings Workbench</h3>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
@@ -399,9 +433,6 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 
 <div id="EvothingsStudio110" class="evo-box">
 	<h2>Evothings Studio 1.1.0</h2>
-
-	<p>Find all downloads for this version of Evothings Studio at: <a href="https://evothings.com/download">evothings.com/download</a></p>
-
 	<h3>Evothings Workbench</h3>
 	<ul>
 		<li>Supported platforms for Evothings Workbench are OS X, Windows and Linux.</li>
@@ -455,7 +486,6 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>JavaScript library files and UI files used in example apps have been renamed for consistency.</li>
 		<li>If you use the <b>evothings-examples</b> source code repository, it should be mentioned that library files and UI files are found in folder <b>resources</b>. Use Ruby script <b>build.rb</b> to copy library files to examples. In the downloaded version of Evothings Studio examples are already pre-built.</li>
 		<li>Two new examples, Nordic BLE and RFduinio BLE, are found in the examples folder (but are not included in the Workbench window). To run these examples, drag the index.html files to the Workbench window and click RUN. These examples are currently not included in the documentation.</li>
-		<li>Find all downloads for this version of Evothings Studio at: <a href="https://evothings.com/download">evothings.com/download</a></li>
 	</ul>
 </div>
 
@@ -472,7 +502,6 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>There is a new example app for iBeacons.</li>
 		<li>The Example apps also have the new UI design, with improved navigability, and a stronger visual identity and clarity.</li>
 		<li>Evothings Workbench now displays a notification when a new version of Evothings Studio is available.</li>
-		<li>Find all downloads for this version of Evothings Studio at: <a href="https://evothings.com/download">evothings.com/download</a></li>
 	</ul>
 </div>
 
@@ -483,7 +512,6 @@ If problems are experienced, try to power cycle the SensorTag as a workaround (r
 		<li>Supported platforms for Evothings Viewer are Android and iOS.</li>
 		<li>This version of Evothings Studio features updated examples, bug fixes, improved BLE support in Evothings Viewer on Android and iOS.</li>
 		<li>Positions of the Workbench Project window (the main window) and the Tools window are now saved between sessions. The Tools window has improved scrolling of the log panel, and a button to switch auto scroll on and off.</li>
-		<li>Find all downloads for this version of Evothings Studio at: <a href="https://evothings.com/download">evothings.com/download</a></li>
 	</ul>
 </div>
 
