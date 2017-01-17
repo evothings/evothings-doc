@@ -4,7 +4,7 @@
 File: build-cordova-install-windows.html
 Description: How to install Cordova on Windows
 Author: Mikael Kindborg
-Copyright (c) 2013-2016 Evothings AB
+Copyright (c) 2013-2017 Evothings AB
 -->
 <head>
 <meta charset="utf-8">
@@ -23,7 +23,6 @@ Copyright (c) 2013-2016 Evothings AB
 		<a href="#Introduction">Installing Cordova on Windows</a><br/>
 		<a href="#InstallCordova">Install Cordova</a><br/>
 		<a href="#InstallJava">Install Java</a><br/>
-		<a href="#InstallAnt">Install Ant</a><br/>
 		<a href="#InstallAndroidSDKTools">Install Android SDK Tools</a><br/>
 		<a href="#IfYouGetStuck">If you get stuck</a><br/>
 		<a href="#NextStep">The fun begins</a><br/>
@@ -33,9 +32,9 @@ Copyright (c) 2013-2016 Evothings AB
 
 <div id="Introduction" class="evo-box">
 	<h1>Installing Cordova on Windows</h1>
-	<p>This document describes how to install Apache Cordova and the Android SDK on a Windows machine. This is a quite complex process, which may take some time depending on your previous experience with installing SKDs and build tools. Care has been taken when writing this document to include all the essential steps needed to get you up and running with a successful install. Kindly let us know if there is something you are missing.</p>
-	<p>To develop Android apps, you need to install the Android SDK, and also Java if not already installed on your machine. Furthermore the build tool Ant is required.</p>
-	<p>For the Android SDK, you have the choice between installing the ADT bundle that incudes Eclipse (ADT = Android Developer Tools), or the Android SDK Tools, that does not include Eclipse. In the steps below we will use the Android SDK Tools download.</p>
+	<p>This document describes how to install Apache Cordova and the Android SDK on a Windows machine. This is a quite complex process, which may take some time depending on your previous experience with installing SKDs and build tools. Care has been taken when writing this document to include all the essential steps needed to get you up and running with a successful install. Kindly let us know if there is something you are missing (email: info@evothings.com).</p>
+	<p>To develop Android apps, you need to install the Android SDK, and also Java if not already installed on your machine.</p>
+	<p>For the Android SDK, you have the choice between installing Android Studio or just the Android SDK Tools (sdkmanager).</p>
 </div>
 
 <div id="InstallCordova" class="evo-box">
@@ -58,17 +57,18 @@ Copyright (c) 2013-2016 Evothings AB
 
 <div id="InstallJava" class="evo-box">
 	<h2>Install Java</h2>
-	<p>The Android SDK needs the Java Development Kit (JDK) to be installed (minimum version 1.6). Note that the Java Runtime Environment (JRE) is not sufficient, you will need the JDK. To check if you have the JDK installed already, type this on the command line:</p>
+	<p>The Android SDK needs the Java Development Kit (JDK) to be installed, version 1.7 or later. Note that the Java Runtime Environment (JRE) is not sufficient, you will need the JDK. To check if you have the JDK installed already, type this on the command line:</p>
 	<pre>javac -version</pre>
 	<p>If you do not have the JDK installed, proceed as follows:</p>
 	<ol>
-		<li><p>Download the Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/" target="_blank">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list fo download. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, find out using the Control Panel by selecting "System and Security" and then "System", where you will find the "System type" saying if your Windows version is 32-bit or 64-bit.</p></li>
+		<li><p>Download the recent version of Java SE JDK (SE = Standard Edition) from Oracle: <a href="http://www.oracle.com/technetwork/java/javase/downloads/" target="_blank">www.oracle.com/technetwork/java/javase/downloads/</a>. Click the Java SE Download to see the list of downloads. Get the "Windows x86" download if you have 32-bit Windows, and "Windows x64" if you have 64-bit Windows. If you do not know which version you have, find out using the Control Panel by selecting "System and Security" and then "System", where you will find the "System type" saying if your Windows version is 32-bit or 64-bit.</p></li>
 		<li><p>Go along and run the downloaded installer file. Using the default selections should be fine, but take a note of the directory in which you install the JDK. You will need to add this to the PATH in a later step below.</p></li>
 		<li><p>Next, update your path to include the JDK. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, which will open the System Properties window. Select the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
 		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button. (If there is no PATH entry in the list, click the New button to create one.)</p></li>
 		<li><p>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the bin directory of the JDK install. Here is an example (note that this must be the actual path used for the install on your machine):
 		<pre>;C:\Program Files\Java\jdk1.8.0_11\bin</pre>
 		An easy way to do this is to prepare the path to add in a text editor, then paste it at the end of the input field. When done click the <b>OK</b> button.</p></li>
+
 		<li><p>Next add the <b>JAVA_HOME</b> variable if it is not present (and if it is in the list, you may need to update its value using the Edit button). Click the <b>New</b> button. In the field <b>Variable name</b> type:
 		<pre>JAVA_HOME</pre>
 		In the field <b>Variable value</b> enter the path to the directory where the JDK is installed, without the semicolon and the /bin subdirectory, for example:
@@ -80,7 +80,7 @@ Copyright (c) 2013-2016 Evothings AB
 		If you see a version number you are done with the JDK install!</p></li>
 	</ol>
 </div>
-
+<!-- Not needed in recent Cordova versions
 <div id="InstallAnt" class="evo-box">
 	<h2>Install Ant</h2>
 	<p><a href="http://ant.apache.org/" target="_blank">Apache Ant</a> is a build system for Java, which is used by Cordova and the Android SDK. To install Ant, follow these steps:</p>
@@ -105,38 +105,39 @@ Copyright (c) 2013-2016 Evothings AB
 		If you see a version number you have installed Ant successfully!</p></li>
 	</ol>
 </div>
-
+-->
 <div id="InstallAndroidSDKTools" class="evo-box">
-	<h2>Install the Android SDK Tools</h2>
-	<p>The SDK Tools for Android are used by Cordova to build Android apps. Follow these steps to install the SDK Tools:</p>
+	<h2>Install the Android Tools</h2>
+	<p>To install the tools needed to build Android app using Cordova you need the Android SDK Tools. The easiesy way to install these tools is to install Android Studio. Optionally you can install the command line tools only. Follow these steps to install Android Studio:</p>
 	<ol>
-		<li><p>Go to the page <a href="http://developer.android.com/sdk" target="_blank">developer.android.com/sdk</a> scroll down the page and click "VIEW ALL DOWNLOADS AND SIZES". Under "SDK Tools Only", click the windows installer exe file and download it (this file is named e.g. <b>installer_r23.0.2-windows.exe</b>).</p></li>
-		<li><p>When downloaded, run the installer. You should do fine to use the default settings used by the installer, but make a note of the directory in which the SDK is installed, as you will have to add this to the PATH in the next step.</p></li>
-		<li><p>To add the SDK Tools to the PATH, open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
+		<li><p>Go to the <a href="https://developer.android.com/studio/index.html" target="_blank">Android Studio download page</a> and download and install Android Studio for your platform. (If you would wish to go for only the SDK Tools, you can find download links to the command line tools at the end of the Android Studio download page.)</p></li>
+
+		<li><p>Find the path of the Android SDK tools by consulting the <a href="https://developer.android.com/studio/command-line/sdkmanager.html" target="_blank">sdkmanager documentation page</a>. Check in your system that the files are actually there.</p></li>
+
+		<li><p>Add the path of the SDK Tools (directories <b>tools</b> and <b>platform-tools</b> to the system PATH variable. Open the <b>Control Panel</b>, click <b>System and Security</b>, click <b>System</b>, click <b>Change settings</b>, click the <b>Advanced</b> tab, then click the <b>Environment Variables</b> button.</p></li>
 		<li><p>In the list <b>User variables</b> select <b>PATH</b> and click the <b>Edit</b> button.</p></li>
 		<li><p>At the end of the field <b>Variable value</b>, add a semicolon followed by the path to the <b>tools</b> and <b>platform-tools</b> directores of the Android SDK install. Here is an example of what to add (note that there are two paths in one line, separated by a semicolon):
 		<p><code>;C:\Users\miki\AppData\Local\Android\android-sdk\tools;C:\Users\miki\AppData\Local\Android\android-sdk\platform-tools</code></p>
-
-		You can prepare the path in a text editor, copy it and paste at the end of the input field. Click the <b>OK</b> button when done.</p></li>
+		You can prepare the path in a text editor, copy it and paste at the end of the input field. Click the <b>OK</b> button when done.</p>
+		<p>Please note that the exact path may differ in the latest download of the Android Studio/SDK. Consult the Android <a href="https://developer.android.com/studio/command-line/sdkmanager.html" target="_blank">documentation page for the sdkmanager</a> for further information.</p>
+		</li>
+		<li><p>Next add the <b>ANDROID_HOME</b> environment variable in system settings in the same way that the JAVA_HOME variable was added above when installing Java. Set ANDROID_HOME to point to the root of the Android SDK folder, for example:</p>
+		<pre>C:\Users\miki\AppData\Local\Android\android-sdk</pre>
 		<li><p>Click the <b>OK</b> button again to close the Environment Variables window.</p></li>
 		<li><p>Now test the install. Close any open command windows, open a new command window and type:
 		<pre>adb version</pre>
 		This should display the version of the Android Debug Bridge.</p></li>
-		<li><p>As the final step, you need to get the specific Android SDK version used by Cordova. This is done by running the <b>Android SDK Manager</b> by typing the command:
-		<pre>android</pre>
-		This launches a window where you can select to install specific Android SDKs.</p></li>
-		<li><p>First time you launch the Android SDK Manager there will be preset selections. It is recommended to leave these untouched. Also select the entry "Android 4.4.2 (API 19)". This is the version used by the current Cordova 3.5 version. Note that the Android SDK required by Cordova will change in the future, as new versions of Cordova and Android are released. When this happens, open the Android SDK Manager again, and install the required API version(s).</p></li>
+		<li><p>As the final step, you may need to get the specific Android SDK version used by Cordova. This can be done using the sdkmanager command or by using the tools in Android Studio.</p></li></p></li>
 	</ol>
 </div>
 
 <div id="IfYouGetStuck" class="evo-box">
 	<h2>If you get stuck</h2>
-	<p>If you get stuck, consult the documentation at the respective web sites for Cordova, Java, Ant, and Android. The Cordova documentation has a <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html" target="_blank">platform guide for Android</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/" target="_blank">Evothings Forum</a>.</p>
+	<p>If you get stuck, consult the documentation at the respective web sites for Cordova, Java, and Android. The Cordova documentation has a <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html" target="_blank">platform guide for Android</a>. You are also welcome to ask for help at the <a href="http://forum.evothings.com/" target="_blank">Evothings Forum</a>.</p>
 	<p>One thing to do is to inspect all the environment variables. You can do this from a command window (note that you have to open a new command window after updating environment variables for updated values to be available). This displays the system PATH:</p>
 	<pre>echo %PATH%</pre>
-	<p>Here is how to inspect the values of JAVA_HOME and ANT_HOME:</p>
-	<pre>echo %JAVA_HOME%
-echo %ANT_HOME%</pre>
+	<p>Here is how to inspect the value of JAVA_HOME:</p>
+	<pre>echo %JAVA_HOME%</pre>
 </div>
 
 <div id="NextStep" class="evo-box">
